@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
 namespace Characters.Player.Scripts
 {
@@ -32,6 +33,9 @@ namespace Characters.Player.Scripts
         [SerializeField] private GameObject diagonalHitbox;
 
         private float _hitboxOffset;
+        private TimerHandle _diagonalHitboxTimer;
+        private TimerHandle _secondaryHitboxTimer;
+        private TimerHandle _blockTimer;
 
         private void Start()
         {
@@ -96,12 +100,22 @@ namespace Characters.Player.Scripts
 
         private void SwordDirectInput(InputAction.CallbackContext context, SwordDirection direction)
         {
-            if (!context.performed || GameState.instance.paused)
+            if (GameState.instance.paused)
             {
                 return;
             }
             
-            SetSwordDirection(direction);
+            if (context.performed)
+            {
+                SetSwordDirection(direction);
+                return;
+            }
+
+            // Only cancel if the button that was released is the same as our current direction
+            if (context.canceled && direction == swordDirection)
+            {
+                SetSwordStance(SwordStance.Idle);
+            }
         }
 
         private void SetSwordDirection(SwordDirection direction)
@@ -110,6 +124,31 @@ namespace Characters.Player.Scripts
             swordDirection = direction;
             swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(direction));
             OnSwordDirectionChanged(oldDirection, swordDirection);
+        }
+
+        private void SetSwordStance(SwordStance stance)
+        {
+            // Explicitly prevent idle -> blocking
+            if (stance == SwordStance.Blocking && swordStance == SwordStance.Idle)
+            {
+                return;
+            }
+            
+            swordStance = stance;
+            switch (stance)
+            {
+                case SwordStance.Attacking:
+                    primaryHitbox.GetComponent<SpriteRenderer>().color = Color.red;
+                    return;
+                case SwordStance.Blocking:
+                    primaryHitbox.GetComponent<SpriteRenderer>().color = Color.blue;
+                    return;
+                case SwordStance.Idle:
+                    primaryHitbox.GetComponent<SpriteRenderer>().color = Color.green;
+                    return;
+                default:
+                    return;
+            }
         }
 
         private void OnSwordDirectionChanged(SwordDirection oldDirection, SwordDirection newDirection)
@@ -131,14 +170,18 @@ namespace Characters.Player.Scripts
 
         private void Stab(SwordDirection direction)
         {
+            SetSwordStance(SwordStance.Attacking);
             primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
             primaryHitbox.SetActive(true);
             secondaryHitbox.SetActive(false);
             diagonalHitbox.SetActive(false);
+            
+            TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
         }
 
         private void Slash(SwordDirection start, SwordDirection end)
         {
+            SetSwordStance(SwordStance.Attacking);
             primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(end));
             secondaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start));
             diagonalHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start, end));
@@ -146,15 +189,21 @@ namespace Characters.Player.Scripts
             primaryHitbox.SetActive(true);
             secondaryHitbox.SetActive(true);
             diagonalHitbox.SetActive(true);
+            
+            TimerManager.instance.CreateOrResetTimer(ref _diagonalHitboxTimer, this, 0.12f, () => { diagonalHitbox.SetActive(false); });
+            TimerManager.instance.CreateOrResetTimer(ref _secondaryHitboxTimer, this, 0.06f, () => { secondaryHitbox.SetActive(false); });
+            TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
         }
 
         private void Slam(SwordDirection direction)
         {
+            SetSwordStance(SwordStance.Attacking);
             primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
             primaryHitbox.SetActive(true);
             secondaryHitbox.SetActive(false);
             diagonalHitbox.SetActive(false);
             
+            TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
         }
 
         private Vector3 GetLocalPositionFromRotation(float rotationDegrees)

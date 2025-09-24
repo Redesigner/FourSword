@@ -11,6 +11,21 @@ public readonly struct TimerHandle
         _timer = new WeakReference<TimerEntry>(timer);
     }
 
+    public bool IsActive()
+    {
+        if (_timer == null)
+        {
+            return false;
+        }
+
+        if (_timer.TryGetTarget(out var timer))
+        {
+            return timer.duration >= timer.currentTime;
+        }
+
+        return false;
+    }
+
     public void Pause()
     {
         if (_timer.TryGetTarget(out var timer))
@@ -95,7 +110,7 @@ public class TimerManager : MonoBehaviour
             if (timer.owner.TryGetTarget(out var owner))
             {
                 // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
-                // This invocation is only ever called once
+                // This invocation is only once per timer
                 timer.callback.Invoke();
             }
             _timers.RemoveAt(i);
@@ -112,11 +127,23 @@ public class TimerManager : MonoBehaviour
      * <summary>Create a new timer</summary>
      * <param name="owner">Owning scipt of this timer. The timer's lifetime is tied to this object</param>
      * <param name="duration">Time, in seconds, before the timer is called</param>
+     * <param name="callback">Function to be called when timer is over</param>
      */
     public TimerHandle CreateTimer(MonoBehaviour owner, float duration, Action callback)
     {
         var newTimer = new TimerEntry(new WeakReference<MonoBehaviour>(owner), duration, callback);
         _timers.Add(newTimer);
         return new TimerHandle(newTimer);
+    }
+
+    public void CreateOrResetTimer(ref TimerHandle handle, MonoBehaviour owner, float duration, Action callback)
+    {
+        if (handle.IsActive())
+        {
+            handle.Reset();
+            return;
+        }
+
+        handle = CreateTimer(owner, duration, callback);
     }
 }
