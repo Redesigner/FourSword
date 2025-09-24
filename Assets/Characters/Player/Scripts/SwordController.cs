@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Characters.Player.Scripts
 {
+    // Same order as unit circle
     public enum SwordDirection
     {
-        Up = 0,
-        Right = 1,
-        Down = 2,
-        Left = 3
+        Right = 0,
+        Up = 1,
+        Left = 2,
+        Down = 3
     }
 
     enum SwordStance
@@ -24,8 +26,18 @@ namespace Characters.Player.Scripts
         [SerializeField] private SwordDirection swordDirection;
         [SerializeField] private SwordStance swordStance;
         [SerializeField] private SpriteRenderer swordSprite;
-        [SerializeField] private List<GameObject> hitboxes;
-        
+
+        [SerializeField] private GameObject primaryHitbox;
+        [SerializeField] private GameObject secondaryHitbox;
+        [SerializeField] private GameObject diagonalHitbox;
+
+        private float _hitboxOffset;
+
+        private void Start()
+        {
+            _hitboxOffset = primaryHitbox.transform.localPosition.y;
+        }
+
         static SwordDirection GetSwordDirectionFromVector(Vector2 input)
         {
             if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
@@ -33,6 +45,18 @@ namespace Characters.Player.Scripts
                 return input.x > 0.0f ? SwordDirection.Right : SwordDirection.Left;
             }
             return input.y > 0.0f ? SwordDirection.Up : SwordDirection.Down;
+        }
+        
+        private static float GetRotation(SwordDirection direction)
+        {
+            return (int)direction * 90.0f;
+        }
+
+        private static float GetRotation(SwordDirection start, SwordDirection end)
+        {
+            var endRotation = GetRotation(end);
+            var delta = GetSwordDirectionDelta(start, end);
+            return endRotation - delta * 45.0f;
         }
 
         static int GetSwordDirectionDelta(SwordDirection a, SwordDirection b)
@@ -84,8 +108,7 @@ namespace Characters.Player.Scripts
         {
             var oldDirection = swordDirection;
             swordDirection = direction;
-            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, (int)swordDirection * -90);
-            //transform.rotation = Quaternion.Euler(0.0f, 0.0f, (int)swordDirection * -90);
+            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(direction));
             OnSwordDirectionChanged(oldDirection, swordDirection);
         }
 
@@ -108,52 +131,36 @@ namespace Characters.Player.Scripts
 
         private void Stab(SwordDirection direction)
         {
-            HideAllHitboxes();
-            GetHitboxForDirection(direction).SetActive(true);
+            primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
+            primaryHitbox.SetActive(true);
+            secondaryHitbox.SetActive(false);
+            diagonalHitbox.SetActive(false);
         }
 
         private void Slash(SwordDirection start, SwordDirection end)
         {
-            HideAllHitboxes();
-            GetHitboxForDirection(start).SetActive(true);
-            GetHitboxForDirection(end).SetActive(true);
-            GetHitboxForDirections(start, end).SetActive(true);
+            primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(end));
+            secondaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start));
+            diagonalHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start, end));
+            diagonalHitbox.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(start, end) - 90.0f);
+            primaryHitbox.SetActive(true);
+            secondaryHitbox.SetActive(true);
+            diagonalHitbox.SetActive(true);
         }
 
         private void Slam(SwordDirection direction)
         {
-            HideAllHitboxes();
-            GetHitboxForDirection(direction).SetActive(true);
+            primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
+            primaryHitbox.SetActive(true);
+            secondaryHitbox.SetActive(false);
+            diagonalHitbox.SetActive(false);
+            
         }
 
-        GameObject GetHitboxForDirection(SwordDirection direction)
+        private Vector3 GetLocalPositionFromRotation(float rotationDegrees)
         {
-            var realIndex = (int)direction * 2;
-            return hitboxes[realIndex];
-        }
-
-        GameObject GetHitboxForDirections(SwordDirection directionA, SwordDirection directionB)
-        {
-            return hitboxes[GetHitboxIndexForDirections(directionA, directionB)];
-        }
-        
-        static int GetHitboxIndexForDirections(SwordDirection start, SwordDirection end)
-        {
-            var result = (int)start * 2 + GetSwordDirectionDelta(start, end);
-            if (result < 0)
-            {
-                result += 8;
-            }
-
-            return result;
-        }
-
-        private void HideAllHitboxes()
-        {
-            foreach(var hitbox in hitboxes)
-            {
-                hitbox.SetActive(false);
-            }
+            var rads = Mathf.Deg2Rad * rotationDegrees;
+            return new Vector3(Mathf.Cos(rads) * _hitboxOffset, Mathf.Sin(rads) * _hitboxOffset, 0.0f);
         }
     }
 }
