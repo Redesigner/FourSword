@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - KinematicListener
+  - Health
   layers:
   - Default
   - TransparentFX

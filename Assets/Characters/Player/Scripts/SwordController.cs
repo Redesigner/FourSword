@@ -15,7 +15,7 @@ namespace Characters.Player.Scripts
         Down = 3
     }
 
-    enum SwordStance
+    public enum SwordStance
     {
         Idle,
         Attacking,
@@ -28,18 +28,28 @@ namespace Characters.Player.Scripts
         [SerializeField] private SwordStance swordStance;
         [SerializeField] private SpriteRenderer swordSprite;
 
-        [SerializeField] private GameObject primaryHitbox;
-        [SerializeField] private GameObject secondaryHitbox;
-        [SerializeField] private GameObject diagonalHitbox;
+        [SerializeField] private HitboxTrigger primaryHitbox;
+        [SerializeField] private HitboxTrigger secondaryHitbox;
+        [SerializeField] private HitboxTrigger diagonalHitbox;
 
         private float _hitboxOffset;
         private TimerHandle _diagonalHitboxTimer;
         private TimerHandle _secondaryHitboxTimer;
         private TimerHandle _blockTimer;
 
+        private readonly List<HealthComponent> _targetsHit = new();
+
         private void Start()
         {
             _hitboxOffset = primaryHitbox.transform.localPosition.y;
+            primaryHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
+            secondaryHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
+            diagonalHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
+            
+            SetSwordStance(SwordStance.Idle);
+            SetSwordDirection(SwordDirection.Up);
+            secondaryHitbox.Disable();
+            diagonalHitbox.Disable();
         }
 
         static SwordDirection GetSwordDirectionFromVector(Vector2 input)
@@ -135,24 +145,12 @@ namespace Characters.Player.Scripts
             }
             
             swordStance = stance;
-            switch (stance)
-            {
-                case SwordStance.Attacking:
-                    primaryHitbox.GetComponent<SpriteRenderer>().color = Color.red;
-                    return;
-                case SwordStance.Blocking:
-                    primaryHitbox.GetComponent<SpriteRenderer>().color = Color.blue;
-                    return;
-                case SwordStance.Idle:
-                    primaryHitbox.GetComponent<SpriteRenderer>().color = Color.green;
-                    return;
-                default:
-                    return;
-            }
+            primaryHitbox.SetHitboxStance(stance);
         }
 
         private void OnSwordDirectionChanged(SwordDirection oldDirection, SwordDirection newDirection)
         {
+            _targetsHit.Clear();
             var directionalChange = Mathf.Abs(GetSwordDirectionDelta(oldDirection, newDirection));
             switch (directionalChange)
             {
@@ -172,9 +170,9 @@ namespace Characters.Player.Scripts
         {
             SetSwordStance(SwordStance.Attacking);
             primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
-            primaryHitbox.SetActive(true);
-            secondaryHitbox.SetActive(false);
-            diagonalHitbox.SetActive(false);
+            primaryHitbox.Enable();
+            secondaryHitbox.Disable();
+            diagonalHitbox.Disable();
             
             TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
         }
@@ -186,12 +184,12 @@ namespace Characters.Player.Scripts
             secondaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start));
             diagonalHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start, end));
             diagonalHitbox.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(start, end) - 90.0f);
-            primaryHitbox.SetActive(true);
-            secondaryHitbox.SetActive(true);
-            diagonalHitbox.SetActive(true);
+            primaryHitbox.Enable();
+            secondaryHitbox.Enable();
+            diagonalHitbox.Enable();
             
-            TimerManager.instance.CreateOrResetTimer(ref _diagonalHitboxTimer, this, 0.12f, () => { diagonalHitbox.SetActive(false); });
-            TimerManager.instance.CreateOrResetTimer(ref _secondaryHitboxTimer, this, 0.06f, () => { secondaryHitbox.SetActive(false); });
+            TimerManager.instance.CreateOrResetTimer(ref _diagonalHitboxTimer, this, 0.12f, () => { diagonalHitbox.Disable(); });
+            TimerManager.instance.CreateOrResetTimer(ref _secondaryHitboxTimer, this, 0.06f, () => { secondaryHitbox.Disable(); });
             TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
         }
 
@@ -199,11 +197,33 @@ namespace Characters.Player.Scripts
         {
             SetSwordStance(SwordStance.Attacking);
             primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
-            primaryHitbox.SetActive(true);
-            secondaryHitbox.SetActive(false);
-            diagonalHitbox.SetActive(false);
+            primaryHitbox.Enable();
+            secondaryHitbox.Disable();
+            diagonalHitbox.Disable();
             
             TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
+        }
+
+        private void SwordHitboxOverlap(Collider2D hitbox, Collider2D other)
+        {
+            if (!other.CompareTag("Health"))
+            {
+                return;
+            }
+
+            var enemyHealth = other.GetComponent<HealthComponent>();
+            if (!enemyHealth)
+            {
+                return;
+            }
+
+            if (_targetsHit.Contains(enemyHealth))
+            {
+                return;
+            }
+            
+            _targetsHit.Add(enemyHealth);
+            enemyHealth.TakeDamage(1.0f, gameObject);
         }
 
         private Vector3 GetLocalPositionFromRotation(float rotationDegrees)

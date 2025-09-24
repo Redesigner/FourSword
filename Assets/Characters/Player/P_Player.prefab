@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 954324895419475195}
   - component: {fileID: 602315937439600000}
   - component: {fileID: 5161063532330067826}
+  - component: {fileID: 2413495354553466083}
   m_Layer: 0
   m_Name: Hitbox_U
   m_TagString: Untagged
@@ -134,6 +135,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2413495354553466083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78203245897440697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a635882a419e4782970c5b11efdfd01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxOverlapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &759127726534662320
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +167,7 @@ GameObject:
   - component: {fileID: 8066018112091851102}
   m_Layer: 3
   m_Name: P_Player
-  m_TagString: Untagged
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -493,6 +509,7 @@ GameObject:
   - component: {fileID: 333633831698554511}
   - component: {fileID: 6998315331332103240}
   - component: {fileID: 1794218715205236831}
+  - component: {fileID: 4569630212923598487}
   m_Layer: 0
   m_Name: Hitbox_UR
   m_TagString: Untagged
@@ -616,6 +633,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4569630212923598487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5777798201910686430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a635882a419e4782970c5b11efdfd01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxOverlapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6882788115716402855
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +659,7 @@ GameObject:
   - component: {fileID: 4939015430591490025}
   - component: {fileID: 4859706855689322556}
   - component: {fileID: 4485389366131003036}
+  - component: {fileID: 2281995292877631455}
   m_Layer: 0
   m_Name: Hitbox_R
   m_TagString: Untagged
@@ -750,6 +783,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2281995292877631455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6882788115716402855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a635882a419e4782970c5b11efdfd01f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxOverlapped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7040366294031428231
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,9 +847,9 @@ MonoBehaviour:
   swordDirection: 0
   swordStance: 0
   swordSprite: {fileID: 6808629328918796164}
-  primaryHitbox: {fileID: 78203245897440697}
-  secondaryHitbox: {fileID: 6882788115716402855}
-  diagonalHitbox: {fileID: 5777798201910686430}
+  primaryHitbox: {fileID: 2413495354553466083}
+  secondaryHitbox: {fileID: 2281995292877631455}
+  diagonalHitbox: {fileID: 4569630212923598487}
 --- !u!1 &7417367690823269343
 GameObject:
   m_ObjectHideFlags: 0
