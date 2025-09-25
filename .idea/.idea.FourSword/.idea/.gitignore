@@ -1,9 +1,9 @@
-﻿# Default ignored files
+# Default ignored files
 /shelf/
 /workspace.xml
 # Rider ignored files
-/.idea.FourSword.iml
 /contentModel.xml
+/.idea.FourSword.iml
 /modules.xml
 /projectSettingsUpdater.xml
 # Editor-based HTTP Client requests
