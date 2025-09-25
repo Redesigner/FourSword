@@ -23,19 +23,18 @@ public class EnemyPathfindingComponent : MonoBehaviour
         _navMeshAgent.updateUpAxis = false;
         _navMeshAgent.destination = Vector3.zero;
         _navMeshAgent.updatePosition = false;
-        target = GameObject.Find("P_Player");
-        // _navMeshAgent.isStopped = true;
+        // target = GameObject.Find("P_Player");
+        _navMeshAgent.isStopped = true;
     }
 
     public void FixedUpdate()
     {
-        if (!target)
+        if (_navMeshAgent.isStopped)
         {
             return;
         }
-
+        
         _navMeshAgent.nextPosition = _kinematicObject.transform.position;
-        _navMeshAgent.destination = target.transform.position;
         _kinematicObject.MoveInput(_navMeshAgent.desiredVelocity);
         Debug.DrawRay(_kinematicObject.gameObject.transform.position, _navMeshAgent.desiredVelocity, Color.red, Time.fixedDeltaTime);
     }
