@@ -1,17 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
 namespace Characters.Player.Scripts
 {
+    // Same order as unit circle
     public enum SwordDirection
     {
-        Up = 0,
-        Right = 1,
-        Down = 2,
-        Left = 3
+        Right = 0,
+        Up = 1,
+        Left = 2,
+        Down = 3
     }
 
-    enum SwordStance
+    public enum SwordStance
     {
         Idle,
         Attacking,
@@ -22,7 +26,32 @@ namespace Characters.Player.Scripts
     {
         [SerializeField] private SwordDirection swordDirection;
         [SerializeField] private SwordStance swordStance;
-        
+        [SerializeField] private SpriteRenderer swordSprite;
+
+        [SerializeField] private HitboxTrigger primaryHitbox;
+        [SerializeField] private HitboxTrigger secondaryHitbox;
+        [SerializeField] private HitboxTrigger diagonalHitbox;
+
+        private float _hitboxOffset;
+        private TimerHandle _diagonalHitboxTimer;
+        private TimerHandle _secondaryHitboxTimer;
+        private TimerHandle _blockTimer;
+
+        private readonly List<HealthComponent> _targetsHit = new();
+
+        private void Start()
+        {
+            _hitboxOffset = primaryHitbox.transform.localPosition.y;
+            primaryHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
+            secondaryHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
+            diagonalHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
+            
+            SetSwordStance(SwordStance.Idle);
+            SetSwordDirection(SwordDirection.Up);
+            secondaryHitbox.Disable();
+            diagonalHitbox.Disable();
+        }
+
         static SwordDirection GetSwordDirectionFromVector(Vector2 input)
         {
             if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
@@ -31,48 +60,176 @@ namespace Characters.Player.Scripts
             }
             return input.y > 0.0f ? SwordDirection.Up : SwordDirection.Down;
         }
+        
+        private static float GetRotation(SwordDirection direction)
+        {
+            return (int)direction * 90.0f;
+        }
 
-        static SwordDirection GetSwordDirectionDelta(SwordDirection a, SwordDirection b)
+        private static float GetRotation(SwordDirection start, SwordDirection end)
+        {
+            var endRotation = GetRotation(end);
+            var delta = GetSwordDirectionDelta(start, end);
+            return endRotation - delta * 45.0f;
+        }
+
+        static int GetSwordDirectionDelta(SwordDirection a, SwordDirection b)
         {
             var rawDelta = b - a;
-            rawDelta = rawDelta < 0 ? rawDelta : rawDelta + 4;
-            return (SwordDirection)rawDelta;
+            return rawDelta switch
+            {
+                > 2 => rawDelta - 4,
+                < -2 => rawDelta + 4,
+                _ => rawDelta
+            };
+        }
+
+        static SwordDirection OffsetSwordDirection(SwordDirection direction, int offset)
+        {
+            var result = (int)direction + offset;
+            return result switch
+            {
+                < 0 => (SwordDirection)result + 4,
+                >= 4 => (SwordDirection)result - 4,
+                _ => (SwordDirection)result
+            };
         }
         
 
         public void OnSwordInput(InputAction.CallbackContext context)
         {
-            
+            // ?
         }
 
-        public void SetSwordDirection(SwordDirection direction)
+        // These are just hooks for our PlayerInput component to forward.
+        // We handle checking the input and other things in SwordDirectInput
+        public void OnSwordLeft(InputAction.CallbackContext context) { SwordDirectInput(context, SwordDirection.Left); }
+        public void OnSwordRight(InputAction.CallbackContext context) { SwordDirectInput(context, SwordDirection.Right); }
+        public void OnSwordUp(InputAction.CallbackContext context) { SwordDirectInput(context, SwordDirection.Up); }
+        public void OnSwordDown(InputAction.CallbackContext context) { SwordDirectInput(context, SwordDirection.Down); }
+
+        private void SwordDirectInput(InputAction.CallbackContext context, SwordDirection direction)
         {
-            if (swordDirection == direction)
+            if (GameState.instance.paused)
             {
-                Stab(direction);
                 return;
             }
             
-            //if (swordDirection )
+            if (context.performed)
+            {
+                SetSwordDirection(direction);
+                return;
+            }
+
+            // Only cancel if the button that was released is the same as our current direction
+            if (context.canceled && direction == swordDirection)
+            {
+                SetSwordStance(SwordStance.Idle);
+            }
+        }
+
+        private void SetSwordDirection(SwordDirection direction)
+        {
+            var oldDirection = swordDirection;
+            swordDirection = direction;
+            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(direction));
+            OnSwordDirectionChanged(oldDirection, swordDirection);
+        }
+
+        private void SetSwordStance(SwordStance stance)
+        {
+            // Explicitly prevent idle -> blocking
+            if (stance == SwordStance.Blocking && swordStance == SwordStance.Idle)
+            {
+                return;
+            }
+            
+            swordStance = stance;
+            primaryHitbox.SetHitboxStance(stance);
         }
 
         private void OnSwordDirectionChanged(SwordDirection oldDirection, SwordDirection newDirection)
         {
+            _targetsHit.Clear();
+            var directionalChange = Mathf.Abs(GetSwordDirectionDelta(oldDirection, newDirection));
+            switch (directionalChange)
+            {
+                case 0:
+                    Stab(newDirection);
+                    return;
+                case 1:
+                    Slash(oldDirection, newDirection);
+                    return;
+                case 2:
+                    Slam(newDirection);
+                    return;
+            }
         }
 
         private void Stab(SwordDirection direction)
         {
+            SetSwordStance(SwordStance.Attacking);
+            primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
+            primaryHitbox.Enable();
+            secondaryHitbox.Disable();
+            diagonalHitbox.Disable();
             
+            TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
         }
 
         private void Slash(SwordDirection start, SwordDirection end)
         {
+            SetSwordStance(SwordStance.Attacking);
+            primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(end));
+            secondaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start));
+            diagonalHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start, end));
+            diagonalHitbox.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(start, end) - 90.0f);
+            primaryHitbox.Enable();
+            secondaryHitbox.Enable();
+            diagonalHitbox.Enable();
             
+            TimerManager.instance.CreateOrResetTimer(ref _diagonalHitboxTimer, this, 0.12f, () => { diagonalHitbox.Disable(); });
+            TimerManager.instance.CreateOrResetTimer(ref _secondaryHitboxTimer, this, 0.06f, () => { secondaryHitbox.Disable(); });
+            TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
         }
 
         private void Slam(SwordDirection direction)
         {
+            SetSwordStance(SwordStance.Attacking);
+            primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
+            primaryHitbox.Enable();
+            secondaryHitbox.Disable();
+            diagonalHitbox.Disable();
             
+            TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
+        }
+
+        private void SwordHitboxOverlap(Collider2D hitbox, Collider2D other)
+        {
+            if (!other.CompareTag("Health"))
+            {
+                return;
+            }
+
+            var enemyHealth = other.GetComponent<HealthComponent>();
+            if (!enemyHealth)
+            {
+                return;
+            }
+
+            if (_targetsHit.Contains(enemyHealth))
+            {
+                return;
+            }
+            
+            _targetsHit.Add(enemyHealth);
+            enemyHealth.TakeDamage(1.0f, gameObject);
+        }
+
+        private Vector3 GetLocalPositionFromRotation(float rotationDegrees)
+        {
+            var rads = Mathf.Deg2Rad * rotationDegrees;
+            return new Vector3(Mathf.Cos(rads) * _hitboxOffset, Mathf.Sin(rads) * _hitboxOffset, 0.0f);
         }
     }
 }
