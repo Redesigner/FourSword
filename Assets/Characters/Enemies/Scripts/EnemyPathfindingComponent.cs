@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Characters.Enemies.Scripts;
+using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -35,6 +36,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
         }
         
         _navMeshAgent.nextPosition = _kinematicObject.transform.position;
+        NavigationHelpers.GetClosestPointAroundRadius(transform.position, _navMeshAgent.destination, 2.0f, 8);
         _kinematicObject.MoveInput(_navMeshAgent.desiredVelocity);
         Debug.DrawRay(_kinematicObject.gameObject.transform.position, _navMeshAgent.desiredVelocity, Color.red, Time.fixedDeltaTime);
     }
