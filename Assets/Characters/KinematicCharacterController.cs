@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     public Vector2 lookDirection
     {
         get => _lookDirection;
-        private set => _lookDirection = value;
+        private set => _lookDirection = value.normalized;
     }
     private Vector2 _lookDirection;
 
@@ -73,6 +74,15 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         CollideAndSlide(velocity * Time.fixedDeltaTime);
     }
 
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+        DebugHelpers.Drawing.DrawArrow(transform.position, lookDirection, 1.0f, Color.green, Time.deltaTime);
+    }
+
     /**
      * <summary>Input action listener for movement.
      * If you want to set the movement directly, use MoveInput instead.</summary>
@@ -116,6 +126,13 @@ public class KinematicCharacterController : Kinematics.KinematicObject
             _animator.SetFloat(SpeedBlend, 0.0f);
         }
     }
+
+    public void SetLookDirection(Vector2 direction)
+    {
+        _lookDirection = direction.normalized;
+        _animator.SetFloat(HorizontalBlend, _lookDirection.x);
+        _animator.SetFloat(VerticalBlend, _lookDirection.y);
+    }
     
     protected override void OnMovementHit(RaycastHit2D hit)
     {
@@ -143,7 +160,8 @@ public class KinematicCharacterController : Kinematics.KinematicObject
 
     /** <summary>
      * Enable the character's movement input. They can still be moved by other sources, such as knockback
-     </summary> */
+     * </summary>
+     */
     public void EnableMovement()
     {
         _movementEnabled = true;
