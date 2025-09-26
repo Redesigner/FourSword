@@ -262,7 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e55a1ef0843649e94cf0fed5d42bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &416039407138187703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +278,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 5728091114660692360
   - rid: 5728091114660692725
+  - rid: 5728091148000428577
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -300,3 +300,11 @@ MonoBehaviour:
           m_Value1: 2656113040729776794
         Name: Agent
         m_Value: {fileID: 4381609272211239196}
+    - rid: 5728091148000428577
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15599459295946323529
+          m_Value1: 5907181347781882501
+        Name: DestinationAlias
+        m_Value: {fileID: 0}

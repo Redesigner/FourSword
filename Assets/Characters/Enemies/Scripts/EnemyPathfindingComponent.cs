@@ -1,4 +1,6 @@
-﻿using Characters.Enemies.Scripts;
+﻿using System;
+using Characters.Enemies.Scripts;
+using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,14 +10,24 @@ public class EnemyPathfindingComponent : MonoBehaviour
 {
     private NavMeshAgent _navMeshAgent;
     private KinematicCharacterController _kinematicObject;
-    
-    [SerializeField]
-    private GameObject target;
+    private GameObject _destinationAlias;
     
     private void OnEnable()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _kinematicObject = GetComponent<KinematicCharacterController>();
+        _destinationAlias = new GameObject(gameObject.name + "_DestinationAlias");
+
+        var behaviorAgent = GetComponent<BehaviorGraphAgent>();
+        if (behaviorAgent)
+        {
+            behaviorAgent.SetVariableValue("DestinationAlias", _destinationAlias.transform);
+        }
+    }
+
+    private void OnDisable()
+    {
+        Destroy(_destinationAlias);
     }
 
     public void Start()
@@ -36,7 +48,6 @@ public class EnemyPathfindingComponent : MonoBehaviour
         }
         
         _navMeshAgent.nextPosition = _kinematicObject.transform.position;
-        NavigationHelpers.GetClosestPointAroundRadius(transform.position, _navMeshAgent.destination, 2.0f, 8);
         _kinematicObject.MoveInput(_navMeshAgent.desiredVelocity);
         Debug.DrawRay(_kinematicObject.gameObject.transform.position, _navMeshAgent.desiredVelocity, Color.red, Time.fixedDeltaTime);
     }
