@@ -4,30 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Fixed graph to use new query system">
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DebugHelpers.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DebugHelpers/DebugDrawingHelpers.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DebugHelpers/DebugDrawingHelpers.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Kinematics.meta" afterDir="false" />
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Reorganized code, added some helpers, added look at action">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/AttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/AttackController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/CheckDistanceVectorCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/CheckDistanceVectorCondition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/CheckDistanceVectorCondition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/CheckDistanceVectorCondition.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/NavigateToTarget2DAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/NavigateToTarget2DAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/NavigateToTarget2DAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/NavigateToTarget2DAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/RunPositionQueryAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/RunPositionQueryAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/KinematicCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/KinematicCharacterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/KinematicListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Kinematics/KinematicListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/KinematicListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Kinematics/KinematicListener.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/KinematicObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Kinematics/KinematicObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/KinematicObject.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Kinematics/KinematicObject.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/BehaviorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BehaviorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Sprites/Sp_PlayerPH.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Sprites/Sp_PlayerPH.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +46,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Scripts/AttackController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Scripts/AttackController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Scripts/AttackController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavigationOverlay.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/BehaviorGraphDebugInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -161,7 +145,7 @@
       <updated>1758778984411</updated>
       <workItem from="1758778986652" duration="75000" />
       <workItem from="1758779070886" duration="24135000" />
-      <workItem from="1758903724925" duration="14296000" />
+      <workItem from="1758903724925" duration="16276000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -195,7 +179,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758912711184</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Reorganized code, added some helpers, added look at action">
+      <option name="closed" value="true" />
+      <created>1758919678724</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1758919678724</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Reorganized code, added some helpers, added look at action">
+      <option name="closed" value="true" />
+      <created>1758919754640</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1758919754640</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,7 +238,8 @@
     <MESSAGE value="Connected Behavior Graph to navmesh" />
     <MESSAGE value="Added position scoring system" />
     <MESSAGE value="Fixed graph to use new query system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed graph to use new query system" />
+    <MESSAGE value="Reorganized code, added some helpers, added look at action" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorganized code, added some helpers, added look at action" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
