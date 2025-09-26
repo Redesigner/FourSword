@@ -1,28 +1,28 @@
 ﻿using System;
-using Characters.Enemies.Scripts;
 using Unity.Behavior;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(KinematicCharacterController))]
+[RequireComponent(typeof(BehaviorGraphAgent))]
 public class EnemyPathfindingComponent : MonoBehaviour
 {
     private NavMeshAgent _navMeshAgent;
     private KinematicCharacterController _kinematicObject;
     private GameObject _destinationAlias;
+    private BehaviorGraphAgent _behaviorGraphAgent;
     
     private void OnEnable()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _kinematicObject = GetComponent<KinematicCharacterController>();
-        _destinationAlias = new GameObject(gameObject.name + "_DestinationAlias");
+        _destinationAlias = new GameObject(gameObject.name + "_DA");
 
-        var behaviorAgent = GetComponent<BehaviorGraphAgent>();
-        if (behaviorAgent)
-        {
-            behaviorAgent.SetVariableValue("DestinationAlias", _destinationAlias.transform);
-        }
+        _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
+        _behaviorGraphAgent.SetVariableValue("DestinationAlias", _destinationAlias.transform);
     }
 
     private void OnDisable()
@@ -49,6 +49,17 @@ public class EnemyPathfindingComponent : MonoBehaviour
         
         _navMeshAgent.nextPosition = _kinematicObject.transform.position;
         _kinematicObject.MoveInput(_navMeshAgent.desiredVelocity);
-        Debug.DrawRay(_kinematicObject.gameObject.transform.position, _navMeshAgent.desiredVelocity, Color.red, Time.fixedDeltaTime);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!_kinematicObject || !_navMeshAgent)
+        {
+            return;
+        }
+        
+        var position = _kinematicObject.gameObject.transform.position;
+        DebugHelpers.Drawing.DrawArrow(position, position + _navMeshAgent.desiredVelocity, Color.red, Time.deltaTime);
+        // Handles.Label(transform.position, );
     }
 }
