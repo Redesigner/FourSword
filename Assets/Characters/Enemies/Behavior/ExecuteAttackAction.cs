@@ -15,7 +15,7 @@ public class ExecuteAttackAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> agent;
     [SerializeReference] public BlackboardVariable<bool> waitForAttackCompletion;
 
-    private bool _completed;
+    [CreateProperty] private bool _completed;
     
     protected override Status OnStart()
     {
@@ -32,6 +32,7 @@ public class ExecuteAttackAction : Action
         }
         
         attackController.attackCompleted.AddListener(OnAttackCompleted);
+        _completed = false;
         return Status.Running;
 
     }
@@ -47,7 +48,8 @@ public class ExecuteAttackAction : Action
         {
             return;
         }
-
+        var attackController = agent.Value.GetComponent<AttackController>();
+        attackController.attackCompleted.RemoveListener(OnAttackCompleted);
         _completed = true;
     }
 }
