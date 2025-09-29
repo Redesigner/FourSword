@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Added animation to AI">
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/AttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/AttackController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +50,7 @@
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Scripts/AttackController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Scripts/AttackController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Player/Animations/AC_Player.controller" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Player/Animations/AC_Player.controller" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavigationOverlay.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/BehaviorGraphDebugInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -121,10 +121,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="45880">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9484">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="45880" />
+      <option name="pid" value="9484" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -147,7 +147,8 @@
       <updated>1758778984411</updated>
       <workItem from="1758778986652" duration="75000" />
       <workItem from="1758779070886" duration="24135000" />
-      <workItem from="1758903724925" duration="21448000" />
+      <workItem from="1758903724925" duration="22130000" />
+      <workItem from="1759179863194" duration="2112000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -205,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758923447018</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Enemy attacks and waits for attack to finish before moving again">
+      <option name="closed" value="true" />
+      <created>1758936853276</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1758936853276</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +259,8 @@
     <MESSAGE value="Fixed graph to use new query system" />
     <MESSAGE value="Reorganized code, added some helpers, added look at action" />
     <MESSAGE value="Added animation to AI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added animation to AI" />
+    <MESSAGE value="Enemy attacks and waits for attack to finish before moving again" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enemy attacks and waits for attack to finish before moving again" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
