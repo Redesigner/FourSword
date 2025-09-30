@@ -19,7 +19,7 @@ public class ExecuteAttackAction : Action
     
     protected override Status OnStart()
     {
-        var attackController = agent.Value.GetComponent<AttackController>();
+        var attackController = agent.Value.GetComponent<EnemyAttackController>();
         if (attackController == null)
         {
             return Status.Failure;
@@ -48,7 +48,7 @@ public class ExecuteAttackAction : Action
         {
             return;
         }
-        var attackController = agent.Value.GetComponent<AttackController>();
+        var attackController = agent.Value.GetComponent<EnemyAttackController>();
         attackController.attackCompleted.RemoveListener(OnAttackCompleted);
         _completed = true;
     }

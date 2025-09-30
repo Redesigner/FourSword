@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
 namespace Characters.Player.Scripts
 {
@@ -22,7 +19,7 @@ namespace Characters.Player.Scripts
         Blocking
     }
     
-    public class SwordController : MonoBehaviour
+    public class SwordAttackController : AttackController
     {
         [SerializeField] private SwordDirection swordDirection;
         [SerializeField] private SwordStance swordStance;
@@ -37,14 +34,12 @@ namespace Characters.Player.Scripts
         private TimerHandle _secondaryHitboxTimer;
         private TimerHandle _blockTimer;
 
-        private readonly List<HealthComponent> _targetsHit = new();
-
         private void Start()
         {
             _hitboxOffset = primaryHitbox.transform.localPosition.y;
-            primaryHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
-            secondaryHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
-            diagonalHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
+            primaryHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
+            secondaryHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
+            diagonalHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             
             SetSwordStance(SwordStance.Idle);
             SetSwordDirection(SwordDirection.Up);
@@ -202,28 +197,6 @@ namespace Characters.Player.Scripts
             diagonalHitbox.Disable();
             
             TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
-        }
-
-        private void SwordHitboxOverlap(Collider2D hitbox, Collider2D other)
-        {
-            if (!other.CompareTag("Health"))
-            {
-                return;
-            }
-
-            var enemyHealth = other.GetComponent<HealthComponent>();
-            if (!enemyHealth)
-            {
-                return;
-            }
-
-            if (_targetsHit.Contains(enemyHealth))
-            {
-                return;
-            }
-            
-            _targetsHit.Add(enemyHealth);
-            enemyHealth.TakeDamage(1.0f, gameObject);
         }
 
         private Vector3 GetLocalPositionFromRotation(float rotationDegrees)

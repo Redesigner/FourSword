@@ -49,8 +49,16 @@ namespace Characters
 
         public void Disable()
         {
-            _collider.enabled = false;
-            _visualization.enabled = false;
+            // These components might have been destroyed
+            if (_collider)
+            {
+                _collider.enabled = false;
+            }
+
+            if (_visualization)
+            {
+                _visualization.enabled = false;
+            }
         }
     }
 }
