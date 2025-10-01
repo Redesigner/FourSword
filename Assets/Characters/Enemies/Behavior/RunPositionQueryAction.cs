@@ -17,11 +17,11 @@ internal partial class RunPositionQueryAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> origin;
     [SerializeReference] public BlackboardVariable<GameObject> target;
     [SerializeReference] public BlackboardVariable<Transform> position;
-    [SerializeField] [Min(0.0f)] private float radius = 1.0f; 
+    [SerializeReference] public BlackboardVariable<float> radius; 
     
     protected override Status OnStart()
     {
-        position.Value.position = NavigationHelpers.GetClosestPointAroundRadius(origin.Value.transform.position, target.Value.transform.position, radius, 8);
+        position.Value.position = NavigationHelpers.GetClosestPointAroundRadius(origin.Value.transform.position, target.Value.transform.position, radius.Value, 8);
         return Status.Success;
     }
 }

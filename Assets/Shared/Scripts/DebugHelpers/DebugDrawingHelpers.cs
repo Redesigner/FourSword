@@ -5,38 +5,24 @@ namespace DebugHelpers
 {
     public static class Drawing
     {
-        private static Mesh _quadMesh;
-        public static Mesh quadMesh
+        private static readonly Mesh QuadMesh = new()
         {
-            get
+            vertices = new Vector3[]
             {
-                if (_quadMesh)
-                {
-                    return _quadMesh;
-                }
-
-                _quadMesh = new Mesh
-                {
-                    vertices = new Vector3[]
-                    {
-                        new(-0.5f, 0.5f, 0.0f),
-                        new(0.5f, 0.5f, 0.0f),
-                        new(0.5f, -0.5f, 0.0f),
-                        new(-0.5f, -0.5f, 0.0f)
-                    },
-                    normals = new[]
-                    {
-                        Vector3.forward,
-                        Vector3.forward,
-                        Vector3.forward,
-                        Vector3.forward
-                    },
-                    triangles = new[] { 0, 1, 2, 2, 3, 0 }
-                };
-
-                return _quadMesh;
-            }
-        }
+                new(-0.5f, 0.5f, 0.0f),
+                new(0.5f, 0.5f, 0.0f),
+                new(0.5f, -0.5f, 0.0f),
+                new(-0.5f, -0.5f, 0.0f)
+            },
+            normals = new[]
+            {
+                Vector3.forward,
+                Vector3.forward,
+                Vector3.forward,
+                Vector3.forward
+            },
+            triangles = new[] { 0, 1, 2, 2, 3, 0 }
+        };
         
         private const float ArrowheadAngleOffsetRads = 2.5f;
         public static void DrawArrow(Vector3 position, Vector2 direction, float length, Color color, float duration)
@@ -80,11 +66,11 @@ namespace DebugHelpers
         public static void DrawBoxCollider2D(BoxCollider2D collider, Color color)
         {
             Gizmos.color = color;
-            Gizmos.DrawMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+            Gizmos.DrawMesh(QuadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
             var outlineColor = color;
             outlineColor.a += 0.5f;
             
-            Gizmos.DrawWireMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+            Gizmos.DrawWireMesh(QuadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
         }
     }
 }

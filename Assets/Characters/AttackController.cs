@@ -37,6 +37,7 @@ namespace Characters
             }
 
             var result = new List<Collider2D>();
+            // Check if we've overlapped *any* armor hitboxes with this hitbox
             if (hitbox.Overlap(result) > 0)
             {
                 if (result.Any(overlappedHitbox => overlappedHitbox.gameObject.layer == 8))
