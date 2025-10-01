@@ -13,9 +13,9 @@ TagManager:
   - Character
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Hitbox
+  - Hurtbox
+  - Armor
   - 
   - 
   - 

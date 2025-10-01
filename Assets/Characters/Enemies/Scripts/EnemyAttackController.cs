@@ -22,9 +22,9 @@ public class EnemyAttackController : AttackController
     {
         _animator = GetComponent<Animator>();
 
-        _hitboxes = GetComponentsInChildren<HitboxTrigger>().ToList();
-        foreach (var hitbox in _hitboxes)
+        foreach (var hitbox in GetComponentsInChildren<HitboxTrigger>().ToList().Where(hitbox => hitbox.GetHitboxType() == HitboxType.Hitbox))
         {
+            _hitboxes.Add(hitbox);
             hitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
         }
     }
@@ -54,7 +54,7 @@ public class EnemyAttackController : AttackController
     {
         // Should be called from animation (if used)
         attackCompleted.Invoke();
-        _targetsHit.Clear();
+        targetsHit.Clear();
 
         foreach (var hitbox in _hitboxes)
         {

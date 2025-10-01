@@ -140,12 +140,22 @@ namespace Characters.Player.Scripts
             }
             
             swordStance = stance;
-            primaryHitbox.SetHitboxStance(stance);
+            switch(stance)
+            {
+                default:
+                case SwordStance.Attacking:
+                case SwordStance.Idle:
+                    primaryHitbox.gameObject.layer = 6;
+                    break;
+                case SwordStance.Blocking:
+                    primaryHitbox.gameObject.layer = 8;
+                    break;
+            }
         }
 
         private void OnSwordDirectionChanged(SwordDirection oldDirection, SwordDirection newDirection)
         {
-            _targetsHit.Clear();
+            targetsHit.Clear();
             var directionalChange = Mathf.Abs(GetSwordDirectionDelta(oldDirection, newDirection));
             switch (directionalChange)
             {
@@ -165,6 +175,7 @@ namespace Characters.Player.Scripts
         {
             SetSwordStance(SwordStance.Attacking);
             primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
+            primaryHitbox.Disable();
             primaryHitbox.Enable();
             secondaryHitbox.Disable();
             diagonalHitbox.Disable();

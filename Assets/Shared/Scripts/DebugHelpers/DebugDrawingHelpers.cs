@@ -1,9 +1,43 @@
 ﻿using UnityEngine;
+using Matrix4x4 = System.Numerics.Matrix4x4;
 
 namespace DebugHelpers
 {
     public static class Drawing
     {
+        private static Mesh _quadMesh;
+        public static Mesh quadMesh
+        {
+            get
+            {
+                if (_quadMesh)
+                {
+                    return _quadMesh;
+                }
+
+                _quadMesh = new Mesh
+                {
+                    vertices = new Vector3[]
+                    {
+                        new(-0.5f, 0.5f, 0.0f),
+                        new(0.5f, 0.5f, 0.0f),
+                        new(0.5f, -0.5f, 0.0f),
+                        new(-0.5f, -0.5f, 0.0f)
+                    },
+                    normals = new[]
+                    {
+                        Vector3.forward,
+                        Vector3.forward,
+                        Vector3.forward,
+                        Vector3.forward
+                    },
+                    triangles = new[] { 0, 1, 2, 2, 3, 0 }
+                };
+
+                return _quadMesh;
+            }
+        }
+        
         private const float ArrowheadAngleOffsetRads = 2.5f;
         public static void DrawArrow(Vector3 position, Vector2 direction, float length, Color color, float duration)
         {
@@ -41,6 +75,16 @@ namespace DebugHelpers
             Debug.DrawLine(start, end, color, duration);
             Debug.DrawLine(end, arrowRight, color, duration);
             Debug.DrawLine(end, arrowLeft, color, duration);
+        }
+
+        public static void DrawBoxCollider2D(BoxCollider2D collider, Color color)
+        {
+            Gizmos.color = color;
+            Gizmos.DrawMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+            var outlineColor = color;
+            outlineColor.a += 0.5f;
+            
+            Gizmos.DrawWireMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
         }
     }
 }

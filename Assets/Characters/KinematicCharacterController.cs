@@ -101,13 +101,13 @@ public class KinematicCharacterController : Kinematics.KinematicObject
      */
     public void MoveInput(Vector2 input)
     {
+        var inputMagnitudeSquared = input.sqrMagnitude;
+        _moveInput = inputMagnitudeSquared > 1.0f ? input / Mathf.Sqrt(inputMagnitudeSquared) : input;
+        
         if (!_movementEnabled || GameState.instance.paused)
         {
             return;
         }
-        
-        var inputMagnitudeSquared = input.sqrMagnitude;
-        _moveInput = inputMagnitudeSquared > 1.0f ? input / Mathf.Sqrt(inputMagnitudeSquared) : input;
         
         if (_moveInput.x != 0.0f || _moveInput.y != 0.0f)
         {
