@@ -681,7 +681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 3.73
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.y
@@ -718,6 +718,10 @@ PrefabInstance:
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829613800152515760, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: coneRadius
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7829613800152515760, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: visibilityContactFilter.layerMask.m_Bits

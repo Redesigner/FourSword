@@ -7,6 +7,7 @@
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Cone visibility checking works">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/DebugHelpers/DebugDrawingHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DebugHelpers/DebugDrawingHelpers.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +48,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Scenes/Scn_SwordTest.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavigationOverlay.cs" root0="SKIP_HIGHLIGHTING" />
@@ -164,7 +166,7 @@
       <workItem from="1759252450279" duration="11082000" />
       <workItem from="1759276750286" duration="1174000" />
       <workItem from="1759293932431" duration="27341000" />
-      <workItem from="1759381903538" duration="11529000" />
+      <workItem from="1759381903538" duration="15560000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -270,7 +272,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759428754043</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Cone visibility checking works">
+      <option name="closed" value="true" />
+      <created>1759432569970</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1759432569970</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Cone visibility checking works">
+      <option name="closed" value="true" />
+      <created>1759432575403</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1759432575403</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

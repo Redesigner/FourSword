@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DebugHelpers
 {
     public static class Drawing
     {
+        // Lazy initialized mesh
         private static Mesh _quadMesh;
         private static Mesh quadMesh
         {
@@ -32,6 +34,23 @@ namespace DebugHelpers
                 }
                 return _quadMesh;
             }
+        }
+
+        // Lazy initialized mesh
+        private static Mesh _circleMesh;
+        private static Mesh circleMesh
+        {
+            get
+            {
+                if (!_circleMesh)
+                {
+                    _circleMesh = MakeCircleMesh(16);
+                }
+
+                return _circleMesh;
+            }
+
+            set => _circleMesh = value;
         }
         
         private const float ArrowheadAngleOffsetRads = 2.5f;
@@ -81,13 +100,71 @@ namespace DebugHelpers
             var outlineColor = color;
             outlineColor.a += 0.5f;
             
-            Gizmos.DrawWireMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+            //Gizmos.DrawWireMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+            DrawLineStrip(quadMesh.vertices, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
         }
 
         public static void DrawCross(Vector3 position, float radius, Color color, float duration)
         {
             Debug.DrawLine(position + new Vector3(radius, radius, 0.0f), position + new Vector3(-radius, -radius, 0.0f), color, duration);
             Debug.DrawLine(position + new Vector3(-radius, radius, 0.0f), position + new Vector3(radius, -radius, 0.0f), color, duration);
+        }
+
+        public static void DrawCircle(Vector3 position, float radius, Color color)
+        {
+            Gizmos.color = color;
+            Gizmos.DrawMesh(circleMesh, position, Quaternion.identity, Vector3.one * radius);
+            var solidColor = color;
+            solidColor.a += 0.5f;
+            Gizmos.color = solidColor;
+            DrawLineStrip(circleMesh.vertices, position, Quaternion.identity, Vector3.one * radius);
+        }
+
+        public static void DrawLineStrip(Vector3[] vertices, Vector3 position, Quaternion rotation, Vector3 scale)
+        {
+            var verticesTransformed = new Vector3[vertices.Length];
+            var transform = Matrix4x4.TRS(position, rotation, scale);
+            for (var i = 0; i < vertices.Length; ++i)
+            {
+                verticesTransformed[i] = transform.MultiplyPoint(vertices[i]);
+            }
+            
+            Gizmos.DrawLineStrip(verticesTransformed, true);
+        }
+
+        private static Mesh MakeCircleMesh(int points)
+        {
+            if (points <= 2)
+            {
+                return null;
+            }
+
+            var vertices = new Vector3[points];
+            var normals = new Vector3[points];
+            var triangles = new int[(points - 2) * 3];
+
+            var angleInterval = Mathf.PI * 2.0f / (points);
+
+            for (var i = 0; i < points; ++i)
+            {
+                vertices[i] = new Vector3(Mathf.Cos(angleInterval * i), Mathf.Sin(angleInterval * i), 0.0f);
+                normals[i] = Vector3.forward;
+            }
+
+            for (var i = 0; i < points - 2; ++i)
+            {
+                var realIndex = i * 3;
+                triangles[realIndex] = 0;
+                triangles[realIndex + 1] = i + 2;
+                triangles[realIndex + 2] = i + 1;
+            }
+
+            return new Mesh()
+            {
+                vertices = vertices,
+                normals = normals,
+                triangles = triangles
+            };
         }
     }
 }

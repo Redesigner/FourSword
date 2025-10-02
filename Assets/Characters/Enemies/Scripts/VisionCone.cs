@@ -96,6 +96,7 @@ namespace Characters.Enemies.Scripts
             
             Gizmos.color = mouseInCone ? new Color(0.0f, 1.0f, 0.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.25f);
             Gizmos.DrawMesh(_coneMesh, transform.position, Quaternion.Euler(0.0f, 0.0f, currentAngle), Vector3.one * coneRadius);
+            DebugHelpers.Drawing.DrawCircle(transform.position, 1.0f, new Color(1.0f, 0.0f, 0.0f, 0.1f));
         }
         #endif
 
