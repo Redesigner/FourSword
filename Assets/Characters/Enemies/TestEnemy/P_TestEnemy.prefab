@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 416039407138187703}
   - component: {fileID: 6300839406161687817}
   - component: {fileID: 5737804386023834515}
+  - component: {fileID: 7829613800152515760}
   m_Layer: 3
   m_Name: P_TestEnemy
   m_TagString: Health
@@ -376,6 +377,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7829613800152515760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb478a98009b4042b1dd97b31a1b63c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coneRadius: 4
+  coneHalfAngle: 45
+  currentAngle: 0
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0

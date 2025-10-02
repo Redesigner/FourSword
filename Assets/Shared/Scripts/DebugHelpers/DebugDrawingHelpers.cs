@@ -1,28 +1,38 @@
 ﻿using UnityEngine;
-using Matrix4x4 = System.Numerics.Matrix4x4;
 
 namespace DebugHelpers
 {
     public static class Drawing
     {
-        private static readonly Mesh QuadMesh = new()
+        private static Mesh _quadMesh;
+        private static Mesh quadMesh
         {
-            vertices = new Vector3[]
+            get
             {
-                new(-0.5f, 0.5f, 0.0f),
-                new(0.5f, 0.5f, 0.0f),
-                new(0.5f, -0.5f, 0.0f),
-                new(-0.5f, -0.5f, 0.0f)
-            },
-            normals = new[]
-            {
-                Vector3.forward,
-                Vector3.forward,
-                Vector3.forward,
-                Vector3.forward
-            },
-            triangles = new[] { 0, 1, 2, 2, 3, 0 }
-        };
+                if (!_quadMesh)
+                {
+                    _quadMesh = new Mesh
+                    {
+                        vertices = new Vector3[]
+                        {
+                            new(-0.5f, 0.5f, 0.0f),
+                            new(0.5f, 0.5f, 0.0f),
+                            new(0.5f, -0.5f, 0.0f),
+                            new(-0.5f, -0.5f, 0.0f)
+                        },
+                        normals = new[]
+                        {
+                            Vector3.forward,
+                            Vector3.forward,
+                            Vector3.forward,
+                            Vector3.forward
+                        },
+                        triangles = new[] { 0, 1, 2, 2, 3, 0 }
+                    };
+                }
+                return _quadMesh;
+            }
+        }
         
         private const float ArrowheadAngleOffsetRads = 2.5f;
         public static void DrawArrow(Vector3 position, Vector2 direction, float length, Color color, float duration)
@@ -67,11 +77,11 @@ namespace DebugHelpers
         public static void DrawBoxCollider2D(BoxCollider2D collider, Color color)
         {
             Gizmos.color = color;
-            Gizmos.DrawMesh(QuadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+            Gizmos.DrawMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
             var outlineColor = color;
             outlineColor.a += 0.5f;
             
-            Gizmos.DrawWireMesh(QuadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+            Gizmos.DrawWireMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
         }
 
         public static void DrawCross(Vector3 position, float radius, Color color, float duration)
