@@ -63,6 +63,7 @@ namespace DebugHelpers
             Debug.DrawLine(end, arrowLeft, color, duration);
         }
 
+        // Can only be called from inside OnDrawGizmos!
         public static void DrawBoxCollider2D(BoxCollider2D collider, Color color)
         {
             Gizmos.color = color;
@@ -71,6 +72,12 @@ namespace DebugHelpers
             outlineColor.a += 0.5f;
             
             Gizmos.DrawWireMesh(QuadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+        }
+
+        public static void DrawCross(Vector3 position, float radius, Color color, float duration)
+        {
+            Debug.DrawLine(position + new Vector3(radius, radius, 0.0f), position + new Vector3(-radius, -radius, 0.0f), color, duration);
+            Debug.DrawLine(position + new Vector3(-radius, radius, 0.0f), position + new Vector3(radius, -radius, 0.0f), color, duration);
         }
     }
 }

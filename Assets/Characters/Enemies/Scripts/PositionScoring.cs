@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -28,6 +29,33 @@ namespace Characters.Enemies.Scripts
             for (var i = 0; i < positionCount; ++i)
             {
                 positions[i].score = 1.0f - (distancesSquared[i] - min) * rangeFactor;
+            }
+        }
+
+        public static void ScorePositionsByVector(Vector3 direction, List<PositionResult> positions)
+        {
+            var max = float.NegativeInfinity;
+            var min = float.PositiveInfinity;
+            
+            foreach (var positionResult in positions)
+            {
+                positionResult.score = Vector3.Dot(direction, positionResult.position);
+                max = Mathf.Max(max, positionResult.score);
+                min = Mathf.Min(min, positionResult.score);
+            }
+
+            var factor = 1.0f / (max - min);
+            foreach (var positionResult in positions)
+            {
+                positionResult.score = (positionResult.score - min) * factor;
+            }
+        }
+
+        public static void DrawScore(List<PositionResult> positions, float duration)
+        {
+            foreach (var position in positions)
+            {
+                DebugHelpers.Drawing.DrawCross(position.position, 0.25f, new Color(position.score, 0.0f, 0.0f), duration);
             }
         }
     }

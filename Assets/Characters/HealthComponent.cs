@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEditor;
+using UnityEngine;
 using UnityEngine.Events;
 public class HealthComponent : MonoBehaviour
 {
@@ -60,5 +62,10 @@ public class HealthComponent : MonoBehaviour
         {
             health = maxHealth;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Handles.Label(transform.position + new Vector3(-0.5f, 1.5f, 0.0f), $"{health} / {maxHealth}");
     }
 }

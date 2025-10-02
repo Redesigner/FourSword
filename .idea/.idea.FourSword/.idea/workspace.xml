@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Reworked hitboxes to be good now">
-      <change afterPath="$PROJECT_DIR$/Assets/Unity.VisualScripting.Generated/VisualScripting.Core.meta" afterDir="false" />
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/AttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/AttackController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/PositionScoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/PositionScoring.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player_AttackLeft.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player_AttackLeft.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player_AttackRight.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player_AttackRight.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/HealthComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordAttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordAttackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/DebugHelpers/DebugDrawingHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DebugHelpers/DebugDrawingHelpers.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +58,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Scripts/EnemyAttackController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Player/Animations/AC_Player.controller" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Shared/Scripts/DebugHelpers/DebugDrawingHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -145,15 +147,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4384">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="4384" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -175,7 +175,7 @@
       <workItem from="1759179863194" duration="2861000" />
       <workItem from="1759252450279" duration="11082000" />
       <workItem from="1759276750286" duration="1174000" />
-      <workItem from="1759293932431" duration="21176000" />
+      <workItem from="1759293932431" duration="27341000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -265,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759345684821</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Clean up drawing debug, fix enemy aniamtions">
+      <option name="closed" value="true" />
+      <created>1759349502516</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1759349502516</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +322,8 @@
     <MESSAGE value="Added basic hitbox attack logic" />
     <MESSAGE value="Moved attack controller into unified class" />
     <MESSAGE value="Reworked hitboxes to be good now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reworked hitboxes to be good now" />
+    <MESSAGE value="Clean up drawing debug, fix enemy aniamtions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean up drawing debug, fix enemy aniamtions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

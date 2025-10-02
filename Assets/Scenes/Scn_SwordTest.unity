@@ -536,6 +536,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 759127726534662320, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
   m_PrefabInstance: {fileID: 1839737247}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1402853399 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7624005988303523192, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+  m_PrefabInstance: {fileID: 1839737247}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402853397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39965a2f8caf2248b9bf4b26f679d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1679753850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -564,6 +575,11 @@ PrefabInstance:
         UnityEngine.CoreModule]]'
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: 'managedReferences[6056381665156530832]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[KinematicCharacterController,
+        Assembly-CSharp]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: managedReferences[5728091114660692416].Name
       value: Target
       objectReference: {fileID: 0}
@@ -576,8 +592,12 @@ PrefabInstance:
       value: DestinationAlias
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: managedReferences[6056381665156530832].Name
+      value: TargetController
+      objectReference: {fileID: 0}
+    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_BlackboardVariableOverridesList.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: managedReferences[5728091114660692416].m_Value
@@ -592,6 +612,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: managedReferences[6056381665156530832].m_Value
+      value: 
+      objectReference: {fileID: 1402853399}
+    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: 'm_BlackboardVariableOverridesList.Array.data[1]'
       value: 5728091114660692416
       objectReference: {fileID: 0}
@@ -602,6 +626,10 @@ PrefabInstance:
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: 'm_BlackboardVariableOverridesList.Array.data[3]'
       value: 5728091148000428670
+      objectReference: {fileID: 0}
+    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[4]'
+      value: 6056381665156530832
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: managedReferences[5728091114660692416].GUID.m_Value0
@@ -626,6 +654,14 @@ PrefabInstance:
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: managedReferences[5728091148000428670].GUID.m_Value1
       value: 5907181347781882501
+      objectReference: {fileID: 0}
+    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: managedReferences[6056381665156530832].GUID.m_Value0
+      value: 11071745533183334162
+      objectReference: {fileID: 0}
+    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: managedReferences[6056381665156530832].GUID.m_Value1
+      value: 83473010581384574
       objectReference: {fileID: 0}
     - target: {fileID: 759127726534662320, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_Name

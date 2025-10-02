@@ -187,6 +187,7 @@ namespace Characters.Player.Scripts
         {
             SetSwordStance(SwordStance.Attacking);
             primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(end));
+            primaryHitbox.transform.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(end) - 90.0f);
             secondaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start));
             diagonalHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start, end));
             diagonalHitbox.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(start, end) - 90.0f);
