@@ -557,7 +557,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: 'managedReferences[5728091114660692416]'
@@ -681,11 +681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.49
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.45
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.z
@@ -718,6 +718,10 @@ PrefabInstance:
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829613800152515760, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: visibilityContactFilter.layerMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
