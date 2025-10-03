@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/PerceptionSourceComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/PerceptionSourceComponent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/PerceptionSubsystem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/PerceptionSubsystem.cs.meta" afterDir="false" />
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Added vision cones">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/GameState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +48,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Scenes/Scn_SwordTest.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavigationOverlay.cs" root0="SKIP_HIGHLIGHTING" />
@@ -72,6 +66,9 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Actions/Navigation/NavigateToTargetAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Decorators/Aborts/AbortModifier.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Decorators/Aborts/RestartModifier.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Decorators/StartOnEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Events/EventAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Events/EventChannel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/InputSystem/IInputRuntime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/InputSystem/Plugins/OnScreen/OnScreenStick.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/Samples~/Visualizers/InputVisualizer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -170,6 +167,7 @@
       <workItem from="1759276750286" duration="1174000" />
       <workItem from="1759293932431" duration="27341000" />
       <workItem from="1759381903538" duration="19347000" />
+      <workItem from="1759509471921" duration="12441000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -299,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759438114919</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added vision cones">
+      <option name="closed" value="true" />
+      <created>1759509490644</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1759509490644</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +358,8 @@
     <MESSAGE value="Added target moved condition, started vision cone" />
     <MESSAGE value="Cone visibility checking works" />
     <MESSAGE value="Added circle debug draw" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added circle debug draw" />
+    <MESSAGE value="Added vision cones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added vision cones" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Characters.Scripts;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Characters.Enemies.Scripts
 {
@@ -14,7 +17,10 @@ namespace Characters.Enemies.Scripts
         
         [SerializeField] private ContactFilter2D visibilityContactFilter;
 
-        private bool _canSeeAnyTarget = false;
+        [SerializeField] public UnityEvent<PerceptionSourceComponent> onSeen;
+        [SerializeField] public UnityEvent<PerceptionSourceComponent> onLostSight;
+
+        private readonly HashSet<PerceptionSourceComponent> _seenCharacters = new();
 
         
         #if UNITY_EDITOR
@@ -25,10 +31,19 @@ namespace Characters.Enemies.Scripts
 
         private void FixedUpdate()
         {
-            _canSeeAnyTarget = false;
             foreach (var perceptionSource in GameState.instance.perceptionSubsystem.perceptionSources)
             {
-                _canSeeAnyTarget |= CanDetect(perceptionSource.transform.position);
+                if (CanDetect(perceptionSource.transform.position))
+                {
+                    if (_seenCharacters.Add(perceptionSource))
+                    {
+                        onSeen.Invoke(perceptionSource);
+                    }
+                }
+                else if (_seenCharacters.Remove(perceptionSource))
+                {
+                    onLostSight.Invoke(perceptionSource);
+                }
             }
         }
 
@@ -95,7 +110,7 @@ namespace Characters.Enemies.Scripts
                 return;
             }
             
-            Gizmos.color = _canSeeAnyTarget ? new Color(0.0f, 1.0f, 0.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.25f);
+            Gizmos.color = _seenCharacters.Count > 0 ? new Color(0.0f, 1.0f, 0.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.25f);
             Gizmos.DrawMesh(_coneMesh, transform.position, Quaternion.Euler(0.0f, 0.0f, currentAngle), Vector3.one * coneRadius);
             DebugHelpers.Drawing.DrawCircle(transform.position, 1.0f, new Color(1.0f, 0.0f, 0.0f, 0.1f));
         }
