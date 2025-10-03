@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
 namespace Characters.Player.Scripts
 {
@@ -22,7 +19,7 @@ namespace Characters.Player.Scripts
         Blocking
     }
     
-    public class SwordController : MonoBehaviour
+    public class SwordAttackController : AttackController
     {
         [SerializeField] private SwordDirection swordDirection;
         [SerializeField] private SwordStance swordStance;
@@ -37,14 +34,12 @@ namespace Characters.Player.Scripts
         private TimerHandle _secondaryHitboxTimer;
         private TimerHandle _blockTimer;
 
-        private readonly List<HealthComponent> _targetsHit = new();
-
         private void Start()
         {
             _hitboxOffset = primaryHitbox.transform.localPosition.y;
-            primaryHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
-            secondaryHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
-            diagonalHitbox.hitboxOverlapped.AddListener(SwordHitboxOverlap);
+            primaryHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
+            secondaryHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
+            diagonalHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             
             SetSwordStance(SwordStance.Idle);
             SetSwordDirection(SwordDirection.Up);
@@ -145,12 +140,22 @@ namespace Characters.Player.Scripts
             }
             
             swordStance = stance;
-            primaryHitbox.SetHitboxStance(stance);
+            switch(stance)
+            {
+                default:
+                case SwordStance.Attacking:
+                case SwordStance.Idle:
+                    primaryHitbox.gameObject.layer = 6;
+                    break;
+                case SwordStance.Blocking:
+                    primaryHitbox.gameObject.layer = 8;
+                    break;
+            }
         }
 
         private void OnSwordDirectionChanged(SwordDirection oldDirection, SwordDirection newDirection)
         {
-            _targetsHit.Clear();
+            targetsHit.Clear();
             var directionalChange = Mathf.Abs(GetSwordDirectionDelta(oldDirection, newDirection));
             switch (directionalChange)
             {
@@ -170,6 +175,7 @@ namespace Characters.Player.Scripts
         {
             SetSwordStance(SwordStance.Attacking);
             primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(direction));
+            primaryHitbox.Disable();
             primaryHitbox.Enable();
             secondaryHitbox.Disable();
             diagonalHitbox.Disable();
@@ -181,6 +187,7 @@ namespace Characters.Player.Scripts
         {
             SetSwordStance(SwordStance.Attacking);
             primaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(end));
+            primaryHitbox.transform.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(end) - 90.0f);
             secondaryHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start));
             diagonalHitbox.transform.localPosition = GetLocalPositionFromRotation(GetRotation(start, end));
             diagonalHitbox.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(start, end) - 90.0f);
@@ -202,28 +209,6 @@ namespace Characters.Player.Scripts
             diagonalHitbox.Disable();
             
             TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
-        }
-
-        private void SwordHitboxOverlap(Collider2D hitbox, Collider2D other)
-        {
-            if (!other.CompareTag("Health"))
-            {
-                return;
-            }
-
-            var enemyHealth = other.GetComponent<HealthComponent>();
-            if (!enemyHealth)
-            {
-                return;
-            }
-
-            if (_targetsHit.Contains(enemyHealth))
-            {
-                return;
-            }
-            
-            _targetsHit.Add(enemyHealth);
-            enemyHealth.TakeDamage(1.0f, gameObject);
         }
 
         private Vector3 GetLocalPositionFromRotation(float rotationDegrees)

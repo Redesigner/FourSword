@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/PerceptionSourceComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/PerceptionSourceComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/PerceptionSubsystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/PerceptionSubsystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/GameState.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Redesigner&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Redesigner/FourSword.git&quot;,
+    &quot;accountId&quot;: &quot;8829e334-c2cb-427e-be21-40b6ce61584a&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/02/ed4c1837/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/35/01de9c03/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/59/021cff59/Gizmos.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/a0/28561a76/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/f3/1c7e8612/Transform.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Scenes/Scn_SwordTest.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavigationOverlay.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavigationWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/BehaviorGraphDebugInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/BehaviorGraph.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/BehaviorGraphModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Components/BehaviorGraphAgent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Conditions/CheckDistanceCondition.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Conditions/Condition.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Conditions/ConditionUtils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Node.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Actions/Blackboard/SetVariableValueAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Actions/Delay/WaitAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Actions/Navigation/NavigateToLocationAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Actions/Navigation/NavigateToTargetAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Decorators/Aborts/AbortModifier.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Decorators/Aborts/RestartModifier.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/InputSystem/IInputRuntime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/InputSystem/Plugins/OnScreen/OnScreenStick.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/Samples~/Visualizers/InputVisualizer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/Tests/IntegrationTests/IntegrationTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@7fe8299111a7/Tests/TestFixture/ScopedDisposable.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="33B8DJAg2HLJfZwZKjaxzYdqjns" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Core/AI&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Build/FourSword\FourSword.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="E:\Game Development\Unity\Projects\Build\FourSword" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.53f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;E:\Game Development\Unity\Projects\FourSword&quot; -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="E:\Game Development\Unity\Projects\FourSword" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.53f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;E:\Game Development\Unity\Projects\FourSword&quot; -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="E:\Game Development\Unity\Projects\FourSword" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="" />
+      <created>1758778984411</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1758778984411</updated>
+      <workItem from="1758778986652" duration="75000" />
+      <workItem from="1758779070886" duration="24135000" />
+      <workItem from="1758903724925" duration="22130000" />
+      <workItem from="1759179863194" duration="2861000" />
+      <workItem from="1759252450279" duration="11082000" />
+      <workItem from="1759276750286" duration="1174000" />
+      <workItem from="1759293932431" duration="27341000" />
+      <workItem from="1759381903538" duration="19347000" />
+    </task>
+    <task id="LOCAL-00001" summary="pre merge">
+      <option name="closed" value="true" />
+      <created>1758779168241</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758779168241</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Connected Behavior Graph to navmesh">
+      <option name="closed" value="true" />
+      <created>1758826193934</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758826193934</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added position scoring system">
+      <option name="closed" value="true" />
+      <created>1758845844636</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758845844636</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed graph to use new query system">
+      <option name="closed" value="true" />
+      <created>1758912711184</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758912711184</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Reorganized code, added some helpers, added look at action">
+      <option name="closed" value="true" />
+      <created>1758919678724</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1758919678724</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Reorganized code, added some helpers, added look at action">
+      <option name="closed" value="true" />
+      <created>1758919754640</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1758919754640</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added animation to AI">
+      <option name="closed" value="true" />
+      <created>1758923447018</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1758923447018</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Enemy attacks and waits for attack to finish before moving again">
+      <option name="closed" value="true" />
+      <created>1758936853276</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1758936853276</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added basic hitbox attack logic">
+      <option name="closed" value="true" />
+      <created>1759183647578</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1759183647578</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Moved attack controller into unified class">
+      <option name="closed" value="true" />
+      <created>1759260081340</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1759260081340</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Reworked hitboxes to be good now">
+      <option name="closed" value="true" />
+      <created>1759345684821</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759345684821</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Clean up drawing debug, fix enemy aniamtions">
+      <option name="closed" value="true" />
+      <created>1759349502516</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1759349502516</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added target moved condition, started vision cone">
+      <option name="closed" value="true" />
+      <created>1759428754043</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1759428754043</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Cone visibility checking works">
+      <option name="closed" value="true" />
+      <created>1759432569970</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1759432569970</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Cone visibility checking works">
+      <option name="closed" value="true" />
+      <created>1759432575403</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1759432575403</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added circle debug draw">
+      <option name="closed" value="true" />
+      <created>1759438114919</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1759438114919</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="pre merge" />
+    <MESSAGE value="Connected Behavior Graph to navmesh" />
+    <MESSAGE value="Added position scoring system" />
+    <MESSAGE value="Fixed graph to use new query system" />
+    <MESSAGE value="Reorganized code, added some helpers, added look at action" />
+    <MESSAGE value="Added animation to AI" />
+    <MESSAGE value="Enemy attacks and waits for attack to finish before moving again" />
+    <MESSAGE value="Added basic hitbox attack logic" />
+    <MESSAGE value="Moved attack controller into unified class" />
+    <MESSAGE value="Reworked hitboxes to be good now" />
+    <MESSAGE value="Clean up drawing debug, fix enemy aniamtions" />
+    <MESSAGE value="Added target moved condition, started vision cone" />
+    <MESSAGE value="Cone visibility checking works" />
+    <MESSAGE value="Added circle debug draw" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added circle debug draw" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Actions/Navigation/NavigateToLocationAction.cs</url>
+          <line>51</line>
+          <properties documentPath="E:\Game Development\Unity\Projects\FourSword\Library\PackageCache\com.unity.behavior@3aef49b1615b\Runtime\Execution\Nodes\Actions\Navigation\NavigateToLocationAction.cs" containingFunctionPresentation="Method 'OnUpdate'">
+            <startOffsets>
+              <option value="2150" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2206" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Library/PackageCache/com.unity.behavior@3aef49b1615b/Runtime/Execution/Nodes/Actions/Navigation/NavigateToTargetAction.cs</url>
+          <line>59</line>
+          <properties documentPath="E:\Game Development\Unity\Projects\FourSword\Library\PackageCache\com.unity.behavior@3aef49b1615b\Runtime\Execution\Nodes\Actions\Navigation\NavigateToTargetAction.cs" containingFunctionPresentation="Method 'OnUpdate'">
+            <startOffsets>
+              <option value="2970" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3018" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

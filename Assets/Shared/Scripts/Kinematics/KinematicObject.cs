@@ -214,7 +214,7 @@ namespace Kinematics
             var delta = mainCollider.Distance(overlappingColliders.First());
             var resolutionDelta = delta.normal * delta.distance;
             _body.position += resolutionDelta;
-            Debug.DrawRay(_body.position, resolutionDelta * 5.0f, Color.magenta, 2.0f);
+            // Debug.DrawRay(_body.position, resolutionDelta * 5.0f, Color.magenta, 2.0f);
         }
 
         

@@ -1,20 +1,33 @@
-﻿using UnityEngine;
+﻿using System;
+using Unity.Behavior;
+using UnityEditor;
+using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(KinematicCharacterController))]
+[RequireComponent(typeof(BehaviorGraphAgent))]
 public class EnemyPathfindingComponent : MonoBehaviour
 {
     private NavMeshAgent _navMeshAgent;
     private KinematicCharacterController _kinematicObject;
-    
-    [SerializeField]
-    private GameObject target;
+    private GameObject _destinationAlias;
+    private BehaviorGraphAgent _behaviorGraphAgent;
     
     private void OnEnable()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _kinematicObject = GetComponent<KinematicCharacterController>();
+        _destinationAlias = new GameObject(gameObject.name + "_DA");
+
+        _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
+        _behaviorGraphAgent.SetVariableValue("DestinationAlias", _destinationAlias.transform);
+    }
+
+    private void OnDisable()
+    {
+        Destroy(_destinationAlias);
     }
 
     public void Start()
@@ -23,20 +36,30 @@ public class EnemyPathfindingComponent : MonoBehaviour
         _navMeshAgent.updateUpAxis = false;
         _navMeshAgent.destination = Vector3.zero;
         _navMeshAgent.updatePosition = false;
-        target = GameObject.Find("P_Player");
-        // _navMeshAgent.isStopped = true;
+        // target = GameObject.Find("P_Player");
+        _navMeshAgent.isStopped = true;
     }
 
     public void FixedUpdate()
     {
-        if (!target)
+        if (_navMeshAgent.isStopped)
         {
             return;
         }
-
+        
         _navMeshAgent.nextPosition = _kinematicObject.transform.position;
-        _navMeshAgent.destination = target.transform.position;
         _kinematicObject.MoveInput(_navMeshAgent.desiredVelocity);
-        Debug.DrawRay(_kinematicObject.gameObject.transform.position, _navMeshAgent.desiredVelocity, Color.red, Time.fixedDeltaTime);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!_kinematicObject || !_navMeshAgent)
+        {
+            return;
+        }
+        
+        var position = _kinematicObject.gameObject.transform.position;
+        DebugHelpers.Drawing.DrawArrow(position, position + _navMeshAgent.desiredVelocity, Color.red, Time.deltaTime);
+        // Handles.Label(transform.position, );
     }
 }

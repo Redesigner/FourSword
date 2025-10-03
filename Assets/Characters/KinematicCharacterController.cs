@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,10 +11,14 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     private static readonly int VerticalBlend = Animator.StringToHash("Vertical");
     private static readonly int SpeedBlend = Animator.StringToHash("Speed");
 
+    /** <summary>
+     *  Where the character is currently looking
+     * </summary>
+    **/ 
     public Vector2 lookDirection
     {
         get => _lookDirection;
-        private set => _lookDirection = value;
+        private set => _lookDirection = value.normalized;
     }
     private Vector2 _lookDirection;
 
@@ -23,6 +28,11 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     /// </summary>
     [SerializeField]
     private float walkSpeed = 4.0f;
+
+    /// <summary>
+    /// Should the character automatically face (set lookDirection) to be the same as movement?
+    /// </summary>
+    [SerializeField] private bool faceMovement = true;
     
     private bool _movementEnabled = true;
 
@@ -64,34 +74,49 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         CollideAndSlide(velocity * Time.fixedDeltaTime);
     }
 
-    /**
-     * <summary>Input action listener for movement. If you want to set the movement directly, use MoveInput instead.</summary>
-     */
-    public void OnMoveInput(InputAction.CallbackContext context)
+    private void OnDrawGizmos()
     {
-        Vector2 input = context.ReadValue<Vector2>();
-        if (!_movementEnabled || GameState.instance.paused)
+        if (!Application.isPlaying)
         {
             return;
         }
-        
+        DebugHelpers.Drawing.DrawArrow(transform.position, lookDirection, 1.0f, Color.green, Time.deltaTime);
+    }
+
+    /**
+     * <summary>Input action listener for movement.
+     * If you want to set the movement directly, use MoveInput instead.</summary>
+     */
+    public void OnMoveInput(InputAction.CallbackContext context)
+    {
+        var input = context.ReadValue<Vector2>();
         MoveInput(input);
     }
 
     /**
-     * <summary>Set the character's movement direction. Will not do anything if movement is disabled or the game is paused.</summary>
-     * <param name="input">Direction to move the player. Value is automatically normalized only if the length is greater than 1</param>
+     * <summary>Set the character's movement direction.
+     * Will not do anything if movement is disabled or the game is paused.</summary>
+     * <param name="input">Direction to move the player.
+     * Value is automatically normalized only if the length is greater than 1</param>
      */
     public void MoveInput(Vector2 input)
     {
         var inputMagnitudeSquared = input.sqrMagnitude;
         _moveInput = inputMagnitudeSquared > 1.0f ? input / Mathf.Sqrt(inputMagnitudeSquared) : input;
         
+        if (!_movementEnabled || GameState.instance.paused)
+        {
+            return;
+        }
+        
         if (_moveInput.x != 0.0f || _moveInput.y != 0.0f)
         {
-            _lookDirection.x = _moveInput.x;
-            _lookDirection.y = _moveInput.y;
-            
+            if (faceMovement)
+            {
+                _lookDirection.x = _moveInput.x;
+                _lookDirection.y = _moveInput.y;
+            }
+
             _animator.SetFloat(HorizontalBlend, _moveInput.x);
             _animator.SetFloat(VerticalBlend, _moveInput.y);
             _animator.SetFloat(SpeedBlend, 1.0f);
@@ -100,6 +125,13 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         {
             _animator.SetFloat(SpeedBlend, 0.0f);
         }
+    }
+
+    public void SetLookDirection(Vector2 direction)
+    {
+        _lookDirection = direction.normalized;
+        _animator.SetFloat(HorizontalBlend, _lookDirection.x);
+        _animator.SetFloat(VerticalBlend, _lookDirection.y);
     }
     
     protected override void OnMovementHit(RaycastHit2D hit)
@@ -126,8 +158,9 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         _objectsHitThisFrame.Add((listener, hit));
     }
 
-    /**
-     * <summary>Enable the character's movement input. They can still be moved by other sources</summary>
+    /** <summary>
+     * Enable the character's movement input. They can still be moved by other sources, such as knockback
+     * </summary>
      */
     public void EnableMovement()
     {
@@ -136,9 +169,12 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         // Pull our last registered input value into animator
         if (_moveInput.x != 0.0f || _moveInput.y != 0.0f)
         {
-            _lookDirection.x = _moveInput.x;
-            _lookDirection.y = _moveInput.y;
-            
+            if (faceMovement)
+            {
+                _lookDirection.x = _moveInput.x;
+                _lookDirection.y = _moveInput.y;
+            }
+
             _animator.SetFloat(HorizontalBlend, _moveInput.x);
             _animator.SetFloat(VerticalBlend, _moveInput.y);
             _animator.SetFloat(SpeedBlend, 1.0f);
@@ -150,7 +186,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     }
 
     /**
-     * <summary>Diasble the character's movement input. They can still be moved by other sources</summary>
+     * <summary>Disable the character's movement input. They can still be moved by other sources</summary>
      */
     public void DisableMovement()
     {
@@ -167,6 +203,6 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     {
         DisableMovement();
         velocity = knockbackVector;
-        _knockbackTimer = TimerManager.instance.CreateTimer(this, duration, EnableMovement);
+        TimerManager.instance.CreateOrResetTimer(ref _knockbackTimer, this, duration, EnableMovement);
     }
 }
