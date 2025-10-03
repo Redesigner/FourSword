@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Cone visibility checking works">
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/PerceptionSourceComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/PerceptionSourceComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/PerceptionSubsystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/PerceptionSubsystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/DebugHelpers/DebugDrawingHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DebugHelpers/DebugDrawingHelpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/GameState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,15 +140,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9672">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="9672" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -166,7 +169,7 @@
       <workItem from="1759252450279" duration="11082000" />
       <workItem from="1759276750286" duration="1174000" />
       <workItem from="1759293932431" duration="27341000" />
-      <workItem from="1759381903538" duration="15560000" />
+      <workItem from="1759381903538" duration="19347000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -288,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759432575403</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added circle debug draw">
+      <option name="closed" value="true" />
+      <created>1759438114919</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1759438114919</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,7 +351,8 @@
     <MESSAGE value="Clean up drawing debug, fix enemy aniamtions" />
     <MESSAGE value="Added target moved condition, started vision cone" />
     <MESSAGE value="Cone visibility checking works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cone visibility checking works" />
+    <MESSAGE value="Added circle debug draw" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added circle debug draw" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

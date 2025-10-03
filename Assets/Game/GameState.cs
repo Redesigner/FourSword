@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class GameState : MonoBehaviour
@@ -27,6 +28,8 @@ public class GameState : MonoBehaviour
             return _instance;
         }
     }
+
+    public PerceptionSubsystem perceptionSubsystem { get; private set; } = new();
     
     public void Awake()
     {

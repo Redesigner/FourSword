@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Characters.Enemies.Scripts
@@ -13,6 +14,8 @@ namespace Characters.Enemies.Scripts
         
         [SerializeField] private ContactFilter2D visibilityContactFilter;
 
+        private bool _canSeeAnyTarget = false;
+
         
         #if UNITY_EDITOR
         private Mesh _coneMesh;
@@ -20,7 +23,16 @@ namespace Characters.Enemies.Scripts
         private float _previousConeHalfAngle;
         #endif
 
-        #if UNITY_EDITOR
+        private void FixedUpdate()
+        {
+            _canSeeAnyTarget = false;
+            foreach (var perceptionSource in GameState.instance.perceptionSubsystem.perceptionSources)
+            {
+                _canSeeAnyTarget |= CanDetect(perceptionSource.transform.position);
+            }
+        }
+
+#if UNITY_EDITOR
         private void OnValidate()
         {
             // Compare our cached cone half angle values
@@ -82,19 +94,8 @@ namespace Characters.Enemies.Scripts
             {
                 return;
             }
-
-            var mouseInCone = false;
-            if (Camera.main)
-            {
-                Vector2 mousePositionWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (IsPointInside(mousePositionWorld))
-                {
-                    mouseInCone = CanSeePoint(mousePositionWorld, out var furthestSeenPoint);
-                    Debug.DrawLine(transform.position, furthestSeenPoint, Color.red);
-                }
-            }
             
-            Gizmos.color = mouseInCone ? new Color(0.0f, 1.0f, 0.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.25f);
+            Gizmos.color = _canSeeAnyTarget ? new Color(0.0f, 1.0f, 0.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.25f);
             Gizmos.DrawMesh(_coneMesh, transform.position, Quaternion.Euler(0.0f, 0.0f, currentAngle), Vector3.one * coneRadius);
             DebugHelpers.Drawing.DrawCircle(transform.position, 1.0f, new Color(1.0f, 0.0f, 0.0f, 0.1f));
         }
@@ -125,17 +126,18 @@ namespace Characters.Enemies.Scripts
             return cosBetween > coneHalfAngleCos;
         }
 
-        private bool CanSeePoint(Vector2 point, out Vector2 visiblePoint)
+        private bool CanSeePoint(Vector2 point)
         {
             var result = Physics2D.Linecast(transform.position, point, LayerMask.GetMask("Default"));
-            if (result)
-            {
-                visiblePoint = result.point;
-                return false;
-            }
 
-            visiblePoint = point;
-            return true;
+            Debug.DrawLine(transform.position, result ? result.centroid : point, Color.red, Time.fixedDeltaTime);
+            
+            return !result;
+        }
+
+        private bool CanDetect(Vector2 point)
+        {
+            return IsPointInside(point) && CanSeePoint(point);
         }
     }
 }
