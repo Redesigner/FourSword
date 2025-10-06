@@ -212,6 +212,21 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   minMoveDistance: 0.001
   shellRadius: 0.01
+  lookDirectionChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7829613800152515760}
+        m_TargetAssemblyTypeName: Characters.Enemies.Scripts.VisionCone, Assembly-CSharp
+        m_MethodName: SetLookDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   walkSpeed: 1
   faceMovement: 0
 --- !u!114 &3211474152377152552
@@ -281,11 +296,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: -4725429322307053048, guid: 2faeb4e410dd9d44caab526876b8a5af, type: 2}
+  m_Graph: {fileID: -1773855383104786605, guid: 2f549301378838a4294e2fcb7c0ae5c5, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5728091114660692360
-  - rid: 5728091114660692725
-  - rid: 5728091148000428577
+  - rid: 6056381722570260886
+  - rid: 6056381722570260887
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -299,22 +314,22 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 759127726534662320}
-    - rid: 5728091114660692725
+    - rid: 6056381722570260886
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16623312046549685632
+          m_Value1: 11653104564682497505
+        Name: TargetDistance
+        m_Value: 2
+    - rid: 6056381722570260887
       type: {class: 'BlackboardVariable`1[[UnityEngine.AI.NavMeshAgent, UnityEngine.AIModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 17268829206412231916
-          m_Value1: 2656113040729776794
+          m_Value0: 9864885151302081735
+          m_Value1: 13113050561758072009
         Name: Agent
         m_Value: {fileID: 4381609272211239196}
-    - rid: 5728091148000428577
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 15599459295946323529
-          m_Value1: 5907181347781882501
-        Name: DestinationAlias
-        m_Value: {fileID: 0}
 --- !u!114 &6300839406161687817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb478a98009b4042b1dd97b31a1b63c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coneRadius: 4
+  coneRadius: 8
   coneHalfAngle: 45
   currentAngle: 0
   visibilityContactFilter:
@@ -406,24 +421,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  onSeen:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 759127726534662320}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onLostSight:
-    m_PersistentCalls:
-      m_Calls: []
+  agent: {fileID: 416039407138187703}
+  lostSightTime: 3
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0

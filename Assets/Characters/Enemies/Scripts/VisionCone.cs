@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Characters.Scripts;
+using Unity.Behavior;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Characters.Enemies.Scripts
 {
-    public class VisionCone : MonoBehaviour
+    [Serializable]
+    public struct PerceptionEvent
+    {
+        public GameObject seenObject;
+        public KinematicCharacterController controller;
+    }
+
+public class VisionCone : MonoBehaviour
     {
         [SerializeField] [Min(0.0f)] private float coneRadius = 1.0f;
         [SerializeField] [Range(0.0f, 180.0f)] private float coneHalfAngle = 30.0f;
@@ -17,10 +23,16 @@ namespace Characters.Enemies.Scripts
         
         [SerializeField] private ContactFilter2D visibilityContactFilter;
 
-        [SerializeField] public UnityEvent<PerceptionSourceComponent> onSeen;
-        [SerializeField] public UnityEvent<PerceptionSourceComponent> onLostSight;
+        [SerializeField] private BehaviorGraphAgent agent;
 
+        [SerializeField] [Range(0.0f, 100.0f)] private float lostSightTime;
+        
+        private BlackboardVariable<SpottedEnemy> _seenEnemyEventChannel;
+        private BlackboardVariable<SpottedEnemy> _lostSightEventChannel;
+        
         private readonly HashSet<PerceptionSourceComponent> _seenCharacters = new();
+
+        private TimerHandle _loseSightTimer;
 
         
         #if UNITY_EDITOR
@@ -29,22 +41,41 @@ namespace Characters.Enemies.Scripts
         private float _previousConeHalfAngle;
         #endif
 
+        private void Start()
+        {
+            agent.GetVariable("SeenEnemy", out _seenEnemyEventChannel);
+            agent.GetVariable("LostSight", out _lostSightEventChannel);
+        }
+
         private void FixedUpdate()
         {
             foreach (var perceptionSource in GameState.instance.perceptionSubsystem.perceptionSources)
             {
                 if (CanDetect(perceptionSource.transform.position))
                 {
-                    if (_seenCharacters.Add(perceptionSource))
+                    if (!_seenCharacters.Add(perceptionSource))
                     {
-                        onSeen.Invoke(perceptionSource);
+                        continue;
                     }
+                    
+                    Debug.Log("Saw enemy!");
+                    _seenEnemyEventChannel.Value.SendEventMessage(perceptionSource.gameObject, perceptionSource.GetComponent<KinematicCharacterController>());
+                    _loseSightTimer.Pause();
                 }
                 else if (_seenCharacters.Remove(perceptionSource))
                 {
-                    onLostSight.Invoke(perceptionSource);
+                    Debug.Log("Lost sight of enemy... counting down...");
+                    TimerManager.instance.CreateOrResetTimer(ref _loseSightTimer, this, lostSightTime, () =>
+                    {
+                        _lostSightEventChannel.Value.SendEventMessage(perceptionSource.gameObject, perceptionSource.GetComponent<KinematicCharacterController>());
+                    });
                 }
             }
+        }
+
+        public void SetLookDirection(float direction)
+        {
+            currentAngle = direction * Mathf.Rad2Deg;
         }
 
 #if UNITY_EDITOR

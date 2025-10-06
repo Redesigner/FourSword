@@ -526,28 +526,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &922474325 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 4381609272211239196, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-  m_PrefabInstance: {fileID: 1679753850}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1402853397 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 759127726534662320, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
   m_PrefabInstance: {fileID: 1839737247}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1402853399 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7624005988303523192, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
-  m_PrefabInstance: {fileID: 1839737247}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402853397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39965a2f8caf2248b9bf4b26f679d49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &1679753850
+--- !u!1001 &1699751350
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -556,136 +540,49 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: 'managedReferences[5728091114660692416]'
+      propertyPath: 'managedReferences[6056381722570260888]'
       value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[UnityEngine.GameObject,
         UnityEngine.CoreModule]]'
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: 'managedReferences[5728091114660692726]'
-      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[UnityEngine.AI.NavMeshAgent,
-        UnityEngine.AIModule]]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: 'managedReferences[5728091148000428670]'
-      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[UnityEngine.Transform,
-        UnityEngine.CoreModule]]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: 'managedReferences[6056381665156530832]'
-      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[KinematicCharacterController,
-        Assembly-CSharp]]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091114660692416].Name
+      propertyPath: managedReferences[6056381722570260888].Name
       value: Target
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091114660692726].Name
-      value: Agent
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091148000428670].Name
-      value: DestinationAlias
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[6056381665156530832].Name
-      value: TargetController
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_BlackboardVariableOverridesList.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091114660692416].m_Value
+      propertyPath: managedReferences[6056381722570260888].m_Value
       value: 
       objectReference: {fileID: 1402853397}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091114660692726].m_Value
-      value: 
-      objectReference: {fileID: 922474325}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091148000428670].m_Value
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[6056381665156530832].m_Value
-      value: 
-      objectReference: {fileID: 1402853399}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[1]'
-      value: 5728091114660692416
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[2]'
-      value: 5728091114660692726
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: 'm_BlackboardVariableOverridesList.Array.data[3]'
-      value: 5728091148000428670
+      value: 6056381722570260888
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[4]'
-      value: 6056381665156530832
+      propertyPath: managedReferences[6056381722570260888].GUID.m_Value0
+      value: 11801720356486803909
       objectReference: {fileID: 0}
     - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091114660692416].GUID.m_Value0
-      value: 11456879184014042627
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091114660692416].GUID.m_Value1
-      value: 14173637229279934331
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091114660692726].GUID.m_Value0
-      value: 17268829206412231916
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091114660692726].GUID.m_Value1
-      value: 2656113040729776794
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091148000428670].GUID.m_Value0
-      value: 15599459295946323529
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[5728091148000428670].GUID.m_Value1
-      value: 5907181347781882501
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[6056381665156530832].GUID.m_Value0
-      value: 11071745533183334162
-      objectReference: {fileID: 0}
-    - target: {fileID: 416039407138187703, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: managedReferences[6056381665156530832].GUID.m_Value1
-      value: 83473010581384574
+      propertyPath: managedReferences[6056381722570260888].GUID.m_Value1
+      value: 7048546789938786394
       objectReference: {fileID: 0}
     - target: {fileID: 759127726534662320, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_Name
-      value: P_Enemy
+      value: P_TestEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 759127726534662320, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381609272211239196, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5195365265740986587, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 7624005988303523192, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: faceMovement
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.73
+      value: 3.5725152
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.4911289
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.z
@@ -718,14 +615,6 @@ PrefabInstance:
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7829613800152515760, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: coneRadius
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7829613800152515760, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
-      propertyPath: visibilityContactFilter.layerMask.m_Bits
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -991,5 +880,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1839737247}
-  - {fileID: 1679753850}
+  - {fileID: 1699751350}
   - {fileID: 546780926}
