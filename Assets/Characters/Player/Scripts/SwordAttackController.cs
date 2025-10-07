@@ -16,7 +16,8 @@ namespace Characters.Player.Scripts
     {
         Idle,
         Attacking,
-        Blocking
+        Blocking,
+        Countering
     }
     
     public class SwordAttackController : AttackController
@@ -29,10 +30,13 @@ namespace Characters.Player.Scripts
         [SerializeField] private HitboxTrigger secondaryHitbox;
         [SerializeField] private HitboxTrigger diagonalHitbox;
 
+        [SerializeField] [Min(0.0f)] private float counterWindow = 0.5f;
+
         private float _hitboxOffset;
         private TimerHandle _diagonalHitboxTimer;
         private TimerHandle _secondaryHitboxTimer;
         private TimerHandle _blockTimer;
+        private TimerHandle _counterWindowTimer;
 
         private void Start()
         {
@@ -117,7 +121,8 @@ namespace Characters.Player.Scripts
             }
 
             // Only cancel if the button that was released is the same as our current direction
-            if (context.canceled && direction == swordDirection)
+            // Also don't allow releasing the button if we're countering, the counter will release automatically
+            if (context.canceled && direction == swordDirection && swordStance != SwordStance.Countering)
             {
                 SetSwordStance(SwordStance.Idle);
             }
@@ -146,6 +151,9 @@ namespace Characters.Player.Scripts
                 case SwordStance.Attacking:
                 case SwordStance.Idle:
                     primaryHitbox.gameObject.layer = 6;
+                    break;
+                case SwordStance.Countering:
+                    Counter();
                     break;
                 case SwordStance.Blocking:
                     primaryHitbox.gameObject.layer = 8;
@@ -211,10 +219,24 @@ namespace Characters.Player.Scripts
             TimerManager.instance.CreateOrResetTimer(ref _blockTimer, this, 0.5f, () => { SetSwordStance(SwordStance.Blocking); });
         }
 
+        
+        // I think this method is getting flagged as expensive incorrectly
+        // ReSharper disable Unity.PerformanceAnalysis
+        private void Counter()
+        {
+            Debug.Log("Attack countered!");
+            TimerManager.instance.CreateOrResetTimer(ref _counterWindowTimer, this, counterWindow, () => { SetSwordStance(SwordStance.Idle); });
+        }
+
         private Vector3 GetLocalPositionFromRotation(float rotationDegrees)
         {
             var rads = Mathf.Deg2Rad * rotationDegrees;
             return new Vector3(Mathf.Cos(rads) * _hitboxOffset, Mathf.Sin(rads) * _hitboxOffset, 0.0f);
+        }
+
+        public override void BlockedEnemyAttack(Collider2D selfArmorHitbox, Collider2D attackerHitbox)
+        {
+            SetSwordStance(SwordStance.Countering);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,23 +8,28 @@ namespace Characters
     {
         protected readonly List<HealthComponent> targetsHit = new();
 
-        protected void OnHitboxOverlapped(Collider2D hitbox, Collider2D hitboxOther)
+        protected void OnHitboxOverlapped(Collider2D hitbox, Collider2D otherHitbox)
         {
             // Don't attack ourselves
-            
-            if (hitboxOther.transform.root.gameObject == gameObject.transform.root.gameObject)
+            if (otherHitbox.transform.root.gameObject == gameObject.transform.root.gameObject)
             {
                 return;
             }
 
-            if (hitboxOther.gameObject.layer == 8)
+            if (hitbox.gameObject.layer == 8)
             {
-                KnockbackPlayer(hitbox);
+                BlockedEnemyAttack(hitbox, otherHitbox);
+                return;
+            }
+
+            if (otherHitbox.gameObject.layer == 8)
+            {
+                AttackBlocked(hitbox, otherHitbox);
                 return;
             }
             
-            Debug.LogFormat("'{0}' attacked '{1}'", gameObject.transform.root.gameObject.name, hitboxOther.gameObject.name);
-            var enemyHealth = hitboxOther.transform.root.GetComponent<HealthComponent>();
+            // Debug.LogFormat("'{0}' attacked '{1}'", gameObject.transform.root.gameObject.name, otherHitbox.gameObject.name);
+            var enemyHealth = otherHitbox.transform.root.GetComponent<HealthComponent>();
             if (!enemyHealth)
             {
                 return;
@@ -42,7 +46,7 @@ namespace Characters
             {
                 if (result.Any(overlappedHitbox => overlappedHitbox.gameObject.layer == 8))
                 {
-                    KnockbackPlayer(hitbox);
+                    AttackBlocked(hitbox, otherHitbox);
                     return;
                 }
             }
@@ -55,6 +59,16 @@ namespace Characters
         {
             transform.root.GetComponent<KinematicCharacterController>().Knockback(
                 (Vector2)(selfHitbox.transform.position - transform.position).normalized * -5.0f, 0.1f);
+        }
+
+        public virtual void AttackBlocked(Collider2D selfHitbox, Collider2D otherHitbox)
+        {
+            KnockbackPlayer(selfHitbox);
+        }
+
+        public virtual void BlockedEnemyAttack(Collider2D selfArmorHitbox, Collider2D attackerHitbox)
+        {
+            
         }
     }
 }
