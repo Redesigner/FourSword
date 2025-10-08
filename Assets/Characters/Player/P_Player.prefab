@@ -986,9 +986,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordDirection: 0
   swordSprite: {fileID: 6808629328918796164}
-  primaryHitbox: {fileID: 8956573327763723209}
-  secondaryHitbox: {fileID: 8323662443749784846}
-  diagonalHitbox: {fileID: 127983207036111103}
+  <primaryHitbox>k__BackingField: {fileID: 8956573327763723209}
+  <secondaryHitbox>k__BackingField: {fileID: 8323662443749784846}
+  <diagonalHitbox>k__BackingField: {fileID: 127983207036111103}
   counterWindow: 0.5
 --- !u!1 &7417367690823269343
 GameObject:

@@ -20,7 +20,7 @@ public class StunHandle
 
     public void Clear()
     {
-        if (_source.TryGetTarget(out var list))
+        if (_source != null && _source.TryGetTarget(out var list))
         {
             list.RemoveStun(_stack);
         }
@@ -143,7 +143,7 @@ public class HealthComponent : MonoBehaviour
             return;
         }
         
-        onStunEnd.Invoke();;
+        onStunEnd.Invoke();
     }
 
     private void OnDrawGizmos()
@@ -156,7 +156,7 @@ public class HealthComponent : MonoBehaviour
         Handles.Label(transform.position + new Vector3(-0.5f, 2.0f, 0.0f), $"{health} / {maxHealth}");
     }
 
-    public bool IsStunned()
+    private bool IsStunned()
     {
         return _stunStacks.Count > 0;
     }
