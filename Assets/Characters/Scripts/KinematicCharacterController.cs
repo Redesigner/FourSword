@@ -202,7 +202,6 @@ public class KinematicCharacterController : Kinematics.KinematicObject
      */
     public void Knockback(Vector2 knockbackVector, float duration)
     {
-        velocity = knockbackVector;
         var healthComponent = GetComponent<HealthComponent>();
         if (!healthComponent)
         {
@@ -210,5 +209,6 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         }
 
         healthComponent.Stun(duration, this);
+        velocity = knockbackVector;
     }
 }

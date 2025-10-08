@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordStance.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordStance.cs.meta" afterDir="false" />
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Changed sword attack controller to use Transition Table">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordAttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordAttackController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/HitboxTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/HitboxTrigger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,6 +176,7 @@
       <workItem from="1759558517286" duration="6054000" />
       <workItem from="1759686709624" duration="2309000" />
       <workItem from="1759769002502" duration="5330000" />
+      <workItem from="1759895831529" duration="5563000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -334,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759862241116</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Changed sword attack controller to use Transition Table">
+      <option name="closed" value="true" />
+      <created>1759895881420</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1759895881421</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +394,8 @@
     <MESSAGE value="Added vision cones" />
     <MESSAGE value="Reorganized folders -- all scripts are now in a scripts folder" />
     <MESSAGE value="Added basic counter hooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added basic counter hooks" />
+    <MESSAGE value="Changed sword attack controller to use Transition Table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed sword attack controller to use Transition Table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Characters.Player.Scripts
 {
@@ -14,19 +13,10 @@ namespace Characters.Player.Scripts
         Left = 2,
         Down = 3
     }
-
-    public enum SwordStanceOld
-    {
-        Idle,
-        Attacking,
-        Blocking,
-        Countering
-    }
     
     public class SwordAttackController : AttackController
     {
         [SerializeField] private SwordDirection swordDirection;
-        [SerializeField] private SwordStanceOld swordStanceOld;
         [SerializeField] private SpriteRenderer swordSprite;
 
         [SerializeField] private HitboxTrigger primaryHitbox;
@@ -74,7 +64,7 @@ namespace Characters.Player.Scripts
             {
                 name = "Countering",
                 hitboxType = HitboxType.Armor,
-                transitionTime = 0.25f
+                transitionTime = 0.5f
             };
             
             _currentStance = _idle;
@@ -107,7 +97,7 @@ namespace Characters.Player.Scripts
                 return;
             }
             
-            Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
+            // Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
             _currentStance = newStance;
             primaryHitbox.gameObject.layer = HitboxTrigger.GetLayer(_currentStance.hitboxType);
             if (_currentStance.transitionTime > 0.0f)

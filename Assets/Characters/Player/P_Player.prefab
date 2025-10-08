@@ -411,6 +411,9 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   minMoveDistance: 0.001
   shellRadius: 0.01
+  lookDirectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
   walkSpeed: 4
   faceMovement: 1
 --- !u!114 &579208233741465586
@@ -427,13 +430,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 15
   health: 15
+  onStunned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7624005988303523192}
+        m_TargetAssemblyTypeName: KinematicCharacterController, Assembly-CSharp
+        m_MethodName: DisableMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onStunEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7624005988303523192}
+        m_TargetAssemblyTypeName: KinematicCharacterController, Assembly-CSharp
+        m_MethodName: EnableMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  <alive>k__BackingField: 1
 --- !u!114 &7341607925323208449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,11 +985,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordDirection: 0
-  swordStance: 0
   swordSprite: {fileID: 6808629328918796164}
   primaryHitbox: {fileID: 8956573327763723209}
   secondaryHitbox: {fileID: 8323662443749784846}
   diagonalHitbox: {fileID: 127983207036111103}
+  counterWindow: 0.5
 --- !u!1 &7417367690823269343
 GameObject:
   m_ObjectHideFlags: 0
