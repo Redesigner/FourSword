@@ -70,6 +70,18 @@ namespace Characters
             };
         }
 
+        public static int GetLayer(HitboxType type)
+        {
+            return type switch
+            {
+                HitboxType.Armor => 8,
+                HitboxType.Hitbox => 6,
+                HitboxType.Hurtbox => 7,
+                HitboxType.None => 0,
+                _ => 0
+            };
+        }
+
         static Color GetHitboxColorForLayer(int layer)
         {
             return layer switch

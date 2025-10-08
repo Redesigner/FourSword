@@ -202,8 +202,13 @@ public class KinematicCharacterController : Kinematics.KinematicObject
      */
     public void Knockback(Vector2 knockbackVector, float duration)
     {
-        DisableMovement();
         velocity = knockbackVector;
-        TimerManager.instance.CreateOrResetTimer(ref _knockbackTimer, this, duration, EnableMovement);
+        var healthComponent = GetComponent<HealthComponent>();
+        if (!healthComponent)
+        {
+            return;
+        }
+
+        healthComponent.Stun(duration, this);
     }
 }

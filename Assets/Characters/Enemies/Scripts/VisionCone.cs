@@ -58,13 +58,13 @@ public class VisionCone : MonoBehaviour
                         continue;
                     }
                     
-                    Debug.Log("Saw enemy!");
+                    // Debug.Log("Saw enemy!");
                     _seenEnemyEventChannel.Value.SendEventMessage(perceptionSource.gameObject, perceptionSource.GetComponent<KinematicCharacterController>());
                     _loseSightTimer.Pause();
                 }
                 else if (_seenCharacters.Remove(perceptionSource))
                 {
-                    Debug.Log("Lost sight of enemy... counting down...");
+                    // Debug.Log("Lost sight of enemy... counting down...");
                     TimerManager.instance.CreateOrResetTimer(ref _loseSightTimer, this, lostSightTime, () =>
                     {
                         _lostSightEventChannel.Value.SendEventMessage(perceptionSource.gameObject, perceptionSource.GetComponent<KinematicCharacterController>());
