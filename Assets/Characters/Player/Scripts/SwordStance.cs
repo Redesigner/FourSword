@@ -28,13 +28,20 @@ namespace Characters.Player.Scripts
         public virtual void Slam(SwordAttackController controller, SwordDirection direction)
         {
         }
+
+        public virtual void Enter(SwordAttackController controller)
+        {
+            controller.primaryHitbox.transform.localScale = Vector3.one;
+            controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(controller.swordDirection));
+        }
     }
 
     public class AttackStance : SwordStance
     {
         public override void Stab(SwordAttackController controller, SwordDirection direction)
         {
-            controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction));
+            controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction)) * 1.5f;
+            controller.primaryHitbox.transform.localScale = new Vector3(1.0f, 2.0f, 1.0f);
             controller.primaryHitbox.Disable();
             controller.primaryHitbox.Enable();
             controller.secondaryHitbox.Disable();
@@ -43,6 +50,7 @@ namespace Characters.Player.Scripts
         
         public override void Slash(SwordAttackController controller, SwordDirection start, SwordDirection end)
         {
+            controller.primaryHitbox.transform.localScale = Vector3.one;
             controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(end));
             controller.primaryHitbox.transform.rotation = Quaternion.Euler(0.0f, 0.0f, SwordAttackController.GetRotation(end) - 90.0f);
             controller.secondaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(start));
@@ -58,6 +66,7 @@ namespace Characters.Player.Scripts
 
         public override void Slam(SwordAttackController controller, SwordDirection direction)
         {
+            controller.primaryHitbox.transform.localScale = Vector3.one;
             controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction));
             controller.primaryHitbox.Enable();
             controller.secondaryHitbox.Disable();
@@ -105,7 +114,17 @@ namespace Characters.Player.Scripts
 
         public override void Slam(SwordAttackController controller, SwordDirection direction)
         {
+            const float knockbackStrength = 2.0f;
+            var knockbackAngle = SwordAttackController.GetRotation(direction) * Mathf.Deg2Rad + Mathf.PI;
+            var knockback = new Vector2(
+                Mathf.Cos(knockbackAngle) * knockbackStrength,
+                Mathf.Sin(knockbackAngle) * knockbackStrength
+            );
             
+            foreach (var enemyController in controller.blockedEnemies.Select(enemy => enemy.GetComponent<KinematicCharacterController>()).Where(enemyController => enemyController))
+            {
+                enemyController.Knockback(knockback, 0.5f);
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Characters.Player.Scripts
     
     public class SwordAttackController : AttackController
     {
-        [SerializeField] private SwordDirection swordDirection;
+        [field: SerializeField] public SwordDirection swordDirection { private set; get; }
         [SerializeField] private SpriteRenderer swordSprite;
 
         [field: SerializeField] public HitboxTrigger primaryHitbox { private set; get; }
@@ -88,7 +88,8 @@ namespace Characters.Player.Scripts
             secondaryHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             diagonalHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             
-            SetSwordDirection(SwordDirection.Up);
+            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(SwordDirection.Up));
+            swordDirection = SwordDirection.Up;
             secondaryHitbox.Disable();
             diagonalHitbox.Disable();
         }
@@ -100,13 +101,18 @@ namespace Characters.Player.Scripts
                 return;
             }
             
-            // Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
+            Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
             _currentStance = newStance;
+            _currentStance.Enter(this);
             primaryHitbox.gameObject.layer = HitboxTrigger.GetLayer(_currentStance.hitboxType);
             if (_currentStance.transitionTime > 0.0f)
             {
                 // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
                 TimerManager.instance.CreateOrResetTimer(ref _transitionTimer, this, _currentStance.transitionTime, () => { Command(SwordCommand.Expire); });
+            }
+            else
+            {
+                _transitionTimer.Pause();
             }
         }
 
@@ -170,6 +176,7 @@ namespace Characters.Player.Scripts
             
             if (context.performed)
             {
+                Command(SwordCommand.Press);
                 SetSwordDirection(direction);
                 return;
             }
@@ -183,8 +190,6 @@ namespace Characters.Player.Scripts
 
         private void SetSwordDirection(SwordDirection direction)
         {
-            Command(SwordCommand.Press);
-
             if (!_currentStance.canChangeDirection)
             {
                 return;
