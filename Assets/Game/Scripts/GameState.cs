@@ -1,4 +1,5 @@
-﻿using Game;
+﻿using System;
+using Game;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -65,5 +66,24 @@ public class GameState : MonoBehaviour
         onGameUnpaused.Invoke();
         Time.timeScale = 1.0f;
         paused = false;
+    }
+
+    public void TogglePause()
+    {
+        if (paused)
+        {
+            Unpause();
+            return;
+        }
+        
+        Pause();
+    }
+
+    private void OnGUI()
+    {
+        if (paused)
+        {
+            GUI.Label(new Rect(10, 10, 200, 50), "Paused");
+        }
     }
 }

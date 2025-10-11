@@ -1,52 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.StatusEffects;
+using ImGuiNET;
+using UImGui;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StunHandle
-{
-    public StunHandle(HealthComponent source, StunStack stack)
-    {
-        _source = new WeakReference<HealthComponent>(source);
-        _stack = stack;
-    }
-
-    ~StunHandle()
-    {
-        Clear();
-    }
-
-    public void Clear()
-    {
-        if (_source != null && _source.TryGetTarget(out var list))
-        {
-            list.RemoveStun(_stack);
-        }
-
-        _source = null;
-        _stack = null;
-    }
-    
-    private WeakReference<HealthComponent> _source;
-    private StunStack _stack;
-}
-
-public class StunStack
-{
-    public StunStack(MonoBehaviour source)
-    {
-        this._source = source;
-    }
-
-    private readonly MonoBehaviour _source;
-
-    public override string ToString()
-    {
-        return _source.name + ":" + _source.GetType();
-    }
-}
 public class HealthComponent : MonoBehaviour
 {
     [SerializeField] public float maxHealth;
@@ -54,13 +15,38 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] public UnityEvent onStunned;
     [SerializeField] public UnityEvent onStunEnd;
 
-    private readonly List<StunStack> _stunStacks = new();
+    private readonly StatusEffectContainer _statusEffects = new();
     [field: SerializeField] public bool alive { get; private set; } = true;
 
     public UnityEvent<GameObject> onTakeDamage;
     public UnityEvent onDeath;
-
+    
     private TimerHandle _stunTimer;
+
+    private StatusEffect _stun;
+
+    private void Start()
+    {
+        _stun = ScriptableObject.CreateInstance<StatusEffect>();
+        _stun.effectName = "Stun";
+        
+        _statusEffects.onStatusEffectApplied.AddListener(statusEffect => { if (statusEffect == _stun) { onStunned.Invoke();}});
+        _statusEffects.onStatusEffectRemoved.AddListener(statusEffect => { if (statusEffect == _stun) { onStunEnd.Invoke();}});
+    }
+
+    private void Awake()
+    {
+        UImGuiUtility.Layout += OnLayout;
+        UImGuiUtility.OnInitialize += OnInitialize;
+        UImGuiUtility.OnDeinitialize += OnDeinitialize;
+    }
+
+    private void OnDisable()
+    {
+        UImGuiUtility.Layout -= OnLayout;
+        UImGuiUtility.OnInitialize -= OnInitialize;
+        UImGuiUtility.OnDeinitialize -= OnDeinitialize;
+    }
 
     public void TakeDamage(float damage, GameObject source)
     {
@@ -88,11 +74,16 @@ public class HealthComponent : MonoBehaviour
         onDeath.Invoke();
 
         GetComponent<KinematicCharacterController>().enabled = false;
-        onStunned.Invoke();
+        // onStunned.Invoke();
         TimerManager.instance.CreateTimer(this, 0.5f, () =>
         {
             Destroy(gameObject);
         });
+    }
+
+    public void Update()
+    {
+        _statusEffects.Update(Time.deltaTime);
     }
     
     public void Heal(float healing)
@@ -116,48 +107,45 @@ public class HealthComponent : MonoBehaviour
 
     public void Stun(float duration, MonoBehaviour source)
     {
-        var tempStunHandle = Stun(source);
-        // Debug.LogFormat("{0} stunned by {1}", name, source.GetType());
-        TimerManager.instance.CreateTimer(this, duration, () =>
-        {
-            tempStunHandle.Clear();
-            // Debug.LogFormat("{0} stun ended by timer from {1}", name, source.GetType());
-        });
-    }
-
-    public StunHandle Stun(MonoBehaviour source)
-    {
-        if (_stunStacks.Count == 0)
-        {
-            onStunned.Invoke();
-        }
-        var newStack = new StunStack(source);
-        _stunStacks.Add(newStack);
-        return new StunHandle(this, newStack);
-    }
-
-    public void RemoveStun(StunStack stun)
-    {
-        if (!_stunStacks.Remove(stun) || _stunStacks.Count != 0)
-        {
-            return;
-        }
-        
-        onStunEnd.Invoke();
+        _statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, source, duration));
     }
 
     private void OnDrawGizmos()
     {
-        if (IsStunned())
-        {
-            var stuns = string.Join("\n", _stunStacks.Select(stack => stack.ToString()));
-            Handles.Label(transform.position + new Vector3(-0.5f, 1.75f, 0.0f), $"Stunned:\n{stuns}");
-        }
         Handles.Label(transform.position + new Vector3(-0.5f, 2.0f, 0.0f), $"{health} / {maxHealth}");
     }
-
-    private bool IsStunned()
+    private void OnLayout(UImGui.UImGui obj)
     {
-        return _stunStacks.Count > 0;
+        if (!Selection.Contains(gameObject))
+        {
+            return;
+        }
+        
+        if (ImGui.Begin($"{gameObject.name} Status"))
+        {
+            ImGui.Text($"Health: {health} / {maxHealth}");
+            foreach (var item in _statusEffects)
+            {
+                if (ImGui.TreeNode($"{item.Key.effectName}: {item.Value.Count} stacks"))
+                {
+                    foreach (var instance in item.Value)
+                    {
+                        ImGui.Text($"Source: {instance.applier.name} \tTime: {instance.currentTime}/{instance.duration}");
+                    }
+                }
+            }
+            ImGui.End();
+        }
+        
+    }
+
+    private void OnInitialize(UImGui.UImGui obj)
+    {
+        
+    }
+
+    private void OnDeinitialize(UImGui.UImGui obj)
+    {
+        
     }
 }

@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "IA_Player",
     "maps": [
         {
@@ -45,6 +46,15 @@
                     "name": "Sword_Down",
                     "type": "Button",
                     "id": "9f74e044-86c0-4538-b172-3043ef8b0e8f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "e47456a0-53a8-4b4a-aaff-5319b8524261",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -159,6 +169,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sword_Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e7418dc-1ab4-4b40-9f3e-db15f89e88dd",
+                    "path": "<Keyboard>/pause",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad8d7e60-8128-4bb0-9f9b-b252c44bd237",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
