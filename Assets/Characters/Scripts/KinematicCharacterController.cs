@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.StatusEffects;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -37,25 +37,30 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     [SerializeField] private bool faceMovement = true;
     
     private bool _movementEnabled = true;
-
     private Animator _animator;
-
     private readonly List<(Kinematics.KinematicListener, RaycastHit2D)> _objectsHitThisFrame = new();
-
     private Vector2 _moveInput;
-
     private TimerHandle _knockbackTimer;
+    private HealthComponent _healthComponent;
+    private float _speedModifier = 1.0f;
+
+    [SerializeField] private StatusEffect speedEffect;
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
+        _healthComponent = GetComponent<HealthComponent>();
+        _healthComponent.statusEffects.GetEffectStacksChangedEvent(speedEffect).AddListener((stackCount, speedValue) =>
+        {
+            _speedModifier = stackCount == 0 ? 1.0f : speedValue;
+        });
         _animator = GetComponent<Animator>();
     }
 
     protected override Vector2 ComputeVelocity()
     {
-        return _movementEnabled ? _moveInput * walkSpeed : velocity;
+        return _movementEnabled ? _moveInput * GetWalkSpeed() : velocity;
     }
 
     protected override void FixedUpdate()
@@ -210,5 +215,10 @@ public class KinematicCharacterController : Kinematics.KinematicObject
 
         healthComponent.Stun(duration, this);
         velocity = knockbackVector;
+    }
+
+    private float GetWalkSpeed()
+    {
+        return walkSpeed * _speedModifier;
     }
 }

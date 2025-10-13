@@ -15,7 +15,7 @@ public class HealthComponent : MonoBehaviour
     [SerializeField] public UnityEvent onStunned;
     [SerializeField] public UnityEvent onStunEnd;
 
-    private readonly StatusEffectContainer _statusEffects = new();
+    public readonly StatusEffectContainer statusEffects = new();
     [field: SerializeField] public bool alive { get; private set; } = true;
 
     public UnityEvent<GameObject> onTakeDamage;
@@ -30,8 +30,8 @@ public class HealthComponent : MonoBehaviour
         _stun = ScriptableObject.CreateInstance<StatusEffect>();
         _stun.effectName = "Stun";
         
-        _statusEffects.onStatusEffectApplied.AddListener(statusEffect => { if (statusEffect == _stun) { onStunned.Invoke();}});
-        _statusEffects.onStatusEffectRemoved.AddListener(statusEffect => { if (statusEffect == _stun) { onStunEnd.Invoke();}});
+        statusEffects.GetEffectAppliedEvent(_stun).AddListener( () => { onStunned.Invoke();} );
+        statusEffects.GetEffectRemovedEvent(_stun).AddListener( () => { onStunEnd.Invoke();} );
     }
 
     private void Awake()
@@ -83,7 +83,7 @@ public class HealthComponent : MonoBehaviour
 
     public void Update()
     {
-        _statusEffects.Update(Time.deltaTime);
+        statusEffects.Update(Time.deltaTime);
     }
     
     public void Heal(float healing)
@@ -107,7 +107,7 @@ public class HealthComponent : MonoBehaviour
 
     public void Stun(float duration, MonoBehaviour source)
     {
-        _statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, source, duration));
+        statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, source, duration));
     }
 
     private void OnDrawGizmos()
@@ -124,7 +124,7 @@ public class HealthComponent : MonoBehaviour
         if (ImGui.Begin($"{gameObject.name} Status"))
         {
             ImGui.Text($"Health: {health} / {maxHealth}");
-            foreach (var item in _statusEffects)
+            foreach (var item in statusEffects)
             {
                 if (ImGui.TreeNode($"{item.Key.effectName}: {item.Value.Count} stacks"))
                 {
