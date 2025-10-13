@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Animator))]
@@ -22,6 +23,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     }
     private Vector2 _lookDirection;
 
+    [SerializeField] public UnityEvent<float> lookDirectionChanged;
 
     /// <summary>
     /// How fast the player walks when pressing the control stick all the way
@@ -113,8 +115,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         {
             if (faceMovement)
             {
-                _lookDirection.x = _moveInput.x;
-                _lookDirection.y = _moveInput.y;
+                SetLookDirection(_moveInput);
             }
 
             _animator.SetFloat(HorizontalBlend, _moveInput.x);
@@ -132,6 +133,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         _lookDirection = direction.normalized;
         _animator.SetFloat(HorizontalBlend, _lookDirection.x);
         _animator.SetFloat(VerticalBlend, _lookDirection.y);
+        lookDirectionChanged.Invoke(Mathf.Atan2(_lookDirection.y, _lookDirection.x));
     }
     
     protected override void OnMovementHit(RaycastHit2D hit)
@@ -171,8 +173,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         {
             if (faceMovement)
             {
-                _lookDirection.x = _moveInput.x;
-                _lookDirection.y = _moveInput.y;
+                SetLookDirection(_moveInput);
             }
 
             _animator.SetFloat(HorizontalBlend, _moveInput.x);
@@ -201,8 +202,13 @@ public class KinematicCharacterController : Kinematics.KinematicObject
      */
     public void Knockback(Vector2 knockbackVector, float duration)
     {
-        DisableMovement();
+        var healthComponent = GetComponent<HealthComponent>();
+        if (!healthComponent)
+        {
+            return;
+        }
+
+        healthComponent.Stun(duration, this);
         velocity = knockbackVector;
-        TimerManager.instance.CreateOrResetTimer(ref _knockbackTimer, this, duration, EnableMovement);
     }
 }

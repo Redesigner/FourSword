@@ -28,6 +28,11 @@ public readonly struct TimerHandle
 
     public void Pause()
     {
+        if (_timer == null)
+        {
+            return;
+        }
+        
         if (_timer.TryGetTarget(out var timer))
         {
             timer.paused = true;
@@ -47,6 +52,7 @@ public readonly struct TimerHandle
         if (_timer.TryGetTarget(out var timer))
         {
             timer.currentTime = 0.0f;
+            timer.paused = false;
         }
     }
 }
@@ -100,6 +106,11 @@ public class TimerManager : MonoBehaviour
         for(var i = _timers.Count - 1; i >= 0; --i)
         {
             var timer = _timers[i];
+            if (timer.paused)
+            {
+                continue;
+            }
+            
             timer.currentTime += Time.deltaTime;
 
             if (!(timer.currentTime >= timer.duration))

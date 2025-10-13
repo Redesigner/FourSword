@@ -42,15 +42,8 @@ namespace Characters.Enemies.Scripts
             points.RemoveAll(point => !IsLocationInNavMesh(point.position));
             PositionResult.ScorePositionsByDistanceFromTarget(agentPosition, points);
             points.Sort((a, b) => -a.score.CompareTo(b.score));
-            /*foreach (var point in points)
-            {
-                Debug.DrawRay(point.position - new Vector3(0.25f, 0.0f, 0.0f), new Vector3(0.5f, 0.0f, 0.0f), new Color(point.score, 0.0f, 0.0f, 1.0f), 0.5f);
-                Debug.DrawRay(point.position - new Vector3(0.0f, 0.25f, 0.0f), new Vector3(0.0f, 0.5f, 0.0f), new Color(point.score, 0.0f, 0.0f, 1.0f), 0.5f);
-            }*/
-            //Debug.DrawRay(points.First().position - new Vector3(0.25f, 0.0f, 0.0f), new Vector3(0.5f, 0.0f, 0.0f), Color.red);
-            //Debug.DrawRay(points.First().position - new Vector3(0.0f, 0.25f, 0.0f), new Vector3(0.0f, 0.5f, 0.0f), Color.red);
 
-            PositionResult.DrawScore(points, 0.5f);
+            // PositionResult.DrawScore(points, 0.5f);
 
             return points.First().position;
         }
@@ -71,7 +64,7 @@ namespace Characters.Enemies.Scripts
             PositionResult.ScorePositionsByVector(direction, points);
             points.Sort((a, b) => -a.score.CompareTo(b.score));
 
-            PositionResult.DrawScore(points, 0.5f);
+            // PositionResult.DrawScore(points, 0.5f);
             return points.First().position;
         }
     }

@@ -61,4 +61,8 @@ public class EnemyAttackController : AttackController
             hitbox.Disable();
         }
     }
+
+    public override void AttackBlocked(Collider2D selfHitbox, Collider2D otherHitbox)
+    {
+    }
 }
