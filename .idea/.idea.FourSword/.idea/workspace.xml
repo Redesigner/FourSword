@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Changed the way effect events work">
+      <change afterPath="$PROJECT_DIR$/Assets/Props.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Scripts/EffectApplierTrigger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Scripts/EffectApplierTrigger.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/StatusEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/StatusEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/StatusEffectContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/StatusEffectContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/StatusEffectInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/StatusEffectInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffectContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffectContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +64,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/KinematicCharacterController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Scripts/HealthComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Game/StatusEffects/StatusEffect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -369,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760035538085</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Changed the way effect events work">
+      <option name="closed" value="true" />
+      <created>1760390072331</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1760390072331</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +443,8 @@
     <MESSAGE value="Added stun stacks" />
     <MESSAGE value="Added different attack types to SwordStances" />
     <MESSAGE value="Added stab attack, switched to patched unity version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added stab attack, switched to patched unity version" />
+    <MESSAGE value="Changed the way effect events work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the way effect events work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

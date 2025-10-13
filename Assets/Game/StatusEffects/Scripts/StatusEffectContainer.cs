@@ -152,8 +152,13 @@ namespace Game.StatusEffects
             }
         }
 
-        private float Accumulate(StatusEffect statusEffect, List<StatusEffectInstance> instances)
+        public float Accumulate(StatusEffect statusEffect, List<StatusEffectInstance> instances)
         {
+            if (instances.Count == 0)
+            {
+                return 0.0f;
+            }
+            
             switch (statusEffect.accumulator)
             {
                 default:

@@ -126,11 +126,25 @@ public class HealthComponent : MonoBehaviour
             ImGui.Text($"Health: {health} / {maxHealth}");
             foreach (var item in statusEffects)
             {
-                if (ImGui.TreeNode($"{item.Key.effectName}: {item.Value.Count} stacks"))
+                var title = item.Key.accumulator == EffectAccumulator.None
+                    ? $"{item.Key.effectName}: {item.Value.Count} stacks"
+                    : $"{item.Key.effectName}: {item.Value.Count} stacks {statusEffects.Accumulate(item.Key, item.Value)}";
+                if (ImGui.TreeNode(title))
                 {
                     foreach (var instance in item.Value)
                     {
-                        ImGui.Text($"Source: {instance.applier.name} \tTime: {instance.currentTime}/{instance.duration}");
+                        var content = $"Source: {instance.applier.name}";
+                        if (instance.duration != 0.0f)
+                        {
+                            content += $"\tTime: {instance.currentTime}/{instance.duration}s";
+                        }
+
+                        if (instance.strength != 0.0f)
+                        {
+                            content += $"\tStrength: {instance.strength}";
+                        }
+                        
+                        ImGui.Text(content);
                     }
                 }
             }

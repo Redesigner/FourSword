@@ -433,6 +433,7 @@ MonoBehaviour:
       m_Calls: []
   walkSpeed: 4
   faceMovement: 1
+  speedEffect: {fileID: 11400000, guid: a36ca536a18cfd749b71ad1c08ac875c, type: 2}
 --- !u!114 &579208233741465586
 MonoBehaviour:
   m_ObjectHideFlags: 0
