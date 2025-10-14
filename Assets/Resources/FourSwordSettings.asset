@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a83ca25334b4e77a23ec848d649d88e, type: 3}
-  m_Name: SpeedEffect
+  m_Script: {fileID: 11500000, guid: 310c44df13544263ae0cf7bbf9ec12e9, type: 3}
+  m_Name: FourSwordSettings
   m_EditorClassIdentifier: 
-  effectName: Speed Change
-  accumulator: 4
+  statusEffects: {fileID: 11400000, guid: 6d4e2ac5641533446a7ec5b5b3af641b, type: 2}

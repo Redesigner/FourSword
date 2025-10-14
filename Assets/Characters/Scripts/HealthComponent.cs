@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Game.StatusEffects;
+﻿using Game.StatusEffects;
 using ImGuiNET;
 using UImGui;
 using UnityEditor;
@@ -27,8 +24,7 @@ public class HealthComponent : MonoBehaviour
 
     private void Start()
     {
-        _stun = ScriptableObject.CreateInstance<StatusEffect>();
-        _stun.effectName = "Stun";
+        _stun = GameState.instance.effectList.stunEffect;
         
         statusEffects.GetEffectAppliedEvent(_stun).AddListener( () => { onStunned.Invoke();} );
         statusEffects.GetEffectRemovedEvent(_stun).AddListener( () => { onStunEnd.Invoke();} );

@@ -44,14 +44,15 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     private HealthComponent _healthComponent;
     private float _speedModifier = 1.0f;
 
-    [SerializeField] private StatusEffect speedEffect;
+    private StatusEffect _speedEffect;
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
+        _speedEffect = GameState.instance.effectList.speedEffect;
         _healthComponent = GetComponent<HealthComponent>();
-        _healthComponent.statusEffects.GetEffectStacksChangedEvent(speedEffect).AddListener((stackCount, speedValue) =>
+        _healthComponent.statusEffects.GetEffectStacksChangedEvent(_speedEffect).AddListener((stackCount, speedValue) =>
         {
             _speedModifier = stackCount == 0 ? 1.0f : speedValue;
         });
