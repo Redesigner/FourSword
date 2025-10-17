@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Shared;
 using UnityEngine;
 
 namespace Characters.Player.Scripts
@@ -40,6 +41,7 @@ namespace Characters.Player.Scripts
     {
         public override void Stab(SwordAttackController controller, SwordDirection direction)
         {
+            controller.currentDamageType = DamageType.Piercing;
             controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction)) * 1.5f;
             controller.primaryHitbox.transform.localScale = new Vector3(1.0f, 2.0f, 1.0f);
             controller.primaryHitbox.Disable();
@@ -50,6 +52,7 @@ namespace Characters.Player.Scripts
         
         public override void Slash(SwordAttackController controller, SwordDirection start, SwordDirection end)
         {
+            controller.currentDamageType = DamageType.Slashing;
             controller.primaryHitbox.transform.localScale = Vector3.one;
             controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(end));
             controller.primaryHitbox.transform.rotation = Quaternion.Euler(0.0f, 0.0f, SwordAttackController.GetRotation(end) - 90.0f);
@@ -66,6 +69,7 @@ namespace Characters.Player.Scripts
 
         public override void Slam(SwordAttackController controller, SwordDirection direction)
         {
+            controller.currentDamageType = DamageType.Blunt;
             controller.primaryHitbox.transform.localScale = Vector3.one;
             controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction));
             controller.primaryHitbox.Enable();

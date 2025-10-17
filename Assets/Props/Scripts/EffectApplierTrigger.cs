@@ -48,5 +48,14 @@ namespace Props.Scripts
             healthComponent.statusEffects.RemoveStatusEffectInstance(appliedInstance);
             _appliedEffects.Remove(healthComponent);
         }
+
+        // Remove all applied effects when deactivated (or destroyed)
+        private void OnDisable()
+        {
+            foreach (var appliedEffect in _appliedEffects)
+            {
+                appliedEffect.Key.statusEffects.RemoveStatusEffectInstance(appliedEffect.Value);
+            }
+        }
     }
 }

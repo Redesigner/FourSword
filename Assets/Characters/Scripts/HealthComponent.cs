@@ -1,11 +1,12 @@
 ﻿using Game.StatusEffects;
 using ImGuiNET;
+using Shared;
 using UImGui;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HealthComponent : MonoBehaviour
+public class HealthComponent : DamageListener
 {
     [SerializeField] public float maxHealth;
     [SerializeField] private float health;
@@ -44,7 +45,7 @@ public class HealthComponent : MonoBehaviour
         UImGuiUtility.OnDeinitialize -= OnDeinitialize;
     }
 
-    public void TakeDamage(float damage, GameObject source)
+    public override void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
     {
         if (damage < 0.0f)
         {

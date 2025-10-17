@@ -4,24 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Changed the way effect events work">
-      <change afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffectList.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffectList.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Settings.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettings.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs.meta" afterDir="false" />
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Moved effects to a global list">
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Scripts/BreakableObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Scripts/BreakableObject.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DamageListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DamageListener.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordStance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordStance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/AttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/AttackController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/GameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/SpeedEffect.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/SpeedEffect.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Scripts/EffectApplierTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Scripts/EffectApplierTrigger.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,15 +150,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="25584">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="25584" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -195,6 +186,7 @@
       <workItem from="1759769002502" duration="5330000" />
       <workItem from="1759895831529" duration="20641000" />
       <workItem from="1760024244042" duration="37850000" />
+      <workItem from="1760502158924" duration="5754000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -388,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760390072331</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Moved effects to a global list">
+      <option name="closed" value="true" />
+      <created>1760470765016</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1760470765016</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,7 +449,8 @@
     <MESSAGE value="Added different attack types to SwordStances" />
     <MESSAGE value="Added stab attack, switched to patched unity version" />
     <MESSAGE value="Changed the way effect events work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the way effect events work" />
+    <MESSAGE value="Moved effects to a global list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved effects to a global list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

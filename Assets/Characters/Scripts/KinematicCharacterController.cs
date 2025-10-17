@@ -43,6 +43,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     private TimerHandle _knockbackTimer;
     private HealthComponent _healthComponent;
     private float _speedModifier = 1.0f;
+    private Vector2 _knockbackVelocity;
 
     private StatusEffect _speedEffect;
 
