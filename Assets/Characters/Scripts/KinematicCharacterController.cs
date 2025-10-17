@@ -44,6 +44,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     private HealthComponent _healthComponent;
     private float _speedModifier = 1.0f;
     private Vector2 _knockbackVelocity;
+    private bool _isKnockedBack = false;
 
     private StatusEffect _speedEffect;
 
@@ -62,7 +63,12 @@ public class KinematicCharacterController : Kinematics.KinematicObject
 
     protected override Vector2 ComputeVelocity()
     {
-        return _movementEnabled ? _moveInput * GetWalkSpeed() : velocity;
+        var newVelocity = _movementEnabled ? _moveInput * GetWalkSpeed() : Vector2.zero;
+        if (_isKnockedBack)
+        {
+            newVelocity += _knockbackVelocity;
+        }
+        return newVelocity;
     }
 
     protected override void FixedUpdate()
@@ -215,8 +221,17 @@ public class KinematicCharacterController : Kinematics.KinematicObject
             return;
         }
 
-        healthComponent.Stun(duration, this);
-        velocity = knockbackVector;
+        if (_isKnockedBack)
+        {
+            return;
+        }
+
+        _isKnockedBack = true;
+        _knockbackVelocity = knockbackVector;
+        TimerManager.instance.CreateOrResetTimer(ref _knockbackTimer, this, duration, () =>
+        {
+            _isKnockedBack = false;
+        });
     }
 
     private float GetWalkSpeed()

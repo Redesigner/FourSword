@@ -71,8 +71,11 @@ public class HealthComponent : DamageListener
         health -= damage;
         if (health > 0.0f)
         {
+            // Apply a stun and knockback with the same duration
+            // if we take damage
             onTakeDamage.Invoke(source);
             GetComponent<KinematicCharacterController>().Knockback((gameObject.transform.position - source.transform.position).normalized * 5.0f, 0.25f);
+            statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, this, 0.25f));
             return;
         }
         
