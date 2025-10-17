@@ -7,7 +7,7 @@ namespace Shared
         Raw,
         Slashing,
         Piercing,
-        Blunt
+        Smash
     }
     public abstract class DamageListener : MonoBehaviour
     {

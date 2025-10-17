@@ -69,7 +69,7 @@ namespace Characters.Player.Scripts
 
         public override void Slam(SwordAttackController controller, SwordDirection direction)
         {
-            controller.currentDamageType = DamageType.Blunt;
+            controller.currentDamageType = DamageType.Smash;
             controller.primaryHitbox.transform.localScale = Vector3.one;
             controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction));
             controller.primaryHitbox.Enable();

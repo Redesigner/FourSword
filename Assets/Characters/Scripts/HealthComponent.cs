@@ -10,6 +10,11 @@ public class HealthComponent : DamageListener
 {
     [SerializeField] public float maxHealth;
     [SerializeField] private float health;
+
+    [SerializeField] [Min(0.0f)] private float slashResistance = 1.0f;
+    [SerializeField] [Min(0.0f)] private float pierceResistance = 1.0f;
+    [SerializeField] [Min(0.0f)] private float smashResistance = 1.0f;
+    
     [SerializeField] public UnityEvent onStunned;
     [SerializeField] public UnityEvent onStunEnd;
 
@@ -53,6 +58,12 @@ public class HealthComponent : DamageListener
         }
 
         if (!alive)
+        {
+            return;
+        }
+
+        var modifiedDamage = CalculateDamageAfterResistance(damage, damageType);
+        if (modifiedDamage == 0.0f)
         {
             return;
         }
@@ -107,6 +118,18 @@ public class HealthComponent : DamageListener
         statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, source, duration));
     }
 
+    private float CalculateDamageAfterResistance(float damage, DamageType damageType)
+    {
+        return damageType switch
+        {
+            DamageType.Raw => damage,
+            DamageType.Slashing => damage * slashResistance,
+            DamageType.Piercing => damage * pierceResistance,
+            DamageType.Smash => damage * smashResistance,
+            _ => damage
+        };
+    }
+
     private void OnDrawGizmos()
     {
         Handles.Label(transform.position + new Vector3(-0.5f, 2.0f, 0.0f), $"{health} / {maxHealth}");
@@ -117,7 +140,7 @@ public class HealthComponent : DamageListener
         {
             return;
         }
-        
+
         if (ImGui.Begin($"{gameObject.name} Status"))
         {
             ImGui.Text($"Health: {health} / {maxHealth}");
@@ -126,28 +149,39 @@ public class HealthComponent : DamageListener
                 var title = item.Key.accumulator == EffectAccumulator.None
                     ? $"{item.Key.effectName}: {item.Value.Count} stacks"
                     : $"{item.Key.effectName}: {item.Value.Count} stacks {statusEffects.Accumulate(item.Key, item.Value)}";
-                if (ImGui.TreeNode(title))
+                if (!ImGui.TreeNode(title))
                 {
-                    foreach (var instance in item.Value)
-                    {
-                        var content = $"Source: {instance.applier.name}";
-                        if (instance.duration != 0.0f)
-                        {
-                            content += $"\tTime: {instance.currentTime}/{instance.duration}s";
-                        }
-
-                        if (instance.strength != 0.0f)
-                        {
-                            content += $"\tStrength: {instance.strength}";
-                        }
-                        
-                        ImGui.Text(content);
-                    }
+                    continue;
                 }
+
+                foreach (var instance in item.Value)
+                {
+                    var content = $"Source: {instance.applier.name}";
+                    if (instance.duration != 0.0f)
+                    {
+                        content += $"\tTime: {instance.currentTime}/{instance.duration}s";
+                    }
+
+                    if (instance.strength != 0.0f)
+                    {
+                        content += $"\tStrength: {instance.strength}";
+                    }
+
+                    ImGui.Text(content);
+                }
+                ImGui.TreePop();
             }
-            ImGui.End();
+        }
+
+        if (ImGui.TreeNode("Damage resistances"))
+        {
+            ImGui.Text($"Slashing x{slashResistance:0.0}");
+            ImGui.Text($"Piercing x{pierceResistance:0.0}");
+            ImGui.Text($"Smash x{smashResistance:0.0}");
         }
         
+        ImGui.End();
+
     }
 
     private void OnInitialize(UImGui.UImGui obj)
