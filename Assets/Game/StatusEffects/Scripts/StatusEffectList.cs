@@ -7,5 +7,6 @@ namespace Game.StatusEffects
     {
         [field: SerializeField] public StatusEffect stunEffect { private set; get; }
         [field: SerializeField] public StatusEffect speedEffect { private set; get; }
+        [field: SerializeField] public StatusEffect invulnerabilityEffect { private set; get; }
     }
 }

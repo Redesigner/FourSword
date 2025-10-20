@@ -14,6 +14,8 @@ public class HealthComponent : DamageListener
     [SerializeField] [Min(0.0f)] private float slashResistance = 1.0f;
     [SerializeField] [Min(0.0f)] private float pierceResistance = 1.0f;
     [SerializeField] [Min(0.0f)] private float smashResistance = 1.0f;
+
+    [SerializeField] [Min(0.0f)] private float invulnerabilityTime = 0.5f;
     
     [SerializeField] public UnityEvent onStunned;
     [SerializeField] public UnityEvent onStunEnd;
@@ -27,6 +29,7 @@ public class HealthComponent : DamageListener
     private TimerHandle _stunTimer;
 
     private StatusEffect _stun;
+    private StatusEffect _invulnerability;
 
     private void Start()
     {
@@ -57,6 +60,11 @@ public class HealthComponent : DamageListener
             return;
         }
 
+        if (statusEffects.HasEffect(GameState.instance.effectList.invulnerabilityEffect))
+        {
+            return;
+        }
+
         if (!alive)
         {
             return;
@@ -76,6 +84,11 @@ public class HealthComponent : DamageListener
             onTakeDamage.Invoke(source);
             GetComponent<KinematicCharacterController>().Knockback((gameObject.transform.position - source.transform.position).normalized * 5.0f, 0.25f);
             statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, this, 0.25f));
+
+            if (invulnerabilityTime > 0.0f)
+            {
+                statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(GameState.instance.effectList.invulnerabilityEffect, this, invulnerabilityTime));
+            }
             return;
         }
         
@@ -85,7 +98,6 @@ public class HealthComponent : DamageListener
         onDeath.Invoke();
 
         GetComponent<KinematicCharacterController>().enabled = false;
-        // onStunned.Invoke();
         TimerManager.instance.CreateTimer(this, 0.5f, () =>
         {
             Destroy(gameObject);

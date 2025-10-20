@@ -179,5 +179,10 @@ namespace Game.StatusEffects
                     return total;
             }
         }
+
+        public bool HasEffect(StatusEffect effect)
+        {
+            return _statusEffects.ContainsKey(effect);
+        }
     }
 }
