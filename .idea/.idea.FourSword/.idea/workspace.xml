@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="added invulnerability effect">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/SL_Default.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/SL_Default.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffectContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffectContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffectList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffectList.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,10 +55,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Scripts/HealthComponent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Scripts/HealthComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Scenes/Scn_SwordTest.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Shared/Scripts/DamageListener.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -188,7 +182,7 @@
       <workItem from="1760024244042" duration="37850000" />
       <workItem from="1760502158924" duration="5754000" />
       <workItem from="1760938958810" duration="610000" />
-      <workItem from="1760977038392" duration="3842000" />
+      <workItem from="1760977038392" duration="8142000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -406,7 +400,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760740824606</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="added invulnerability effect">
+      <option name="closed" value="true" />
+      <created>1760982548710</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1760982548710</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -445,7 +447,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="pre merge" />
     <MESSAGE value="Connected Behavior Graph to navmesh" />
     <MESSAGE value="Added position scoring system" />
     <MESSAGE value="Fixed graph to use new query system" />
@@ -470,7 +471,8 @@
     <MESSAGE value="Moved effects to a global list" />
     <MESSAGE value="Added damage resistances, changed Blunt -&gt; Smash" />
     <MESSAGE value="Fixed knockbacks so they have timers independent of stun" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed knockbacks so they have timers independent of stun" />
+    <MESSAGE value="added invulnerability effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="added invulnerability effect" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

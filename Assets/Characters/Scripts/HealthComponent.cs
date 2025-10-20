@@ -1,4 +1,7 @@
-﻿using Game.StatusEffects;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Characters;
+using Game.StatusEffects;
 using ImGuiNET;
 using Shared;
 using UImGui;
@@ -31,12 +34,36 @@ public class HealthComponent : DamageListener
     private StatusEffect _stun;
     private StatusEffect _invulnerability;
 
+    private List<HitboxTrigger> _hurtboxes;
+
     private void Start()
     {
         _stun = GameState.instance.effectList.stunEffect;
+        _invulnerability = GameState.instance.effectList.invulnerabilityEffect;
+
+        _hurtboxes = GetComponentsInChildren<HitboxTrigger>().Where(trigger => trigger.GetHitboxType() == HitboxType.Hurtbox).ToList();
         
         statusEffects.GetEffectAppliedEvent(_stun).AddListener( () => { onStunned.Invoke();} );
         statusEffects.GetEffectRemovedEvent(_stun).AddListener( () => { onStunEnd.Invoke();} );
+        
+        
+        // Invulnerability toggles the hurtboxes, so we don't have to worry about missing events
+        // or re-triggering overlaps when the invulnerability period ends
+        statusEffects.GetEffectAppliedEvent(_invulnerability).AddListener(() =>
+        {
+            foreach (var hurtbox in _hurtboxes)
+            {
+                hurtbox.Disable();
+            }
+        });
+        
+        statusEffects.GetEffectRemovedEvent(_invulnerability).AddListener(() =>
+        {
+            foreach (var hurtbox in _hurtboxes)
+            {
+                hurtbox.Enable();
+            }
+        });
     }
 
     private void Awake()
@@ -60,7 +87,9 @@ public class HealthComponent : DamageListener
             return;
         }
 
-        if (statusEffects.HasEffect(GameState.instance.effectList.invulnerabilityEffect))
+        // Double check that we don't apply damage, it shouldn't happen because the hurtboxes
+        // are toggled off, but there are some situations where it could happen
+        if (statusEffects.HasEffect(_invulnerability))
         {
             return;
         }
