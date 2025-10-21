@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Shared;
 using UnityEngine;
 
 namespace Characters
 {
     public class AttackController : MonoBehaviour
     {
-        protected readonly List<HealthComponent> targetsHit = new();
+        protected readonly List<DamageListener> targetsHit = new();
+
+        public DamageType currentDamageType;
 
         protected void OnHitboxOverlapped(Collider2D hitbox, Collider2D otherHitbox)
         {
@@ -29,13 +32,13 @@ namespace Characters
             }
             
             // Debug.LogFormat("'{0}' attacked '{1}'", gameObject.transform.root.gameObject.name, otherHitbox.gameObject.name);
-            var enemyHealth = otherHitbox.transform.root.GetComponent<HealthComponent>();
-            if (!enemyHealth)
+            var damagedEnemy = otherHitbox.transform.root.GetComponent<DamageListener>();
+            if (!damagedEnemy)
             {
                 return;
             }
 
-            if (targetsHit.Contains(enemyHealth))
+            if (targetsHit.Contains(damagedEnemy))
             {
                 return;
             }
@@ -51,8 +54,8 @@ namespace Characters
                 }
             }
         
-            targetsHit.Add(enemyHealth);
-            enemyHealth.TakeDamage(1.0f, gameObject);
+            targetsHit.Add(damagedEnemy);
+            damagedEnemy.TakeDamage(1.0f, gameObject, currentDamageType);
         }
         
         private void KnockbackPlayer(Collider2D selfHitbox)

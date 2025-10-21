@@ -129,7 +129,7 @@ public class VisionCone : MonoBehaviour
             _coneMesh.normals = normals.ToArray();
         }
         
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             var upperAngle = (currentAngle + coneHalfAngle) * Mathf.Deg2Rad;
             var lowerAngle = (currentAngle - coneHalfAngle) * Mathf.Deg2Rad;

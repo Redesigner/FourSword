@@ -1,21 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Characters;
 using Game.StatusEffects;
 using ImGuiNET;
+using Shared;
 using UImGui;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HealthComponent : MonoBehaviour
+public class HealthComponent : DamageListener
 {
     [SerializeField] public float maxHealth;
     [SerializeField] private float health;
+
+    [SerializeField] [Min(0.0f)] private float slashResistance = 1.0f;
+    [SerializeField] [Min(0.0f)] private float pierceResistance = 1.0f;
+    [SerializeField] [Min(0.0f)] private float smashResistance = 1.0f;
+
+    [SerializeField] [Min(0.0f)] private float invulnerabilityTime = 0.5f;
+    
     [SerializeField] public UnityEvent onStunned;
     [SerializeField] public UnityEvent onStunEnd;
 
-    private readonly StatusEffectContainer _statusEffects = new();
+    public readonly StatusEffectContainer statusEffects = new();
     [field: SerializeField] public bool alive { get; private set; } = true;
 
     public UnityEvent<GameObject> onTakeDamage;
@@ -24,14 +32,38 @@ public class HealthComponent : MonoBehaviour
     private TimerHandle _stunTimer;
 
     private StatusEffect _stun;
+    private StatusEffect _invulnerability;
+
+    private List<HitboxTrigger> _hurtboxes;
 
     private void Start()
     {
-        _stun = ScriptableObject.CreateInstance<StatusEffect>();
-        _stun.effectName = "Stun";
+        _stun = GameState.instance.effectList.stunEffect;
+        _invulnerability = GameState.instance.effectList.invulnerabilityEffect;
+
+        _hurtboxes = GetComponentsInChildren<HitboxTrigger>().Where(trigger => trigger.GetHitboxType() == HitboxType.Hurtbox).ToList();
         
-        _statusEffects.onStatusEffectApplied.AddListener(statusEffect => { if (statusEffect == _stun) { onStunned.Invoke();}});
-        _statusEffects.onStatusEffectRemoved.AddListener(statusEffect => { if (statusEffect == _stun) { onStunEnd.Invoke();}});
+        statusEffects.GetEffectAppliedEvent(_stun).AddListener( () => { onStunned.Invoke();} );
+        statusEffects.GetEffectRemovedEvent(_stun).AddListener( () => { onStunEnd.Invoke();} );
+        
+        
+        // Invulnerability toggles the hurtboxes, so we don't have to worry about missing events
+        // or re-triggering overlaps when the invulnerability period ends
+        statusEffects.GetEffectAppliedEvent(_invulnerability).AddListener(() =>
+        {
+            foreach (var hurtbox in _hurtboxes)
+            {
+                hurtbox.Disable();
+            }
+        });
+        
+        statusEffects.GetEffectRemovedEvent(_invulnerability).AddListener(() =>
+        {
+            foreach (var hurtbox in _hurtboxes)
+            {
+                hurtbox.Enable();
+            }
+        });
     }
 
     private void Awake()
@@ -48,9 +80,16 @@ public class HealthComponent : MonoBehaviour
         UImGuiUtility.OnDeinitialize -= OnDeinitialize;
     }
 
-    public void TakeDamage(float damage, GameObject source)
+    public override void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
     {
         if (damage < 0.0f)
+        {
+            return;
+        }
+
+        // Double check that we don't apply damage, it shouldn't happen because the hurtboxes
+        // are toggled off, but there are some situations where it could happen
+        if (statusEffects.HasEffect(_invulnerability))
         {
             return;
         }
@@ -60,11 +99,25 @@ public class HealthComponent : MonoBehaviour
             return;
         }
 
+        var modifiedDamage = CalculateDamageAfterResistance(damage, damageType);
+        if (modifiedDamage == 0.0f)
+        {
+            return;
+        }
+
         health -= damage;
         if (health > 0.0f)
         {
+            // Apply a stun and knockback with the same duration
+            // if we take damage
             onTakeDamage.Invoke(source);
             GetComponent<KinematicCharacterController>().Knockback((gameObject.transform.position - source.transform.position).normalized * 5.0f, 0.25f);
+            statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, this, 0.25f));
+
+            if (invulnerabilityTime > 0.0f)
+            {
+                statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(GameState.instance.effectList.invulnerabilityEffect, this, invulnerabilityTime));
+            }
             return;
         }
         
@@ -74,7 +127,6 @@ public class HealthComponent : MonoBehaviour
         onDeath.Invoke();
 
         GetComponent<KinematicCharacterController>().enabled = false;
-        // onStunned.Invoke();
         TimerManager.instance.CreateTimer(this, 0.5f, () =>
         {
             Destroy(gameObject);
@@ -83,7 +135,7 @@ public class HealthComponent : MonoBehaviour
 
     public void Update()
     {
-        _statusEffects.Update(Time.deltaTime);
+        statusEffects.Update(Time.deltaTime);
     }
     
     public void Heal(float healing)
@@ -107,7 +159,19 @@ public class HealthComponent : MonoBehaviour
 
     public void Stun(float duration, MonoBehaviour source)
     {
-        _statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, source, duration));
+        statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, source, duration));
+    }
+
+    private float CalculateDamageAfterResistance(float damage, DamageType damageType)
+    {
+        return damageType switch
+        {
+            DamageType.Raw => damage,
+            DamageType.Slashing => damage * slashResistance,
+            DamageType.Piercing => damage * pierceResistance,
+            DamageType.Smash => damage * smashResistance,
+            _ => damage
+        };
     }
 
     private void OnDrawGizmos()
@@ -120,23 +184,48 @@ public class HealthComponent : MonoBehaviour
         {
             return;
         }
-        
+
         if (ImGui.Begin($"{gameObject.name} Status"))
         {
             ImGui.Text($"Health: {health} / {maxHealth}");
-            foreach (var item in _statusEffects)
+            foreach (var item in statusEffects)
             {
-                if (ImGui.TreeNode($"{item.Key.effectName}: {item.Value.Count} stacks"))
+                var title = item.Key.accumulator == EffectAccumulator.None
+                    ? $"{item.Key.effectName}: {item.Value.Count} stacks"
+                    : $"{item.Key.effectName}: {item.Value.Count} stacks {statusEffects.Accumulate(item.Key, item.Value)}";
+                if (!ImGui.TreeNode(title))
                 {
-                    foreach (var instance in item.Value)
-                    {
-                        ImGui.Text($"Source: {instance.applier.name} \tTime: {instance.currentTime}/{instance.duration}");
-                    }
+                    continue;
                 }
+
+                foreach (var instance in item.Value)
+                {
+                    var content = $"Source: {instance.applier.name}";
+                    if (instance.duration != 0.0f)
+                    {
+                        content += $"\tTime: {instance.currentTime}/{instance.duration}s";
+                    }
+
+                    if (instance.strength != 0.0f)
+                    {
+                        content += $"\tStrength: {instance.strength}";
+                    }
+
+                    ImGui.Text(content);
+                }
+                ImGui.TreePop();
             }
-            ImGui.End();
+        }
+
+        if (ImGui.TreeNode("Damage resistances"))
+        {
+            ImGui.Text($"Slashing x{slashResistance:0.0}");
+            ImGui.Text($"Piercing x{pierceResistance:0.0}");
+            ImGui.Text($"Smash x{smashResistance:0.0}");
         }
         
+        ImGui.End();
+
     }
 
     private void OnInitialize(UImGui.UImGui obj)

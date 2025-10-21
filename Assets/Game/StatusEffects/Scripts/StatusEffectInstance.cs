@@ -5,17 +5,19 @@ namespace Game.StatusEffects
 {
     public class StatusEffectInstance : IEquatable<StatusEffectInstance>
     {
-        public StatusEffectInstance(StatusEffect effect, MonoBehaviour applier, float duration = 0.0f)
+        public StatusEffectInstance(StatusEffect effect, MonoBehaviour applier, float duration = 0.0f, float strength = 0.0f)
         {
             this.effect = effect;
             this.applier = applier;
             this.duration = duration;
+            this.strength = strength;
             currentTime = 0.0f;
         }
         
         public readonly StatusEffect effect;
         public readonly MonoBehaviour applier;
         public readonly float duration;
+        public readonly float strength;
         public float currentTime { private set; get; }
 
         public bool Equals(StatusEffectInstance other)

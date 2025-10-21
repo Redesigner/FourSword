@@ -1,5 +1,7 @@
 ﻿using System;
 using Game;
+using Game.StatusEffects;
+using Settings;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,8 +12,9 @@ public class GameState : MonoBehaviour
 
     public bool paused { get; private set; }
     
-    private static GameState _instance;
+    public StatusEffectList effectList { get; private set; }
     
+    private static GameState _instance;
     public static GameState instance
     {
         get
@@ -35,6 +38,7 @@ public class GameState : MonoBehaviour
     public void Awake()
     {
         _instance = this;
+        effectList = Resources.Load<FourSwordSettings>("FourSwordSettings").statusEffects;
         DontDestroyOnLoad(gameObject);
     }
 

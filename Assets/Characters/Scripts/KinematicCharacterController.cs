@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.StatusEffects;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -37,25 +37,38 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     [SerializeField] private bool faceMovement = true;
     
     private bool _movementEnabled = true;
-
     private Animator _animator;
-
     private readonly List<(Kinematics.KinematicListener, RaycastHit2D)> _objectsHitThisFrame = new();
-
     private Vector2 _moveInput;
-
     private TimerHandle _knockbackTimer;
+    private HealthComponent _healthComponent;
+    private float _speedModifier = 1.0f;
+    private Vector2 _knockbackVelocity;
+    private bool _isKnockedBack = false;
+
+    private StatusEffect _speedEffect;
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
+        _speedEffect = GameState.instance.effectList.speedEffect;
+        _healthComponent = GetComponent<HealthComponent>();
+        _healthComponent.statusEffects.GetEffectStacksChangedEvent(_speedEffect).AddListener((stackCount, speedValue) =>
+        {
+            _speedModifier = stackCount == 0 ? 1.0f : speedValue;
+        });
         _animator = GetComponent<Animator>();
     }
 
     protected override Vector2 ComputeVelocity()
     {
-        return _movementEnabled ? _moveInput * walkSpeed : velocity;
+        var newVelocity = _movementEnabled ? _moveInput * GetWalkSpeed() : Vector2.zero;
+        if (_isKnockedBack)
+        {
+            newVelocity += _knockbackVelocity;
+        }
+        return newVelocity;
     }
 
     protected override void FixedUpdate()
@@ -208,7 +221,21 @@ public class KinematicCharacterController : Kinematics.KinematicObject
             return;
         }
 
-        healthComponent.Stun(duration, this);
-        velocity = knockbackVector;
+        if (_isKnockedBack)
+        {
+            return;
+        }
+
+        _isKnockedBack = true;
+        _knockbackVelocity = knockbackVector;
+        TimerManager.instance.CreateOrResetTimer(ref _knockbackTimer, this, duration, () =>
+        {
+            _isKnockedBack = false;
+        });
+    }
+
+    private float GetWalkSpeed()
+    {
+        return walkSpeed * _speedModifier;
     }
 }
