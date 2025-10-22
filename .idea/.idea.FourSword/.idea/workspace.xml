@@ -4,29 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Added leaf particle test">
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Breakables.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups/Heart.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups/Heart/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups/Heart/Scripts/HeartPickup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups/Heart/Scripts/HeartPickup.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups/Scripts/Pickup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups/Scripts/Pickup.cs.meta" afterDir="false" />
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Added health pickup">
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable/DropTable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable/DropTable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable/DropTableComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable/DropTableComponent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Grass.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Grass.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Grass/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Grass/Materials/Mat_GrassSprite.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Materials/Mat_GrassSprite.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Grass/Materials/Mat_GrassSprite.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Materials/Mat_GrassSprite.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Grass/P_GrassParticle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_GrassParticle.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Grass/P_GrassParticle.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_GrassParticle.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Grass/Sprites.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Sprites.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Grass/Sprites/Grass_PH.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Sprites/Grass_PH.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Grass/Sprites/Grass_PH.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Sprites/Grass_PH.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Scripts/BreakableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Scripts/BreakableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Scripts/BreakableObject.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Scripts/BreakableObject.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Baba/Animations/AC_Baba.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Baba/Animations/AC_Baba.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Input/InputSystem_Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Input/InputSystem_Actions.inputactions.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Materials/Mat_GrassSprite.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Materials/Mat_GrassSprite.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_Bush.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_Bush.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_GrassParticle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_GrassParticle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Sprites.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Sprites/Grass_PH.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Sprites/Grass_PH.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Scripts/BreakableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Scripts/BreakableObject.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +75,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Props/Scripts/BreakableObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Scenes/Scn_SwordTest.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -439,7 +439,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761105671626</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added health pickup">
+      <option name="closed" value="true" />
+      <created>1761162234490</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1761162234490</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -478,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added position scoring system" />
     <MESSAGE value="Fixed graph to use new query system" />
     <MESSAGE value="Reorganized code, added some helpers, added look at action" />
     <MESSAGE value="Added animation to AI" />
@@ -503,7 +510,8 @@
     <MESSAGE value="Fixed knockbacks so they have timers independent of stun" />
     <MESSAGE value="added invulnerability effect" />
     <MESSAGE value="Added leaf particle test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added leaf particle test" />
+    <MESSAGE value="Added health pickup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added health pickup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -533,19 +541,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Props/Pickups/Scripts/Pickup.cs</url>
-          <line>8</line>
-          <properties documentPath="E:\Game Development\Unity\Projects\FourSword\Assets\Props\Pickups\Scripts\Pickup.cs" containingFunctionPresentation="Method 'OnTriggerEnter2D'">
-            <startOffsets>
-              <option value="170" />
-            </startOffsets>
-            <endOffsets>
-              <option value="213" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -8,6 +8,7 @@ namespace Props.Scripts
     {
         [SerializeField] private GameObject particlePrefab;
         [SerializeField] [Min(0.0f)] private float particleLifetime;
+        [SerializeField] private UnityEvent onBroken;
         
         public override void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
         {
@@ -15,19 +16,19 @@ namespace Props.Scripts
             {
                 return;
             }
+            onBroken.Invoke();
             
-            Destroy(gameObject);
-            if (!particlePrefab)
+            if (particlePrefab)
             {
-                return;
+                var particleObject = Instantiate(particlePrefab);
+                particleObject.transform.position = transform.position;
+                TimerManager.instance.CreateTimer(particleObject, particleLifetime, () =>
+                {
+                    Destroy(particleObject);
+                });
             }
 
-            var particleObject = Instantiate(particlePrefab);
-            particleObject.transform.position = transform.position;
-            TimerManager.instance.CreateTimer(particleObject, particleLifetime, () =>
-            {
-                Destroy(particleObject);
-            });
+            Destroy(gameObject);
         }
     }
 }
