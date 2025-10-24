@@ -1,5 +1,6 @@
 ﻿using System;
 using Game;
+using Game.Facts;
 using Game.StatusEffects;
 using Settings;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class GameState : MonoBehaviour
     public bool paused { get; private set; }
     
     public StatusEffectList effectList { get; private set; }
+
+    public FactRegistry factRegistry;
     
     private static GameState _instance;
     public static GameState instance

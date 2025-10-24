@@ -4,28 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Added health pickup">
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable/DropTable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable/DropTable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable/DropTableComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/DropTable/DropTableComponent.cs.meta" afterDir="false" />
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Editor.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/Facts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactQueryDrawer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactQueryDrawer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/Fact.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/Fact.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactQuery.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Facts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Facts/FactQuerySpawner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Facts/FactQuerySpawner.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Baba/Animations/AC_Baba.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Baba/Animations/AC_Baba.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Input/InputSystem_Actions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem_Actions.inputactions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Input/InputSystem_Actions.inputactions.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Materials/Mat_GrassSprite.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Materials/Mat_GrassSprite.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_Bush.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_Bush.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_GrassParticle.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/P_GrassParticle.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Sprites.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Sprites/Grass_PH.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Grass/Sprites/Grass_PH.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Scripts/BreakableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Scripts/BreakableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +63,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/a0/28561a76/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/f3/1c7e8612/Transform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Behavior Demo For Unity/Assets/Code/Scripts/UI/UICharacterHealth.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Baba/Animations/AC_Baba.controller" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/IsNullCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -111,22 +107,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Core/Props",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.48286605&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Core/Props&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Build/FourSword\FourSword.exe" />
@@ -165,15 +162,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="7184">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="7184" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -206,6 +201,7 @@
       <workItem from="1760502158924" duration="5754000" />
       <workItem from="1760938958810" duration="610000" />
       <workItem from="1760977038392" duration="8142000" />
+      <workItem from="1761245604844" duration="8158000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -447,7 +443,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761162234490</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added drop table and drop table components">
+      <option name="closed" value="true" />
+      <created>1761170261511</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1761170261511</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixed graph to use new query system" />
     <MESSAGE value="Reorganized code, added some helpers, added look at action" />
     <MESSAGE value="Added animation to AI" />
     <MESSAGE value="Enemy attacks and waits for attack to finish before moving again" />
@@ -511,7 +514,8 @@
     <MESSAGE value="added invulnerability effect" />
     <MESSAGE value="Added leaf particle test" />
     <MESSAGE value="Added health pickup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added health pickup" />
+    <MESSAGE value="Added drop table and drop table components" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added drop table and drop table components" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
