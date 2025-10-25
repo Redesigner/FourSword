@@ -105,7 +105,7 @@ public class HealthComponent : DamageListener
             return;
         }
 
-        health -= damage;
+        health -= modifiedDamage;
         if (health > 0.0f)
         {
             // Apply a stun and knockback with the same duration
