@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Game.Facts
 {
@@ -21,16 +22,17 @@ namespace Game.Facts
     
     public enum FactType
     {
-        Flag,
-        Numeric
+        Flag = 0,
+        Numeric = 1
     }
     
     [Serializable]
-    public struct Fact
+    public class Fact
     {
         private IVariantHolder _variant;
-        public readonly FactType type;
         
+        [field: SerializeField]
+        public FactType type;
 
         public Fact(bool value)
         {
@@ -42,6 +44,17 @@ namespace Game.Facts
         {
             _variant = new VariantHolder<int>(value);
             type = FactType.Numeric;
+        }
+
+        public Fact()
+        {
+            _variant = new VariantHolder<bool>(true);
+            type = FactType.Flag;
+        }
+
+        public T Get<T>()
+        {
+            return (T)_variant.Get();
         }
     }
 }

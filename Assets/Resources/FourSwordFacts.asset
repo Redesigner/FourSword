@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facts:
     _serializedList:
-    - Key: Test
-    - Key: Test2
+    - Key: test2
+      Value:
+        type: 1

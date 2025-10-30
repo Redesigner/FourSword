@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drops:
   - drop: {fileID: 1950181772384393320, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-    dropWeight: 1
+    dropWeight: 0.5
   - drop: {fileID: 1950181772384393320, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-    dropWeight: 2
+    dropWeight: 1

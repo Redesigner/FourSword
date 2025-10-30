@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Linq;
 using Game.Facts;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Rect = UnityEngine.Rect;
 
 namespace Editor.Facts
@@ -21,12 +17,13 @@ namespace Editor.Facts
             var labelRect = new Rect(position.x, position.y, position.width, 18.0f);
             EditorGUI.LabelField(labelRect, label);
 
-            var nameRect = new Rect(position.x, position.y + 18.0f, position.width, position.height - 18.0f);
-            // EditorGUI.TextField(nameRect, value.factName);
+            var nameRect = new Rect(position.x, position.y + 18.0f, position.width * 0.4f, position.height - 18.0f);
             var factRegistry = Resources.Load<FactRegistry>("FourSwordFacts");
 
             var options = factRegistry.facts.Keys.ToArray();
             EditorGUI.Popup(nameRect, 0, options);
+            
+            EditorGUI.EndProperty();
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
