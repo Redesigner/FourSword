@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; padding-left: 4px;">
         <ui:TextField placeholder-text="Fact Name" name="Name" style="flex-grow: 2; width: 25%;" />
         <ui:DropdownField name="Type" style="flex-grow: 1; width: 25%;" />
         <ui:Toggle name="Bool" style="flex-grow: 2; width: 25%;" />

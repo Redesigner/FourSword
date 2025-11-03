@@ -14,16 +14,25 @@ namespace Game.Facts
         [SerializedDictionary("Name", "Fact")]
         public SerializedDictionary<string, Fact> facts = new();
 
+        [SerializeField] private Fact testFact;
+
         public void CreateFact(string factName, Fact fact)
         {
+            if (facts.ContainsKey(factName))
+            {
+                return;
+            }
+            
             facts.Add(factName, fact);
             onItemsChanged.Invoke();
         }
 
-        public void Reset()
+        public void RemoveFact(string factName)
         {
-            facts.Clear();
-            onItemsChanged.Invoke();
+            if (facts.Remove(factName))
+            {
+                onItemsChanged.Invoke();
+            }
         }
     }
 }

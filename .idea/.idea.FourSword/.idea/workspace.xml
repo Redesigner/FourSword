@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Fact registry editor working!">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FactRegistryEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactRegistryEditor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/Fact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/Fact.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Editor/FactRegistryEditor-style.uss" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Editor/FactRegistryEditor-style.uss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Editor/FactRegistryEntry.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Editor/FactRegistryEntry.uxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,6 +64,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Game/Facts/Fact.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
@@ -153,10 +156,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="476">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
-      <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="476" />
+      <option name="listenPortForConnections" value="true" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -200,7 +203,7 @@
       <workItem from="1761794228365" duration="615000" />
       <workItem from="1761848540655" duration="12518000" />
       <workItem from="1761868240714" duration="3962000" />
-      <workItem from="1762187829647" duration="5423000" />
+      <workItem from="1762187829647" duration="14182000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -474,7 +477,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761851269313</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Fact registry editor working!">
+      <option name="closed" value="true" />
+      <created>1762194859085</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1762194859085</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +524,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added basic hitbox attack logic" />
     <MESSAGE value="Moved attack controller into unified class" />
     <MESSAGE value="Reworked hitboxes to be good now" />
     <MESSAGE value="Clean up drawing debug, fix enemy aniamtions" />
@@ -538,7 +548,8 @@
     <MESSAGE value="Test of facts system and drawer" />
     <MESSAGE value="Fixed bug where resistances were ignored" />
     <MESSAGE value="i dont remember what i was working on" />
-    <option name="LAST_COMMIT_MESSAGE" value="i dont remember what i was working on" />
+    <MESSAGE value="Fact registry editor working!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fact registry editor working!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

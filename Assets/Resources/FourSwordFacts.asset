@@ -12,4 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4af568b69e4548975d727d96bd2d6e, type: 3}
   m_Name: FourSwordFacts
   m_EditorClassIdentifier: 
-  editorFlag: 1
+  facts:
+    _serializedList:
+    - Key: Test15
+      Value:
+        variant:
+          rid: 896754074779385857
+        type: 1
+    - Key: TestFalse
+      Value:
+        variant:
+          rid: 896754074794328064
+        type: 0
+    - Key: TestTrue
+      Value:
+        variant:
+          rid: 896754074727481344
+        type: 0
+  testFact:
+    variant:
+      rid: -2
+    type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 896754074727481344
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 1
+    - rid: 896754074779385857
+      type: {class: 'VariantHolder`1[[System.Int32, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 15
+    - rid: 896754074794328064
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 0

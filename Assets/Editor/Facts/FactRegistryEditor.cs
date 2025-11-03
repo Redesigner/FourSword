@@ -16,9 +16,13 @@ public class FactRegistryEditor : UnityEditor.Editor
     private const string ResourceFilename = "editor/FactRegistryEditor";
     private const string EntryFilename = "editor/FactRegistryEntry";
 
+    private const string SelectedCssClass = "selected";
+
     private VisualTreeAsset _entryVisualAsset;
     private FactRegistry _factRegistry;
     private VisualElement _inspectorRoot;
+    private VisualElement _selectedEntry;
+    private string _selectedKey;
     
     public override VisualElement CreateInspectorGUI()
     {
@@ -43,7 +47,7 @@ public class FactRegistryEditor : UnityEditor.Editor
         var minusButton = _inspectorRoot.Query<Button>("Remove");
         minusButton.First().clicked += () =>
         {
-            _factRegistry.Reset();
+            _factRegistry.RemoveFact(_selectedKey);
         };
         
         DrawFacts();
@@ -74,6 +78,12 @@ public class FactRegistryEditor : UnityEditor.Editor
         var dropDown = entryVisual.Query<DropdownField>("Type").First();
         var toggle = entryVisual.Query<Toggle>("Bool").First();
         var numeric = entryVisual.Query<IntegerField>("Int").First();
+        var box = nameField.parent;
+        
+        box.RegisterCallback<ClickEvent>(evt =>
+        {
+            SetSelectedEntry(box, factName);
+        });
 
         nameField.SetValueWithoutNotify(factName);
 
@@ -82,7 +92,12 @@ public class FactRegistryEditor : UnityEditor.Editor
         {
             _factRegistry.facts.Remove(factName);
             factName = evt.newValue;
+            if (_selectedEntry == box)
+            {
+                _selectedKey = factName;
+            }
             _factRegistry.CreateFact(factName, fact);
+            EditorUtility.SetDirty(target);
         });
 
         dropDown.choices = new List<string>{"Flag", "Numeric"};
@@ -99,17 +114,20 @@ public class FactRegistryEditor : UnityEditor.Editor
                     _factRegistry.CreateFact(factName, new Fact(0));
                     break;
             }
+            EditorUtility.SetDirty(target);
         });
         
         
         switch (fact.type)
         {
+            default:
             case FactType.Flag:
                 numeric.parent.Remove(numeric);
                 toggle.value = fact.Get<bool>();
                 toggle.RegisterValueChangedCallback(evt =>
                 {
                     fact.Set(evt.newValue);
+                    EditorUtility.SetDirty(target);
                 });
                 break;
             case FactType.Numeric:
@@ -118,11 +136,18 @@ public class FactRegistryEditor : UnityEditor.Editor
                 numeric.RegisterValueChangedCallback(evt =>
                 {
                     fact.Set(evt.newValue);
+                    EditorUtility.SetDirty(target);
                 });
-                break;
-            default:
                 break;
         }
         return entryVisual;
+    }
+
+    private void SetSelectedEntry(VisualElement element, string key)
+    {
+        _selectedEntry?.RemoveFromClassList(SelectedCssClass);
+        _selectedKey = key;
+        _selectedEntry = element;
+        element.AddToClassList(SelectedCssClass);
     }
 }
