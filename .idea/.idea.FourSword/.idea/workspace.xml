@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Fixed bug where resistances were ignored">
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/Facts/Fact_PropertyDrawer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/Facts/Fact_PropertyDrawer.cs.meta" afterDir="false" />
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/Fact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/Fact.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/StatusEffects/SE_Speed.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/StatusEffects/SE_Speed.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Bush/Dt_Bush.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Bush/Dt_Bush.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Bush/P_Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Bush/P_Bush.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,13 +53,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/a0/28561a76/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/f3/1c7e8612/Transform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b912dbff05184439afd77d89b5fecd719c4c00/05/2fe37c36/PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b912dbff05184439afd77d89b5fecd719c4c00/15/5ba19d5a/InspectorMode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b912dbff05184439afd77d89b5fecd719c4c00/d2/fcec9afa/Editor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Behavior Demo For Unity/Assets/Code/Scripts/UI/UICharacterHealth.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/IsNullCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Scripts/HealthComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
@@ -159,13 +153,15 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="476">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="476" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -202,7 +198,9 @@
       <workItem from="1761424782074" duration="1223000" />
       <workItem from="1761757256542" duration="2836000" />
       <workItem from="1761794228365" duration="615000" />
-      <workItem from="1761848540655" duration="1247000" />
+      <workItem from="1761848540655" duration="12518000" />
+      <workItem from="1761868240714" duration="3962000" />
+      <workItem from="1762187829647" duration="5423000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -468,7 +466,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761358123231</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="i dont remember what i was working on">
+      <option name="closed" value="true" />
+      <created>1761851269313</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1761851269313</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +513,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Enemy attacks and waits for attack to finish before moving again" />
     <MESSAGE value="Added basic hitbox attack logic" />
     <MESSAGE value="Moved attack controller into unified class" />
     <MESSAGE value="Reworked hitboxes to be good now" />
@@ -532,7 +537,8 @@
     <MESSAGE value="Added drop table and drop table components" />
     <MESSAGE value="Test of facts system and drawer" />
     <MESSAGE value="Fixed bug where resistances were ignored" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug where resistances were ignored" />
+    <MESSAGE value="i dont remember what i was working on" />
+    <option name="LAST_COMMIT_MESSAGE" value="i dont remember what i was working on" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

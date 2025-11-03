@@ -8,16 +8,23 @@ namespace Game.Facts
         public bool IsType<T>();
 
         object Get();
+
+        void Set(object value);
     }
 
     class VariantHolder<T> : IVariantHolder
     {
-        public T item { get; }
+        private T _item;
         public bool IsType<TU>() => typeof(TU) == typeof(T);
 
-        public object Get() => item;
+        public object Get() => _item;
+
+        public void Set(object newValue)
+        {
+            _item = (T)newValue;
+        }
         
-        public VariantHolder(T item) => this.item = item;
+        public VariantHolder(T item) => this._item = item;
     }
     
     public enum FactType
@@ -55,6 +62,11 @@ namespace Game.Facts
         public T Get<T>()
         {
             return (T)_variant.Get();
+        }
+
+        public void Set<T>(T newValue)
+        {
+            _variant.Set(newValue);
         }
     }
 }

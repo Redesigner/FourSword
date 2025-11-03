@@ -12,8 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4af568b69e4548975d727d96bd2d6e, type: 3}
   m_Name: FourSwordFacts
   m_EditorClassIdentifier: 
-  facts:
-    _serializedList:
-    - Key: test2
-      Value:
-        type: 1
+  editorFlag: 1
