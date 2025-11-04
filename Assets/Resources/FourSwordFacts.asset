@@ -24,10 +24,10 @@ MonoBehaviour:
         variant:
           rid: 896754074794328064
         type: 0
-    - Key: TestTrue
+    - Key: Picked up heart
       Value:
         variant:
-          rid: 896754074727481344
+          rid: 896754075064074241
         type: 0
   testFact:
     variant:
@@ -38,10 +38,6 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 896754074727481344
-      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
-      data:
-        _item: 1
     - rid: 896754074779385857
       type: {class: 'VariantHolder`1[[System.Int32, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
       data:
@@ -50,3 +46,7 @@ MonoBehaviour:
       type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
       data:
         _item: 0
+    - rid: 896754075064074241
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 1

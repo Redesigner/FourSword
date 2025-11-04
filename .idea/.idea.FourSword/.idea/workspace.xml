@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Fact registry editor working!">
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FactRegistryEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactRegistryEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/Fact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/Fact.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Editor/FactRegistryEditor-style.uss" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Editor/FactRegistryEditor-style.uss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Editor/FactRegistryEntry.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Editor/FactRegistryEntry.uxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,9 +158,7 @@
       <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -203,7 +197,8 @@
       <workItem from="1761794228365" duration="615000" />
       <workItem from="1761848540655" duration="12518000" />
       <workItem from="1761868240714" duration="3962000" />
-      <workItem from="1762187829647" duration="14182000" />
+      <workItem from="1762187829647" duration="16273000" />
+      <workItem from="1762283223538" duration="5049000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -485,7 +480,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762194859085</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Fixed facts not saving correctly">
+      <option name="closed" value="true" />
+      <created>1762204121174</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1762204121174</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +527,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Moved attack controller into unified class" />
     <MESSAGE value="Reworked hitboxes to be good now" />
     <MESSAGE value="Clean up drawing debug, fix enemy aniamtions" />
     <MESSAGE value="Added target moved condition, started vision cone" />
@@ -549,7 +551,8 @@
     <MESSAGE value="Fixed bug where resistances were ignored" />
     <MESSAGE value="i dont remember what i was working on" />
     <MESSAGE value="Fact registry editor working!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fact registry editor working!" />
+    <MESSAGE value="Fixed facts not saving correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed facts not saving correctly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

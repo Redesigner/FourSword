@@ -929,10 +929,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   query:
-    factName: 
-    type: 0
+    factName: Test15
+    type: 2
     comparison:
+      variant:
+        rid: -2
       type: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &1226478774
 Transform:
   m_ObjectHideFlags: 0
