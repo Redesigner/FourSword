@@ -18,6 +18,6 @@ namespace Game.Facts
         public FactQueryType type;
         
         [SerializeReference]
-        public Fact comparison;
+        public FactVariant comparison;
     }
 }

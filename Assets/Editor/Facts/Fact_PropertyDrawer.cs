@@ -6,12 +6,12 @@ using Rect = UnityEngine.Rect;
 
 namespace Editor.Facts
 {
-    [CustomPropertyDrawer(typeof(Fact))]
+    [CustomPropertyDrawer(typeof(FactVariant))]
     public class FactPropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var fact = (Fact)property.boxedValue;
+            var fact = (FactVariant)property.boxedValue;
 
             EditorGUI.BeginProperty(position, label, property);
 
@@ -25,8 +25,8 @@ namespace Editor.Facts
             {
                 property.boxedValue = result switch
                 {
-                    0 => new Fact(true),
-                    1 => new Fact(0),
+                    0 => new FactVariant(true),
+                    1 => new FactVariant(0),
                     _ => property.boxedValue
                 };
             }
@@ -39,7 +39,7 @@ namespace Editor.Facts
                     var newValue = EditorGUI.ToggleLeft(valueRect, new GUIContent(), fact.Get<bool>());
                     if (newValue != fact.Get<bool>())
                     {
-                        var newFact = new Fact(newValue);
+                        var newFact = new FactVariant(newValue);
                         property.boxedValue = newFact;
                     }
                     break;

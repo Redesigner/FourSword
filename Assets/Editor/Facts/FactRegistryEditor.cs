@@ -41,7 +41,7 @@ public class FactRegistryEditor : UnityEditor.Editor
         var plusButton = _inspectorRoot.Query<Button>("Add");
         plusButton.First().clicked += () =>
         {
-            _factRegistry.CreateFact("Empty", new Fact(true));
+            _factRegistry.CreateFact("Empty", true);
         };
         
         var minusButton = _inspectorRoot.Query<Button>("Remove");
@@ -64,13 +64,13 @@ public class FactRegistryEditor : UnityEditor.Editor
             _inspectorRoot.Remove(query);
         }
         
-        foreach (var factEntryPair in _factRegistry.facts)
+        foreach (var fact in _factRegistry.facts)
         {
-            _inspectorRoot.Add(CreateEntryVisual(factEntryPair.Key, factEntryPair.Value));
+            _inspectorRoot.Add(CreateEntryVisual(fact));
         }
     }
 
-    private VisualElement CreateEntryVisual(string factName, Fact fact)
+    private VisualElement CreateEntryVisual(Fact fact)
     {
         var entryVisual = _entryVisualAsset.CloneTree();
         entryVisual.AddToClassList("entry");
@@ -80,62 +80,62 @@ public class FactRegistryEditor : UnityEditor.Editor
         var numeric = entryVisual.Query<IntegerField>("Int").First();
         var box = nameField.parent;
         
-        box.RegisterCallback<ClickEvent>(evt =>
+        box.RegisterCallback<ClickEvent>(_ =>
         {
-            SetSelectedEntry(box, factName);
+            SetSelectedEntry(box, fact.name);
         });
 
-        nameField.SetValueWithoutNotify(factName);
+        nameField.SetValueWithoutNotify(fact.name);
 
         nameField.isDelayed = true;
         nameField.RegisterValueChangedCallback(evt =>
         {
-            _factRegistry.facts.Remove(factName);
-            factName = evt.newValue;
+            _factRegistry.RenameFact(fact.name, evt.newValue);
+            
+            // If we renamed the currently selected entry, update our selected name to match
             if (_selectedEntry == box)
             {
-                _selectedKey = factName;
+                _selectedKey = fact.name;
             }
-            _factRegistry.CreateFact(factName, fact);
             EditorUtility.SetDirty(target);
         });
 
         dropDown.choices = new List<string>{"Flag", "Numeric"};
-        dropDown.index = (int)fact.type;
+        dropDown.index = (int)fact.data.type;
         dropDown.RegisterValueChangedCallback((evt) =>
         {
-            _factRegistry.facts.Remove(factName);
+            _factRegistry.RemoveFact(fact.name);
             switch (evt.newValue)
             {
                 case "Flag":
-                    _factRegistry.CreateFact(factName, new Fact(true));
+                    _factRegistry.CreateFact(fact.name, true);
                     break;
                 case "Numeric":
-                    _factRegistry.CreateFact(factName, new Fact(0));
+                    _factRegistry.CreateFact(fact.name, 0);
                     break;
             }
             EditorUtility.SetDirty(target);
         });
         
         
-        switch (fact.type)
+        switch (fact.data.type)
         {
             default:
             case FactType.Flag:
                 numeric.parent.Remove(numeric);
-                toggle.value = fact.Get<bool>();
+                toggle.value = fact.data.Get<bool>();
                 toggle.RegisterValueChangedCallback(evt =>
                 {
-                    fact.Set(evt.newValue);
+                    fact.data.Set(evt.newValue);
                     EditorUtility.SetDirty(target);
                 });
                 break;
             case FactType.Numeric:
                 toggle.parent.Remove(toggle);
-                numeric.value = fact.Get<int>();
+                numeric.value = fact.data.Get<int>();
                 numeric.RegisterValueChangedCallback(evt =>
                 {
-                    fact.Set(evt.newValue);
+                    fact.data.Set(evt.newValue);
                     EditorUtility.SetDirty(target);
                 });
                 break;

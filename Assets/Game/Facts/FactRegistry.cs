@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Game.Facts
 {
@@ -11,28 +13,74 @@ namespace Game.Facts
     {
         public Action onItemsChanged;
         
-        [SerializedDictionary("Name", "Fact")]
-        public SerializedDictionary<string, Fact> facts = new();
+        [SerializeField]
+        public List<Fact> facts = new();
 
-        [SerializeField] private Fact testFact;
-
-        public void CreateFact(string factName, Fact fact)
+        public void CreateFact(string factName, bool data)
         {
-            if (facts.ContainsKey(factName))
+            if (Contains(factName))
             {
                 return;
             }
             
-            facts.Add(factName, fact);
+            facts.Add(new Fact(factName, data));
+            onItemsChanged.Invoke();
+        }
+        
+        public void CreateFact(string factName, int data)
+        {
+            if (Contains(factName))
+            {
+                return;
+            }
+            
+            facts.Add(new Fact(factName, data));
             onItemsChanged.Invoke();
         }
 
         public void RemoveFact(string factName)
         {
-            if (facts.Remove(factName))
+            var index = facts.FindIndex(fact => fact.name == factName);
+            if (index < 0)
             {
-                onItemsChanged.Invoke();
+                return;
             }
+            
+            facts.RemoveAt(index);
+            onItemsChanged.Invoke();
+        }
+
+        public bool TryGetFact(string factName, out Fact fact)
+        {
+            var index = facts.FindIndex(fact => fact.name == factName);
+            if (index < 0)
+            {
+                fact = new Fact();
+                return false;
+            }
+
+            fact = facts[index];
+            return true;
+        }
+
+        public bool RenameFact(string oldName, string newName)
+        {
+            var index = facts.FindIndex(fact => fact.name == oldName);
+            if (index < 0)
+            {
+                return false;
+            }
+
+            var newFact = facts[index];
+            newFact.name = newName;
+
+            facts[index] = newFact;
+            return true;
+        }
+
+        public bool Contains(string factName)
+        {
+            return facts.Any(fact => fact.name == factName);
         }
     }
 }

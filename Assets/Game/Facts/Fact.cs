@@ -1,103 +1,44 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Game.Facts
 {
-    interface IVariantHolder
-    {
-        public bool IsType<T>();
-
-        object Get();
-
-        void Set(object value);
-    }
-
-    class VariantHolder<T> : IVariantHolder
-    {
-        [SerializeReference]
-        private T _item;
-        public bool IsType<TU>() => typeof(TU) == typeof(T);
-
-        public object Get() => _item;
-
-        public void Set(object newValue)
-        {
-            _item = (T)newValue;
-        }
-        
-        public VariantHolder(T item) => this._item = item;
-    }
-    
-    public enum FactType
-    {
-        Flag = 0,
-        Numeric = 1
-    }
-
     [Serializable]
-    public class Fact
+    public struct Fact : IEquatable<Fact>
     {
-        [SerializeReference]
-        private IVariantHolder variant;
-        
-        [SerializeField]
-        public FactType type;
+        [SerializeReference] public FactVariant data;
+        [SerializeField] public string name;
 
-        public Fact()
+        public Fact(string name, bool value)
         {
-            variant = new VariantHolder<bool>(true);
-            type = FactType.Flag;
+            data = new FactVariant(value);
+            this.name = name;
         }
 
-        public Fact(bool value)
+        public Fact(string name, int value)
         {
-            variant = new VariantHolder<bool>(value);
-            type = FactType.Flag;
+            data = new FactVariant(value);
+            this.name = name;
         }
 
-        public Fact(int value)
+        public bool Equals(Fact other)
         {
-            variant = new VariantHolder<int>(value);
-            type = FactType.Numeric;
+            return Equals(data, other.data) && name == other.name;
         }
 
-        public T Get<T>()
+        public override bool Equals(object obj)
         {
-            return (T)variant.Get();
+            return obj is Fact other && Equals(other);
         }
 
-        public void Set<T>(T newValue)
+        public override int GetHashCode()
         {
-            variant.Set(newValue);
+            return HashCode.Combine(data, name);
         }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        public void Rename(string newName)
         {
-            info.AddValue("type", type);
-            switch (type)
-            {
-                case FactType.Flag:
-                    info.AddValue("value", Get<bool>());
-                    break;
-                case FactType.Numeric:
-                    info.AddValue("value", Get<int>());
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public Fact(SerializationInfo info, StreamingContext context)
-        {
-            type = (FactType)info.GetValue("type", typeof(FactType));
-            variant = type switch
-            {
-                FactType.Flag => new VariantHolder<bool>(info.GetBoolean("value")),
-                FactType.Numeric => new VariantHolder<int>(info.GetInt32("value")),
-                _ => new VariantHolder<bool>(false)
-            };
+            name = newName;
         }
     }
 }

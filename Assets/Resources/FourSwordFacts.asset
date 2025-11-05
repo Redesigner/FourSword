@@ -13,49 +13,32 @@ MonoBehaviour:
   m_Name: FourSwordFacts
   m_EditorClassIdentifier: 
   facts:
-    _serializedList:
-    - Key: TestFalse
-      Value:
-        variant:
-          rid: 896754074794328064
-        type: 0
-    - Key: Picked up heart
-      Value:
-        variant:
-          rid: 896754075064074241
-        type: 0
-    - Key: Numeric Test 15
-      Value:
-        variant:
-          rid: 896754074779385857
-        type: 1
-    - Key: Numeric Test 6
-      Value:
-        variant:
-          rid: 896754103126851589
-        type: 1
-  testFact:
-    variant:
-      rid: -2
-    type: 0
+  - data:
+      rid: 896754120057683968
+    name: Test Flag
+  - data:
+      rid: 896754120084160512
+    name: TestFlag2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 896754074779385857
-      type: {class: 'VariantHolder`1[[System.Int32, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+    - rid: 896754120057683968
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
       data:
-        _item: 15
-    - rid: 896754074794328064
+        variant:
+          rid: 896754120057683969
+        type: 0
+    - rid: 896754120057683969
       type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
       data:
         _item: 0
-    - rid: 896754075064074241
+    - rid: 896754120084160512
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754120084160513
+        type: 0
+    - rid: 896754120084160513
       type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
       data:
         _item: 1
-    - rid: 896754103126851589
-      type: {class: 'VariantHolder`1[[System.Int32, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
-      data:
-        _item: 6
