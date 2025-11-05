@@ -37,13 +37,19 @@ namespace Game.Facts
     }
 
     [Serializable]
-    public struct Fact
+    public class Fact
     {
         [SerializeReference]
         private IVariantHolder variant;
         
         [SerializeField]
         public FactType type;
+
+        public Fact()
+        {
+            variant = new VariantHolder<bool>(true);
+            type = FactType.Flag;
+        }
 
         public Fact(bool value)
         {

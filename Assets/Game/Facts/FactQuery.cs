@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Game.Facts
 {
@@ -15,6 +16,8 @@ namespace Game.Facts
     {
         public string factName;
         public FactQueryType type;
+        
+        [SerializeReference]
         public Fact comparison;
     }
 }

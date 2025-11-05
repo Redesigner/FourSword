@@ -11,7 +11,7 @@ namespace Editor.Facts
     [CustomPropertyDrawer(typeof(FactQuery))]
     public class FactQueryPropertyDrawer : PropertyDrawer
     {
-        private static List<string> _flagOptionNames = new() { "True", "False" };
+        private static List<string> _flagOptionNames = new() { "Equal", "Not Equal" };
         private static List<string> _numericOptionNames = new() { "Equal", "Greater", "Less" };
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -37,7 +37,17 @@ namespace Editor.Facts
                 EditorGUI.EndProperty();
                 return;
             }
-            
+
+            if (factQuery.comparison == null || factQuery.comparison.type != referenceFact.type)
+            {
+                factQuery.comparison = referenceFact.type switch
+                {
+                    FactType.Flag => new Fact(true),
+                    FactType.Numeric => new Fact(0),
+                    _ => new Fact(false)
+                };
+            }
+
             // Name dropdown
             var nameRect = new Rect(position.x, position.y + 18.0f, position.width * 0.4f, position.height - 18.0f);
             var options = factRegistry.facts.Keys.ToArray();
@@ -54,7 +64,7 @@ namespace Editor.Facts
             }
             
             // Comparator dropdown
-            var comparatorRect = new Rect(position.x + position.width * 0.4f, position.y + 18.0f, position.width * 0.2f,
+            var comparatorRect = new Rect(position.x + position.width * 0.45f, position.y + 18.0f, position.width * 0.25f,
                 position.height - 18.0f);
             var currentComparatorIndex = GetComparatorIndex(referenceFact.type, factQuery);
             var selectedComparatorIndex = EditorGUI.Popup(comparatorRect, currentComparatorIndex,
@@ -63,6 +73,37 @@ namespace Editor.Facts
             {
                 factQuery.type = GetQueryTypeFromInt(referenceFact.type, selectedComparatorIndex);
                 factDirty = true;
+            }
+            
+            // Value Field
+            var valueRect = new Rect(position.x + position.width * 0.75f, position.y + 18.0f, position.width * 0.25f,
+                18.0f);
+
+            switch (referenceFact.type)
+            {
+                default:
+                case FactType.Flag:
+                {
+                    var oldValue = factQuery.comparison.Get<bool>();
+                    var newValue = GUI.Toggle(valueRect, oldValue, "");
+                    if (newValue != oldValue)
+                    {
+                        factQuery.comparison = new Fact(newValue);
+                        factDirty = true;
+                    }
+                    break;
+                }
+                case FactType.Numeric:
+                {
+                    var oldValue = factQuery.comparison.Get<int>();
+                    var newValue = EditorGUI.IntField(valueRect, factQuery.comparison.Get<int>());
+                    if (newValue != oldValue)
+                    {
+                        factQuery.comparison = new Fact(newValue);
+                        factDirty = true;
+                    }
+                    break;
+                }
             }
 
             if (factDirty)
