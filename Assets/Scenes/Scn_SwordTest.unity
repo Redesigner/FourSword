@@ -929,23 +929,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   query:
-    factName: TestFlag2
-    type: 0
+    factName: Test Flag
+    type: 2
     comparison:
-      rid: 896754120084160515
+      rid: 896754124383584264
   references:
     version: 2
     RefIds:
-    - rid: 896754120084160515
+    - rid: 896754124383584264
       type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
       data:
         variant:
-          rid: 896754120084160516
-        type: 0
-    - rid: 896754120084160516
-      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+          rid: 896754124383584265
+        type: 1
+    - rid: 896754124383584265
+      type: {class: 'VariantHolder`1[[System.Int32, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
       data:
-        _item: 1
+        _item: 15
 --- !u!4 &1226478774
 Transform:
   m_ObjectHideFlags: 0

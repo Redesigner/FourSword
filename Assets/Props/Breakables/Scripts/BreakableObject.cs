@@ -9,15 +9,16 @@ namespace Props.Scripts
         [SerializeField] private GameObject particlePrefab;
         [SerializeField] [Min(0.0f)] private float particleLifetime;
         [SerializeField] private UnityEvent onBroken;
+        [SerializeField] private DamageType breakableDamageType;
         
         public override void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
         {
-            if (damageType != DamageType.Slashing)
+            if (damageType != breakableDamageType)
             {
                 return;
             }
-            onBroken.Invoke();
             
+            onBroken.Invoke();
             if (particlePrefab)
             {
                 var particleObject = Instantiate(particlePrefab);

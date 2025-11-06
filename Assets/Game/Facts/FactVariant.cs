@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Object = UnityEngine.Object;
 
 namespace Game.Facts
 {
@@ -98,6 +99,11 @@ namespace Game.Facts
                 FactType.Numeric => new VariantHolder<int>(info.GetInt32("value")),
                 _ => new VariantHolder<bool>(false)
             };
+        }
+
+        protected bool Equals(FactVariant other)
+        {
+            return type == other.type && Equals(variant, other.variant);
         }
     }
 }

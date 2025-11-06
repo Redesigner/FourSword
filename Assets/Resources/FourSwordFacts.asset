@@ -15,10 +15,13 @@ MonoBehaviour:
   facts:
   - data:
       rid: 896754120057683968
+    name: Test 2
+  - data:
+      rid: 896754124383584266
     name: Test Flag
   - data:
-      rid: 896754120084160512
-    name: TestFlag2
+      rid: 896754124383584282
+    name: Empty 4
   references:
     version: 2
     RefIds:
@@ -32,13 +35,23 @@ MonoBehaviour:
       type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
       data:
         _item: 0
-    - rid: 896754120084160512
+    - rid: 896754124383584266
       type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
       data:
         variant:
-          rid: 896754120084160513
+          rid: 896754124383584267
         type: 0
-    - rid: 896754120084160513
+    - rid: 896754124383584267
       type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
       data:
         _item: 1
+    - rid: 896754124383584282
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754124383584283
+        type: 1
+    - rid: 896754124383584283
+      type: {class: 'VariantHolder`1[[System.Int32, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 0
