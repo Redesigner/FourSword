@@ -16,6 +16,8 @@ namespace Game.Facts
         [SerializeField]
         public List<Fact> facts = new();
 
+        public const string DefaultFactRegistryPath = "FourSwordFacts";
+
         public void CreateFact(string factName, bool data)
         {
             if (Contains(factName))

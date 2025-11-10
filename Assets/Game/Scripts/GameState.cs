@@ -15,7 +15,7 @@ public class GameState : MonoBehaviour
     
     public StatusEffectList effectList { get; private set; }
 
-    public FactRegistry factRegistry;
+    public FactState factState { get; private set; }
     
     private static GameState _instance;
     public static GameState instance
@@ -42,6 +42,11 @@ public class GameState : MonoBehaviour
     {
         _instance = this;
         effectList = Resources.Load<FourSwordSettings>("FourSwordSettings").statusEffects;
+        
+        factState = new FactState();
+        var factRegistry = Resources.Load<FactRegistry>(FactRegistry.DefaultFactRegistryPath);
+        var saveFile = new FactGameSave();
+        factState.Initialize(factRegistry, saveFile);
         DontDestroyOnLoad(gameObject);
     }
 

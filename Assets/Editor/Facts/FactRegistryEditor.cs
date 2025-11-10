@@ -90,6 +90,11 @@ public class FactRegistryEditor : UnityEditor.Editor
         nameField.isDelayed = true;
         nameField.RegisterValueChangedCallback(evt =>
         {
+            // The name shouldn't contain quotation marks
+            if (evt.newValue.Contains("\""))
+            {
+                return;
+            }
             _factRegistry.RenameFact(fact.name, evt.newValue);
             
             // If we renamed the currently selected entry, update our selected name to match

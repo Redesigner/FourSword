@@ -119,71 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &3349632
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1950181772384393320, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_Name
-      value: P_Heart
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.6595194
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.47944397
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2426462560345667954, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6223812028235212579, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_BodyType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6223812028235212579, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
 --- !u!1001 &205159155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -837,6 +772,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8578328630212891571, guid: c12e0443e3491e347ba112d2569c45e6, type: 3}
+      propertyPath: breakableDamageType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -929,20 +868,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   query:
-    factName: Test Flag
-    type: 2
+    factName: NumEnemiesDefeated
+    type: 3
     comparison:
-      rid: 896754124383584264
+      rid: 896754143854067845
+  spawnedPrefab: {fileID: 1950181772384393320, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
   references:
     version: 2
     RefIds:
-    - rid: 896754124383584264
+    - rid: 896754143854067845
       type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
       data:
         variant:
-          rid: 896754124383584265
+          rid: 896754143854067846
         type: 1
-    - rid: 896754124383584265
+    - rid: 896754143854067846
       type: {class: 'VariantHolder`1[[System.Int32, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
       data:
         _item: 15
@@ -955,7 +895,7 @@ Transform:
   m_GameObject: {fileID: 1226478772}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13629985, y: 0.35064906, z: 8.166138}
+  m_LocalPosition: {x: -3.64, y: -3.43, z: 8.166138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1330,5 +1270,4 @@ SceneRoots:
   - {fileID: 986217486}
   - {fileID: 542493277}
   - {fileID: 1106947009}
-  - {fileID: 3349632}
   - {fileID: 1226478774}

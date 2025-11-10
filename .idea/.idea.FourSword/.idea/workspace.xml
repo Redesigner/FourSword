@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Reworked fact registry to be a list">
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactGameSave.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactGameSave.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactState.cs.meta" afterDir="false" />
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="Added fact save, optional damage type to BreakableObject.cs">
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordSave.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordSave.txt.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/FactVariant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactVariant.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FactRegistryEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactRegistryEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/FactGameSave.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactGameSave.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactRegistry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/FactState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/GameState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Props/Breakables/Bush/P_Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Breakables/Bush/P_Bush.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/Facts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/Facts/FactQuerySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Scripts/FactQuerySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/Facts/FactQuerySpawner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Props/Scripts/FactQuerySpawner.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +212,7 @@
       <workItem from="1761848540655" duration="12518000" />
       <workItem from="1761868240714" duration="3962000" />
       <workItem from="1762187829647" duration="16273000" />
-      <workItem from="1762283223538" duration="31636000" />
+      <workItem from="1762283223538" duration="46302000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -519,7 +526,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762376617397</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Added fact save, optional damage type to BreakableObject.cs">
+      <option name="closed" value="true" />
+      <created>1762455587463</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1762455587463</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -558,7 +573,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Cone visibility checking works" />
     <MESSAGE value="Added circle debug draw" />
     <MESSAGE value="Added vision cones" />
     <MESSAGE value="Reorganized folders -- all scripts are now in a scripts folder" />
@@ -583,7 +597,8 @@
     <MESSAGE value="Added dropdowns to factquery" />
     <MESSAGE value="Finished fact query editor" />
     <MESSAGE value="Reworked fact registry to be a list" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reworked fact registry to be a list" />
+    <MESSAGE value="Added fact save, optional damage type to BreakableObject.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added fact save, optional damage type to BreakableObject.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

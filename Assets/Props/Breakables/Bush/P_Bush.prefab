@@ -181,6 +181,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  breakableDamageType: 1
 --- !u!114 &8857861402078814685
 MonoBehaviour:
   m_ObjectHideFlags: 0

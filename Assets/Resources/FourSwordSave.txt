@@ -1,0 +1,2 @@
+﻿"TestLevel.HeartPickedUp" false
+"NumEnemiesDefeated" 16
