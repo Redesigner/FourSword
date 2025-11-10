@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using NUnit.Framework;
 using UnityEngine;
 
 namespace Game.Facts
@@ -100,6 +103,68 @@ namespace Game.Facts
                     };
                 }
             }
+        }
+
+        // Generate a save file based on this registry, storing only values that
+        // are different from the default values
+        public List<string> GenerateSaveDifferences(FactRegistry registry)
+        {
+            var result = new List<string>();
+            foreach (var registryFact in registry.facts)
+            {
+                if (!_facts.TryGetValue(registryFact.name, out var currentGameStateFact))
+                {
+                    Debug.LogWarningFormat("Attempted to save fact '{0}', but it was not in the registry", registryFact.name);
+                    continue;
+                }
+
+                // While this will get caught by our next conditional
+                // because FactVariant equality checks type first,
+                // I want to make sure that we know if this exceptional
+                // state is occurring. It *shouldn't*, but...
+                if (currentGameStateFact.type != registryFact.data.type)
+                {
+                    Debug.LogWarningFormat("Attempted to save fact '{0}', but the types were mismatched.", registryFact.name);
+                    continue;
+                }
+
+                if (currentGameStateFact == registryFact.data)
+                {
+                    continue;
+                }
+
+                switch (currentGameStateFact.type)
+                {
+                    case FactType.Flag:
+                        result.Add($"\"{registryFact.name}\" {currentGameStateFact.Get<bool>()}");
+                        break;
+                    
+                    case FactType.Numeric:
+                        result.Add($"\"{registryFact.name}\" {currentGameStateFact.Get<int>()}");
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            return result;
+        }
+
+        public void Save(string filepath = FactGameSave.DefaultSaveLocation)
+        {
+            var factRegistry = Resources.Load<FactRegistry>(FactRegistry.DefaultFactRegistryPath);
+            if (!factRegistry)
+            {
+                Debug.LogWarning("Failed to save game. Could not find the fact registry file.");
+                return;
+            }
+
+            var saveFile = new StreamWriter($"Assets/Resources/{filepath}.txt", false);
+            foreach (var line in GenerateSaveDifferences(factRegistry))
+            {
+                saveFile.WriteLine(line);
+            }
+            saveFile.Close();
         }
     }
 }

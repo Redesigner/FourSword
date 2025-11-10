@@ -91,6 +91,11 @@ public class GameState : MonoBehaviour
         Pause();
     }
 
+    public void Save()
+    {
+        factState.Save();
+    }
+
     private void OnGUI()
     {
         if (paused)

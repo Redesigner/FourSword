@@ -25,7 +25,7 @@ namespace Game.Facts
         [SerializeField] public List<IntFact> numerics = new();
         [SerializeField] public List<BoolFact> flags = new();
 
-        private const string DefaultSaveLocation = "FourSwordSave";
+        public const string DefaultSaveLocation = "FourSwordSave";
 
         public FactGameSave(string filepath = DefaultSaveLocation)
         {

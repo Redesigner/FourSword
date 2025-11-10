@@ -386,6 +386,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e47456a0-53a8-4b4a-aaff-5319b8524261
     m_ActionName: 'Default/Pause[/Keyboard/pause]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7007944317837286859}
+        m_TargetAssemblyTypeName: Characters.Player.Scripts.UIController, Assembly-CSharp
+        m_MethodName: Save
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7e4b3585-e628-490a-8e74-1673d4daeed7
+    m_ActionName: 'Default/Save[/Keyboard/enter]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
@@ -433,7 +449,6 @@ MonoBehaviour:
       m_Calls: []
   walkSpeed: 4
   faceMovement: 1
-  speedEffect: {fileID: 11400000, guid: a36ca536a18cfd749b71ad1c08ac875c, type: 2}
 --- !u!114 &579208233741465586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +463,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 15
   health: 15
+  slashResistance: 1
+  pierceResistance: 1
+  smashResistance: 1
+  invulnerabilityTime: 0.5
   onStunned:
     m_PersistentCalls:
       m_Calls:
@@ -1014,6 +1033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1645518a30bc4295a2f089e7ea8ac253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDamageType: 0
   <swordDirection>k__BackingField: 0
   swordSprite: {fileID: 6808629328918796164}
   <primaryHitbox>k__BackingField: {fileID: 8956573327763723209}
