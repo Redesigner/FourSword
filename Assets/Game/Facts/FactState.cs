@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
 
 namespace Game.Facts
@@ -105,6 +103,59 @@ namespace Game.Facts
             }
         }
 
+        public void ExecuteChange(FactChange change)
+        {
+            if (!_facts.TryGetValue(change.factName, out var fact))
+            {
+                Debug.LogWarningFormat("Fact change failed. '{0}' was not in the registry.", change.factName);
+                return;
+            }
+
+            switch (change.type)
+            {
+                case FactChangeType.Assignment:
+                {
+                    // This only matters if we're running an assignment change here
+                    // this would fail on other types, because there is no variant inside
+                    if (fact.type != change.assignment.type)
+                    {
+                        Debug.LogWarningFormat("Fact type mismatch. Fact assignments expect the types to match. The assigment was of type '{0}', but '{1}', was '{2}'.", change.assignment.type, change.factName, fact.type);
+                        return;
+                    }
+
+                    _facts[change.factName] = change.assignment;
+                    break;
+                }
+                
+                case FactChangeType.Increment:
+                {
+                    if (fact.type == FactType.Flag)
+                    {
+                        Debug.LogWarningFormat("Attempted to increment flag '{0}'. Flags can only be assigned to.", change.factName);
+                        return;
+                    }
+
+                    _facts[change.factName] = new FactVariant(fact.Get<int>() + 1);
+                    break;
+                }
+                
+                case FactChangeType.Decrement:
+                {
+                    if (fact.type == FactType.Flag)
+                    {
+                        Debug.LogWarningFormat("Attempted to decrement flag '{0}'. Flags can only be assigned to.", change.factName);
+                        return;
+                    }
+
+                    _facts[change.factName] = new FactVariant(fact.Get<int>() - 1);
+                    break;
+                }
+                
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         // Generate a save file based on this registry, storing only values that
         // are different from the default values
         public List<string> GenerateSaveDifferences(FactRegistry registry)
@@ -136,7 +187,7 @@ namespace Game.Facts
                 switch (currentGameStateFact.type)
                 {
                     case FactType.Flag:
-                        result.Add($"\"{registryFact.name}\" {currentGameStateFact.Get<bool>()}");
+                        result.Add($"\"{registryFact.name}\" {currentGameStateFact.Get<bool>().ToString().ToLower()}");
                         break;
                     
                     case FactType.Numeric:
@@ -165,6 +216,49 @@ namespace Game.Facts
                 saveFile.WriteLine(line);
             }
             saveFile.Close();
+        }
+
+        /**
+         * <param name="flagName">Flag name to set</param>
+         * <param name="value">Value to be assigned</param>
+         * <returns>True if the flag was set successfully, false otherwise.</returns>
+         */
+        public bool WriteFlag(string flagName, bool value)
+        {
+            if (!_facts.TryGetValue(flagName, out var variant))
+            {
+                Debug.LogWarningFormat("FactState: Unable to write flag. '{0}' is not a valid fact name.", flagName);
+                return false;
+            }
+
+            if (variant.type != FactType.Flag)
+            {
+                Debug.LogWarningFormat("FactState: Unable to write flag. '{0}' is not a flag.", flagName);
+                return false;
+            }
+
+            _facts[flagName] = new FactVariant(value);
+            return true;
+        }
+
+        public bool TryGetFlag(string flagName, out bool value)
+        {
+            if (!_facts.TryGetValue(flagName, out var variant))
+            {
+                Debug.LogWarningFormat("FactState: Unable to get flag. '{0}' is not a valid fact name.", flagName);
+                value = false;
+                return false;
+            }
+
+            if (variant.type != FactType.Flag)
+            {
+                Debug.LogWarningFormat("FactState: Unable to get flag. '{0}' is not a flag.", flagName);
+                value = false;
+                return false;
+            }
+
+            value = variant.Get<bool>();
+            return true;
         }
     }
 }

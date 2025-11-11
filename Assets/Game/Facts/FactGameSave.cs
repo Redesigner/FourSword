@@ -44,7 +44,7 @@ namespace Game.Facts
                     continue;
                 }
 
-                switch (pair.Groups[2].Value)
+                switch (pair.Groups[2].Value.Trim())
                 {
                     case "true":
                         flags.Add(new BoolFact

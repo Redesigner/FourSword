@@ -560,6 +560,160 @@ Transform:
   - {fileID: 2101845330}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &601636652
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1950181772384393320, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_Name
+      value: P_SingleHeart
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.3627067
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8934618
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426462560345667954, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: factChange.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: itemFlagName.name
+      value: TestLevel.HeartPickedUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: factChange.factName
+      value: NumEnemiesDefeated
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: factChange.assignment
+      value: 896754255089893489
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: 'managedReferences[896754255089893483]'
+      value: Assembly-CSharp Game.Facts.FactVariant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: 'managedReferences[896754255089893484]'
+      value: 'Assembly-CSharp Game.Facts.VariantHolder`1[[System.Boolean, mscorlib]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: 'managedReferences[896754255089893485]'
+      value: Assembly-CSharp Game.Facts.FactVariant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: 'managedReferences[896754255089893486]'
+      value: 'Assembly-CSharp Game.Facts.VariantHolder`1[[System.Int32, mscorlib]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: 'managedReferences[896754255089893487]'
+      value: Assembly-CSharp Game.Facts.FactVariant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: 'managedReferences[896754255089893488]'
+      value: 'Assembly-CSharp Game.Facts.VariantHolder`1[[System.Boolean, mscorlib]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: 'managedReferences[896754255089893489]'
+      value: Assembly-CSharp Game.Facts.FactVariant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: 'managedReferences[896754255089893490]'
+      value: 'Assembly-CSharp Game.Facts.VariantHolder`1[[System.Int32, mscorlib]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893483].type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893485].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893487].type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893489].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893484]._item
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893486]._item
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893488]._item
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893490]._item
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893483].variant
+      value: 896754255089893484
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893485].variant
+      value: 896754255089893486
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893487].variant
+      value: 896754255089893488
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081472381357205225, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+      propertyPath: managedReferences[896754255089893489].variant
+      value: 896754255089893490
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7483017773746039516, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d0bb25916dad444684993ff46d9f449, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,3 +1425,4 @@ SceneRoots:
   - {fileID: 542493277}
   - {fileID: 1106947009}
   - {fileID: 1226478774}
+  - {fileID: 601636652}
