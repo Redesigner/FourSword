@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactChange_PropertyDrawer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactChange_PropertyDrawer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FlagName_PropertyDrawer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FlagName_PropertyDrawer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactChange.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactChange.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FlagName.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FlagName.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups/Scripts/SinglePickup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Pickups/Scripts/SinglePickup.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactDefaultEditorList.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactDefaultEditorList.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Doors.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Doors/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Doors/Scripts/NamedKeyDoor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Doors/Scripts/NamedKeyDoor.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Facts/FactState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FlagName_PropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FlagName_PropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/FourSwordSave.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordSave.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
     </list>
@@ -73,6 +71,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.psydack.uimgui@63242adb9dc7/Source/Data/UIOConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.psydack.uimgui@63242adb9dc7/Source/UImGui.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavigationOverlay.cs" root0="SKIP_HIGHLIGHTING" />
@@ -162,15 +162,13 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1324">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
-      <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="1324" />
+      <option name="listenPortForConnections" value="true" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -211,7 +209,8 @@
       <workItem from="1761868240714" duration="3962000" />
       <workItem from="1762187829647" duration="16273000" />
       <workItem from="1762283223538" duration="55293000" />
-      <workItem from="1762890653429" duration="5498000" />
+      <workItem from="1762890653429" duration="7673000" />
+      <workItem from="1762968989008" duration="9711000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -549,7 +548,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762806957439</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Added once per save heart">
+      <option name="closed" value="true" />
+      <created>1762896432867</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1762896432868</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +595,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Reorganized folders -- all scripts are now in a scripts folder" />
     <MESSAGE value="Added basic counter hooks" />
     <MESSAGE value="Changed sword attack controller to use Transition Table" />
     <MESSAGE value="Added stun stacks" />
@@ -613,7 +619,8 @@
     <MESSAGE value="Added fact save, optional damage type to BreakableObject.cs" />
     <MESSAGE value="Allow loading saves from text files" />
     <MESSAGE value="Added file save feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added file save feature" />
+    <MESSAGE value="Added once per save heart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added once per save heart" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -656,19 +663,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Game/Facts/FactGameSave.cs</url>
-          <line>46</line>
-          <properties documentPath="E:\Game Development\Unity\Projects\FourSword\Assets\Game\Facts\FactGameSave.cs" containingFunctionPresentation="Constructor 'FactGameSave'">
-            <startOffsets>
-              <option value="1232" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1261" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

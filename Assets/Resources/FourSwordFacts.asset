@@ -19,6 +19,15 @@ MonoBehaviour:
   - data:
       rid: 896754143854067834
     name: NumEnemiesDefeated
+  - data:
+      rid: 896754256254074991
+    name: TestLevel.Heart2PickedUp
+  - data:
+      rid: 896754279224705024
+    name: TestLevel.BossKeyPickedUp
+  - data:
+      rid: 896754279224705026
+    name: TestLevel.BossDoorOpened
   references:
     version: 2
     RefIds:
@@ -42,3 +51,33 @@ MonoBehaviour:
       type: {class: 'VariantHolder`1[[System.Int32, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
       data:
         _item: 5
+    - rid: 896754256254074991
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754256254074992
+        type: 0
+    - rid: 896754256254074992
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 0
+    - rid: 896754279224705024
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754279224705025
+        type: 0
+    - rid: 896754279224705025
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 0
+    - rid: 896754279224705026
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754279224705027
+        type: 0
+    - rid: 896754279224705027
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 0

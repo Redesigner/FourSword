@@ -22,8 +22,8 @@ namespace Editor.Facts
 
             var labelRect = new Rect(position.x, position.y, position.width, 18.0f);
             EditorGUI.LabelField(labelRect, label);
-            
-            var factRegistry = Resources.Load<FactRegistry>(FactRegistry.DefaultFactRegistryPath);
+
+            var factRegistry = FactDefaultEditorList.factRegistry;
             // Early out if we can't find our fact in the registry
             // because the other logic won't work without it
             if (!factRegistry.TryGetFact(factQuery.factName, out var referenceFact))

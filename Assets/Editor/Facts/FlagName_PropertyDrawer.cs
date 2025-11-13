@@ -18,8 +18,7 @@ namespace Editor.Facts
             var labelRect = new Rect(position.x, position.y, position.width, 18.0f);
             EditorGUI.LabelField(labelRect, label);
 
-            var factRegistry = Resources.Load<FactRegistry>(FactRegistry.DefaultFactRegistryPath);
-            
+            var factRegistry = FactDefaultEditorList.factRegistry;
             
             // Name dropdown
             var nameRect = new Rect(position.x, position.y + 18.0f, position.width, position.height);
