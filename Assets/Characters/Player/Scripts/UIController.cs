@@ -1,5 +1,4 @@
-﻿using System;
-using UImGui;
+﻿using UImGui;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +15,18 @@ namespace Characters.Player.Scripts
             
             GameState.instance.TogglePause();
         }
+
+        // This should only be used temporarily
+        public void Save(InputAction.CallbackContext context)
+        {
+            if (!context.performed)
+            {
+                return;
+            }
+            
+            GameState.instance.Save();
+        }
+        
         private void Awake()
         {
             UImGuiUtility.Layout += OnLayout;

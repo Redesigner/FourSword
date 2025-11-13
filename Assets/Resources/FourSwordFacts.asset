@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4af568b69e4548975d727d96bd2d6e, type: 3}
+  m_Name: FourSwordFacts
+  m_EditorClassIdentifier: 
+  facts:
+  - data:
+      rid: 896754120057683968
+    name: TestLevel.HeartPickedUp
+  - data:
+      rid: 896754143854067834
+    name: NumEnemiesDefeated
+  - data:
+      rid: 896754256254074991
+    name: TestLevel.Heart2PickedUp
+  - data:
+      rid: 896754279224705024
+    name: TestLevel.BossKeyPickedUp
+  - data:
+      rid: 896754279224705026
+    name: TestLevel.BossDoorOpened
+  references:
+    version: 2
+    RefIds:
+    - rid: 896754120057683968
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754120057683969
+        type: 0
+    - rid: 896754120057683969
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 0
+    - rid: 896754143854067834
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754143854067835
+        type: 1
+    - rid: 896754143854067835
+      type: {class: 'VariantHolder`1[[System.Int32, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 5
+    - rid: 896754256254074991
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754256254074992
+        type: 0
+    - rid: 896754256254074992
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 0
+    - rid: 896754279224705024
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754279224705025
+        type: 0
+    - rid: 896754279224705025
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 0
+    - rid: 896754279224705026
+      type: {class: FactVariant, ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        variant:
+          rid: 896754279224705027
+        type: 0
+    - rid: 896754279224705027
+      type: {class: 'VariantHolder`1[[System.Boolean, mscorlib]]', ns: Game.Facts, asm: Assembly-CSharp}
+      data:
+        _item: 0

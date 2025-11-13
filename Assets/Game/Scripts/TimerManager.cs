@@ -59,15 +59,26 @@ public readonly struct TimerHandle
 
 public class TimerEntry
 {
-    public readonly WeakReference<MonoBehaviour> owner;
+    public readonly WeakReference<MonoBehaviour> monoOwner;
+    public readonly WeakReference<GameObject> objectOwner;
     public readonly float duration;
     public float currentTime;
     public readonly Action callback;
     public bool paused;
 
-    public TimerEntry(WeakReference<MonoBehaviour> owner, float duration, Action callback)
+    public TimerEntry(WeakReference<MonoBehaviour> monoOwner, float duration, Action callback)
     {
-        this.owner = owner;
+        this.monoOwner = monoOwner;
+        this.duration = duration;
+        this.callback = callback;
+
+        currentTime = 0.0f;
+        paused = false;
+    }
+    
+    public TimerEntry(WeakReference<GameObject> objectOwner, float duration, Action callback)
+    {
+        this.objectOwner = objectOwner;
         this.duration = duration;
         this.callback = callback;
 
@@ -117,8 +128,17 @@ public class TimerManager : MonoBehaviour
             {
                 continue;
             }
-            
-            if (timer.owner.TryGetTarget(out var owner))
+
+            if (timer.monoOwner != null)
+            {
+                if (timer.monoOwner.TryGetTarget(out var owner))
+                {
+                    // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+                    // This invocation is only once per timer
+                    timer.callback.Invoke();
+                }
+            }
+            else if (timer.objectOwner.TryGetTarget(out var ownerObject))
             {
                 // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
                 // This invocation is only once per timer
@@ -136,13 +156,26 @@ public class TimerManager : MonoBehaviour
 
     /**
      * <summary>Create a new timer</summary>
-     * <param name="owner">Owning scipt of this timer. The timer's lifetime is tied to this object</param>
+     * <param name="owner">Owning script of this timer. The timer's lifetime is tied to this object</param>
      * <param name="duration">Time, in seconds, before the timer is called</param>
      * <param name="callback">Function to be called when timer is over</param>
      */
     public TimerHandle CreateTimer(MonoBehaviour owner, float duration, Action callback)
     {
         var newTimer = new TimerEntry(new WeakReference<MonoBehaviour>(owner), duration, callback);
+        _timers.Add(newTimer);
+        return new TimerHandle(newTimer);
+    }
+    
+    /**
+     * <summary>Create a new timer</summary>
+     * <param name="owner">Owning GameObject of this timer. The timer's lifetime is tied to this object</param>
+     * <param name="duration">Time, in seconds, before the timer is called</param>
+     * <param name="callback">Function to be called when timer is over</param>
+     */
+    public TimerHandle CreateTimer(GameObject owner, float duration, Action callback)
+    {
+        var newTimer = new TimerEntry(new WeakReference<GameObject>(owner), duration, callback);
         _timers.Add(newTimer);
         return new TimerHandle(newTimer);
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Game;
+using Game.Facts;
 using Game.StatusEffects;
 using Settings;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class GameState : MonoBehaviour
     public bool paused { get; private set; }
     
     public StatusEffectList effectList { get; private set; }
+
+    public FactState factState { get; private set; }
     
     private static GameState _instance;
     public static GameState instance
@@ -39,6 +42,11 @@ public class GameState : MonoBehaviour
     {
         _instance = this;
         effectList = Resources.Load<FourSwordSettings>("FourSwordSettings").statusEffects;
+        
+        factState = new FactState();
+        var factRegistry = Resources.Load<FactRegistry>(FactRegistry.DefaultFactRegistryPath);
+        var saveFile = new FactGameSave();
+        factState.Initialize(factRegistry, saveFile);
         DontDestroyOnLoad(gameObject);
     }
 
@@ -81,6 +89,11 @@ public class GameState : MonoBehaviour
         }
         
         Pause();
+    }
+
+    public void Save()
+    {
+        factState.Save();
     }
 
     private void OnGUI()

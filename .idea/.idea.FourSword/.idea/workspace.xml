@@ -4,9 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="added invulnerability effect">
+    <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactDefaultEditorList.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Facts/FactDefaultEditorList.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Doors.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Doors/Scripts.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Doors/Scripts/NamedKeyDoor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Props/Doors/Scripts/NamedKeyDoor.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/Facts/FlagName_PropertyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Facts/FlagName_PropertyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordFacts.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/FourSwordSave.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/FourSwordSave.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,21 +52,27 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/25ce29052dfe4e49a635a42f7798806b1e0000/63/b8635c02/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4ea9c5843f6c401888efb0bdc93eda2146ae00/44/0dd17073/RuntimeType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75372d1732c04bb9ae6815434ed108e110fc00/44/f9216a63/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8f9003fd757840539e403317d98305d31ff200/25/9e3455af/RenderChain.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/93316d3d59f7432fbe3362915972267731a00/9f/cc614992/GUIStyle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/02/ed4c1837/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/35/01de9c03/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/59/021cff59/Gizmos.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/a0/28561a76/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/f3/1c7e8612/Transform.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b912dbff05184439afd77d89b5fecd719c4c00/05/2fe37c36/PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b912dbff05184439afd77d89b5fecd719c4c00/15/5ba19d5a/InspectorMode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b912dbff05184439afd77d89b5fecd719c4c00/d2/fcec9afa/Editor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Behavior Demo For Unity/Assets/Code/Scripts/UI/UICharacterHealth.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/IsNullCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Scripts/HealthComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.psydack.uimgui@63242adb9dc7/Source/Data/UIOConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.psydack.uimgui@63242adb9dc7/Source/UImGui.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavigationOverlay.cs" root0="SKIP_HIGHLIGHTING" />
@@ -96,13 +112,15 @@
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Core/Sword&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.47916666&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Core/Props&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -146,7 +164,7 @@
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
-      <option name="listenPortForConnections" value="false" />
+      <option name="listenPortForConnections" value="true" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
@@ -183,6 +201,16 @@
       <workItem from="1760502158924" duration="5754000" />
       <workItem from="1760938958810" duration="610000" />
       <workItem from="1760977038392" duration="8142000" />
+      <workItem from="1761245604844" duration="44010000" />
+      <workItem from="1761424782074" duration="1223000" />
+      <workItem from="1761757256542" duration="2836000" />
+      <workItem from="1761794228365" duration="615000" />
+      <workItem from="1761848540655" duration="12518000" />
+      <workItem from="1761868240714" duration="3962000" />
+      <workItem from="1762187829647" duration="16273000" />
+      <workItem from="1762283223538" duration="55293000" />
+      <workItem from="1762890653429" duration="7673000" />
+      <workItem from="1762968989008" duration="9711000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -408,7 +436,127 @@
       <option name="project" value="LOCAL" />
       <updated>1760982548710</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Added leaf particle test">
+      <option name="closed" value="true" />
+      <created>1761105671626</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1761105671626</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Added health pickup">
+      <option name="closed" value="true" />
+      <created>1761162234490</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1761162234490</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Added drop table and drop table components">
+      <option name="closed" value="true" />
+      <created>1761170261511</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1761170261511</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Test of facts system and drawer">
+      <option name="closed" value="true" />
+      <created>1761290382950</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1761290382950</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Fixed bug where resistances were ignored">
+      <option name="closed" value="true" />
+      <created>1761358123231</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1761358123231</updated>
+    </task>
+    <task id="LOCAL-00034" summary="i dont remember what i was working on">
+      <option name="closed" value="true" />
+      <created>1761851269313</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1761851269313</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Fact registry editor working!">
+      <option name="closed" value="true" />
+      <created>1762194859085</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1762194859085</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Fixed facts not saving correctly">
+      <option name="closed" value="true" />
+      <created>1762204121174</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1762204121174</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Added dropdowns to factquery">
+      <option name="closed" value="true" />
+      <created>1762288656762</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1762288656762</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Finished fact query editor">
+      <option name="closed" value="true" />
+      <created>1762312647872</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1762312647872</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Reworked fact registry to be a list">
+      <option name="closed" value="true" />
+      <created>1762376617397</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1762376617397</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Added fact save, optional damage type to BreakableObject.cs">
+      <option name="closed" value="true" />
+      <created>1762455587463</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1762455587463</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Allow loading saves from text files">
+      <option name="closed" value="true" />
+      <created>1762802041931</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1762802041931</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Added file save feature">
+      <option name="closed" value="true" />
+      <created>1762806957439</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1762806957439</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added once per save heart">
+      <option name="closed" value="true" />
+      <created>1762896432867</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1762896432868</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,21 +595,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Connected Behavior Graph to navmesh" />
-    <MESSAGE value="Added position scoring system" />
-    <MESSAGE value="Fixed graph to use new query system" />
-    <MESSAGE value="Reorganized code, added some helpers, added look at action" />
-    <MESSAGE value="Added animation to AI" />
-    <MESSAGE value="Enemy attacks and waits for attack to finish before moving again" />
-    <MESSAGE value="Added basic hitbox attack logic" />
-    <MESSAGE value="Moved attack controller into unified class" />
-    <MESSAGE value="Reworked hitboxes to be good now" />
-    <MESSAGE value="Clean up drawing debug, fix enemy aniamtions" />
-    <MESSAGE value="Added target moved condition, started vision cone" />
-    <MESSAGE value="Cone visibility checking works" />
-    <MESSAGE value="Added circle debug draw" />
-    <MESSAGE value="Added vision cones" />
-    <MESSAGE value="Reorganized folders -- all scripts are now in a scripts folder" />
     <MESSAGE value="Added basic counter hooks" />
     <MESSAGE value="Changed sword attack controller to use Transition Table" />
     <MESSAGE value="Added stun stacks" />
@@ -472,7 +605,22 @@
     <MESSAGE value="Added damage resistances, changed Blunt -&gt; Smash" />
     <MESSAGE value="Fixed knockbacks so they have timers independent of stun" />
     <MESSAGE value="added invulnerability effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="added invulnerability effect" />
+    <MESSAGE value="Added leaf particle test" />
+    <MESSAGE value="Added health pickup" />
+    <MESSAGE value="Added drop table and drop table components" />
+    <MESSAGE value="Test of facts system and drawer" />
+    <MESSAGE value="Fixed bug where resistances were ignored" />
+    <MESSAGE value="i dont remember what i was working on" />
+    <MESSAGE value="Fact registry editor working!" />
+    <MESSAGE value="Fixed facts not saving correctly" />
+    <MESSAGE value="Added dropdowns to factquery" />
+    <MESSAGE value="Finished fact query editor" />
+    <MESSAGE value="Reworked fact registry to be a list" />
+    <MESSAGE value="Added fact save, optional damage type to BreakableObject.cs" />
+    <MESSAGE value="Allow loading saves from text files" />
+    <MESSAGE value="Added file save feature" />
+    <MESSAGE value="Added once per save heart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added once per save heart" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -502,6 +650,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Game/Facts/FactState.cs</url>
+          <line>107</line>
+          <properties documentPath="E:\Game Development\Unity\Projects\FourSword\Assets\Game\Facts\FactState.cs" containingFunctionPresentation="Method 'ExecuteChange'">
+            <startOffsets>
+              <option value="3829" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3884" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
