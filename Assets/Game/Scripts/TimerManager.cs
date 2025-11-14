@@ -131,7 +131,7 @@ public class TimerManager : MonoBehaviour
 
             if (timer.monoOwner != null)
             {
-                if (timer.monoOwner.TryGetTarget(out var owner))
+                if (timer.monoOwner.TryGetTarget(out var owner) && owner != null)
                 {
                     // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
                     // This invocation is only once per timer
