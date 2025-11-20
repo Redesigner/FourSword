@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/Spline2D.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/Spline2D/Spline2DInspector.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Editor/Spline2D/Spline2DInspector.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2D.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2D.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DComponent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DFollower.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DFollower.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2D.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DComponent.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +40,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9f5692804bed4122b102b53a993bfd3f10fc00/5d/6cfc609d/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f68f38c157c448cbbbad36d51114670723e00/99/f4c558cd/HitboxTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Behavior Demo For Unity/Assets/Code/Scripts/UI/UICharacterHealth.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FireProjectileAction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -103,6 +94,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Standalone Player.Standalone Player.executor": "Debug",
+    "Standalone Player.Start Unity.executor": "Debug",
     "XThreadsFramesViewSplitterKey": "0.47916666",
     "git-widget-placeholder": "Core/AI",
     "ignore.virus.scanning.warn.message": "true",
@@ -115,7 +108,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+  <component name="RunManager" selected="Standalone Player.Start Unity">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Build/FourSword\FourSword.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -144,37 +137,6 @@
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
       <option name="MIXED_MODE_DEBUG" value="0" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
-      <option name="allowRunningInParallel" value="false" />
-      <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
-      <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
-      <option name="selectedOptions">
-        <list />
-      </option>
-      <option name="useMixedMode" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
-      <option name="allowRunningInParallel" value="false" />
-      <option name="listenPortForConnections" value="true" />
-      <option name="pid" />
-      <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
-      <option name="selectedOptions">
-        <list />
-      </option>
-      <option name="useMixedMode" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
       <method v="2" />
     </configuration>
   </component>
@@ -215,7 +177,8 @@
       <workItem from="1762968989008" duration="9711000" />
       <workItem from="1763145210704" duration="13462000" />
       <workItem from="1763406445648" duration="12868000" />
-      <workItem from="1763579559406" duration="13791000" />
+      <workItem from="1763579559406" duration="14017000" />
+      <workItem from="1763661072395" duration="2434000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -569,7 +532,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763158967087</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Added spline editor for enemy pathing">
+      <option name="closed" value="true" />
+      <created>1763606921911</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1763606921911</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -608,7 +579,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Changed sword attack controller to use Transition Table" />
     <MESSAGE value="Added stun stacks" />
     <MESSAGE value="Added different attack types to SwordStances" />
     <MESSAGE value="Added stab attack, switched to patched unity version" />
@@ -633,7 +603,8 @@
     <MESSAGE value="Added file save feature" />
     <MESSAGE value="Added once per save heart" />
     <MESSAGE value="Added projectile firing, and example enemy type" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added projectile firing, and example enemy type" />
+    <MESSAGE value="Added spline editor for enemy pathing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added spline editor for enemy pathing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -224,13 +224,16 @@ public class Spline2DComponent : MonoBehaviour
     {
         Vector3 p = Interpolate(fromIndex, alpha);
         if (displayXZ)
+        {
             p = FlipXYtoXZ(p);
+        }
+        
         return transform.TransformPoint(p);
     }
 
     /// Get derivative of the curve at a point in local 2D space. Note that if the control
     /// points are not evenly spaced, this may result in varying speeds.
-    /// This is not normalised by default in case you don't need that
+    /// This is not normalized by default in case you don't need that
     public Vector2 Derivative(float alpha) 
     {
         InitSpline();
@@ -263,7 +266,7 @@ public class Spline2DComponent : MonoBehaviour
     /// Get derivative of curve between one point on the curve and the next in world space
     /// Rather than interpolating over the entire curve, this simply interpolates
     /// between the point with fromIndex and the next segment
-    /// This is not normalised by default in case you don't need that
+    /// This is not normalized by default in case you don't need that
     public Vector3 DerivativeWorldSpace(int fromIndex, float alpha)
     {
         Vector3 derivative = Derivative(fromIndex, alpha);
@@ -333,7 +336,13 @@ public class Spline2DComponent : MonoBehaviour
     public Vector2 GetClosestPoint(Vector2 position, out int index)
     {
         InitSpline();
-        return _spline.GetClosestPoint(position + (Vector2)transform.position, out index) - (Vector2)transform.position;
+        return _spline.GetClosestPoint(position - (Vector2)transform.position, out index) + (Vector2)transform.position;
+    }
+
+    public Vector2 GetSubdividedPointWorldSpace(int index)
+    {
+        InitSpline();
+        return _spline.SubdividedPoints[index] + (Vector2)transform.position;
     }
 
     public int GetNextSubdividedIndex(int index)

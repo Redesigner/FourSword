@@ -135,7 +135,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
             if (distanceSquared < splineFollowingPrecision * splineFollowingPrecision)
             {
                 _splineTargetPointIndex = _targetSpline.GetNextSubdividedIndex(_splineTargetPointIndex);
-                _splineTargetPosition = _targetSpline.GetSubdividedPoint(_splineTargetPointIndex);
+                _splineTargetPosition = _targetSpline.GetSubdividedPointWorldSpace(_splineTargetPointIndex);
             }
             
             _kinematicObject.MoveInput(delta.normalized);

@@ -426,9 +426,11 @@ public class Spline2D
     /**
      * Gets the closest major point on the spline to the given position
      * <param name="position">Position to compare with spline</param>
+     * <param name="index">Index of the point in the list</param>
      */
     public Vector2 GetClosestPoint(Vector2 position, out int index)
     {
+        Recalculate(true);
         var subdividedPointsCount = SubdividedPoints.Count;
         switch (subdividedPointsCount)
         {
