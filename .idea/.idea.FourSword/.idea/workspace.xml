@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Props/Projectiles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/Spline2D.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/Spline2D/Spline2DInspector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Editor/Spline2D/Spline2DInspector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2D.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2D.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DFollower.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DFollower.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/TimerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/TimerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/BehaviorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BehaviorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,21 +49,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/152439c387994a8da523328132967f8d46ae00/2d/5c879d69/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/25ce29052dfe4e49a635a42f7798806b1e0000/00/906a084d/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/25ce29052dfe4e49a635a42f7798806b1e0000/63/b8635c02/Object.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4ea9c5843f6c401888efb0bdc93eda2146ae00/44/0dd17073/RuntimeType.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/75372d1732c04bb9ae6815434ed108e110fc00/44/f9216a63/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8f9003fd757840539e403317d98305d31ff200/25/9e3455af/RenderChain.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/93316d3d59f7432fbe3362915972267731a00/9f/cc614992/GUIStyle.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/02/ed4c1837/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/35/01de9c03/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/59/021cff59/Gizmos.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/a0/28561a76/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b798abedcf1a4bd086c2acc4761834c51dfe00/f3/1c7e8612/Transform.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b912dbff05184439afd77d89b5fecd719c4c00/05/2fe37c36/PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b912dbff05184439afd77d89b5fecd719c4c00/15/5ba19d5a/InspectorMode.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b912dbff05184439afd77d89b5fecd719c4c00/d2/fcec9afa/Editor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9f5692804bed4122b102b53a993bfd3f10fc00/5d/6cfc609d/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Behavior Demo For Unity/Assets/Code/Scripts/UI/UICharacterHealth.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FireProjectileAction.cs" root0="FORCE_HIGHLIGHTING" />
@@ -68,6 +62,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.psydack.uimgui@63242adb9dc7/Source/Data/UIOConfig.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.psydack.uimgui@63242adb9dc7/Source/UImGui.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.psydack.uimgui@63242adb9dc7/Source/Utils/UImGuiUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshModifierVolumeEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavMeshSurfaceEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@5218e4bf7edc/Editor/NavigationOverlay.cs" root0="SKIP_HIGHLIGHTING" />
@@ -102,30 +97,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.47916666&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Core/AI&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "XThreadsFramesViewSplitterKey": "0.47916666",
+    "git-widget-placeholder": "Core/AI",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../Build/FourSword\FourSword.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="E:\Game Development\Unity\Projects\Build\FourSword" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
@@ -133,7 +131,9 @@
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;E:\Game Development\Unity\Projects\FourSword&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="E:\Game Development\Unity\Projects\FourSword" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
@@ -141,7 +141,9 @@
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;E:\Game Development\Unity\Projects\FourSword&quot; -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="E:\Game Development\Unity\Projects\FourSword" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -155,6 +157,7 @@
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -168,6 +171,10 @@
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
       <method v="2" />
     </configuration>
   </component>
@@ -206,7 +213,9 @@
       <workItem from="1762283223538" duration="55293000" />
       <workItem from="1762890653429" duration="7673000" />
       <workItem from="1762968989008" duration="9711000" />
-      <workItem from="1763145210704" duration="10172000" />
+      <workItem from="1763145210704" duration="13462000" />
+      <workItem from="1763406445648" duration="12868000" />
+      <workItem from="1763579559406" duration="13791000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -552,7 +561,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762896432868</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Added projectile firing, and example enemy type">
+      <option name="closed" value="true" />
+      <created>1763158967087</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1763158967087</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,7 +608,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added basic counter hooks" />
     <MESSAGE value="Changed sword attack controller to use Transition Table" />
     <MESSAGE value="Added stun stacks" />
     <MESSAGE value="Added different attack types to SwordStances" />
@@ -616,7 +632,8 @@
     <MESSAGE value="Allow loading saves from text files" />
     <MESSAGE value="Added file save feature" />
     <MESSAGE value="Added once per save heart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added once per save heart" />
+    <MESSAGE value="Added projectile firing, and example enemy type" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added projectile firing, and example enemy type" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -660,6 +677,18 @@
           </properties>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="41" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="42" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="43" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
