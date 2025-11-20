@@ -385,10 +385,10 @@ public class Spline2DComponent : MonoBehaviour
             pLast = p;
         }
         
-        foreach (var point in _spline.SubdividedPoints)
+        /*foreach (var point in _spline.SubdividedPoints)
         {
             Handles.Button((Vector3)point + transform.position, Quaternion.identity, 0.05f, 0.0f, Handles.DotHandleCap);
-        }
+        }*/
     }
 
 	private void DrawNormalsGizmo()

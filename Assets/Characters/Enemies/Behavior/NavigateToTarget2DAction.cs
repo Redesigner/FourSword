@@ -159,6 +159,12 @@ namespace Unity.Behavior
                 {
                     Debug.Log("Failed to set navmesh destination.");
                 }
+
+                var pathfindingComponent = m_NavMeshAgent.GetComponent<EnemyPathfindingComponent>();
+                if (pathfindingComponent)
+                {
+                    pathfindingComponent.SetPathfollowingMode(EnemyPathfindingComponent.PathFollowingMode.Target);
+                }
             }
 
             m_Animator = Agent.Value.GetComponentInChildren<Animator>();

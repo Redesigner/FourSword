@@ -229,7 +229,6 @@ MonoBehaviour:
         m_CallState: 2
   walkSpeed: 1
   faceMovement: 0
-  speedEffect: {fileID: 11400000, guid: a36ca536a18cfd749b71ad1c08ac875c, type: 2}
 --- !u!114 &3211474152377152552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +243,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   health: 10
+  slashResistance: 1
+  pierceResistance: 1
+  smashResistance: 1
+  invulnerabilityTime: 0.5
   onStunned:
     m_PersistentCalls:
       m_Calls:
@@ -315,6 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e55a1ef0843649e94cf0fed5d42bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splineFollowingPrecision: 0.1
+  pathfindOnSpline: 0
 --- !u!114 &416039407138187703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,11 +337,20 @@ MonoBehaviour:
   - rid: 5728091114660692360
   - rid: 6056381722570260886
   - rid: 6056381722570260887
+  - rid: 896754459736277301
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 896754459736277301
+      type: {class: 'BlackboardVariable`1[[EnemyPathfindingComponent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15855738090183945135
+          m_Value1: 13005702933728991089
+        Name: PathfindingComponent
+        m_Value: {fileID: 5195365265740986587}
     - rid: 5728091114660692360
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -373,6 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b3dd23b538493592b7fbacc6831135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDamageType: 0
   hitboxComponent: {fileID: 0}
   attackCompleted:
     m_PersistentCalls:

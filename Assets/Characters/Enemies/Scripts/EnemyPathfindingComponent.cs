@@ -11,7 +11,7 @@ using UnityEngine.UIElements;
 public class EnemyPathfindingComponent : MonoBehaviour
 {
 
-    enum PathFollowingMode
+    public enum PathFollowingMode
     {
         None,   // Not following any path
         Target, // Following the target, usually via destinationAlias
@@ -29,7 +29,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
     private int _splineTargetPointIndex;
     private Vector2 _splineTargetPosition;
     private bool _onPath;
-    private PathFollowingMode _pathFollowingMode;
+    public PathFollowingMode pathFollowingMode;
     
     /** <summary>
      * How close to the point on the spline the agent should be before moving to the next point
@@ -66,7 +66,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
         _navMeshAgent.updatePosition = false;
         // target = GameObject.Find("P_Player");
         _navMeshAgent.isStopped = true;
-
+        
         if (_targetSpline)
         {
             MoveToSpline(_targetSpline);
@@ -75,7 +75,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
 
     public void FixedUpdate()
     {
-        switch (_pathFollowingMode)
+        switch (pathFollowingMode)
         {
             default:
             case PathFollowingMode.None:
@@ -98,8 +98,13 @@ public class EnemyPathfindingComponent : MonoBehaviour
 
     public void MoveToSpline(Spline2DComponent splineComponent)
     {
-        _pathFollowingMode = PathFollowingMode.Spline;
+        pathFollowingMode = PathFollowingMode.Spline;
         BeginMoveToSpline(splineComponent);
+    }
+
+    public void SetPathfollowingMode(PathFollowingMode mode)
+    {
+        pathFollowingMode = mode;
     }
 
     private void OnDrawGizmos()
@@ -157,8 +162,24 @@ public class EnemyPathfindingComponent : MonoBehaviour
     {
         _targetSpline = spline2DComponent;
         _splineTargetPosition = spline2DComponent.GetClosestPoint(transform.position, out _splineTargetPointIndex);
-        _navMeshAgent.SetDestination(_splineTargetPosition);
-        _navMeshAgent.isStopped = false;
+        _navMeshAgent.ResetPath();
+
+        //@TODO: Figure out why this needs to be delayed?
+        TimerManager.instance.CreateTimer(this, 0.01f, () => { _navMeshAgent.SetDestination(_splineTargetPosition); });
         _onPath = false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (!_navMeshAgent)
+        {
+            return;
+        }
+        
+        Handles.color = Color.red;
+        Handles.Button(_navMeshAgent.destination, Quaternion.identity, 0.2f, 0.0f, Handles.DotHandleCap);
+        
+        Handles.color = Color.blue;
+        Handles.Button(_splineTargetPosition, Quaternion.identity, 0.2f, 0.0f, Handles.DotHandleCap);
     }
 }
