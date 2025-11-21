@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/NavigateToTarget2DAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/NavigateToTarget2DAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/P_TestEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Spline2D/Spline2DComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyAttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyAttackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/AttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/AttackController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/Kinematics/KinematicObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Kinematics/KinematicObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,10 +52,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
@@ -206,7 +201,8 @@
       <workItem from="1763406445648" duration="12868000" />
       <workItem from="1763579559406" duration="14017000" />
       <workItem from="1763661072395" duration="4643000" />
-      <workItem from="1763668517184" duration="7408000" />
+      <workItem from="1763668517184" duration="8507000" />
+      <workItem from="1763745477735" duration="7629000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -576,7 +572,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763663932614</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Enemy can now follow path">
+      <option name="closed" value="true" />
+      <created>1763676768793</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1763676768793</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,7 +619,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added different attack types to SwordStances" />
     <MESSAGE value="Added stab attack, switched to patched unity version" />
     <MESSAGE value="Changed the way effect events work" />
     <MESSAGE value="Moved effects to a global list" />
@@ -640,7 +643,8 @@
     <MESSAGE value="Added projectile firing, and example enemy type" />
     <MESSAGE value="Added spline editor for enemy pathing" />
     <MESSAGE value="EnemyPathfindingComponent now follows splines correctly" />
-    <option name="LAST_COMMIT_MESSAGE" value="EnemyPathfindingComponent now follows splines correctly" />
+    <MESSAGE value="Enemy can now follow path" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enemy can now follow path" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

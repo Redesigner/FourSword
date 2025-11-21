@@ -19,6 +19,7 @@ namespace Kinematics
     /// <summary>
     /// Implements game physics for some in game entity.
     /// </summary>
+    [RequireComponent(typeof(Rigidbody2D))]
     public class KinematicObject : MonoBehaviour
     {
         /// <summary>

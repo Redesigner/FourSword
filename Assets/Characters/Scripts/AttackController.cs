@@ -7,6 +7,14 @@ namespace Characters
 {
     public class AttackController : MonoBehaviour
     {
+        /// <summary>
+        /// Should we track which targets we've hit with an attack?
+        /// Prevents attacks from hitting multiple times, but
+        /// requires the target list to be reset, usually inside
+        /// the attack animation
+        /// </summary>
+        [SerializeField] private bool hitTargetsOnce = true;
+        
         protected readonly List<DamageListener> targetsHit = new();
 
         public DamageType currentDamageType;
@@ -37,8 +45,8 @@ namespace Characters
             {
                 return;
             }
-
-            if (targetsHit.Contains(damagedEnemy))
+            
+            if (hitTargetsOnce && targetsHit.Contains(damagedEnemy))
             {
                 return;
             }
@@ -53,8 +61,12 @@ namespace Characters
                     return;
                 }
             }
-        
-            targetsHit.Add(damagedEnemy);
+
+            if (hitTargetsOnce)
+            {
+                targetsHit.Add(damagedEnemy);
+            }
+            
             damagedEnemy.TakeDamage(1.0f, gameObject, currentDamageType);
         }
         
