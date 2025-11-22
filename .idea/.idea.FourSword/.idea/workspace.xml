@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyAttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyAttackController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/AttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/AttackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Turret/Behavior/BAG_Turret.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Turret/Behavior/BAG_Turret.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/SerializedCollections.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shared/Scripts/Kinematics/KinematicObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shared/Scripts/Kinematics/KinematicObject.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +51,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Chaser/Behavior/BAG_Chaser.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
@@ -202,7 +202,8 @@
       <workItem from="1763579559406" duration="14017000" />
       <workItem from="1763661072395" duration="4643000" />
       <workItem from="1763668517184" duration="8507000" />
-      <workItem from="1763745477735" duration="7629000" />
+      <workItem from="1763745477735" duration="8496000" />
+      <workItem from="1763827296978" duration="2066000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -580,7 +581,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763676768793</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Added chaser enemy">
+      <option name="closed" value="true" />
+      <created>1763759706387</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1763759706387</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +628,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added stab attack, switched to patched unity version" />
     <MESSAGE value="Changed the way effect events work" />
     <MESSAGE value="Moved effects to a global list" />
     <MESSAGE value="Added damage resistances, changed Blunt -&gt; Smash" />
@@ -644,7 +652,8 @@
     <MESSAGE value="Added spline editor for enemy pathing" />
     <MESSAGE value="EnemyPathfindingComponent now follows splines correctly" />
     <MESSAGE value="Enemy can now follow path" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enemy can now follow path" />
+    <MESSAGE value="Added chaser enemy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added chaser enemy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

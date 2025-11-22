@@ -150,12 +150,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayXZ: 0
   points:
-  - {x: -2.3462029, y: -2.7158048}
-  - {x: 5.7636437, y: -2.739191}
-  - {x: 7.953853, y: -6.669873}
-  - {x: -5.708138, y: -6.6658897}
+  - {x: -3.4093626, y: -2.7808595}
+  - {x: 1.7831961, y: -3.019113}
+  - {x: 7.0207872, y: -3.4153137}
+  - {x: 7.0946226, y: -7.931652}
+  - {x: -0.37177372, y: -7.9834204}
+  - {x: -8.125249, y: -7.6462374}
+  - {x: -7.536752, y: -0.6642108}
+  - {x: -3.9083858, y: 0.26468468}
   closed: 1
-  curvature: 0.5
+  curvature: 0.2
   lengthSamplesPerSegment: 5
   showNormals: 0
   normalDisplayLength: 5
@@ -251,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 444528310996406183, guid: 102fa140ee0414f46b8043dafc3f2b03, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2586655905958459395, guid: 102fa140ee0414f46b8043dafc3f2b03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -292,6 +296,10 @@ PrefabInstance:
     - target: {fileID: 2586655905958459395, guid: 102fa140ee0414f46b8043dafc3f2b03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987558671580011953, guid: 102fa140ee0414f46b8043dafc3f2b03, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1122,6 +1130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Chaser
       objectReference: {fileID: 0}
+    - target: {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8603058956804550044, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.854272
@@ -1269,6 +1281,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_TestEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 759127726534662320, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5195365265740986587, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: _targetSpline
       value: 
@@ -1279,7 +1295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_LocalPosition.y
