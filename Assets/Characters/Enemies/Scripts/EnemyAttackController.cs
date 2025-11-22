@@ -9,14 +9,13 @@ using UnityEngine.InputSystem;
 public class EnemyAttackController : AttackController
 {
     [SerializeField] private HitboxTrigger hitboxComponent;
-
+    [SerializeField] private bool damageOnce = true;
+    
     public UnityEvent attackCompleted;
+    private Animator _animator;
+    private readonly List<HitboxTrigger> _hitboxes = new();
     
     private static readonly int AttackTrigger = Animator.StringToHash("Attack");
-
-    private Animator _animator;
-
-    private List<HitboxTrigger> _hitboxes = new();
     
     protected void OnEnable()
     {

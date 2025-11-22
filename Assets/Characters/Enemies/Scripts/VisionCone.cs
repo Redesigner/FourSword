@@ -67,6 +67,10 @@ public class VisionCone : MonoBehaviour
                     // Debug.Log("Lost sight of enemy... counting down...");
                     TimerManager.instance.CreateOrResetTimer(ref _loseSightTimer, this, lostSightTime, () =>
                     {
+                        if (!perceptionSource)
+                        {
+                            return;
+                        }
                         _lostSightEventChannel.Value.SendEventMessage(perceptionSource.gameObject, perceptionSource.GetComponent<KinematicCharacterController>());
                     });
                 }
