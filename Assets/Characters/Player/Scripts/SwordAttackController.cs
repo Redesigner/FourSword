@@ -39,8 +39,14 @@ namespace Characters.Player.Scripts
         private SwordStance _countering;
 
         private SwordStance _currentStance;
-
+        
         public List<HealthComponent> blockedEnemies { private set; get; } = new();
+
+        
+        // ANIMATION
+        [SerializeField] private Animator animator;
+        private static readonly int SwordDirectionHash = Animator.StringToHash("SwordDirection");
+        
 
         private void Start()
         {
@@ -88,8 +94,8 @@ namespace Characters.Player.Scripts
             secondaryHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             diagonalHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             
-            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(SwordDirection.Up));
-            swordDirection = SwordDirection.Up;
+            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(Scripts.SwordDirection.Up));
+            swordDirection = Scripts.SwordDirection.Up;
             secondaryHitbox.Disable();
             diagonalHitbox.Disable();
         }
@@ -120,9 +126,9 @@ namespace Characters.Player.Scripts
         {
             if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
             {
-                return input.x > 0.0f ? SwordDirection.Right : SwordDirection.Left;
+                return input.x > 0.0f ? Scripts.SwordDirection.Right : Scripts.SwordDirection.Left;
             }
-            return input.y > 0.0f ? SwordDirection.Up : SwordDirection.Down;
+            return input.y > 0.0f ? Scripts.SwordDirection.Up : Scripts.SwordDirection.Down;
         }
         
         public static float GetRotation(SwordDirection direction)
@@ -162,10 +168,10 @@ namespace Characters.Player.Scripts
 
         // These are just hooks for our PlayerInput component to forward.
         // We handle checking the input and other things in SwordDirectInput
-        public void OnSwordLeft(InputAction.CallbackContext context) { SwordDirectInput(context, SwordDirection.Left); }
-        public void OnSwordRight(InputAction.CallbackContext context) { SwordDirectInput(context, SwordDirection.Right); }
-        public void OnSwordUp(InputAction.CallbackContext context) { SwordDirectInput(context, SwordDirection.Up); }
-        public void OnSwordDown(InputAction.CallbackContext context) { SwordDirectInput(context, SwordDirection.Down); }
+        public void OnSwordLeft(InputAction.CallbackContext context) { SwordDirectInput(context, Scripts.SwordDirection.Left); }
+        public void OnSwordRight(InputAction.CallbackContext context) { SwordDirectInput(context, Scripts.SwordDirection.Right); }
+        public void OnSwordUp(InputAction.CallbackContext context) { SwordDirectInput(context, Scripts.SwordDirection.Up); }
+        public void OnSwordDown(InputAction.CallbackContext context) { SwordDirectInput(context, Scripts.SwordDirection.Down); }
 
         private void SwordDirectInput(InputAction.CallbackContext context, SwordDirection direction)
         {
@@ -199,6 +205,8 @@ namespace Characters.Player.Scripts
             swordDirection = direction;
             swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(direction));
             OnSwordDirectionChanged(oldDirection, swordDirection);
+            
+            animator.SetInteger(SwordDirectionHash, (int)direction);
         }
 
         private void OnSwordDirectionChanged(SwordDirection oldDirection, SwordDirection newDirection)
