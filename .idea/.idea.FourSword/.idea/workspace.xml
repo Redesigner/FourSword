@@ -5,11 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Events.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Turret/Behavior/BAG_Turret.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Turret/Behavior/BAG_Turret.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/SerializedCollections.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/CheckDistanceVectorCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/CheckDistanceVectorCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/CheckDistanceVectorCondition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/CheckDistanceVectorCondition.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/ExecuteAttackAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/ExecuteAttackAction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FireProjectileAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FireProjectileAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FireProjectileAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FireProjectileAction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FollowSplineAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FollowSplineAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FollowSplineAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FollowSplineAction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/IsNullCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNullCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/IsNullCondition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNullCondition.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/LookAtAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/LookAtAction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/NavigateToTarget2DAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/NavigateToTarget2DAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/NavigateToTarget2DAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/NavigateToTarget2DAction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/SpottedEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Events/SpottedEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/SpottedEnemy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Events/SpottedEnemy.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/TargetMovedCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/TargetMovedCondition.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Core/Props" />
+        <entry key="$PROJECT_DIR$" value="Core/Sword" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -684,38 +703,7 @@
           </properties>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Game/Facts/FactState.cs</url>
-          <line>107</line>
-          <properties documentPath="E:\Game Development\Unity\Projects\FourSword\Assets\Game\Facts\FactState.cs" containingFunctionPresentation="Method 'ExecuteChange'">
-            <startOffsets>
-              <option value="3829" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3884" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
-          <option name="timeStamp" value="41" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
-          <option name="timeStamp" value="42" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="43" />
-        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="RunUnityExe">
-        <watch expression="_navMeshAgent.destination" language="C#" />
-        <watch expression="_splineTargetPosition" language="C#" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
