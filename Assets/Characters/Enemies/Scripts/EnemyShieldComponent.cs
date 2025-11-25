@@ -2,6 +2,7 @@
 
 namespace Characters.Enemies.Scripts
 {
+    [Icon("Assets/Editor/Icons/ShieldIcon.png")]
     public class EnemyShieldComponent : MonoBehaviour
     {
         [SerializeField] private HitboxTrigger armor; 

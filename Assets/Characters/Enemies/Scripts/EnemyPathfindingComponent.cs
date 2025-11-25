@@ -126,8 +126,13 @@ public class EnemyPathfindingComponent : MonoBehaviour
             return;
         }
         
-        _navMeshAgent.nextPosition = _kinematicObject.transform.position;
+        // _navMeshAgent.nextPosition = _kinematicObject.transform.position;
         _kinematicObject.MoveInput(_navMeshAgent.desiredVelocity);
+
+        if (_navMeshAgent.desiredVelocity == Vector3.zero)
+        {
+            _navMeshAgent.SetDestination(_destinationAlias.transform.position);
+        }
     }
     
     // ReSharper disable Unity.PerformanceAnalysis -- Rider is flagging this as expensive for some reason?
