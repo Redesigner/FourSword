@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 444528310996406183, guid: 102fa140ee0414f46b8043dafc3f2b03, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2586655905958459395, guid: 102fa140ee0414f46b8043dafc3f2b03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1118,6 +1118,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c12e0443e3491e347ba112d2569c45e6, type: 3}
+--- !u!1001 &1210795948
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 759127726534662320, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_Name
+      value: P_Dueler
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829613800152515760, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: coneRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829613800152515760, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: currentAngle
+      value: -180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
 --- !u!1001 &1449069461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1132,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8603058956804550044, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1283,7 +1348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 759127726534662320, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5195365265740986587, guid: ea05b66c9e6c0954790e7711fe4bc715, type: 3}
       propertyPath: _targetSpline
@@ -1676,14 +1741,15 @@ SceneRoots:
   - {fileID: 699752402}
   - {fileID: 619394802}
   - {fileID: 1839737247}
-  - {fileID: 1699751350}
-  - {fileID: 205159155}
   - {fileID: 986217486}
   - {fileID: 542493277}
   - {fileID: 1106947009}
   - {fileID: 601636652}
   - {fileID: 1695443890}
   - {fileID: 2126900172}
+  - {fileID: 1699751350}
+  - {fileID: 205159155}
   - {fileID: 247153176}
-  - {fileID: 103554828}
   - {fileID: 1449069461}
+  - {fileID: 1210795948}
+  - {fileID: 103554828}

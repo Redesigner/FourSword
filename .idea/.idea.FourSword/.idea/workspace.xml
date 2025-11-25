@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PointBehindTargetQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PointBehindTargetQuery.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PositionQuery.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PositionQuery.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNotNullCondition.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNotNullCondition.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/RandomPointQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/RandomPointQuery.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +43,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/25ce29052dfe4e49a635a42f7798806b1e0000/b7/2bbf5ae6/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9f5692804bed4122b102b53a993bfd3f10fc00/5d/6cfc609d/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc9454776f3c42ffb66359567121c5ee11400/40/9b4de94d/NavMeshAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f68f38c157c448cbbbad36d51114670723e00/99/f4c558cd/HitboxTrigger.cs" root0="FORCE_HIGHLIGHTING" />
@@ -54,6 +53,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FollowSplineAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNullCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" root0="FORCE_HIGHLIGHTING" />
