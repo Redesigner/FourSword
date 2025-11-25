@@ -1,4 +1,5 @@
 using System;
+using Characters.Enemies.Behavior.Queries;
 using Characters.Enemies.Scripts;
 using Unity.Behavior;
 using UnityEngine;
@@ -23,22 +24,13 @@ internal class RunPositionQueryAction : Action
 
     [SerializeReference] public BlackboardVariable<GameObject> origin;
     [SerializeReference] public BlackboardVariable<KinematicCharacterController> target;
+    [SerializeReference] public BlackboardVariable<PositionQuery> query;
     [SerializeReference] public BlackboardVariable<Transform> position;
-    [SerializeReference] public BlackboardVariable<float> radius; 
-    [SerializeReference] public BlackboardVariable<PositionQueryType> queryType; 
+
     
     protected override Status OnStart()
     {
-        switch (queryType.Value)
-        {
-            default:
-            case PositionQueryType.ClosestPoint:
-                position.Value.position = NavigationHelpers.GetClosestPointAroundRadius(origin.Value.transform.position, target.Value.transform.position, radius.Value, 8);
-                break;
-            case PositionQueryType.AlongVector:
-                position.Value.position = NavigationHelpers.GetPointInRadiusByDirection(target.Value.transform.position, -target.Value.lookDirection, radius.Value, 8);
-                break;
-        }
+        position.Value.position = query.Value.RunQuery(origin.Value, target.Value);
         return Status.Success;
     }
 }

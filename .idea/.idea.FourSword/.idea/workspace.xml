@@ -5,30 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Events.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PointBehindTargetQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PointBehindTargetQuery.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PositionQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PositionQuery.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/CheckDistanceVectorCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/CheckDistanceVectorCondition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/CheckDistanceVectorCondition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/CheckDistanceVectorCondition.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/ExecuteAttackAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/ExecuteAttackAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FireProjectileAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FireProjectileAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FireProjectileAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FireProjectileAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FollowSplineAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FollowSplineAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FollowSplineAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FollowSplineAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/IsNullCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNullCondition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/IsNullCondition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNullCondition.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/LookAtAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/LookAtAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/NavigateToTarget2DAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/NavigateToTarget2DAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/NavigateToTarget2DAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/NavigateToTarget2DAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/SpottedEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Events/SpottedEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/SpottedEnemy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Events/SpottedEnemy.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/TargetMovedCondition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/TargetMovedCondition.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,15 +49,19 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc9454776f3c42ffb66359567121c5ee11400/40/9b4de94d/NavMeshAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f68f38c157c448cbbbad36d51114670723e00/99/f4c558cd/HitboxTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Behavior Demo For Unity/Assets/Code/Scripts/UI/UICharacterHealth.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FireProjectileAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FollowSplineAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/IsNullCondition.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FireProjectileAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FollowSplineAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNullCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PointBehindTargetQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PositionQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Chaser/Behavior/BAG_Chaser.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
@@ -223,6 +213,7 @@
       <workItem from="1763668517184" duration="8507000" />
       <workItem from="1763745477735" duration="8496000" />
       <workItem from="1763827296978" duration="2066000" />
+      <workItem from="1764035782699" duration="1764000" />
     </task>
     <task id="LOCAL-00001" summary="pre merge">
       <option name="closed" value="true" />
@@ -608,7 +599,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763759706387</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Reorganize behavior folders">
+      <option name="closed" value="true" />
+      <created>1764022387582</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1764022387582</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Changed the way effect events work" />
     <MESSAGE value="Moved effects to a global list" />
     <MESSAGE value="Added damage resistances, changed Blunt -&gt; Smash" />
     <MESSAGE value="Fixed knockbacks so they have timers independent of stun" />
@@ -672,7 +670,8 @@
     <MESSAGE value="EnemyPathfindingComponent now follows splines correctly" />
     <MESSAGE value="Enemy can now follow path" />
     <MESSAGE value="Added chaser enemy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added chaser enemy" />
+    <MESSAGE value="Reorganize behavior folders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorganize behavior folders" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
