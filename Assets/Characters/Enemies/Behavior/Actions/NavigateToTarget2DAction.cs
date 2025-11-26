@@ -80,9 +80,7 @@ namespace Unity.Behavior
             }
             if (m_NavMeshAgent != null && boolUpdateTargetPosition) // navmesh-based destination update (if needed)
             {
-                m_NavMeshAgent.SetDestination(m_ColliderAdjustedTargetPosition);
-                Debug.LogFormat("Setting target position to: ({0}, {1})", m_ColliderAdjustedTargetPosition.x, m_ColliderAdjustedTargetPosition.y);
-                Debug.LogFormat("Set target position to: ({0}, {1})", m_NavMeshAgent.destination.x, m_NavMeshAgent.destination.y);
+                PathToDestination(m_ColliderAdjustedTargetPosition);
             }
 
             UpdateAnimatorSpeed();
@@ -98,10 +96,10 @@ namespace Unity.Behavior
             {
                 if (m_NavMeshAgent.isOnNavMesh)
                 {
-                    m_NavMeshAgent.ResetPath();
+                    // m_NavMeshAgent.ResetPath();
                 }
-                m_NavMeshAgent.speed = m_OriginalSpeed;
-                m_NavMeshAgent.stoppingDistance = m_OriginalStoppingDistance;
+                // m_NavMeshAgent.speed = m_OriginalSpeed;
+                // m_NavMeshAgent.stoppingDistance = m_OriginalStoppingDistance;
             }
 
             m_NavMeshAgent = null;
@@ -157,12 +155,8 @@ namespace Unity.Behavior
                 m_NavMeshAgent.speed = Speed;
                 m_OriginalStoppingDistance = m_NavMeshAgent.stoppingDistance;
                 m_NavMeshAgent.stoppingDistance = DistanceThreshold + m_ColliderOffset;
-                if (!m_NavMeshAgent.SetDestination(m_ColliderAdjustedTargetPosition))
-                {
-                    Debug.Log("Failed to set navmesh destination.");
-                }
-                Debug.LogFormat("Setting target position to: ({0}, {1})", m_ColliderAdjustedTargetPosition.x, m_ColliderAdjustedTargetPosition.y);
-                Debug.LogFormat("Set target position to: ({0}, {1})", m_NavMeshAgent.destination.x, m_NavMeshAgent.destination.y);
+                
+                PathToDestination(m_ColliderAdjustedTargetPosition);
 
                 var pathfindingComponent = m_NavMeshAgent.GetComponent<EnemyPathfindingComponent>();
                 if (pathfindingComponent)
@@ -205,6 +199,13 @@ namespace Unity.Behavior
         private void UpdateAnimatorSpeed(float explicitSpeed = -1)
         {
             //NavigationUtility.UpdateAnimatorSpeed(m_Animator, AnimatorSpeedParam, m_NavMeshAgent, m_CurrentSpeed, explicitSpeed: explicitSpeed);
+        }
+
+        private void PathToDestination(Vector3 destination)
+        {
+            var newPath = new NavMeshPath();
+            NavMesh.CalculatePath(m_NavMeshAgent.nextPosition, destination, m_NavMeshAgent.areaMask, newPath);
+            m_NavMeshAgent.SetPath(newPath);
         }
     }
 }

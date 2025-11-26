@@ -209,7 +209,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
             return;
         }
 
-        if (ImGui.Begin($"{gameObject.name} Pathfinding"))
+        if (ImGui.Begin($"{gameObject.name} Pathfinding###PathfindingComponent"))
         {
             ImGui.Text(_navMeshAgent.isStopped ? "Is Stopped: true" : "Is Stopped: false");
             ImGui.Text(_navMeshAgent.hasPath ? "Has Path: true" : "Has Path: false");

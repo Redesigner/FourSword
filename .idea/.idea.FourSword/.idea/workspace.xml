@@ -7,17 +7,8 @@
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/NavigateToTarget2DAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/NavigateToTarget2DAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNotNullCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNotNullCondition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Dueler/P_Dueler.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Dueler/P_Dueler.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/PerceptionSourceComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/PerceptionSourceComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/Icons/HealthIcon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/Icons/HealthIcon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest/NavMesh-Navmesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest/NavMesh-Navmesh.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest/NavMesh-Navmesh.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scn_SwordTest/NavMesh-Navmesh.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/BehaviorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BehaviorSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +62,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Chaser/Behavior/BAG_Chaser.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyShieldComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" root0="FORCE_HIGHLIGHTING" />
@@ -229,14 +221,6 @@
       <workItem from="1763745477735" duration="8496000" />
       <workItem from="1763827296978" duration="2066000" />
       <workItem from="1764035782699" duration="1764000" />
-    </task>
-    <task id="LOCAL-00004" summary="Fixed graph to use new query system">
-      <option name="closed" value="true" />
-      <created>1758912711184</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1758912711184</updated>
     </task>
     <task id="LOCAL-00005" summary="Reorganized code, added some helpers, added look at action">
       <option name="closed" value="true" />
@@ -622,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764108155348</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Added more debug information to pathfinding, and new icons">
+      <option name="closed" value="true" />
+      <created>1764144641053</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1764144641053</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -661,7 +653,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="added invulnerability effect" />
     <MESSAGE value="Added leaf particle test" />
     <MESSAGE value="Added health pickup" />
     <MESSAGE value="Added drop table and drop table components" />
@@ -686,7 +677,8 @@
     <MESSAGE value="Added wandering, and dueler enemy prototype" />
     <MESSAGE value="Added shield component" />
     <MESSAGE value="Added some icons to make it easier to work with components in the editor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some icons to make it easier to work with components in the editor" />
+    <MESSAGE value="Added more debug information to pathfinding, and new icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more debug information to pathfinding, and new icons" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

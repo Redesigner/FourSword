@@ -189,7 +189,7 @@ public class HealthComponent : DamageListener
             return;
         }
 
-        if (ImGui.Begin($"{gameObject.name} Status"))
+        if (ImGui.Begin($"{gameObject.name} Status###HealthComponent"))
         {
             ImGui.Text($"Health: {health} / {maxHealth}");
             foreach (var item in statusEffects)
