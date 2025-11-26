@@ -11,16 +11,16 @@ GameObject:
   - component: {fileID: 7697346016262362290}
   - component: {fileID: 5621630951330966370}
   - component: {fileID: 8790629081575097834}
+  - component: {fileID: 5737804386023834515}
+  - component: {fileID: 7624005988303523192}
   - component: {fileID: 7043110152277630900}
   - component: {fileID: 3008976252106022695}
-  - component: {fileID: 7624005988303523192}
+  - component: {fileID: 6300839406161687817}
   - component: {fileID: 3211474152377152552}
+  - component: {fileID: 7829613800152515760}
   - component: {fileID: 4381609272211239196}
   - component: {fileID: 5195365265740986587}
   - component: {fileID: 416039407138187703}
-  - component: {fileID: 6300839406161687817}
-  - component: {fileID: 5737804386023834515}
-  - component: {fileID: 7829613800152515760}
   m_Layer: 3
   m_Name: P_Dueler
   m_TagString: Health
@@ -119,6 +119,97 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5, y: 0.1}
   m_EdgeRadius: 0
+--- !u!61 &5737804386023834515
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.75, y: 0}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &7624005988303523192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39965a2f8caf2248b9bf4b26f679d49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0}
+  minMoveDistance: 0.001
+  shellRadius: 0.01
+  lookDirectionChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7829613800152515760}
+        m_TargetAssemblyTypeName: Characters.Enemies.Scripts.VisionCone, Assembly-CSharp
+        m_MethodName: SetLookDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6327463367685612834}
+        m_TargetAssemblyTypeName: Characters.Enemies.Scripts.EnemyShieldComponent,
+          Assembly-CSharp
+        m_MethodName: SetLookDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  walkSpeed: 1
+  faceMovement: 0
 --- !u!212 &7043110152277630900
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -196,7 +287,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7624005988303523192
+--- !u!114 &6300839406161687817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,42 +296,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 759127726534662320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39965a2f8caf2248b9bf4b26f679d49, type: 3}
+  m_Script: {fileID: 11500000, guid: 15b3dd23b538493592b7fbacc6831135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0}
-  minMoveDistance: 0.001
-  shellRadius: 0.01
-  lookDirectionChanged:
+  hitTargetsOnce: 1
+  currentDamageType: 0
+  hitboxComponent: {fileID: 0}
+  damageOnce: 1
+  attackCompleted:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7829613800152515760}
-        m_TargetAssemblyTypeName: Characters.Enemies.Scripts.VisionCone, Assembly-CSharp
-        m_MethodName: SetLookDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6327463367685612834}
-        m_TargetAssemblyTypeName: Characters.Enemies.Scripts.EnemyShieldComponent,
-          Assembly-CSharp
-        m_MethodName: SetLookDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  walkSpeed: 1
-  faceMovement: 0
+      m_Calls: []
 --- !u!114 &3211474152377152552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +361,37 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7829613800152515760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb478a98009b4042b1dd97b31a1b63c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coneRadius: 8
+  coneHalfAngle: 45
+  currentAngle: 0
+  visibilityContactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  agent: {fileID: 416039407138187703}
+  lostSightTime: 3
 --- !u!195 &4381609272211239196
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -398,102 +494,6 @@ MonoBehaviour:
           m_Value1: 13113050561758072009
         Name: Agent
         m_Value: {fileID: 4381609272211239196}
---- !u!114 &6300839406161687817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 759127726534662320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15b3dd23b538493592b7fbacc6831135, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitTargetsOnce: 1
-  currentDamageType: 0
-  hitboxComponent: {fileID: 0}
-  damageOnce: 1
-  attackCompleted:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!61 &5737804386023834515
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 759127726534662320}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.5}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.75, y: 0}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &7829613800152515760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 759127726534662320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb478a98009b4042b1dd97b31a1b63c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coneRadius: 8
-  coneHalfAngle: 45
-  currentAngle: 0
-  visibilityContactFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  agent: {fileID: 416039407138187703}
-  lostSightTime: 3
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0

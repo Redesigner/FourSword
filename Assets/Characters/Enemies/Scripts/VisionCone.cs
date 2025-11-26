@@ -13,7 +13,8 @@ namespace Characters.Enemies.Scripts
         public KinematicCharacterController controller;
     }
 
-public class VisionCone : MonoBehaviour
+    [Icon("Assets/Editor/Icons/VisionConeIcon.png")]
+    public class VisionCone : MonoBehaviour
     {
         [SerializeField] [Min(0.0f)] private float coneRadius = 1.0f;
         [SerializeField] [Range(0.0f, 180.0f)] private float coneHalfAngle = 30.0f;

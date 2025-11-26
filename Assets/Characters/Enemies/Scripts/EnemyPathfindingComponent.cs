@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
+[Icon("Assets/Editor/Icons/EnemyPathfindingComponentIcon.png")]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(KinematicCharacterController))]
 [RequireComponent(typeof(BehaviorGraphAgent))]
