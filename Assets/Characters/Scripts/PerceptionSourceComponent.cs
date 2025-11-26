@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Characters.Scripts
 {
+    [Icon("Assets/Editor/Icons/PerceptionSourceIcon.png")]
     public class PerceptionSourceComponent : MonoBehaviour
     {
         private void OnEnable()

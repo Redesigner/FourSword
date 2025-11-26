@@ -68,16 +68,20 @@ public class HealthComponent : DamageListener
 
     private void Awake()
     {
+#if UNITY_EDITOR
         UImGuiUtility.Layout += OnLayout;
         UImGuiUtility.OnInitialize += OnInitialize;
         UImGuiUtility.OnDeinitialize += OnDeinitialize;
+#endif
     }
 
     private void OnDisable()
     {
+#if UNITY_EDITOR
         UImGuiUtility.Layout -= OnLayout;
         UImGuiUtility.OnInitialize -= OnInitialize;
         UImGuiUtility.OnDeinitialize -= OnDeinitialize;
+#endif
     }
 
     public override void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)

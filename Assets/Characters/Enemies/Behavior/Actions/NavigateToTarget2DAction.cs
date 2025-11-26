@@ -61,9 +61,9 @@ namespace Unity.Behavior
             }
 
             // Check if the target position has changed.
-            bool boolUpdateTargetPosition = !Mathf.Approximately(m_LastTargetPosition.x, Target.Value.transform.position.x) 
-                || !Mathf.Approximately(m_LastTargetPosition.y, Target.Value.transform.position.y) 
-                || !Mathf.Approximately(m_LastTargetPosition.z, Target.Value.transform.position.z);
+            bool boolUpdateTargetPosition =
+                !Mathf.Approximately(m_LastTargetPosition.x, Target.Value.transform.position.x)
+                || !Mathf.Approximately(m_LastTargetPosition.y, Target.Value.transform.position.y);
 
             if (boolUpdateTargetPosition)
             {
@@ -81,6 +81,8 @@ namespace Unity.Behavior
             if (m_NavMeshAgent != null && boolUpdateTargetPosition) // navmesh-based destination update (if needed)
             {
                 m_NavMeshAgent.SetDestination(m_ColliderAdjustedTargetPosition);
+                Debug.LogFormat("Setting target position to: ({0}, {1})", m_ColliderAdjustedTargetPosition.x, m_ColliderAdjustedTargetPosition.y);
+                Debug.LogFormat("Set target position to: ({0}, {1})", m_NavMeshAgent.destination.x, m_NavMeshAgent.destination.y);
             }
 
             UpdateAnimatorSpeed();
@@ -159,6 +161,8 @@ namespace Unity.Behavior
                 {
                     Debug.Log("Failed to set navmesh destination.");
                 }
+                Debug.LogFormat("Setting target position to: ({0}, {1})", m_ColliderAdjustedTargetPosition.x, m_ColliderAdjustedTargetPosition.y);
+                Debug.LogFormat("Set target position to: ({0}, {1})", m_NavMeshAgent.destination.x, m_NavMeshAgent.destination.y);
 
                 var pathfindingComponent = m_NavMeshAgent.GetComponent<EnemyPathfindingComponent>();
                 if (pathfindingComponent)

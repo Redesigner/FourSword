@@ -1,4 +1,6 @@
 ﻿using System;
+using ImGuiNET;
+using UImGui;
 using Unity.Behavior;
 using UnityEditor;
 using UnityEngine;
@@ -51,11 +53,23 @@ public class EnemyPathfindingComponent : MonoBehaviour
 
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
         _behaviorGraphAgent.SetVariableValue("DestinationAlias", _destinationAlias.transform);
+        
+#if UNITY_EDITOR
+        UImGuiUtility.Layout += OnLayout;
+        UImGuiUtility.OnInitialize += OnInitialize;
+        UImGuiUtility.OnDeinitialize += OnDeinitialize;
+#endif
     }
 
     private void OnDisable()
     {
         Destroy(_destinationAlias);
+        
+#if UNITY_EDITOR
+        UImGuiUtility.Layout -= OnLayout;
+        UImGuiUtility.OnInitialize -= OnInitialize;
+        UImGuiUtility.OnDeinitialize -= OnDeinitialize;
+#endif
     }
 
     public void Start()
@@ -126,12 +140,12 @@ public class EnemyPathfindingComponent : MonoBehaviour
             return;
         }
         
-        // _navMeshAgent.nextPosition = _kinematicObject.transform.position;
+        _navMeshAgent.nextPosition = _kinematicObject.transform.position;
         _kinematicObject.MoveInput(_navMeshAgent.desiredVelocity);
 
         if (_navMeshAgent.desiredVelocity == Vector3.zero)
         {
-            _navMeshAgent.SetDestination(_destinationAlias.transform.position);
+            // _navMeshAgent.SetDestination(_destinationAlias.transform.position);
         }
     }
     
@@ -186,5 +200,38 @@ public class EnemyPathfindingComponent : MonoBehaviour
         
         Handles.color = Color.blue;
         Handles.Button(_splineTargetPosition, Quaternion.identity, 0.2f, 0.0f, Handles.DotHandleCap);
+    }
+    
+    private void OnLayout(UImGui.UImGui obj)
+    {
+        if (!Selection.Contains(gameObject))
+        {
+            return;
+        }
+
+        if (ImGui.Begin($"{gameObject.name} Pathfinding"))
+        {
+            ImGui.Text(_navMeshAgent.isStopped ? "Is Stopped: true" : "Is Stopped: false");
+            ImGui.Text(_navMeshAgent.hasPath ? "Has Path: true" : "Has Path: false");
+            ImGui.Text($"Distance to target: {_navMeshAgent.remainingDistance:0.0} / {_navMeshAgent.stoppingDistance:0.0}");
+            ImGui.Text($"Path Status: {_navMeshAgent.pathStatus}");
+            ImGui.Text(_navMeshAgent.isPathStale ? "Is Path Stale: true" : "Is Path Stale: false");
+            ImGui.Text(_navMeshAgent.isOnNavMesh ? "Is On Nav Mesh: true" : "Is On Nav Mesh: false");
+            ImGui.Text($"Destination alias: x {_destinationAlias.transform.position.x:0.0}, y {_destinationAlias.transform.position.y:0.0}");
+            ImGui.Text($"Destination      : x {_navMeshAgent.destination.x:0.0}, y {_navMeshAgent.destination.y:0.0}");
+
+        }
+        ImGui.End();
+
+    }
+
+    private void OnInitialize(UImGui.UImGui obj)
+    {
+        
+    }
+
+    private void OnDeinitialize(UImGui.UImGui obj)
+    {
+        
     }
 }

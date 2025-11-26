@@ -352,6 +352,7 @@ MonoBehaviour:
   - rid: 6056381722570260886
   - rid: 6056381722570260887
   - rid: 896754459736277301
+  - rid: 896754573887930457
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -365,6 +366,14 @@ MonoBehaviour:
           m_Value1: 13005702933728991089
         Name: PathfindingComponent
         m_Value: {fileID: 5195365265740986587}
+    - rid: 896754573887930457
+      type: {class: 'BlackboardVariable`1[[Characters.Enemies.Scripts.EnemyShieldComponent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 5013902957964416562
+          m_Value1: 14846836174495068087
+        Name: Shield
+        m_Value: {fileID: 6327463367685612834}
     - rid: 5728091114660692360
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -812,7 +821,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
