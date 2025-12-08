@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Characters.Enemies.Scripts
 {
@@ -66,6 +68,15 @@ namespace Characters.Enemies.Scripts
 
             // PositionResult.DrawScore(points, 0.5f);
             return points.First().position;
+        }
+
+        public static Vector3 GetRandomPointInRadius(Vector3 center, float maxRadius, float minRadius)
+        {
+            var angle = Random.Range(0.0f, (float)Mathf.PI * 2.0f);
+            var radius = Mathf.Sqrt(Random.Range(0, minRadius)) + (maxRadius - minRadius);
+            
+            var result = new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0.0f);
+            return center + result;
         }
     }
 }

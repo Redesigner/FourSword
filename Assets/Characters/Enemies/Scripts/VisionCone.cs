@@ -13,7 +13,8 @@ namespace Characters.Enemies.Scripts
         public KinematicCharacterController controller;
     }
 
-public class VisionCone : MonoBehaviour
+    [Icon("Assets/Editor/Icons/VisionConeIcon.png")]
+    public class VisionCone : MonoBehaviour
     {
         [SerializeField] [Min(0.0f)] private float coneRadius = 1.0f;
         [SerializeField] [Range(0.0f, 180.0f)] private float coneHalfAngle = 30.0f;
@@ -35,11 +36,10 @@ public class VisionCone : MonoBehaviour
         private TimerHandle _loseSightTimer;
 
         
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         private Mesh _coneMesh;
-
         private float _previousConeHalfAngle;
-        #endif
+#endif
 
         private void Start()
         {
@@ -149,7 +149,7 @@ public class VisionCone : MonoBehaviour
             Gizmos.DrawMesh(_coneMesh, transform.position, Quaternion.Euler(0.0f, 0.0f, currentAngle), Vector3.one * coneRadius);
             DebugHelpers.Drawing.DrawCircle(transform.position, 1.0f, new Color(1.0f, 0.0f, 0.0f, 0.1f));
         }
-        #endif
+#endif
 
         private bool IsPointInside(Vector2 point)
         {

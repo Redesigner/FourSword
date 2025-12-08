@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Animator))]
+[Icon("Assets/Editor/Icons/KinematicCharacterController.png")]
 public class KinematicCharacterController : Kinematics.KinematicObject
 {
     private static readonly int HorizontalBlend = Animator.StringToHash("Horizontal");

@@ -68,16 +68,20 @@ public class HealthComponent : DamageListener
 
     private void Awake()
     {
+#if UNITY_EDITOR
         UImGuiUtility.Layout += OnLayout;
         UImGuiUtility.OnInitialize += OnInitialize;
         UImGuiUtility.OnDeinitialize += OnDeinitialize;
+#endif
     }
 
     private void OnDisable()
     {
+#if UNITY_EDITOR
         UImGuiUtility.Layout -= OnLayout;
         UImGuiUtility.OnInitialize -= OnInitialize;
         UImGuiUtility.OnDeinitialize -= OnDeinitialize;
+#endif
     }
 
     public override void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
@@ -185,7 +189,7 @@ public class HealthComponent : DamageListener
             return;
         }
 
-        if (ImGui.Begin($"{gameObject.name} Status"))
+        if (ImGui.Begin($"{gameObject.name} Status###HealthComponent"))
         {
             ImGui.Text($"Health: {health} / {maxHealth}");
             foreach (var item in statusEffects)
@@ -237,4 +241,6 @@ public class HealthComponent : DamageListener
     {
         
     }
+    
+    
 }

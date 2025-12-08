@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/P_Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordAttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Scripts/SwordAttackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Dueler/P_Dueler.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Dueler/P_Dueler.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyAttackController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyAttackController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/VisionCone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/AttackController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/AttackController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Scripts/KinematicCharacterController.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Core/Props" />
+        <entry key="$PROJECT_DIR$" value="Core/Sword" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,38 +37,45 @@
     &quot;assignee&quot;: &quot;Redesigner&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Redesigner/FourSword.git",
-    "accountId": "8829e334-c2cb-427e-be21-40b6ce61584a"
-  },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
-    },
-    "owner": "Redesigner",
-    "repository": "FourSword"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Redesigner/FourSword.git&quot;,
+    &quot;accountId&quot;: &quot;8829e334-c2cb-427e-be21-40b6ce61584a&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/25ce29052dfe4e49a635a42f7798806b1e0000/b7/2bbf5ae6/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9f5692804bed4122b102b53a993bfd3f10fc00/5d/6cfc609d/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bc9454776f3c42ffb66359567121c5ee11400/40/9b4de94d/NavMeshAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f68f38c157c448cbbbad36d51114670723e00/99/f4c558cd/HitboxTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Behavior Demo For Unity/Assets/Code/Scripts/UI/UICharacterHealth.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FireProjectileAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/FollowSplineAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/IsNullCondition.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/ExecuteAttackAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FireProjectileAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/FollowSplineAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/LookAtAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/LowerShieldAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RaiseShieldAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Behavior/BAG_WalkToTarget.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/IsNullCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Conditions/TargetMovedCondition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PointBehindTargetQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PositionQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Chaser/Behavior/BAG_Chaser.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyShieldComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Player/Animations/AC_Player.controller" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Scripts/HealthComponent.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Scripts/HealthComponent.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Editor/Facts/FactQuery_PropertyDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/StatusEffects/Scripts/StatusEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shared/Math.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Shared/Scripts/Settings/FourSwordSettingsProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.psydack.uimgui@63242adb9dc7/Source/Data/UIOConfig.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.psydack.uimgui@63242adb9dc7/Source/UImGui.cs" root0="SKIP_HIGHLIGHTING" />
@@ -94,9 +106,6 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Plugins/PlayerInput/PlayerInputEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -109,13 +118,12 @@
   "keyToString": {
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Standalone Player.Standalone Player.executor": "Debug",
     "Standalone Player.Start Unity.executor": "Debug",
-    "XThreadsFramesViewSplitterKey": "0.47916666",
-    "git-widget-placeholder": "Core/Sword",
+    "XThreadsFramesViewSplitterKey": "0.43283582",
+    "git-widget-placeholder": "Core/AI",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -216,47 +224,8 @@
       <workItem from="1763661072395" duration="4643000" />
       <workItem from="1763668517184" duration="8507000" />
       <workItem from="1763745477735" duration="8496000" />
-      <workItem from="1763827296978" duration="6609000" />
-    </task>
-    <task id="LOCAL-00001" summary="pre merge">
-      <option name="closed" value="true" />
-      <created>1758779168241</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1758779168241</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Connected Behavior Graph to navmesh">
-      <option name="closed" value="true" />
-      <created>1758826193934</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1758826193934</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Added position scoring system">
-      <option name="closed" value="true" />
-      <created>1758845844636</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1758845844636</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Fixed graph to use new query system">
-      <option name="closed" value="true" />
-      <created>1758912711184</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1758912711184</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Reorganized code, added some helpers, added look at action">
-      <option name="closed" value="true" />
-      <created>1758919678724</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1758919678724</updated>
+      <workItem from="1763827296978" duration="2066000" />
+      <workItem from="1764035782699" duration="1764000" />
     </task>
     <task id="LOCAL-00006" summary="Reorganized code, added some helpers, added look at action">
       <option name="closed" value="true" />
@@ -602,15 +571,55 @@
       <option name="project" value="LOCAL" />
       <updated>1763759706387</updated>
     </task>
-    <task id="LOCAL-00049" summary="removed old plugin">
+    <task id="LOCAL-00049" summary="Reorganize behavior folders">
       <option name="closed" value="true" />
-      <created>1763831508523</created>
+      <created>1764022387582</created>
       <option name="number" value="00049" />
       <option name="presentableId" value="LOCAL-00049" />
       <option name="project" value="LOCAL" />
-      <updated>1763831508523</updated>
+      <updated>1764022387582</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Added wandering, and dueler enemy prototype">
+      <option name="closed" value="true" />
+      <created>1764044574726</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1764044574726</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Added shield component">
+      <option name="closed" value="true" />
+      <created>1764054725203</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1764054725203</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Added some icons to make it easier to work with components in the editor">
+      <option name="closed" value="true" />
+      <created>1764108155348</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1764108155348</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Added more debug information to pathfinding, and new icons">
+      <option name="closed" value="true" />
+      <created>1764144641053</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1764144641053</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Fixed pathfinding getting stuck">
+      <option name="closed" value="true" />
+      <created>1764188756941</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1764188756941</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,7 +644,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Core/Sword" />
+                        <option value="Artbranch" />
                       </list>
                     </value>
                   </entry>
@@ -649,11 +658,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Moved effects to a global list" />
-    <MESSAGE value="Added damage resistances, changed Blunt -&gt; Smash" />
-    <MESSAGE value="Fixed knockbacks so they have timers independent of stun" />
-    <MESSAGE value="added invulnerability effect" />
-    <MESSAGE value="Added leaf particle test" />
     <MESSAGE value="Added health pickup" />
     <MESSAGE value="Added drop table and drop table components" />
     <MESSAGE value="Test of facts system and drawer" />
@@ -673,8 +677,13 @@
     <MESSAGE value="EnemyPathfindingComponent now follows splines correctly" />
     <MESSAGE value="Enemy can now follow path" />
     <MESSAGE value="Added chaser enemy" />
-    <MESSAGE value="removed old plugin" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed old plugin" />
+    <MESSAGE value="Reorganize behavior folders" />
+    <MESSAGE value="Added wandering, and dueler enemy prototype" />
+    <MESSAGE value="Added shield component" />
+    <MESSAGE value="Added some icons to make it easier to work with components in the editor" />
+    <MESSAGE value="Added more debug information to pathfinding, and new icons" />
+    <MESSAGE value="Fixed pathfinding getting stuck" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed pathfinding getting stuck" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -705,38 +714,7 @@
           </properties>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Game/Facts/FactState.cs</url>
-          <line>107</line>
-          <properties documentPath="E:\Game Development\Unity\Projects\FourSword\Assets\Game\Facts\FactState.cs" containingFunctionPresentation="Method 'ExecuteChange'">
-            <startOffsets>
-              <option value="3829" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3884" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
-          <option name="timeStamp" value="41" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
-          <option name="timeStamp" value="42" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="43" />
-        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="RunUnityExe">
-        <watch expression="_navMeshAgent.destination" language="C#" />
-        <watch expression="_splineTargetPosition" language="C#" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

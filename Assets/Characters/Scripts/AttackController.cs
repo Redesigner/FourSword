@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Characters
 {
+    [Icon("Assets/Editor/Icons/AttackControllerIcon.png")]
     public class AttackController : MonoBehaviour
     {
         /// <summary>
