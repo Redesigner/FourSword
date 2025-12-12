@@ -18,6 +18,11 @@ namespace Characters.Enemies.Scripts
 
         public static void ScorePositionsByDistanceFromTarget(Vector3 target, List<PositionResult> positions)
         {
+            if (positions.Count == 0)
+            {
+                return;
+            }
+            
             var positionCount = positions.Count;
             var distancesSquared = new List<float>(positionCount);
             distancesSquared.AddRange(positions.Select(position => (position.position - target).sqrMagnitude));
@@ -30,6 +35,8 @@ namespace Characters.Enemies.Scripts
             {
                 positions[i].score = 1.0f - (distancesSquared[i] - min) * rangeFactor;
             }
+            
+            DrawScore(positions, 1.0f);
         }
 
         public static void ScorePositionsByVector(Vector3 direction, List<PositionResult> positions)
@@ -49,10 +56,17 @@ namespace Characters.Enemies.Scripts
             {
                 positionResult.score = (positionResult.score - min) * factor;
             }
+            
+            DrawScore(positions, 1.0f);
         }
 
         public static void DrawScore(List<PositionResult> positions, float duration)
         {
+            if (!GameState.instance.settings.showPositionScore)
+            {
+                return;
+            }
+            
             foreach (var position in positions)
             {
                 DebugHelpers.Drawing.DrawCross(position.position, 0.25f, new Color(position.score, 0.0f, 0.0f), duration);

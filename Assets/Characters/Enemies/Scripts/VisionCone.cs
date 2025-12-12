@@ -178,8 +178,11 @@ namespace Characters.Enemies.Scripts
 
         private bool CanSeePoint(Vector2 point)
         {
+            var previousQueryHitTriggerValue = Physics2D.queriesHitTriggers;
+            Physics2D.queriesHitTriggers = false;
             var result = Physics2D.Linecast(transform.position, point, LayerMask.GetMask("Default"));
-
+            Physics2D.queriesHitTriggers = previousQueryHitTriggerValue;
+            
             Debug.DrawLine(transform.position, result ? result.centroid : point, Color.red, Time.fixedDeltaTime);
             
             return !result;

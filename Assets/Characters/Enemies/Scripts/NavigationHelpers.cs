@@ -42,10 +42,15 @@ namespace Characters.Enemies.Scripts
         {
             var points = GetLocationsInRadius(center, radius, numLocations);
             points.RemoveAll(point => !IsLocationInNavMesh(point.position));
+            if (points.Count == 0)
+            {
+                return center;
+            }
+            
             PositionResult.ScorePositionsByDistanceFromTarget(agentPosition, points);
             points.Sort((a, b) => -a.score.CompareTo(b.score));
 
-            // PositionResult.DrawScore(points, 0.5f);
+            PositionResult.DrawScore(points, 1.0f);
 
             return points.First().position;
         }

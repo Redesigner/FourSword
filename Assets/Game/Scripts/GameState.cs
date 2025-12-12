@@ -14,6 +14,7 @@ public class GameState : MonoBehaviour
     public bool paused { get; private set; }
     
     public StatusEffectList effectList { get; private set; }
+    public FourSwordSettings settings { get; private set; }
 
     public FactState factState { get; private set; }
     
@@ -41,7 +42,8 @@ public class GameState : MonoBehaviour
     public void Awake()
     {
         _instance = this;
-        effectList = Resources.Load<FourSwordSettings>("FourSwordSettings").statusEffects;
+        settings = Resources.Load<FourSwordSettings>("FourSwordSettings");
+        effectList = settings.statusEffects;
         
         factState = new FactState();
         var factRegistry = Resources.Load<FactRegistry>(FactRegistry.DefaultFactRegistryPath);
