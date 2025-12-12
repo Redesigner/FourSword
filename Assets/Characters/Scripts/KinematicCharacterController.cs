@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.StatusEffects;
+using Shared;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -127,13 +128,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         
         if (_moveInput.x != 0.0f || _moveInput.y != 0.0f)
         {
-            if (faceMovement)
-            {
-                SetLookDirection(_moveInput);
-            }
-
-            _animator.SetFloat(HorizontalBlend, _moveInput.x);
-            _animator.SetFloat(VerticalBlend, _moveInput.y);
+            SetLookDirection(_moveInput);
             _animator.SetFloat(SpeedBlend, 1.0f);
         }
         else
@@ -145,9 +140,11 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     public void SetLookDirection(Vector2 direction)
     {
         _lookDirection = direction.normalized;
-        _animator.SetFloat(HorizontalBlend, _lookDirection.x);
-        _animator.SetFloat(VerticalBlend, _lookDirection.y);
         lookDirectionChanged.Invoke(Mathf.Atan2(_lookDirection.y, _lookDirection.x));
+
+        var clampedDirection = Math.ClampDirectionVector(lookDirection);
+        _animator.SetFloat(HorizontalBlend, clampedDirection.x);
+        _animator.SetFloat(VerticalBlend, clampedDirection.y);
     }
     
     protected override void OnMovementHit(RaycastHit2D hit)
