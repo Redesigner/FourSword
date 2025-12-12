@@ -16,16 +16,44 @@ namespace Characters.Enemies.Scripts
     [Icon("Assets/Editor/Icons/VisionConeIcon.png")]
     public class VisionCone : MonoBehaviour
     {
+        /**
+         * The distance at which an enemy is no longer visible
+         */
         [SerializeField] [Min(0.0f)] private float coneRadius = 1.0f;
+        
+        /**
+         * Half-arc length of the vision cone, in degrees - a full circle is 180 degrees, etc.
+         */
         [SerializeField] [Range(0.0f, 180.0f)] private float coneHalfAngle = 30.0f;
 
+        /**
+         * Baked in rotation of the cone. Matches a unit circle, where 0 is looking right.
+         * Does not orient itself to global transform, as this component is meant to attach to an existing object,
+         * and doesn't have its own transform
+         */
         [SerializeField] [Range(-180.0f, 180.0f)]
         private float currentAngle;
+
+        /**
+         * The radius of the minimum visibility circle. Anything inside this radius will be detected, as long as
+         * it passes the visibility raycast.
+         */
+        [SerializeField] [Min(0.0f)] private float minimumVisibilityRadius = 0.5f;
         
+        /**
+         * Contact filter to use for visibility raycast
+         */
         [SerializeField] private ContactFilter2D visibilityContactFilter;
 
+        /**
+         * Agent to write visibility changed events to directly
+         */
         [SerializeField] private BehaviorGraphAgent agent;
 
+        /**
+         * Length of time, in seconds, it takes for an enemy to be forgotten after it leaves the visible area,
+         * or is otherwise obscured
+         */
         [SerializeField] [Range(0.0f, 100.0f)] private float lostSightTime;
         
         private BlackboardVariable<SpottedEnemy> _seenEnemyEventChannel;
@@ -147,7 +175,7 @@ namespace Characters.Enemies.Scripts
             
             Gizmos.color = _seenCharacters.Count > 0 ? new Color(0.0f, 1.0f, 0.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.25f);
             Gizmos.DrawMesh(_coneMesh, transform.position, Quaternion.Euler(0.0f, 0.0f, currentAngle), Vector3.one * coneRadius);
-            DebugHelpers.Drawing.DrawCircle(transform.position, 1.0f, new Color(1.0f, 0.0f, 0.0f, 0.1f));
+            DebugHelpers.Drawing.DrawCircle(transform.position, minimumVisibilityRadius, new Color(1.0f, 0.0f, 0.0f, 0.1f));
         }
 #endif
 
@@ -163,6 +191,12 @@ namespace Characters.Enemies.Scripts
 
             // This should almost never happen, but it'll catch any divide by zeros
             if (distSquared == 0.0f)
+            {
+                return true;
+            }
+
+            // Catch anything that's inside the visible radius, and don't bother with the cone angle checks
+            if (distSquared < minimumVisibilityRadius * minimumVisibilityRadius)
             {
                 return true;
             }
