@@ -16,5 +16,11 @@ namespace Shared
                 new Vector2(Mathf.Sign(direction.x), 0.0f) :
                 new Vector2(0.0f, Mathf.Sign(direction.y));
         }
+
+        public static Vector2 ClampVectorLength(Vector2 vector, float length)
+        {
+            var squareMagnitude = vector.sqrMagnitude;
+            return squareMagnitude > length * length ? vector / Mathf.Sqrt(squareMagnitude) * length : vector;
+        }
     }
 }

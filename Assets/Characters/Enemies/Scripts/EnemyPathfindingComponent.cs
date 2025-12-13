@@ -20,6 +20,13 @@ public class EnemyPathfindingComponent : MonoBehaviour
         Target, // Following the target, usually via destinationAlias
         Spline, // Moving along a spline
     }
+
+    public float InputMultiplier
+    {
+        get => _inputMultiplier;
+        set => _inputMultiplier = Mathf.Clamp(value, 0.0f, 1.0f);
+    }
+    private float _inputMultiplier = 1.0f; 
     
     private NavMeshAgent _navMeshAgent;
     private KinematicCharacterController _kinematicObject;
@@ -29,6 +36,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
     // Spline following variables, might move this to a separate component
     [SerializeField]
     private Spline2DComponent _targetSpline;
+    
     private int _splineTargetPointIndex;
     private Vector2 _splineTargetPosition;
     private bool _onPath;
@@ -142,12 +150,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
         }
         
         _navMeshAgent.nextPosition = _kinematicObject.transform.position;
-        _kinematicObject.MoveInput(_navMeshAgent.desiredVelocity);
-
-        if (_navMeshAgent.desiredVelocity == Vector3.zero)
-        {
-            // _navMeshAgent.SetDestination(_destinationAlias.transform.position);
-        }
+        _kinematicObject.MoveInput(Shared.Math.ClampVectorLength(_navMeshAgent.desiredVelocity, InputMultiplier));
     }
     
     // ReSharper disable Unity.PerformanceAnalysis -- Rider is flagging this as expensive for some reason?
@@ -216,6 +219,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
             ImGui.Text(_navMeshAgent.hasPath ? "Has Path: true" : "Has Path: false");
             ImGui.Text($"Distance to target: {_navMeshAgent.remainingDistance:0.0} / {_navMeshAgent.stoppingDistance:0.0}");
             ImGui.Text($"Path Status: {_navMeshAgent.pathStatus}");
+            ImGui.Text($"Speed: {_navMeshAgent.speed}");
             ImGui.Text(_navMeshAgent.isPathStale ? "Is Path Stale: true" : "Is Path Stale: false");
             ImGui.Text(_navMeshAgent.isOnNavMesh ? "Is On Nav Mesh: true" : "Is On Nav Mesh: false");
             ImGui.Text($"Destination alias: x {_destinationAlias.transform.position.x:0.0}, y {_destinationAlias.transform.position.y:0.0}");

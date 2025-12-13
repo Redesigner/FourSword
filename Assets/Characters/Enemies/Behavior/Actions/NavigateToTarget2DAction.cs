@@ -113,9 +113,14 @@ namespace Unity.Behavior
             if (m_NavMeshAgent != null)
             {
                 if (m_OriginalSpeed >= 0f)
+                {
                     m_NavMeshAgent.speed = m_OriginalSpeed;
+                }
+                
                 if (m_OriginalStoppingDistance >= 0f)
+                {
                     m_NavMeshAgent.stoppingDistance = m_OriginalStoppingDistance;
+                }
                 
                 m_NavMeshAgent.Warp(Agent.Value.transform.position);
             }
@@ -162,6 +167,7 @@ namespace Unity.Behavior
                 if (pathfindingComponent)
                 {
                     pathfindingComponent.SetPathfollowingMode(EnemyPathfindingComponent.PathFollowingMode.Target);
+                    // pathfindingComponent.InputMultiplier = 0.5f;
                 }
             }
 

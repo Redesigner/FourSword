@@ -16,7 +16,7 @@ enum PositionQueryType
 [Serializable, GeneratePropertyBag]
 [NodeDescription(
     name: "RunPositionQuery",
-    story: "Run a position query around [Target] and write it to [position]",
+    story: "Run a query [Query] around [Target] and write it to [position]",
     category: "Action",
     id: "e0cbb9bd53ae037921a108813d778fdf")]
 internal class RunPositionQueryAction : Action
