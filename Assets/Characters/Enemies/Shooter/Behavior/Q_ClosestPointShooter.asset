@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e242778fcdb84dfd9c295c7a57cb1a73, type: 3}
   m_Name: Q_ClosestPointShooter
   m_EditorClassIdentifier: 
-  radius: 2.5
-  numPoints: 12
+  radius: 5
+  numPoints: 16

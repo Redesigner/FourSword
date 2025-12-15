@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PointBehindTargetQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PointBehindTargetQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PositionQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PositionQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/RandomPointQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/RandomPointQuery.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyPathfindingComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/PositionScoring.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/PositionScoring.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Shooter/Behavior/BAG_Shooter.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Shooter/Behavior/BAG_Shooter.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,14 +232,7 @@
       <workItem from="1765570205794" duration="9129000" />
       <workItem from="1765608059255" duration="208000" />
       <workItem from="1765608324988" duration="8935000" />
-    </task>
-    <task id="LOCAL-00011" summary="Reworked hitboxes to be good now">
-      <option name="closed" value="true" />
-      <created>1759345684821</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1759345684821</updated>
+      <workItem from="1765829036401" duration="1249000" />
     </task>
     <task id="LOCAL-00012" summary="Clean up drawing debug, fix enemy aniamtions">
       <option name="closed" value="true" />
@@ -632,7 +618,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765609262860</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Better visualization">
+      <option name="closed" value="true" />
+      <created>1765829128722</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1765829128723</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +665,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fact registry editor working!" />
     <MESSAGE value="Fixed facts not saving correctly" />
     <MESSAGE value="Added dropdowns to factquery" />
     <MESSAGE value="Finished fact query editor" />
@@ -696,7 +689,8 @@
     <MESSAGE value="Added minimum visibilty circle for vision cones" />
     <MESSAGE value="Added 4 directional attack to dueler" />
     <MESSAGE value="Added shooter enemy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added shooter enemy" />
+    <MESSAGE value="Better visualization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better visualization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
