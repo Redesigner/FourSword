@@ -1,4 +1,5 @@
-﻿using Characters.Enemies.Scripts;
+﻿using System.Collections.Generic;
+using Characters.Enemies.Scripts;
 using UnityEngine;
 
 namespace Characters.Enemies.Behavior.Queries
@@ -21,6 +22,13 @@ namespace Characters.Enemies.Behavior.Queries
             }
 
             return self.transform.position;
+        }
+
+        public override Vector3 RunQueryWithAllResults(GameObject self, KinematicCharacterController target, out List<PositionResult> results)
+        {
+            var result = RunQuery(self, target);
+            results = new List<PositionResult> { new(result, 1.0f) };
+            return result;
         }
     }
 }

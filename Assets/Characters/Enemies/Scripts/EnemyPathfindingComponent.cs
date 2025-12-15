@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Characters.Enemies.Scripts;
 using ImGuiNET;
 using UImGui;
 using Unity.Behavior;
@@ -53,6 +55,10 @@ public class EnemyPathfindingComponent : MonoBehaviour
      * </summary>
      */
     [SerializeField] private bool pathfindOnSpline = false;
+    
+#if UNITY_EDITOR
+    public List<PositionResult> recentlyQueuedPoints = new(); 
+#endif
     
     private void OnEnable()
     {
@@ -139,6 +145,15 @@ public class EnemyPathfindingComponent : MonoBehaviour
         
         var position = _kinematicObject.gameObject.transform.position;
         DebugHelpers.Drawing.DrawArrow(position, position + _navMeshAgent.desiredVelocity, Color.red, Time.deltaTime);
+        
+#if UNITY_EDITOR
+        foreach (var positionResult in recentlyQueuedPoints)
+        {
+            DebugHelpers.Drawing.DrawCircle(positionResult.position, 0.25f, positionResult.score < 0.99f ?
+                new Color(positionResult.score, 0.0f, 0.0f) :
+                new Color(0.0f, 1.0f, 0.0f));
+        }
+#endif
     }
 
     // ReSharper disable Unity.PerformanceAnalysis -- Rider is flagging this as expensive for some reason?

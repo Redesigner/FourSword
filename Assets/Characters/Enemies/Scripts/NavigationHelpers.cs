@@ -50,7 +50,7 @@ namespace Characters.Enemies.Scripts
             PositionResult.ScorePositionsByDistanceFromTarget(agentPosition, points);
             points.Sort((a, b) => -a.score.CompareTo(b.score));
 
-            PositionResult.DrawScore(points, 1.0f);
+            // PositionResult.DrawScore(points, 1.0f);
 
             return points.First().position;
         }

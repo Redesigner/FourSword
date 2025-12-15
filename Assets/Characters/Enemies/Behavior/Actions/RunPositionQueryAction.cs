@@ -30,7 +30,17 @@ internal class RunPositionQueryAction : Action
     
     protected override Status OnStart()
     {
+#if !UNITY_EDITOR
         position.Value.position = query.Value.RunQuery(origin.Value, target.Value);
+#else
+        position.Value.position = query.Value.RunQueryWithAllResults(origin.Value, target.Value, out var results);
+        
+        var pathfindingComponent = GameObject.GetComponent<EnemyPathfindingComponent>();
+        if (pathfindingComponent)
+        {
+            pathfindingComponent.recentlyQueuedPoints = results;
+        }
+#endif
         return Status.Success;
     }
 }

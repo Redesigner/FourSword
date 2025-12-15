@@ -25,7 +25,12 @@ namespace Characters.Enemies.Scripts
             
             var positionCount = positions.Count;
             var distancesSquared = new List<float>(positionCount);
-            distancesSquared.AddRange(positions.Select(position => (position.position - target).sqrMagnitude));
+            // distancesSquared.AddRange(positions.Select(position => (position.position - target).sqrMagnitude));
+            foreach (var position in positions)
+            {
+                var deltaPosition = position.position - target;
+                distancesSquared.Add(deltaPosition.sqrMagnitude);
+            }
             var min = distancesSquared.Min();
             var max = distancesSquared.Max();
             var delta = max - min;
@@ -35,8 +40,6 @@ namespace Characters.Enemies.Scripts
             {
                 positions[i].score = 1.0f - (distancesSquared[i] - min) * rangeFactor;
             }
-            
-            DrawScore(positions, 1.0f);
         }
 
         public static void ScorePositionsByVector(Vector3 direction, List<PositionResult> positions)
@@ -56,11 +59,9 @@ namespace Characters.Enemies.Scripts
             {
                 positionResult.score = (positionResult.score - min) * factor;
             }
-            
-            DrawScore(positions, 1.0f);
         }
 
-        public static void DrawScore(List<PositionResult> positions, float duration)
+        /*public static void DrawScore(List<PositionResult> positions, float duration)
         {
             if (!GameState.instance.settings.showPositionScore)
             {
@@ -71,6 +72,6 @@ namespace Characters.Enemies.Scripts
             {
                 DebugHelpers.Drawing.DrawCross(position.position, 0.25f, new Color(position.score, 0.0f, 0.0f), duration);
             }
-        }
+        }*/
     }
 }
