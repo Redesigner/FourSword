@@ -5,8 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39b39e7-02d9-4a75-b956-fa5ec7f5acdb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryStackAction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Actions/RunPositionQueryStackAction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/CanSeeStackEntry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/CanSeeStackEntry.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/CircleGeneratorStackEntry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/CircleGeneratorStackEntry.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/ClosestToSelfStackEntry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/ClosestToSelfStackEntry.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/NavMeshStackEntry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/NavMeshStackEntry.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/PointInRadiusStackEntry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/PointInRadiusStackEntry.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/PositionQueryStack.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/PositionQueryStack.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/PositionQueryStackEntry.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/PositionQueryStackEntry.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FourSword/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/RandomPointQuery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/RandomPointQuery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/NavigationHelpers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Characters/Enemies/Shooter/Behavior/BAG_Shooter.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Enemies/Shooter/Behavior/BAG_Shooter.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/BehaviorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BehaviorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +80,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/ClosestPointQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PointBehindTargetQuery.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/PositionQuery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/CanSeeStackEntry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/CircleGeneratorStackEntry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/NavMeshStackEntry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/PointInRadiusStackEntry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/PositionQueryStack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Behavior/Queries/Stack/PositionQueryStackEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Chaser/Behavior/BAG_Chaser.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://E:/Game Development/Unity/Projects/FourSword/Assets/Characters/Enemies/Dueler/Behavior/BAG_Dueler.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Scripts/EnemyShieldComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/Shooter/Behavior/BAG_Shooter.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Characters/Enemies/TestEnemy/Behavior/BAG_TestEnemy.asset" root0="FORCE_HIGHLIGHTING" />
@@ -232,15 +258,8 @@
       <workItem from="1765570205794" duration="9129000" />
       <workItem from="1765608059255" duration="208000" />
       <workItem from="1765608324988" duration="8935000" />
-      <workItem from="1765829036401" duration="1249000" />
-    </task>
-    <task id="LOCAL-00012" summary="Clean up drawing debug, fix enemy aniamtions">
-      <option name="closed" value="true" />
-      <created>1759349502516</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1759349502516</updated>
+      <workItem from="1765829036401" duration="9249000" />
+      <workItem from="1765922429466" duration="353000" />
     </task>
     <task id="LOCAL-00013" summary="Added target moved condition, started vision cone">
       <option name="closed" value="true" />
@@ -626,7 +645,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765829128723</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Changed shooter pathfinding query">
+      <option name="closed" value="true" />
+      <created>1765830636428</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1765830636428</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,7 +692,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixed facts not saving correctly" />
     <MESSAGE value="Added dropdowns to factquery" />
     <MESSAGE value="Finished fact query editor" />
     <MESSAGE value="Reworked fact registry to be a list" />
@@ -690,7 +716,8 @@
     <MESSAGE value="Added 4 directional attack to dueler" />
     <MESSAGE value="Added shooter enemy" />
     <MESSAGE value="Better visualization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better visualization" />
+    <MESSAGE value="Changed shooter pathfinding query" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed shooter pathfinding query" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

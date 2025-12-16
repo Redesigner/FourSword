@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Characters.Enemies.Behavior.Queries
 {
-    [CreateAssetMenu(fileName = "Q_ClosestPoint", menuName = "PositionQuery/ClosestPoint", order = 0)]
+    [CreateAssetMenu(fileName = "Q_ClosestPoint", menuName = "PositionQuery/ClosestPoint")]
     public class ClosestPointQuery : PositionQuery
     {
         [SerializeField] [Min(0.0f)] private float radius;

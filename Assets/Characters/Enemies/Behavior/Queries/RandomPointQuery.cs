@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Characters.Enemies.Behavior.Queries
 {
-    [CreateAssetMenu(fileName = "Q_RandomPoint", menuName = "PositionQuery/RandomPoint", order = 0)]
+    [CreateAssetMenu(fileName = "Q_RandomPoint", menuName = "PositionQuery/RandomPoint")]
     public class RandomPointQuery : PositionQuery
     {
         [SerializeField] [Min(0.0f)] private float minRadius;

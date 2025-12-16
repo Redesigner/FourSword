@@ -14,7 +14,7 @@ namespace Characters.Enemies.Scripts
             return NavMesh.SamplePosition(location, out var hit, 0.1f, 1 << NavMesh.GetAreaFromName("Walkable"));
         }
 
-        public static List<PositionResult> GetLocationsInRadius(Vector3 center, float radius, int numLocations)
+        public static List<PositionResult> GetLocationsInRadius(Vector3 center, float radius, int numLocations, float score = 1.0f)
         {
             var result = new List<PositionResult>(numLocations);
             var interval = Mathf.PI * 2.0f / numLocations;
@@ -23,7 +23,7 @@ namespace Characters.Enemies.Scripts
                 var newPosition = center;
                 newPosition.x += Mathf.Cos(interval * i) * radius;
                 newPosition.y += Mathf.Sin(interval * i) * radius;
-                result.Add(new PositionResult(newPosition, 1.0f));
+                result.Add(new PositionResult(newPosition, score));
             }
 
             return result;
