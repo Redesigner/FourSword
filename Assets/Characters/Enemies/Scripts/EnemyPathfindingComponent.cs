@@ -131,7 +131,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
         BeginMoveToSpline(splineComponent);
     }
 
-    public void SetPathfollowingMode(PathFollowingMode mode)
+    public void SetPathFollowingMode(PathFollowingMode mode)
     {
         pathFollowingMode = mode;
     }

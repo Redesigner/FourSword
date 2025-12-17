@@ -166,7 +166,7 @@ namespace Unity.Behavior
                 var pathfindingComponent = m_NavMeshAgent.GetComponent<EnemyPathfindingComponent>();
                 if (pathfindingComponent)
                 {
-                    pathfindingComponent.SetPathfollowingMode(EnemyPathfindingComponent.PathFollowingMode.Target);
+                    pathfindingComponent.SetPathFollowingMode(EnemyPathfindingComponent.PathFollowingMode.Target);
                     // pathfindingComponent.InputMultiplier = 0.5f;
                 }
             }

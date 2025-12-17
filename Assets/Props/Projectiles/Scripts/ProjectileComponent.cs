@@ -1,4 +1,5 @@
 using System;
+using Characters;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -8,6 +9,7 @@ public class ProjectileComponent : MonoBehaviour
     [SerializeField] public float damage;
     [SerializeField] private GameObject destructionParticlePrefab;
     [SerializeField] private float particleLifetime = 1.0f;
+    [SerializeField] private bool canBeBlocked = true;
 
     public Vector2 velocity;
     
@@ -16,6 +18,23 @@ public class ProjectileComponent : MonoBehaviour
     private TimerHandle _lifetimeTimer;
     [SerializeField] private CircleCollider2D circleCollider;
 
+    public bool CanBeBlocked()
+    {
+        return canBeBlocked;
+    }
+    
+    public void Setup(Vector3 targetPosition, GameObject parent, float speed, float projectileLifetime = 4.0f)
+    {
+        _owner = parent;
+        velocity = (targetPosition - transform.position).normalized * speed;
+        TimerManager.instance.CreateOrResetTimer(ref _lifetimeTimer, this, projectileLifetime, DestroyProjectile);
+    }
+
+    public void BlockProjectile()
+    {
+        DestroyProjectile();
+    }
+    
     private void OnEnable()
     {
         circleCollider = GetComponent<CircleCollider2D>();
@@ -26,12 +45,6 @@ public class ProjectileComponent : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    public void Setup(Vector3 targetPosition, GameObject parent, float speed, float projectileLifetime = 4.0f)
-    {
-        _owner = parent;
-        velocity = (targetPosition - transform.position).normalized * speed;
-        TimerManager.instance.CreateOrResetTimer(ref _lifetimeTimer, this, projectileLifetime, DestroyProjectile);
-    }
 
     private void FixedUpdate()
     {
@@ -43,6 +56,12 @@ public class ProjectileComponent : MonoBehaviour
         var root = other.transform.root.gameObject;
         if (!root.CompareTag("Player"))
         {
+            return;
+        }
+
+        if (other.gameObject.layer == HitboxTrigger.GetLayer(HitboxType.Armor))
+        {
+            DestroyProjectile();
             return;
         }
 

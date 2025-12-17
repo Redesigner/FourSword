@@ -107,7 +107,7 @@ namespace Characters.Player.Scripts
                 return;
             }
             
-            Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
+            // Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
             _currentStance = newStance;
             _currentStance.Enter(this);
             primaryHitbox.gameObject.layer = HitboxTrigger.GetLayer(_currentStance.hitboxType);
@@ -237,6 +237,15 @@ namespace Characters.Player.Scripts
 
         public override void BlockedEnemyAttack(Collider2D selfArmorHitbox, Collider2D attackerHitbox)
         {
+            if (attackerHitbox.gameObject.CompareTag("Projectile"))
+            {
+                var projectile = attackerHitbox.GetComponent<ProjectileComponent>();
+                if (projectile && projectile.CanBeBlocked())
+                {
+                    return;
+                }
+            }
+            
             Command(SwordCommand.Hit);
             var enemyHealth = attackerHitbox.transform.root.GetComponent<HealthComponent>();
             if (!enemyHealth)
