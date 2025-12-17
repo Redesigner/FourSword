@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -13,7 +14,13 @@ public class ProjectileComponent : MonoBehaviour
     private GameObject _owner;
     private Rigidbody2D _rigidbody;
     private TimerHandle _lifetimeTimer;
-    
+    [SerializeField] private CircleCollider2D circleCollider;
+
+    private void OnEnable()
+    {
+        circleCollider = GetComponent<CircleCollider2D>();
+    }
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -74,5 +81,10 @@ public class ProjectileComponent : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        DebugHelpers.Drawing.DrawCircle(transform.position, circleCollider.radius, new Color(1.0f, 0.0f, 0.0f, 0.5f));
     }
 }
