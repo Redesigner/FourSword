@@ -448,7 +448,7 @@ MonoBehaviour:
   lookDirectionChanged:
     m_PersistentCalls:
       m_Calls: []
-  walkSpeed: 4
+  walkSpeed: 2.5
   faceMovement: 1
 --- !u!114 &579208233741465586
 MonoBehaviour:

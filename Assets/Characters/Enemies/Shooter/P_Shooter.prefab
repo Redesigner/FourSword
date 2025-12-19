@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4381609272211239196}
   - component: {fileID: 5195365265740986587}
   - component: {fileID: 416039407138187703}
+  - component: {fileID: 7311510101351647593}
   m_Layer: 3
   m_Name: P_Shooter
   m_TagString: Health
@@ -207,7 +208,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  walkSpeed: 2
+  walkSpeed: 1.5
   faceMovement: 0
 --- !u!212 &7043110152277630900
 SpriteRenderer:
@@ -359,7 +360,19 @@ MonoBehaviour:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7311510101351647593}
+        m_TargetAssemblyTypeName: Shared.DropTable.DropTableComponent, Assembly-CSharp
+        m_MethodName: DropObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7829613800152515760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +516,19 @@ MonoBehaviour:
           m_Value1: 6469620586278467317
         Name: FireInterval
         m_Value: 0.5
+--- !u!114 &7311510101351647593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804c86eb3e0f459793f7e4948ac2050b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable: {fileID: 11400000, guid: fe321cb1fc7b3b04aac308523a250e7e, type: 2}
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0

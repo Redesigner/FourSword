@@ -208,7 +208,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  walkSpeed: 2
+  walkSpeed: 1.5
   faceMovement: 0
 --- !u!212 &7043110152277630900
 SpriteRenderer:
