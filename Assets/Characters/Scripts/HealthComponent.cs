@@ -115,8 +115,7 @@ public class HealthComponent : DamageListener
             // Apply a stun and knockback with the same duration
             // if we take damage
             onTakeDamage.Invoke(source);
-            GetComponent<KinematicCharacterController>().Knockback((gameObject.transform.position - source.transform.position).normalized * 5.0f, 0.25f);
-            statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, this, 0.25f));
+            // statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, this, 0.25f));
 
             if (invulnerabilityTime > 0.0f)
             {
@@ -161,7 +160,7 @@ public class HealthComponent : DamageListener
         }
     }
 
-    public void Stun(float duration, MonoBehaviour source)
+    public override void Stun(float duration, MonoBehaviour source)
     {
         statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, source, duration));
     }

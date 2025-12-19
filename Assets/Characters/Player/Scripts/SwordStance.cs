@@ -37,6 +37,15 @@ namespace Characters.Player.Scripts
         }
     }
 
+    public class IdleStance : SwordStance
+    {
+        public override void Enter(SwordAttackController controller)
+        {
+            controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(controller.swordDirection));
+            controller.primaryHitbox.transform.localScale = new Vector3(1.0f, 0.5f, 1.0f);
+        }
+    }
+
     public class AttackStance : SwordStance
     {
         public override void Stab(SwordAttackController controller, SwordDirection direction)

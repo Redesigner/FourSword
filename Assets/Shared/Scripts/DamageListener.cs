@@ -15,5 +15,9 @@ namespace Shared
         public virtual void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
         {
         }
+
+        public virtual void Stun(float duration, MonoBehaviour source)
+        {
+        }
     }
 }

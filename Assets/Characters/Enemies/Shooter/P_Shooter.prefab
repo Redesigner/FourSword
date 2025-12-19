@@ -449,6 +449,7 @@ MonoBehaviour:
   - rid: 6056381722570260887
   - rid: 896754459736277301
   - rid: 896754573887930457
+  - rid: 7543390143296307200
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -494,6 +495,14 @@ MonoBehaviour:
           m_Value1: 13113050561758072009
         Name: Agent
         m_Value: {fileID: 4381609272211239196}
+    - rid: 7543390143296307200
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10872306967604992947
+          m_Value1: 6469620586278467317
+        Name: FireInterval
+        m_Value: 0.5
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,7 +68,7 @@ namespace Characters
                 targetsHit.Add(damagedEnemy);
             }
             
-            damagedEnemy.TakeDamage(1.0f, gameObject, currentDamageType);
+            DealDamage(damagedEnemy);
         }
         
         private void KnockbackPlayer(Collider2D selfHitbox)
@@ -85,6 +85,11 @@ namespace Characters
         public virtual void BlockedEnemyAttack(Collider2D selfArmorHitbox, Collider2D attackerHitbox)
         {
             
+        }
+
+        protected virtual void DealDamage(DamageListener enemy)
+        {
+            enemy.TakeDamage(1.0f, gameObject, currentDamageType);
         }
     }
 }

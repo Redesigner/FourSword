@@ -38,8 +38,6 @@ namespace Unity.Behavior
         private Animator m_Animator;
         private Vector3 m_LastTargetPosition;
         private Vector3 m_ColliderAdjustedTargetPosition;
-        [CreateProperty] private float m_OriginalStoppingDistance = -1f;
-        [CreateProperty] private float m_OriginalSpeed = -1f;
         private float m_ColliderOffset;
         private float m_CurrentSpeed;
 
@@ -112,16 +110,6 @@ namespace Unity.Behavior
             m_NavMeshAgent = Agent.Value.GetComponentInChildren<NavMeshAgent>();
             if (m_NavMeshAgent != null)
             {
-                if (m_OriginalSpeed >= 0f)
-                {
-                    m_NavMeshAgent.speed = m_OriginalSpeed;
-                }
-                
-                if (m_OriginalStoppingDistance >= 0f)
-                {
-                    m_NavMeshAgent.stoppingDistance = m_OriginalStoppingDistance;
-                }
-                
                 m_NavMeshAgent.Warp(Agent.Value.transform.position);
             }
 
@@ -156,9 +144,7 @@ namespace Unity.Behavior
                     m_NavMeshAgent.ResetPath();
                 }
 
-                m_OriginalSpeed = m_NavMeshAgent.speed;
                 m_NavMeshAgent.speed = Speed;
-                m_OriginalStoppingDistance = m_NavMeshAgent.stoppingDistance;
                 m_NavMeshAgent.stoppingDistance = DistanceThreshold + m_ColliderOffset;
                 
                 PathToDestination(m_ColliderAdjustedTargetPosition);

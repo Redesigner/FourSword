@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Shared;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -50,7 +51,7 @@ namespace Characters.Player.Scripts
 
         private void Start()
         {
-            _idle = new SwordStance
+            _idle = new IdleStance
             {
                 name = "Idle",
                 hitboxType = HitboxType.Hitbox
@@ -60,7 +61,7 @@ namespace Characters.Player.Scripts
                 name = "Attacking",
                 hitboxType = HitboxType.Hitbox,
                 canChangeDirection = true,
-                transitionTime = 0.5f
+                transitionTime = 0.25f
             };
             _blocking = new SwordStance
             {
@@ -76,6 +77,7 @@ namespace Characters.Player.Scripts
             };
             
             _currentStance = _idle;
+            // _idle.Enter(this);
             
             _transitions = new Dictionary<Tuple<SwordStance, SwordCommand>, SwordStance>
             {
@@ -260,6 +262,18 @@ namespace Characters.Player.Scripts
             
             blockedEnemies.Add(enemyHealth);
             // enemyHealth.Stun(1.0f, this);
+        }
+
+        protected override void DealDamage(DamageListener enemy)
+        {
+            base.DealDamage(enemy);
+            enemy.Stun(0.2f, this);
+
+            var kinematicCharacterController = enemy.GetComponent<KinematicCharacterController>();
+            if (kinematicCharacterController)
+            {
+                kinematicCharacterController.Knockback((gameObject.transform.position - enemy.transform.position).normalized * -5.0f, 0.25f);
+            }
         }
 
         private void OnDrawGizmos()
