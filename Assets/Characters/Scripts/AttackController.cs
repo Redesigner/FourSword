@@ -56,7 +56,8 @@ namespace Characters
             // Check if we've overlapped *any* armor hitboxes with this hitbox
             if (hitbox.Overlap(result) > 0)
             {
-                if (result.Any(overlappedHitbox => overlappedHitbox.gameObject.layer == 8))
+                // Ignore the armor if it belongs to us!
+                if (result.Any(overlappedHitbox => overlappedHitbox.gameObject.layer == 8 && overlappedHitbox.transform.root != transform.root))
                 {
                     AttackBlocked(hitbox, otherHitbox);
                     return;
