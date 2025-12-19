@@ -179,7 +179,9 @@ public class HealthComponent : DamageListener
 
     private void OnDrawGizmos()
     {
-        Handles.Label(transform.position + new Vector3(-0.5f, 2.0f, 0.0f), $"{health} / {maxHealth}");
+        var style = GUI.skin.label;
+        style.alignment = TextAnchor.MiddleCenter;
+        Handles.Label(transform.position + new Vector3(0.0f, 2.0f, 0.0f), $"{health} / {maxHealth}", style);
     }
     private void OnLayout(UImGui.UImGui obj)
     {

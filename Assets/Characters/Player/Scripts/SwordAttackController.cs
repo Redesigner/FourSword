@@ -283,7 +283,10 @@ namespace Characters.Player.Scripts
                 return;
             }
             
-            Handles.Label(transform.position + new Vector3(-0.5f, -0.5f, 0.0f), _currentStance.name);
+            var style = GUI.skin.label;
+            style.alignment = TextAnchor.MiddleCenter;
+            style.wordWrap = false;
+            Handles.Label(transform.position + new Vector3(0.0f, -0.5f, 0.0f), _currentStance.name, style);
         }
     }
 }
