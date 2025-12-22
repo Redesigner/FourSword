@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Shared
 {
@@ -21,6 +22,14 @@ namespace Shared
         {
             var squareMagnitude = vector.sqrMagnitude;
             return squareMagnitude > length * length ? vector / Mathf.Sqrt(squareMagnitude) * length : vector;
+        }
+
+        public static Vector2 RandomPointInRadius(float radius)
+        {
+            var theta = Random.value * 2.0f * Mathf.PI;
+            var outRadius = radius * Mathf.Sqrt(Random.value);
+
+            return new Vector2(Mathf.Cos(theta) * outRadius, Mathf.Sin(theta) * outRadius);
         }
     }
 }
