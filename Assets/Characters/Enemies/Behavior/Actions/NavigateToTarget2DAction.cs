@@ -38,8 +38,6 @@ namespace Unity.Behavior
         private Animator m_Animator;
         private Vector3 m_LastTargetPosition;
         private Vector3 m_ColliderAdjustedTargetPosition;
-        [CreateProperty] private float m_OriginalStoppingDistance = -1f;
-        [CreateProperty] private float m_OriginalSpeed = -1f;
         private float m_ColliderOffset;
         private float m_CurrentSpeed;
 
@@ -61,9 +59,9 @@ namespace Unity.Behavior
             }
 
             // Check if the target position has changed.
-            bool boolUpdateTargetPosition = !Mathf.Approximately(m_LastTargetPosition.x, Target.Value.transform.position.x) 
-                || !Mathf.Approximately(m_LastTargetPosition.y, Target.Value.transform.position.y) 
-                || !Mathf.Approximately(m_LastTargetPosition.z, Target.Value.transform.position.z);
+            bool boolUpdateTargetPosition =
+                !Mathf.Approximately(m_LastTargetPosition.x, Target.Value.transform.position.x)
+                || !Mathf.Approximately(m_LastTargetPosition.y, Target.Value.transform.position.y);
 
             if (boolUpdateTargetPosition)
             {
@@ -80,7 +78,7 @@ namespace Unity.Behavior
             }
             if (m_NavMeshAgent != null && boolUpdateTargetPosition) // navmesh-based destination update (if needed)
             {
-                m_NavMeshAgent.SetDestination(m_ColliderAdjustedTargetPosition);
+                PathToDestination(m_ColliderAdjustedTargetPosition);
             }
 
             UpdateAnimatorSpeed();
@@ -96,10 +94,10 @@ namespace Unity.Behavior
             {
                 if (m_NavMeshAgent.isOnNavMesh)
                 {
-                    m_NavMeshAgent.ResetPath();
+                    // m_NavMeshAgent.ResetPath();
                 }
-                m_NavMeshAgent.speed = m_OriginalSpeed;
-                m_NavMeshAgent.stoppingDistance = m_OriginalStoppingDistance;
+                // m_NavMeshAgent.speed = m_OriginalSpeed;
+                // m_NavMeshAgent.stoppingDistance = m_OriginalStoppingDistance;
             }
 
             m_NavMeshAgent = null;
@@ -112,11 +110,6 @@ namespace Unity.Behavior
             m_NavMeshAgent = Agent.Value.GetComponentInChildren<NavMeshAgent>();
             if (m_NavMeshAgent != null)
             {
-                if (m_OriginalSpeed >= 0f)
-                    m_NavMeshAgent.speed = m_OriginalSpeed;
-                if (m_OriginalStoppingDistance >= 0f)
-                    m_NavMeshAgent.stoppingDistance = m_OriginalStoppingDistance;
-                
                 m_NavMeshAgent.Warp(Agent.Value.transform.position);
             }
 
@@ -151,19 +144,16 @@ namespace Unity.Behavior
                     m_NavMeshAgent.ResetPath();
                 }
 
-                m_OriginalSpeed = m_NavMeshAgent.speed;
                 m_NavMeshAgent.speed = Speed;
-                m_OriginalStoppingDistance = m_NavMeshAgent.stoppingDistance;
                 m_NavMeshAgent.stoppingDistance = DistanceThreshold + m_ColliderOffset;
-                if (!m_NavMeshAgent.SetDestination(m_ColliderAdjustedTargetPosition))
-                {
-                    Debug.Log("Failed to set navmesh destination.");
-                }
+                
+                PathToDestination(m_ColliderAdjustedTargetPosition);
 
                 var pathfindingComponent = m_NavMeshAgent.GetComponent<EnemyPathfindingComponent>();
                 if (pathfindingComponent)
                 {
-                    pathfindingComponent.SetPathfollowingMode(EnemyPathfindingComponent.PathFollowingMode.Target);
+                    pathfindingComponent.SetPathFollowingMode(EnemyPathfindingComponent.PathFollowingMode.Target);
+                    // pathfindingComponent.InputMultiplier = 0.5f;
                 }
             }
 
@@ -201,6 +191,13 @@ namespace Unity.Behavior
         private void UpdateAnimatorSpeed(float explicitSpeed = -1)
         {
             //NavigationUtility.UpdateAnimatorSpeed(m_Animator, AnimatorSpeedParam, m_NavMeshAgent, m_CurrentSpeed, explicitSpeed: explicitSpeed);
+        }
+
+        private void PathToDestination(Vector3 destination)
+        {
+            var newPath = new NavMeshPath();
+            NavMesh.CalculatePath(m_NavMeshAgent.nextPosition, destination, m_NavMeshAgent.areaMask, newPath);
+            m_NavMeshAgent.SetPath(newPath);
         }
     }
 }

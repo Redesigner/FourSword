@@ -9,9 +9,14 @@ namespace Shared
         Piercing,
         Smash
     }
+    
     public abstract class DamageListener : MonoBehaviour
     {
         public virtual void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
+        {
+        }
+
+        public virtual void Stun(float duration, MonoBehaviour source)
         {
         }
     }

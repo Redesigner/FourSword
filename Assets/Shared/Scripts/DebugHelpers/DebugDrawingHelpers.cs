@@ -44,7 +44,7 @@ namespace DebugHelpers
             {
                 if (!_circleMesh)
                 {
-                    _circleMesh = MakeCircleMesh(16);
+                    _circleMesh = MakeCircleMesh(32);
                 }
 
                 return _circleMesh;

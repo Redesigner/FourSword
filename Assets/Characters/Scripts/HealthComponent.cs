@@ -68,16 +68,20 @@ public class HealthComponent : DamageListener
 
     private void Awake()
     {
+#if UNITY_EDITOR
         UImGuiUtility.Layout += OnLayout;
         UImGuiUtility.OnInitialize += OnInitialize;
         UImGuiUtility.OnDeinitialize += OnDeinitialize;
+#endif
     }
 
     private void OnDisable()
     {
+#if UNITY_EDITOR
         UImGuiUtility.Layout -= OnLayout;
         UImGuiUtility.OnInitialize -= OnInitialize;
         UImGuiUtility.OnDeinitialize -= OnDeinitialize;
+#endif
     }
 
     public override void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
@@ -111,8 +115,7 @@ public class HealthComponent : DamageListener
             // Apply a stun and knockback with the same duration
             // if we take damage
             onTakeDamage.Invoke(source);
-            GetComponent<KinematicCharacterController>().Knockback((gameObject.transform.position - source.transform.position).normalized * 5.0f, 0.25f);
-            statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, this, 0.25f));
+            // statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, this, 0.25f));
 
             if (invulnerabilityTime > 0.0f)
             {
@@ -157,7 +160,7 @@ public class HealthComponent : DamageListener
         }
     }
 
-    public void Stun(float duration, MonoBehaviour source)
+    public override void Stun(float duration, MonoBehaviour source)
     {
         statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, source, duration));
     }
@@ -176,7 +179,9 @@ public class HealthComponent : DamageListener
 
     private void OnDrawGizmos()
     {
-        Handles.Label(transform.position + new Vector3(-0.5f, 2.0f, 0.0f), $"{health} / {maxHealth}");
+        var style = GUI.skin.label;
+        style.alignment = TextAnchor.MiddleCenter;
+        Handles.Label(transform.position + new Vector3(0.0f, 2.0f, 0.0f), $"{health} / {maxHealth}", style);
     }
     private void OnLayout(UImGui.UImGui obj)
     {
@@ -185,7 +190,7 @@ public class HealthComponent : DamageListener
             return;
         }
 
-        if (ImGui.Begin($"{gameObject.name} Status"))
+        if (ImGui.Begin($"{gameObject.name} Status###HealthComponent"))
         {
             ImGui.Text($"Health: {health} / {maxHealth}");
             foreach (var item in statusEffects)
@@ -237,4 +242,6 @@ public class HealthComponent : DamageListener
     {
         
     }
+    
+    
 }

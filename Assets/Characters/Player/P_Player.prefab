@@ -448,7 +448,7 @@ MonoBehaviour:
   lookDirectionChanged:
     m_PersistentCalls:
       m_Calls: []
-  walkSpeed: 4
+  walkSpeed: 2.5
   faceMovement: 1
 --- !u!114 &579208233741465586
 MonoBehaviour:
@@ -1150,7 +1150,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6994591496534999179, guid: 92522e7ccfaf4af48b352911e66e305f, type: 3}
+  m_Sprite: {fileID: -8687314014856469952, guid: 88db8a1272858f046b7a7d159d563a9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
