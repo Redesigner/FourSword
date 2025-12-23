@@ -2773,7 +2773,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -4956,8 +4956,40 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2092760291319801334, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Size.x
+      value: 1.09375
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092760291319801334, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.84375
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092760291319801334, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7587400687800303732, guid: ad6f3bbe5002812418a02a7499f02a72, type: 3}
+    - target: {fileID: 2092760291319801334, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7040366294031428231, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043110152277630900, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.53125
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043110152277630900, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Size.y
+      value: 1.28125
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043110152277630900, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4586514123691453147, guid: b10d5ac0d3d3f0b44ae1c790b8a2fa17, type: 3}
+    - target: {fileID: 7043110152277630900, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7043110152277630900, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
