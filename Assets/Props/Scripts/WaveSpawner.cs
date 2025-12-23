@@ -13,6 +13,7 @@ namespace Props.Scripts
         [SerializeField] [Min(0.0f)] private float respawnCircleRadius = 1.0f;
         
         private int _spawnedEntityCount = 0;
+        private int _defeatedEntityCount = 0;
         private TimerHandle _interwaveRespawnTimer;
 
         private void Start()
@@ -49,14 +50,15 @@ namespace Props.Scripts
             style.wordWrap = false;
             Handles.Label(transform.position, 
                 $"{(spawnedObject ? spawnedObject.name : "null")}\n" +
-                $"{_spawnedEntityCount} / {maxSpawnedObjects}", style);
+                $"{_spawnedEntityCount} / {maxSpawnedObjects}\n" +
+                $"Defeated {_defeatedEntityCount}", style);
             
             DebugHelpers.Drawing.DrawCircle(transform.position, respawnCircleRadius, new Color(0.2f, 0.5f, 1.0f, 0.25f));
         }
 
         private void SpawnedObjectDestroyed()
         {
-            --_spawnedEntityCount;
+            ++_defeatedEntityCount;
         }
     }
 }
