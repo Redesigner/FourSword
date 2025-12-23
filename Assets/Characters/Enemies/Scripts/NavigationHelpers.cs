@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Characters.Enemies.Scripts
 {
@@ -12,7 +14,7 @@ namespace Characters.Enemies.Scripts
             return NavMesh.SamplePosition(location, out var hit, 0.1f, 1 << NavMesh.GetAreaFromName("Walkable"));
         }
 
-        public static List<PositionResult> GetLocationsInRadius(Vector3 center, float radius, int numLocations)
+        public static List<PositionResult> GetLocationsInRadius(Vector3 center, float radius, int numLocations, float score = 1.0f)
         {
             var result = new List<PositionResult>(numLocations);
             var interval = Mathf.PI * 2.0f / numLocations;
@@ -21,7 +23,7 @@ namespace Characters.Enemies.Scripts
                 var newPosition = center;
                 newPosition.x += Mathf.Cos(interval * i) * radius;
                 newPosition.y += Mathf.Sin(interval * i) * radius;
-                result.Add(new PositionResult(newPosition, 1.0f));
+                result.Add(new PositionResult(newPosition, score));
             }
 
             return result;
@@ -40,10 +42,15 @@ namespace Characters.Enemies.Scripts
         {
             var points = GetLocationsInRadius(center, radius, numLocations);
             points.RemoveAll(point => !IsLocationInNavMesh(point.position));
+            if (points.Count == 0)
+            {
+                return center;
+            }
+            
             PositionResult.ScorePositionsByDistanceFromTarget(agentPosition, points);
             points.Sort((a, b) => -a.score.CompareTo(b.score));
 
-            // PositionResult.DrawScore(points, 0.5f);
+            // PositionResult.DrawScore(points, 1.0f);
 
             return points.First().position;
         }
@@ -66,6 +73,15 @@ namespace Characters.Enemies.Scripts
 
             // PositionResult.DrawScore(points, 0.5f);
             return points.First().position;
+        }
+
+        public static Vector3 GetRandomPointInRadius(Vector3 center, float maxRadius, float minRadius)
+        {
+            var angle = Random.Range(0.0f, (float)Mathf.PI * 2.0f);
+            var radius = Mathf.Sqrt(Random.Range(0, minRadius)) + (maxRadius - minRadius);
+            
+            var result = new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0.0f);
+            return center + result;
         }
     }
 }

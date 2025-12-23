@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using Characters.Enemies.Scripts;
+using ImGuiNET;
+using UImGui;
 using Unity.Behavior;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
+[Icon("Assets/Editor/Icons/EnemyPathfindingComponentIcon.png")]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(KinematicCharacterController))]
 [RequireComponent(typeof(BehaviorGraphAgent))]
@@ -17,6 +22,13 @@ public class EnemyPathfindingComponent : MonoBehaviour
         Target, // Following the target, usually via destinationAlias
         Spline, // Moving along a spline
     }
+
+    public float InputMultiplier
+    {
+        get => _inputMultiplier;
+        set => _inputMultiplier = Mathf.Clamp(value, 0.0f, 1.0f);
+    }
+    private float _inputMultiplier = 1.0f; 
     
     private NavMeshAgent _navMeshAgent;
     private KinematicCharacterController _kinematicObject;
@@ -26,6 +38,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
     // Spline following variables, might move this to a separate component
     [SerializeField]
     private Spline2DComponent _targetSpline;
+    
     private int _splineTargetPointIndex;
     private Vector2 _splineTargetPosition;
     private bool _onPath;
@@ -43,6 +56,10 @@ public class EnemyPathfindingComponent : MonoBehaviour
      */
     [SerializeField] private bool pathfindOnSpline = false;
     
+#if UNITY_EDITOR
+    public List<PositionResult> recentlyQueuedPoints = new(); 
+#endif
+    
     private void OnEnable()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -51,11 +68,23 @@ public class EnemyPathfindingComponent : MonoBehaviour
 
         _behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
         _behaviorGraphAgent.SetVariableValue("DestinationAlias", _destinationAlias.transform);
+        
+#if UNITY_EDITOR
+        UImGuiUtility.Layout += OnLayout;
+        UImGuiUtility.OnInitialize += OnInitialize;
+        UImGuiUtility.OnDeinitialize += OnDeinitialize;
+#endif
     }
 
     private void OnDisable()
     {
         Destroy(_destinationAlias);
+        
+#if UNITY_EDITOR
+        UImGuiUtility.Layout -= OnLayout;
+        UImGuiUtility.OnInitialize -= OnInitialize;
+        UImGuiUtility.OnDeinitialize -= OnDeinitialize;
+#endif
     }
 
     public void Start()
@@ -102,7 +131,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
         BeginMoveToSpline(splineComponent);
     }
 
-    public void SetPathfollowingMode(PathFollowingMode mode)
+    public void SetPathFollowingMode(PathFollowingMode mode)
     {
         pathFollowingMode = mode;
     }
@@ -116,6 +145,15 @@ public class EnemyPathfindingComponent : MonoBehaviour
         
         var position = _kinematicObject.gameObject.transform.position;
         DebugHelpers.Drawing.DrawArrow(position, position + _navMeshAgent.desiredVelocity, Color.red, Time.deltaTime);
+        
+#if UNITY_EDITOR
+        foreach (var positionResult in recentlyQueuedPoints)
+        {
+            DebugHelpers.Drawing.DrawCircle(positionResult.position, 0.25f, positionResult.score < 0.99f ?
+                new Color(positionResult.score, 0.0f, 0.0f) :
+                new Color(0.0f, 1.0f, 0.0f));
+        }
+#endif
     }
 
     // ReSharper disable Unity.PerformanceAnalysis -- Rider is flagging this as expensive for some reason?
@@ -127,7 +165,7 @@ public class EnemyPathfindingComponent : MonoBehaviour
         }
         
         _navMeshAgent.nextPosition = _kinematicObject.transform.position;
-        _kinematicObject.MoveInput(_navMeshAgent.desiredVelocity);
+        _kinematicObject.MoveInput(Shared.Math.ClampVectorLength(_navMeshAgent.desiredVelocity, InputMultiplier));
     }
     
     // ReSharper disable Unity.PerformanceAnalysis -- Rider is flagging this as expensive for some reason?
@@ -181,5 +219,39 @@ public class EnemyPathfindingComponent : MonoBehaviour
         
         Handles.color = Color.blue;
         Handles.Button(_splineTargetPosition, Quaternion.identity, 0.2f, 0.0f, Handles.DotHandleCap);
+    }
+    
+    private void OnLayout(UImGui.UImGui obj)
+    {
+        if (!Selection.Contains(gameObject))
+        {
+            return;
+        }
+
+        if (ImGui.Begin($"{gameObject.name} Pathfinding###PathfindingComponent"))
+        {
+            ImGui.Text(_navMeshAgent.isStopped ? "Is Stopped: true" : "Is Stopped: false");
+            ImGui.Text(_navMeshAgent.hasPath ? "Has Path: true" : "Has Path: false");
+            ImGui.Text($"Distance to target: {_navMeshAgent.remainingDistance:0.0} / {_navMeshAgent.stoppingDistance:0.0}");
+            ImGui.Text($"Path Status: {_navMeshAgent.pathStatus}");
+            ImGui.Text($"Speed: {_navMeshAgent.speed}");
+            ImGui.Text(_navMeshAgent.isPathStale ? "Is Path Stale: true" : "Is Path Stale: false");
+            ImGui.Text(_navMeshAgent.isOnNavMesh ? "Is On Nav Mesh: true" : "Is On Nav Mesh: false");
+            ImGui.Text($"Destination alias: x {_destinationAlias.transform.position.x:0.0}, y {_destinationAlias.transform.position.y:0.0}");
+            ImGui.Text($"Destination      : x {_navMeshAgent.destination.x:0.0}, y {_navMeshAgent.destination.y:0.0}");
+
+        }
+        ImGui.End();
+
+    }
+
+    private void OnInitialize(UImGui.UImGui obj)
+    {
+        
+    }
+
+    private void OnDeinitialize(UImGui.UImGui obj)
+    {
+        
     }
 }

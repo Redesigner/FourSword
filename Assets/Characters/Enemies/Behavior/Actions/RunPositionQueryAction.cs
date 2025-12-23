@@ -1,4 +1,5 @@
 using System;
+using Characters.Enemies.Behavior.Queries;
 using Characters.Enemies.Scripts;
 using Unity.Behavior;
 using UnityEngine;
@@ -15,7 +16,7 @@ enum PositionQueryType
 [Serializable, GeneratePropertyBag]
 [NodeDescription(
     name: "RunPositionQuery",
-    story: "Run a position query around [Target] and write it to [position]",
+    story: "Run a query [Query] around [Target] and write it to [position]",
     category: "Action",
     id: "e0cbb9bd53ae037921a108813d778fdf")]
 internal class RunPositionQueryAction : Action
@@ -23,22 +24,23 @@ internal class RunPositionQueryAction : Action
 
     [SerializeReference] public BlackboardVariable<GameObject> origin;
     [SerializeReference] public BlackboardVariable<KinematicCharacterController> target;
+    [SerializeReference] public BlackboardVariable<PositionQuery> query;
     [SerializeReference] public BlackboardVariable<Transform> position;
-    [SerializeReference] public BlackboardVariable<float> radius; 
-    [SerializeReference] public BlackboardVariable<PositionQueryType> queryType; 
+
     
     protected override Status OnStart()
     {
-        switch (queryType.Value)
+#if !UNITY_EDITOR
+        position.Value.position = query.Value.RunQuery(origin.Value, target.Value);
+#else
+        position.Value.position = query.Value.RunQueryWithAllResults(origin.Value, target.Value, out var results);
+        
+        var pathfindingComponent = GameObject.GetComponent<EnemyPathfindingComponent>();
+        if (pathfindingComponent)
         {
-            default:
-            case PositionQueryType.ClosestPoint:
-                position.Value.position = NavigationHelpers.GetClosestPointAroundRadius(origin.Value.transform.position, target.Value.transform.position, radius.Value, 8);
-                break;
-            case PositionQueryType.AlongVector:
-                position.Value.position = NavigationHelpers.GetPointInRadiusByDirection(target.Value.transform.position, -target.Value.lookDirection, radius.Value, 8);
-                break;
+            pathfindingComponent.recentlyQueuedPoints = results;
         }
+#endif
         return Status.Success;
     }
 }

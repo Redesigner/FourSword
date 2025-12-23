@@ -9,6 +9,7 @@ namespace Settings
     {
         private const string SettingsDefaultPath = "Assets/Resources/FourSwordSettings.asset";
 
+        [SerializeField] public bool showPositionScore = false;
         [SerializeField] public StatusEffectList statusEffects;
 
         public static SerializedObject GetSerializedSettings()

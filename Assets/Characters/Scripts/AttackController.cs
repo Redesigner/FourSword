@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Characters
 {
+    [Icon("Assets/Editor/Icons/AttackControllerIcon.png")]
     public class AttackController : MonoBehaviour
     {
         /// <summary>
@@ -55,7 +56,8 @@ namespace Characters
             // Check if we've overlapped *any* armor hitboxes with this hitbox
             if (hitbox.Overlap(result) > 0)
             {
-                if (result.Any(overlappedHitbox => overlappedHitbox.gameObject.layer == 8))
+                // Ignore the armor if it belongs to us!
+                if (result.Any(overlappedHitbox => overlappedHitbox.gameObject.layer == 8 && overlappedHitbox.transform.root != transform.root))
                 {
                     AttackBlocked(hitbox, otherHitbox);
                     return;
@@ -67,7 +69,7 @@ namespace Characters
                 targetsHit.Add(damagedEnemy);
             }
             
-            damagedEnemy.TakeDamage(1.0f, gameObject, currentDamageType);
+            DealDamage(damagedEnemy);
         }
         
         private void KnockbackPlayer(Collider2D selfHitbox)
@@ -84,6 +86,11 @@ namespace Characters
         public virtual void BlockedEnemyAttack(Collider2D selfArmorHitbox, Collider2D attackerHitbox)
         {
             
+        }
+
+        protected virtual void DealDamage(DamageListener enemy)
+        {
+            enemy.TakeDamage(1.0f, gameObject, currentDamageType);
         }
     }
 }

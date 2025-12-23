@@ -1,3 +1,5 @@
+using System;
+using Characters;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -7,24 +9,42 @@ public class ProjectileComponent : MonoBehaviour
     [SerializeField] public float damage;
     [SerializeField] private GameObject destructionParticlePrefab;
     [SerializeField] private float particleLifetime = 1.0f;
+    [SerializeField] private bool canBeBlocked = true;
 
     public Vector2 velocity;
     
     private GameObject _owner;
     private Rigidbody2D _rigidbody;
     private TimerHandle _lifetimeTimer;
-    
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
+    [SerializeField] private CircleCollider2D circleCollider;
 
+    public bool CanBeBlocked()
+    {
+        return canBeBlocked;
+    }
+    
     public void Setup(Vector3 targetPosition, GameObject parent, float speed, float projectileLifetime = 4.0f)
     {
         _owner = parent;
         velocity = (targetPosition - transform.position).normalized * speed;
         TimerManager.instance.CreateOrResetTimer(ref _lifetimeTimer, this, projectileLifetime, DestroyProjectile);
     }
+
+    public void BlockProjectile()
+    {
+        DestroyProjectile();
+    }
+    
+    private void OnEnable()
+    {
+        circleCollider = GetComponent<CircleCollider2D>();
+    }
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
 
     private void FixedUpdate()
     {
@@ -36,6 +56,12 @@ public class ProjectileComponent : MonoBehaviour
         var root = other.transform.root.gameObject;
         if (!root.CompareTag("Player"))
         {
+            return;
+        }
+
+        if (other.gameObject.layer == HitboxTrigger.GetLayer(HitboxType.Armor))
+        {
+            DestroyProjectile();
             return;
         }
 
@@ -74,5 +100,10 @@ public class ProjectileComponent : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        DebugHelpers.Drawing.DrawCircle(transform.position, circleCollider.radius, new Color(1.0f, 0.0f, 0.0f, 0.5f));
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Shared;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -46,11 +47,14 @@ namespace Characters.Player.Scripts
         // ANIMATION
         [SerializeField] private Animator animator;
         private static readonly int SwordDirectionHash = Animator.StringToHash("SwordDirection");
+        private static readonly int PreviousDirectionHash = Animator.StringToHash("PreviousDirection");
+        private static readonly int AttackTriggerHash = Animator.StringToHash("Attack");
+        private static readonly int CancelTriggerHash = Animator.StringToHash("Cancel");
         
 
         private void Start()
         {
-            _idle = new SwordStance
+            _idle = new IdleStance
             {
                 name = "Idle",
                 hitboxType = HitboxType.Hitbox
@@ -60,7 +64,7 @@ namespace Characters.Player.Scripts
                 name = "Attacking",
                 hitboxType = HitboxType.Hitbox,
                 canChangeDirection = true,
-                transitionTime = 0.5f
+                transitionTime = 0.25f
             };
             _blocking = new SwordStance
             {
@@ -76,6 +80,7 @@ namespace Characters.Player.Scripts
             };
             
             _currentStance = _idle;
+            // _idle.Enter(this);
             
             _transitions = new Dictionary<Tuple<SwordStance, SwordCommand>, SwordStance>
             {
@@ -107,7 +112,7 @@ namespace Characters.Player.Scripts
                 return;
             }
             
-            Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
+            // Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
             _currentStance = newStance;
             _currentStance.Enter(this);
             primaryHitbox.gameObject.layer = HitboxTrigger.GetLayer(_currentStance.hitboxType);
@@ -205,8 +210,15 @@ namespace Characters.Player.Scripts
             swordDirection = direction;
             swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(direction));
             OnSwordDirectionChanged(oldDirection, swordDirection);
-            
-            animator.SetInteger(SwordDirectionHash, (int)direction);
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Transition"))
+            {
+                animator.SetTrigger(CancelTriggerHash);
+            }
+
+            animator.SetTrigger(AttackTriggerHash);
+            animator.SetFloat(PreviousDirectionHash, (int)oldDirection);
+            animator.SetFloat(SwordDirectionHash, (int)direction);
         }
 
         private void OnSwordDirectionChanged(SwordDirection oldDirection, SwordDirection newDirection)
@@ -237,6 +249,15 @@ namespace Characters.Player.Scripts
 
         public override void BlockedEnemyAttack(Collider2D selfArmorHitbox, Collider2D attackerHitbox)
         {
+            if (attackerHitbox.gameObject.CompareTag("Projectile"))
+            {
+                var projectile = attackerHitbox.GetComponent<ProjectileComponent>();
+                if (projectile && projectile.CanBeBlocked())
+                {
+                    return;
+                }
+            }
+            
             Command(SwordCommand.Hit);
             var enemyHealth = attackerHitbox.transform.root.GetComponent<HealthComponent>();
             if (!enemyHealth)
@@ -253,6 +274,18 @@ namespace Characters.Player.Scripts
             // enemyHealth.Stun(1.0f, this);
         }
 
+        protected override void DealDamage(DamageListener enemy)
+        {
+            base.DealDamage(enemy);
+            enemy.Stun(0.2f, this);
+
+            var kinematicCharacterController = enemy.GetComponent<KinematicCharacterController>();
+            if (kinematicCharacterController)
+            {
+                kinematicCharacterController.Knockback((gameObject.transform.position - enemy.transform.position).normalized * -5.0f, 0.25f);
+            }
+        }
+
         private void OnDrawGizmos()
         {
             if (_currentStance == null)
@@ -260,7 +293,10 @@ namespace Characters.Player.Scripts
                 return;
             }
             
-            Handles.Label(transform.position + new Vector3(-0.5f, -0.5f, 0.0f), _currentStance.name);
+            var style = GUI.skin.label;
+            style.alignment = TextAnchor.MiddleCenter;
+            style.wordWrap = false;
+            Handles.Label(transform.position + new Vector3(0.0f, -0.5f, 0.0f), _currentStance.name, style);
         }
     }
 }
