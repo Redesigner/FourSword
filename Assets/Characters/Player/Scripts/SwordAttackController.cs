@@ -47,6 +47,9 @@ namespace Characters.Player.Scripts
         // ANIMATION
         [SerializeField] private Animator animator;
         private static readonly int SwordDirectionHash = Animator.StringToHash("SwordDirection");
+        private static readonly int PreviousDirectionHash = Animator.StringToHash("PreviousDirection");
+        private static readonly int AttackTriggerHash = Animator.StringToHash("Attack");
+        private static readonly int CancelTriggerHash = Animator.StringToHash("Cancel");
         
 
         private void Start()
@@ -207,8 +210,15 @@ namespace Characters.Player.Scripts
             swordDirection = direction;
             swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(direction));
             OnSwordDirectionChanged(oldDirection, swordDirection);
-            
-            animator.SetInteger(SwordDirectionHash, (int)direction);
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Transition"))
+            {
+                animator.SetTrigger(CancelTriggerHash);
+            }
+
+            animator.SetTrigger(AttackTriggerHash);
+            animator.SetFloat(PreviousDirectionHash, (int)oldDirection);
+            animator.SetFloat(SwordDirectionHash, (int)direction);
         }
 
         private void OnSwordDirectionChanged(SwordDirection oldDirection, SwordDirection newDirection)
