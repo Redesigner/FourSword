@@ -55,6 +55,21 @@ public readonly struct TimerHandle
             timer.paused = false;
         }
     }
+
+    public float GetRemainingTime()
+    {
+        if (_timer == null)
+        {
+            return -1.0f;
+        }
+        
+        if (_timer.TryGetTarget(out var timer))
+        {
+            return timer.duration - timer.currentTime;
+        }
+
+        return -1.0f;
+    }
 }
 
 public class TimerEntry
