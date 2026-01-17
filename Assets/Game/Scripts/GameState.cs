@@ -2,6 +2,7 @@
 using Game;
 using Game.Facts;
 using Game.StatusEffects;
+using Props.Rooms.Scripts;
 using Settings;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,6 +39,8 @@ public class GameState : MonoBehaviour
     }
 
     public PerceptionSubsystem perceptionSubsystem { get; private set; } = new();
+
+    private RoomArea _activeRoom;
     
     public void Awake()
     {
@@ -96,6 +99,22 @@ public class GameState : MonoBehaviour
     public void Save()
     {
         factState.Save();
+    }
+
+    public RoomArea GetActiveRoom()
+    {
+        return _activeRoom;
+    }
+
+    public void SetActiveRoom(RoomArea newRoom)
+    {
+        if (_activeRoom)
+        {
+            _activeRoom.DeactivateRoom();
+        }
+
+        _activeRoom = newRoom;
+        newRoom.ActivateRoom();
     }
 
     private void OnGUI()
