@@ -48,7 +48,7 @@ namespace Props.Rooms.Scripts
 
         private void OnDrawGizmos()
         {
-            var doorColor = _active ? new Color(0.0f, 0.0f, 1.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.25f);
+            var doorColor = _active ? new Color(0.0f, 0.0f, 1.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.6f);
             
             if (doorTrigger)
             {

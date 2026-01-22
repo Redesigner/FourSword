@@ -122,6 +122,13 @@ namespace DebugHelpers
             DrawLineStrip(quadMesh.vertices, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
         }
 
+        public static void DrawBox(Vector3 position, Vector2 extents, Color color)
+        {
+            Gizmos.color = color;
+            Gizmos.DrawMesh(quadMesh, position, Quaternion.identity, extents);
+
+        }
+
         public static void DrawCross(Vector3 position, float radius, Color color, float duration)
         {
             Debug.DrawLine(position + new Vector3(radius, radius, 0.0f), position + new Vector3(-radius, -radius, 0.0f), color, duration);

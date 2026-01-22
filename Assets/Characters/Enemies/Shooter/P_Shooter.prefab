@@ -318,8 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4be24677b71453ab465b859de82c814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 2
+  health: 2
   slashResistance: 1
   pierceResistance: 1
   smashResistance: 1
@@ -354,6 +354,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  team: 1
   <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:
