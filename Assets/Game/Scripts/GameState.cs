@@ -1,4 +1,5 @@
 ﻿using System;
+using Characters.Player.Scripts;
 using Game;
 using Game.Facts;
 using Game.StatusEffects;
@@ -39,6 +40,8 @@ public class GameState : MonoBehaviour
     }
 
     public PerceptionSubsystem perceptionSubsystem { get; private set; } = new();
+    
+    public PlayerController activePlayer { get; private set; }
 
     private RoomArea _activeRoom;
     
@@ -106,7 +109,7 @@ public class GameState : MonoBehaviour
         return _activeRoom;
     }
 
-    public void SetActiveRoom(RoomArea newRoom)
+    public void SetActiveRoom(RoomArea newRoom, RoomDoorTrigger entryPoint = null)
     {
         if (_activeRoom)
         {
@@ -114,7 +117,32 @@ public class GameState : MonoBehaviour
         }
 
         _activeRoom = newRoom;
-        newRoom.ActivateRoom();
+        
+        if (!entryPoint)
+        {
+            _activeRoom.StartTransition();
+            _activeRoom.EnterRoom();
+            return;
+        }
+        
+        activePlayer.SetDestination(entryPoint.transform.position);
+        _activeRoom.StartTransition();
+    }
+
+    private void EndRoomTransition()
+    {
+        _activeRoom.EnterRoom();
+    }
+
+    public void RegisterPlayer(PlayerController player)
+    {
+        if (activePlayer)
+        {
+            activePlayer.forcedDestinationReached.RemoveListener(EndRoomTransition);
+        }
+        
+        activePlayer = player;
+        activePlayer.forcedDestinationReached.AddListener(EndRoomTransition);
     }
 
     private void OnGUI()

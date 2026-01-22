@@ -4,8 +4,10 @@ namespace Props.Rooms.Scripts
 {
     public abstract class RoomObject: MonoBehaviour
     {
-        public abstract void RoomEntered();
+        public virtual void RoomTransitionStarted() {}
 
-        public abstract void RoomExited();
+        public virtual void RoomEntered() {}
+
+        public virtual void RoomExited() {}
     }
 }
