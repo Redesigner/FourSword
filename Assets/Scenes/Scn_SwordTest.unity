@@ -980,10 +980,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2092760291319801334, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7329625106831737396, guid: 45b9f5f8a170d704ea6814c7853264d3, type: 3}
     - target: {fileID: 7040366294031428231, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7043110152277630900, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7459146707970106445, guid: ad6f3bbe5002812418a02a7499f02a72, type: 3}
     - target: {fileID: 7043110152277630900, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
