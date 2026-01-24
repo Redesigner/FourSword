@@ -1,6 +1,8 @@
 ﻿using System;
 using Characters.Player.Scripts;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Props.Rooms.Scripts
 {
@@ -59,6 +61,18 @@ namespace Props.Rooms.Scripts
             {
                 DebugHelpers.Drawing.DrawArrow(transform.position, doorDestination.transform.position, doorColor);
             }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (!roomToActivate)
+            {
+                return;
+            }
+            DebugHelpers.Drawing.DrawArrow(transform.position, roomToActivate.transform.position, Color.blue);
+            DebugHelpers.Drawing.DrawCircle(transform.position, 0.4f, new Color(0.0f, 0.0f, 1.0f, 0.2f));
+            DebugHelpers.Drawing.DrawCircle(roomToActivate.transform.position, 1.0f, new Color(0.0f, 0.0f, 1.0f, 0.2f));
+            Handles.Label(roomToActivate.transform.position, $"Destination:\n{roomToActivate.name}");
         }
     }
 }

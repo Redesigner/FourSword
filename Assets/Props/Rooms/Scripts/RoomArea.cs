@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Unity.Cinemachine;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -49,5 +50,11 @@ namespace Props.Rooms.Scripts
 
             roomCamera.enabled = false;
         }
-}
+
+        private void OnDrawGizmosSelected()
+        {
+            DebugHelpers.Drawing.DrawCircle(transform.position, 1.0f, new Color(0.0f, 0.0f, 1.0f, 0.2f));
+            Handles.Label(transform.position, $"Selected:\n{name}");
+        }
+    }
 }
