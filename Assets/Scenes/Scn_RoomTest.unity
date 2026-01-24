@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 142722250}
   - component: {fileID: 142722249}
   m_Layer: 0
-  m_Name: InitialDoor
+  m_Name: Door_North
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 173161865}
   - component: {fileID: 173161866}
   m_Layer: 0
-  m_Name: Room3Bounds
+  m_Name: CameraBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 281023634}
   - component: {fileID: 281023635}
   m_Layer: 0
-  m_Name: RoomCameraBounds
+  m_Name: CameraBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 298370937}
   - component: {fileID: 298370936}
   m_Layer: 0
-  m_Name: TestRoom
+  m_Name: Room2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1841,7 +1841,7 @@ GameObject:
   - component: {fileID: 495356668}
   - component: {fileID: 495356667}
   m_Layer: 0
-  m_Name: TestRoomCamera
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1955,7 +1955,7 @@ GameObject:
   - component: {fileID: 558187374}
   - component: {fileID: 558187375}
   m_Layer: 0
-  m_Name: StartRoom
+  m_Name: Room1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2008,7 +2008,7 @@ GameObject:
   - component: {fileID: 667000917}
   - component: {fileID: 667000916}
   m_Layer: 0
-  m_Name: StartRoomCamera
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2189,7 +2189,7 @@ GameObject:
   - component: {fileID: 1028504306}
   - component: {fileID: 1028504305}
   m_Layer: 0
-  m_Name: Room3Camera
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2304,7 +2304,7 @@ GameObject:
   - component: {fileID: 1112372599}
   - component: {fileID: 1112372598}
   m_Layer: 0
-  m_Name: Door (1)
+  m_Name: Door_East
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2397,7 +2397,7 @@ GameObject:
   - component: {fileID: 1208153390}
   - component: {fileID: 1208153391}
   m_Layer: 0
-  m_Name: TestRoomBounds
+  m_Name: CameraBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2549,7 +2549,7 @@ GameObject:
   - component: {fileID: 1783332164}
   - component: {fileID: 1783332163}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door_West
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2643,7 +2643,7 @@ GameObject:
   - component: {fileID: 1827507752}
   - component: {fileID: 1827507751}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Door_South
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2736,7 +2736,7 @@ GameObject:
   - component: {fileID: 1851630512}
   - component: {fileID: 1851630513}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: Spawner_Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5471,7 +5471,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 2139652643}
   - {fileID: 989409880}
-  - {fileID: 298370937}
   - {fileID: 558187374}
+  - {fileID: 298370937}
   - {fileID: 1234344351}
   - {fileID: 441634865}

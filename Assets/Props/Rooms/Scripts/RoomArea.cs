@@ -51,8 +51,20 @@ namespace Props.Rooms.Scripts
             roomCamera.enabled = false;
         }
 
+        private void OnDrawGizmos()
+        {
+            if (!isActive)
+            {
+                return;
+            }
+            
+            DebugHelpers.Drawing.DrawBox(transform.position + new Vector3(0.0f, 1.25f, 0.0f), new Vector2(2.0f, 0.5f), new Color(0.0f, 0.0f, 1.0f, 0.2f));
+            Handles.Label(transform.position + new Vector3(0.0f, 1.25f, 0.0f), "Active room");
+        }
+
         private void OnDrawGizmosSelected()
         {
+            
             DebugHelpers.Drawing.DrawCircle(transform.position, 1.0f, new Color(0.0f, 0.0f, 1.0f, 0.2f));
             Handles.Label(transform.position, $"Selected:\n{name}");
         }

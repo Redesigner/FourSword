@@ -126,6 +126,11 @@ namespace DebugHelpers
         {
             Gizmos.color = color;
             Gizmos.DrawMesh(quadMesh, position, Quaternion.identity, extents);
+            
+            var outlineColor = color;
+            outlineColor.a += 0.5f;
+            Gizmos.color = outlineColor;
+            DrawLineStrip(quadMesh.vertices, position, Quaternion.identity, extents);
 
         }
 

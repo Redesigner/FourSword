@@ -69,9 +69,18 @@ namespace Props.Rooms.Scripts
             {
                 return;
             }
-            DebugHelpers.Drawing.DrawArrow(transform.position, roomToActivate.transform.position, Color.blue);
-            DebugHelpers.Drawing.DrawCircle(transform.position, 0.4f, new Color(0.0f, 0.0f, 1.0f, 0.2f));
-            DebugHelpers.Drawing.DrawCircle(roomToActivate.transform.position, 1.0f, new Color(0.0f, 0.0f, 1.0f, 0.2f));
+
+            const float doorCircleRadius = 0.4f;
+            const float roomCircleRadius = 1.0f;
+            var directionToRoom = (Vector2)(roomToActivate.transform.position - transform.position).normalized;
+            Handles.Label(transform.position, $"To {roomToActivate.name}");
+            DebugHelpers.Drawing.DrawArrow(
+                transform.position + (Vector3)(directionToRoom * doorCircleRadius),
+                roomToActivate.transform.position - (Vector3)(directionToRoom * roomCircleRadius),
+                Color.blue
+            );
+            DebugHelpers.Drawing.DrawCircle(transform.position, doorCircleRadius, new Color(0.0f, 0.0f, 1.0f, 0.2f));
+            DebugHelpers.Drawing.DrawCircle(roomToActivate.transform.position, roomCircleRadius, new Color(0.0f, 0.0f, 1.0f, 0.2f));
             Handles.Label(roomToActivate.transform.position, $"Destination:\n{roomToActivate.name}");
         }
     }
