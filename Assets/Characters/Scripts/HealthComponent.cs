@@ -9,6 +9,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum Team
+{
+    Dogs,
+    Robots
+}
+
 public class HealthComponent : DamageListener
 {
     [SerializeField] public float maxHealth;
@@ -22,6 +28,8 @@ public class HealthComponent : DamageListener
     
     [SerializeField] public UnityEvent onStunned;
     [SerializeField] public UnityEvent onStunEnd;
+
+    [SerializeField] public Team team;
 
     public readonly StatusEffectContainer statusEffects = new();
     [field: SerializeField] public bool alive { get; private set; } = true;
@@ -86,6 +94,18 @@ public class HealthComponent : DamageListener
 
     public override void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
     {
+        // In some rare cases, projectiles can live after their owners, so make sure the owner isn't null
+        if (!source)
+        {
+            return;
+        }
+        
+        var attackerHealthComponent = source.transform.root.GetComponent<HealthComponent>();
+        if (attackerHealthComponent && attackerHealthComponent.team == team)
+        {
+            return;
+        }
+        
         if (damage < 0.0f)
         {
             return;

@@ -91,6 +91,24 @@ namespace DebugHelpers
             Debug.DrawLine(end, arrowRight, color, duration);
             Debug.DrawLine(end, arrowLeft, color, duration);
         }
+        
+        public static void DrawArrow(Vector3 start, Vector3 end, Color color)
+        {
+            const float arrowheadLength = 0.2f;
+
+            var arrowDirection = Mathf.Atan2(end.y - start.y, end.x - start.x);
+            var arrowRight = end;
+            var arrowLeft = end;
+            arrowRight.x += Mathf.Cos(arrowDirection + ArrowheadAngleOffsetRads) * arrowheadLength;
+            arrowRight.y += Mathf.Sin(arrowDirection + ArrowheadAngleOffsetRads) * arrowheadLength;
+            arrowLeft.x  += Mathf.Cos(arrowDirection - ArrowheadAngleOffsetRads) * arrowheadLength;
+            arrowLeft.y  += Mathf.Sin(arrowDirection - ArrowheadAngleOffsetRads) * arrowheadLength;
+
+            Gizmos.color = color;
+            Gizmos.DrawLine(start, end);
+            Gizmos.DrawLine(end, arrowRight);
+            Gizmos.DrawLine(end, arrowLeft);
+        }
 
         // Can only be called from inside OnDrawGizmos!
         public static void DrawBoxCollider2D(BoxCollider2D collider, Color color)
@@ -102,6 +120,18 @@ namespace DebugHelpers
             
             //Gizmos.DrawWireMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
             DrawLineStrip(quadMesh.vertices, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+        }
+
+        public static void DrawBox(Vector3 position, Vector2 extents, Color color)
+        {
+            Gizmos.color = color;
+            Gizmos.DrawMesh(quadMesh, position, Quaternion.identity, extents);
+            
+            var outlineColor = color;
+            outlineColor.a += 0.5f;
+            Gizmos.color = outlineColor;
+            DrawLineStrip(quadMesh.vertices, position, Quaternion.identity, extents);
+
         }
 
         public static void DrawCross(Vector3 position, float radius, Color color, float duration)

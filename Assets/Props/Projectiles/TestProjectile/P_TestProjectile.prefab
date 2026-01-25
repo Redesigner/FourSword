@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyOnPlayerTakeDamage: 1
-  damage: 2
+  damage: 0
   destructionParticlePrefab: {fileID: 0}
   particleLifetime: 1
   canBeBlocked: 1

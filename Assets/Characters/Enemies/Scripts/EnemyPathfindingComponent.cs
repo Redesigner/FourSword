@@ -156,7 +156,6 @@ public class EnemyPathfindingComponent : MonoBehaviour
 #endif
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis -- Rider is flagging this as expensive for some reason?
     private void FollowNavMesh()
     {
         if (_navMeshAgent.isStopped)
