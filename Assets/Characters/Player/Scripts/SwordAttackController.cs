@@ -50,6 +50,7 @@ namespace Characters.Player.Scripts
         private static readonly int PreviousDirectionHash = Animator.StringToHash("PreviousDirection");
         private static readonly int AttackTriggerHash = Animator.StringToHash("Attack");
         private static readonly int CancelTriggerHash = Animator.StringToHash("Cancel");
+        private static readonly int Blocking = Animator.StringToHash("Blocking");
         
 
         private void Start()
@@ -66,7 +67,7 @@ namespace Characters.Player.Scripts
                 canChangeDirection = true,
                 transitionTime = 0.25f
             };
-            _blocking = new SwordStance
+            _blocking = new BlockStance()
             {
                 name = "Blocking",
                 hitboxType = HitboxType.Armor
@@ -113,6 +114,7 @@ namespace Characters.Player.Scripts
             }
             
             // Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
+            _currentStance.Exit(this);
             _currentStance = newStance;
             _currentStance.Enter(this);
             primaryHitbox.gameObject.layer = HitboxTrigger.GetLayer(_currentStance.hitboxType);
@@ -297,6 +299,11 @@ namespace Characters.Player.Scripts
             style.alignment = TextAnchor.MiddleCenter;
             style.wordWrap = false;
             Handles.Label(transform.position + new Vector3(0.0f, -0.5f, 0.0f), _currentStance.name, style);
+        }
+
+        public void SetBlockingAnimator(bool isBlocking)
+        {
+            animator.SetBool(Blocking, isBlocking);
         }
     }
 }

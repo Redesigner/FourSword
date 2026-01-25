@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Characters.Enemies.Scripts;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,6 +14,7 @@ namespace Props.Rooms.Scripts
         [SerializeField] private uint numEnemies;
         [SerializeField] private Vector2 spawnAreaSize;
         [SerializeField] private UnityEvent allEnemiesDefeated;
+        [SerializeField] private bool checkIfInNav = true;
 
         private List<WeakReference<GameObject>> _spawnedEnemies = new();
         
@@ -47,7 +49,7 @@ namespace Props.Rooms.Scripts
 
             for (var i = _numEnemiesDefeated; i < numEnemies; ++i)
             {
-                var newObject = Instantiate(spawnedObject, GetSpawnLocation(),Quaternion.identity);
+                var newObject = Instantiate(spawnedObject, checkIfInNav ? GetSpawnLocationInNav(50) : GetSpawnLocation(), Quaternion.identity);
                 var healthComponent = newObject.GetComponent<HealthComponent>();
                 if (healthComponent)
                 {
@@ -65,6 +67,20 @@ namespace Props.Rooms.Scripts
                 transform.position.y + spawnAreaSize.y * Random.value - spawnAreaSize.y * 0.5f,
                 transform.position.z
             );
+        }
+
+        private Vector3 GetSpawnLocationInNav(int maxIterations = 20)
+        {
+            for (var i = 0; i < maxIterations; ++i)
+            {
+                var spawnLocation = GetSpawnLocation();
+                if (NavigationHelpers.IsLocationInNavMesh(spawnLocation))
+                {
+                    return spawnLocation;
+                }
+            }
+
+            return transform.position;
         }
 
         private GameObject GetSpawnedObject()
