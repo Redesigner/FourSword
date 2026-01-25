@@ -110,9 +110,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5003406, y: 0.50050384}
+    oldSize: {x: 3.53125, y: 3.53125}
+    newSize: {x: 3.53125, y: 3.53125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -156,9 +156,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5003406, y: 0.50050384}
+    oldSize: {x: 3.53125, y: 3.53125}
+    newSize: {x: 3.53125, y: 3.53125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -254,12 +254,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1573550770, guid: 0e9c3c0d234aa51458da165530d3a461, type: 3}
+  m_Sprite: {fileID: 2729853989378734247, guid: 65b3a64040e125d4b935119ed8015459, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.53125, y: 3.53125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -275,7 +275,7 @@ Animator:
   m_GameObject: {fileID: 759127726534662320}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 29f25e42c8f04c64cbb51b2a5116630e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2a3b00ef7037bc74899a028109f65ce1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -318,8 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4be24677b71453ab465b859de82c814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 1
+  health: 1
   slashResistance: 1
   pierceResistance: 1
   smashResistance: 1
@@ -354,13 +354,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  team: 0
   <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3008976252106022695}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Death
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7829613800152515760
 MonoBehaviour:
   m_ObjectHideFlags: 0

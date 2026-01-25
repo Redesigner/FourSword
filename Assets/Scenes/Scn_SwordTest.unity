@@ -1256,6 +1256,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7329625106831737396, guid: 45b9f5f8a170d704ea6814c7853264d3, type: 3}
+    - target: {fileID: 5051295295291630966, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051295295291630966, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7040366294031428231, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1402,7 +1410,7 @@ MonoBehaviour:
   waves:
   - spawnedObjectOptions:
     - {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
-    enemiesThisWave: 50
+    enemiesThisWave: 0
   waveRespawnTime: 10
   interwaveRespawnTime: 0.5
   respawnCircleRadius: 4
@@ -1415,7 +1423,7 @@ Transform:
   m_GameObject: {fileID: 2067365719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -5.64, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1613,6 +1621,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1582346065748732484, guid: 49cb1636a23d62a408ec5bc8d4d61f96, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582346065748732484, guid: 49cb1636a23d62a408ec5bc8d4d61f96, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8603058957116174398}
+    - target: {fileID: 1582346065748732484, guid: 49cb1636a23d62a408ec5bc8d4d61f96, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4011055918436150536, guid: 49cb1636a23d62a408ec5bc8d4d61f96, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.02
@@ -1683,6 +1703,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   breakableDamageType: 0
+--- !u!95 &8603058957116174398 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2458593276034839016, guid: 49cb1636a23d62a408ec5bc8d4d61f96, type: 3}
+  m_PrefabInstance: {fileID: 7736231276926257559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
