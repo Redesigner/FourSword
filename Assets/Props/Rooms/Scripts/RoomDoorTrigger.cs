@@ -17,6 +17,11 @@ namespace Props.Rooms.Scripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (!other.transform.root.CompareTag("Player"))
+            {
+                return;
+            }
+            
             if (roomToActivate && _active)
             {
                 GameState.instance.SetActiveRoom(roomToActivate, doorDestination);

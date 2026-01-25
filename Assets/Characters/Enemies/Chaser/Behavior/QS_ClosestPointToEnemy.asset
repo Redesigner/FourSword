@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e484f805ab4fada88abe56037fd366, type: 3}
+  m_Name: QS_ClosestPointToEnemy
+  m_EditorClassIdentifier: 
+  queries:
+  - {fileID: 11400000, guid: eee99d2bcb5e30649be31491c1e15446, type: 2}

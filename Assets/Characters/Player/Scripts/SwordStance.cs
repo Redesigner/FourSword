@@ -35,6 +35,11 @@ namespace Characters.Player.Scripts
             controller.primaryHitbox.transform.localScale = Vector3.one;
             controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(controller.swordDirection));
         }
+
+        public virtual void Exit(SwordAttackController controller)
+        {
+            
+        }
     }
 
     public class IdleStance : SwordStance
@@ -138,6 +143,23 @@ namespace Characters.Player.Scripts
             {
                 enemyController.Knockback(knockback, 0.5f);
             }
+        }
+    }
+
+    public class BlockStance : SwordStance
+    {
+        public override void Enter(SwordAttackController controller)
+        {
+            base.Enter(controller);
+            
+            controller.SetBlockingAnimator(true);
+        }
+
+        public override void Exit(SwordAttackController controller)
+        {
+            base.Exit(controller);
+            
+            controller.SetBlockingAnimator(false);
         }
     }
 }
