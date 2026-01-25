@@ -14,7 +14,7 @@ namespace Props.Rooms.Scripts
         [SerializeField] private uint numEnemies;
         [SerializeField] private Vector2 spawnAreaSize;
         [SerializeField] private UnityEvent allEnemiesDefeated;
-        [SerializeField] private bool checkIfInNav = false;
+        [SerializeField] private bool checkIfInNav = true;
 
         private List<WeakReference<GameObject>> _spawnedEnemies = new();
         
