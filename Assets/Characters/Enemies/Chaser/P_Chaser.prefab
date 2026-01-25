@@ -152,7 +152,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!95 &2574121880225375457
 Animator:
   serializedVersion: 7
@@ -309,8 +309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coneRadius: 4
-  coneHalfAngle: 30
-  currentAngle: -90
+  coneHalfAngle: 180
+  currentAngle: 0
+  minimumVisibilityRadius: 1
   visibilityContactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -397,6 +398,7 @@ MonoBehaviour:
   onStunEnd:
     m_PersistentCalls:
       m_Calls: []
+  team: 1
   <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:

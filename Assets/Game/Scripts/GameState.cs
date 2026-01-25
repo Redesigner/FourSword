@@ -1,7 +1,9 @@
 ﻿using System;
+using Characters.Player.Scripts;
 using Game;
 using Game.Facts;
 using Game.StatusEffects;
+using Props.Rooms.Scripts;
 using Settings;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,6 +40,10 @@ public class GameState : MonoBehaviour
     }
 
     public PerceptionSubsystem perceptionSubsystem { get; private set; } = new();
+    
+    public PlayerController activePlayer { get; private set; }
+
+    private RoomArea _activeRoom;
     
     public void Awake()
     {
@@ -96,6 +102,47 @@ public class GameState : MonoBehaviour
     public void Save()
     {
         factState.Save();
+    }
+
+    public RoomArea GetActiveRoom()
+    {
+        return _activeRoom;
+    }
+
+    public void SetActiveRoom(RoomArea newRoom, RoomDoorTrigger entryPoint = null)
+    {
+        if (_activeRoom)
+        {
+            _activeRoom.DeactivateRoom();
+        }
+
+        _activeRoom = newRoom;
+        
+        if (!entryPoint)
+        {
+            _activeRoom.StartTransition();
+            _activeRoom.EnterRoom();
+            return;
+        }
+        
+        activePlayer.SetDestination(entryPoint.transform.position);
+        _activeRoom.StartTransition();
+    }
+
+    private void EndRoomTransition()
+    {
+        _activeRoom.EnterRoom();
+    }
+
+    public void RegisterPlayer(PlayerController player)
+    {
+        if (activePlayer)
+        {
+            activePlayer.forcedDestinationReached.RemoveListener(EndRoomTransition);
+        }
+        
+        activePlayer = player;
+        activePlayer.forcedDestinationReached.AddListener(EndRoomTransition);
     }
 
     private void OnGUI()

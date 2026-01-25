@@ -17,6 +17,11 @@ namespace Game.StatusEffects
 
         public void ApplyStatusEffectInstance(StatusEffectInstance instance)
         {
+            if (!instance.effect)
+            {
+                return;
+            }
+            
             if (_statusEffects.TryGetValue(instance.effect, out var effectList))
             {
                 effectList.Add(instance);
@@ -182,7 +187,13 @@ namespace Game.StatusEffects
 
         public bool HasEffect(StatusEffect effect)
         {
-            return _statusEffects.ContainsKey(effect);
+            if (effect)
+            {
+                return _statusEffects.ContainsKey(effect);
+            }
+            
+            Debug.LogError("Has effect check failed. Effect was null.");
+            return false;
         }
     }
 }

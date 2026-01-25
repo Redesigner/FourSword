@@ -1240,6 +1240,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 579208233741465586, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: team
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 759127726534662320, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_Name
       value: P_Player
@@ -1366,7 +1370,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
---- !u!1 &1906988056
+--- !u!1 &2067365719
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1374,42 +1378,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1906988058}
-  - component: {fileID: 1906988057}
+  - component: {fileID: 2067365721}
+  - component: {fileID: 2067365720}
   m_Layer: 0
-  m_Name: DuelerSpawner
+  m_Name: DuelerSpawner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1906988057
+--- !u!114 &2067365720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906988056}
-  m_Enabled: 0
+  m_GameObject: {fileID: 2067365719}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 487a2a426508406e8d280f87bf9e2676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObject: {fileID: 759127726534662320, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
-  maxSpawnedObjects: 4
-  waveRespawnTime: 1
-  interwaveRespawnTime: 10
-  respawnCircleRadius: 2
---- !u!4 &1906988058
+  waves:
+  - spawnedObjectOptions:
+    - {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
+    enemiesThisWave: 50
+  waveRespawnTime: 10
+  interwaveRespawnTime: 0.5
+  respawnCircleRadius: 4
+--- !u!4 &2067365721
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906988056}
+  m_GameObject: {fileID: 2067365719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 1, z: 3.8986785}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1691,7 +1697,7 @@ SceneRoots:
   - {fileID: 247153176}
   - {fileID: 1449069461}
   - {fileID: 1554818855}
-  - {fileID: 1906988058}
+  - {fileID: 2067365721}
   - {fileID: 1872053471}
   - {fileID: 7736231276926257559}
   - {fileID: 804868013}

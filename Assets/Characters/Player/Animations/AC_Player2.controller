@@ -186,7 +186,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: PreviousDirection
     m_Mirror: 0
-  m_BlendParameter: PreviousDirection
+  m_BlendParameter: SwordDirection
   m_BlendParameterY: PreviousDirection
   m_MinThreshold: 0
   m_MaxThreshold: 3
