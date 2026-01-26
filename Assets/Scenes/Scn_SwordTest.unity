@@ -1143,7 +1143,8 @@ MonoBehaviour:
     enemiesThisWave: 50
   waveRespawnTime: 10
   interwaveRespawnTime: 0.5
-  respawnCircleRadius: 4
+  spawnAreaSize: {x: 5, y: 5}
+  checkIfInNav: 1
 --- !u!4 &2067365721
 Transform:
   m_ObjectHideFlags: 0

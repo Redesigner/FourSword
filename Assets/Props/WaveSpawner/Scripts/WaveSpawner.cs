@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Characters.Enemies.Scripts;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Props.Scripts
 {
@@ -11,7 +13,8 @@ namespace Props.Scripts
         [SerializeField] private List<WaveDefinition> waves;
         [SerializeField] [Min(0.0f)] private float waveRespawnTime = 1.0f;
         [SerializeField] [Min(0.0f)] private float interwaveRespawnTime = 0.5f;
-        [SerializeField] [Min(0.0f)] private float respawnCircleRadius = 1.0f;
+        [SerializeField] private Vector2 spawnAreaSize;
+        [SerializeField] private bool checkIfInNav = true;
 
         private int _waveIndex = 0;
         private int _spawnedEntityCount = 0;
@@ -41,8 +44,8 @@ namespace Props.Scripts
                 return;
             }
 
-            var newObject = Instantiate(spawnedObject, (Vector3)Shared.Math.RandomPointInRadius(respawnCircleRadius) + transform.position, Quaternion.identity);
-            if (++_spawnedEntityCount < waves[_waveIndex].enemiesThisWave)
+            var newObject = Instantiate(spawnedObject, GetSpawnLocation(), Quaternion.identity);
+            if (++_spawnedEntityCount < waves[_waveIndex].GetTotalEnemyCount())
             {
                 _interwaveRespawnTimer = TimerManager.instance.CreateTimer(this, interwaveRespawnTime, SpawnObject);
             }
@@ -68,14 +71,14 @@ namespace Props.Scripts
             {
                 remainingTime = 0.0f;
             }
-
-            var waveRespawnTime = _waveTimer.GetRemainingTime();
+            var remainingWaveTime = _waveTimer.GetRemainingTime();
             
             Handles.Label(transform.position,
-                $"Wave: {_waveIndex + 1} / {waves.Count} {(waveRespawnTime < 0.0f ? "Active" : $"({waveRespawnTime:0.0} s)")}\n" +
-                $"{waveLabel}\n", style);
+                $"Wave: {_waveIndex + 1} / {waves.Count} {(remainingWaveTime < 0.0f ? "Active" : $"({remainingWaveTime:0.0} s)")}\n" +
+                $"{waveLabel}\n" +
+                $"Defeated: {_defeatedEntityCount} / {GetMaxThisWave()}", style);
             
-            DebugHelpers.Drawing.DrawCircle(transform.position, respawnCircleRadius, new Color(0.2f, 0.5f, 1.0f, 0.1f));
+            DebugHelpers.Drawing.DrawBox(transform.position, spawnAreaSize, new Color(0.2f, 0.5f, 1.0f, 0.4f));
         }
 
         private void SpawnedObjectDestroyed()
@@ -105,6 +108,34 @@ namespace Props.Scripts
         private int GetMaxThisWave()
         {
             return GetCurrentWave().GetTotalEnemyCount();
+        }
+
+        private Vector3 GetSpawnLocation()
+        {
+            return checkIfInNav ? GetSpawnLocationInNav(50) : GetRandomSpawnLocation();
+        }
+
+        private Vector3 GetSpawnLocationInNav(int maxIterations)
+        {
+            for (var i = 0; i < maxIterations; ++i)
+            {
+                var spawnLocation = GetRandomSpawnLocation();
+                if (NavigationHelpers.IsLocationInNavMesh(spawnLocation))
+                {
+                    return spawnLocation;
+                }
+            }
+
+            return transform.position;
+        }
+
+        private Vector3 GetRandomSpawnLocation()
+        {
+            return new Vector3(
+                transform.position.x + spawnAreaSize.x * Random.value - spawnAreaSize.x * 0.5f,
+                transform.position.y + spawnAreaSize.y * Random.value - spawnAreaSize.y * 0.5f,
+                transform.position.z
+            );
         }
     }
 }

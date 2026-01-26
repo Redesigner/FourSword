@@ -10,14 +10,13 @@ namespace Props.Scripts
     {
         [SerializeField] public GameObject enemy;
         [SerializeField] [Min(0)] public int enemyCount;
-        [SerializeField] public int enemiesSpawned;
+        public int enemiesSpawned;
     }
     
     [Serializable]
     public class WaveDefinition
     {
         [SerializeField] public List<EnemySet> enemyOptions;
-        [SerializeField] public int enemiesThisWave;
 
         public int GetRandomObject()
         {
@@ -53,6 +52,11 @@ namespace Props.Scripts
             }
 
             return result;
+        }
+
+        public int GetRemainingEnemyCount()
+        {
+            return enemyOptions.Sum(enemyOption => enemyOption.enemyCount - enemyOption.enemiesSpawned);
         }
 
         public int GetTotalEnemyCount()
