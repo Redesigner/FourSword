@@ -13,10 +13,18 @@ namespace Props.Rooms.Scripts
         [SerializeField] private RoomArea roomToActivate;
 
         [SerializeField] private BoxCollider2D doorTrigger;
+        [SerializeField] private bool lockable = false;
+
+        [SerializeField] private Animator animator;
+        
         private bool _active = false;
+        private bool _locked = false;
+        
+        private static readonly int LockedAnimationBlend = Animator.StringToHash("Locked");
 
         private void Awake()
         {
+            // This makes the door solid!
             doorTrigger.isTrigger = false;
         }
 
@@ -46,10 +54,55 @@ namespace Props.Rooms.Scripts
             doorTrigger.isTrigger = false;
         }
 
+        public override void RoomLocked()
+        {
+            if (!lockable)
+            {
+                return;
+            }
+            
+            _locked = true;
+            doorTrigger.isTrigger = false;
+
+            if (animator)
+            {
+                animator.SetBool(LockedAnimationBlend, true);
+            }
+        }
+
+        public override void RoomUnlocked()
+        {
+            if (!lockable)
+            {
+                return;
+            }
+            
+            _locked = false;
+            
+            if (_active)
+            {
+                doorTrigger.isTrigger = true;
+            }
+            
+            if (animator)
+            {
+                animator.SetBool(LockedAnimationBlend, false);
+            }
+        }
+
         private void OnDrawGizmos()
         {
-            var doorColor = _active ? new Color(0.0f, 0.0f, 1.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.6f);
-            
+            Color doorColor;
+            if (_locked || (lockable && !_active))
+            {
+                doorColor = new Color(0.7f, 0.0f, 0.7f, 0.6f);
+            }
+            else
+            {
+                doorColor = _active ? new Color(0.0f, 0.0f, 1.0f, 0.25f) : new Color(1.0f, 0.0f, 0.0f, 0.6f);
+            }
+
+
             if (doorTrigger)
             {
                 DebugHelpers.Drawing.DrawBoxCollider2D(doorTrigger, doorColor);

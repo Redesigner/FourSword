@@ -152,6 +152,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1827507751}
   roomToActivate: {fileID: 298370936}
   doorTrigger: {fileID: 142722250}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &142722250
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -404,6 +406,7 @@ MonoBehaviour:
   - {fileID: 1851630513}
   roomCamera: {fileID: 495356669}
   isActive: 0
+  lockOnEnter: 1
 --- !u!4 &298370937
 Transform:
   m_ObjectHideFlags: 0
@@ -1995,6 +1998,7 @@ MonoBehaviour:
   - {fileID: 142722249}
   roomCamera: {fileID: 667000914}
   isActive: 1
+  lockOnEnter: 0
 --- !u!1 &667000913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,6 +2344,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1783332163}
   roomToActivate: {fileID: 1234344350}
   doorTrigger: {fileID: 1112372599}
+  lockable: 1
+  animator: {fileID: 0}
 --- !u!61 &1112372599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2497,6 +2503,7 @@ MonoBehaviour:
   - {fileID: 1783332163}
   roomCamera: {fileID: 1028504307}
   isActive: 0
+  lockOnEnter: 0
 --- !u!4 &1234344351
 Transform:
   m_ObjectHideFlags: 0
@@ -2571,6 +2578,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1112372598}
   roomToActivate: {fileID: 298370936}
   doorTrigger: {fileID: 1783332164}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &1783332164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2680,6 +2689,8 @@ MonoBehaviour:
   doorDestination: {fileID: 142722249}
   roomToActivate: {fileID: 558187375}
   doorTrigger: {fileID: 1827507752}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &1827507752
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2831,11 +2842,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 759127726534662320, guid: 15f9293e3b7a185439443a5a01d2fbf1, type: 3}
-  numEnemies: 4
+  numEnemies: 2
   spawnAreaSize: {x: 10, y: 4}
   allEnemiesDefeated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 298370936}
+        m_TargetAssemblyTypeName: Props.Rooms.Scripts.RoomArea, Assembly-CSharp
+        m_MethodName: UnlockRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   checkIfInNav: 0
 --- !u!1 &2035106222
 GameObject:
