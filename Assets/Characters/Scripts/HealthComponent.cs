@@ -182,11 +182,11 @@ public class HealthComponent : DamageListener
         GetComponent<KinematicCharacterController>().enabled = false;
         TimerManager.instance.CreateTimer(this, 0.5f, () =>
         {
+            Destroy(gameObject);
             if (GameManager.Instance != null)
             {
                 GameManager.Instance.GameOver();
             }
-            Destroy(gameObject);
         });
     }
 
