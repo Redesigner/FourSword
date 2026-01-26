@@ -15,6 +15,11 @@ namespace Props.Rooms.Scripts
         [SerializeField] private BoxCollider2D doorTrigger;
         private bool _active = false;
 
+        private void Awake()
+        {
+            doorTrigger.isTrigger = false;
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.transform.root.CompareTag("Player"))
@@ -32,25 +37,13 @@ namespace Props.Rooms.Scripts
         public override void RoomEntered()
         {
             _active = true;
-
-            // Just for display purposes for now
-            var sprite = GetComponent<SpriteRenderer>();
-            if (sprite)
-            {
-                sprite.enabled = true;
-            }
+            doorTrigger.isTrigger = true;
         }
 
         public override void RoomExited()
         {
             _active = false;
-            
-            var sprite = GetComponent<SpriteRenderer>();
-            if (sprite)
-            {
-                sprite.enabled = false;
-            }
-
+            doorTrigger.isTrigger = false;
         }
 
         private void OnDrawGizmos()
@@ -70,23 +63,36 @@ namespace Props.Rooms.Scripts
 
         private void OnDrawGizmosSelected()
         {
-            if (!roomToActivate)
-            {
-                return;
-            }
-
             const float doorCircleRadius = 0.4f;
             const float roomCircleRadius = 1.0f;
-            var directionToRoom = (Vector2)(roomToActivate.transform.position - transform.position).normalized;
-            Handles.Label(transform.position, $"To {roomToActivate.name}");
-            DebugHelpers.Drawing.DrawArrow(
-                transform.position + (Vector3)(directionToRoom * doorCircleRadius),
-                roomToActivate.transform.position - (Vector3)(directionToRoom * roomCircleRadius),
-                Color.blue
-            );
-            DebugHelpers.Drawing.DrawCircle(transform.position, doorCircleRadius, new Color(0.0f, 0.0f, 1.0f, 0.2f));
-            DebugHelpers.Drawing.DrawCircle(roomToActivate.transform.position, roomCircleRadius, new Color(0.0f, 0.0f, 1.0f, 0.2f));
-            Handles.Label(roomToActivate.transform.position, $"Destination:\n{roomToActivate.name}");
+            
+            if (roomToActivate)
+            {
+                var directionToRoom = (Vector2)(roomToActivate.transform.position - transform.position).normalized;
+                DebugHelpers.Drawing.DrawCircle(transform.position, doorCircleRadius, new Color(0.0f, 0.0f, 1.0f, 0.2f));
+                DebugHelpers.Drawing.DrawArrow(
+                    transform.position + (Vector3)(directionToRoom * doorCircleRadius),
+                    roomToActivate.transform.position - (Vector3)(directionToRoom * roomCircleRadius),
+                    Color.blue
+                );
+                DebugHelpers.Drawing.DrawCircle(roomToActivate.transform.position, roomCircleRadius,
+                    new Color(0.0f, 0.0f, 1.0f, 0.2f));
+
+                Handles.Label(transform.position, $"To {roomToActivate.name}");
+                Handles.Label(roomToActivate.transform.position, $"Destination:\n{roomToActivate.name}");
+            }
+            else
+            {
+                DebugHelpers.Drawing.DrawCircle(transform.position, doorCircleRadius, new Color(1.0f, 0.0f, 0.0f, 0.2f));
+                var tempGUIStyle = new GUIStyle(GUI.skin.label)
+                {
+                    normal =
+                    {
+                        textColor = Color.red
+                    }
+                };
+                Handles.Label(transform.position, "No room destination set!", tempGUIStyle);
+            }
         }
     }
 }
