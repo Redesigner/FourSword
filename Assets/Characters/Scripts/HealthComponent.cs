@@ -6,6 +6,7 @@ using ImGuiNET;
 using Shared;
 using UImGui;
 using UnityEditor;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -144,16 +145,7 @@ public class HealthComponent : DamageListener
             return;
         }
         
-        // onTakeDamage.Invoke(source);
-        health = 0.0f;
-        alive = false;
-        onDeath.Invoke();
-
-        GetComponent<KinematicCharacterController>().enabled = false;
-        TimerManager.instance.CreateTimer(this, 0.5f, () =>
-        {
-            Destroy(gameObject);
-        });
+        Death();
     }
 
     public void Update()
@@ -178,6 +170,24 @@ public class HealthComponent : DamageListener
         {
             health = maxHealth;
         }
+    }
+
+    private void Death()
+    {
+        // onTakeDamage.Invoke(source);
+        health = 0.0f;
+        alive = false;
+        onDeath.Invoke();
+        
+        GetComponent<KinematicCharacterController>().enabled = false;
+        TimerManager.instance.CreateTimer(this, 0.5f, () =>
+        {
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.GameOver();
+            }
+            Destroy(gameObject);
+        });
     }
 
     public override void Stun(float duration, MonoBehaviour source)
