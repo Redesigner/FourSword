@@ -16,7 +16,7 @@ namespace Props.Rooms.Scripts
         [SerializeField] private UnityEvent allEnemiesDefeated;
         [SerializeField] private bool checkIfInNav = true;
 
-        private List<WeakReference<GameObject>> _spawnedEnemies = new();
+        private readonly List<WeakReference<GameObject>> _spawnedEnemies = new();
         
         private uint _numEnemiesDefeated;
 
