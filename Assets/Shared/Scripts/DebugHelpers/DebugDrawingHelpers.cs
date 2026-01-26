@@ -197,4 +197,12 @@ namespace DebugHelpers
             };
         }
     }
+
+    public static class Names
+    {
+        public static string GetNameSafe(GameObject obj)
+        {
+            return obj ? obj.name : "None";
+        }
+    }
 }

@@ -354,6 +354,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  team: 0
   <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:

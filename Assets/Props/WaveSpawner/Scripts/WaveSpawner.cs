@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,7 +27,15 @@ namespace Props.Scripts
         // ReSharper disable Unity.PerformanceAnalysis
         private void SpawnObject()
         {
-            var spawnedObject = GetSpawnedObject();
+            var spawnedIndex = GetCurrentWave().GetRandomObject();
+            if (spawnedIndex < 0)
+            {
+                return;
+            }
+            
+            ++GetCurrentWave().enemyOptions[spawnedIndex].enemiesSpawned;
+            
+            var spawnedObject = GetCurrentWave().enemyOptions[spawnedIndex].enemy;
             if (!spawnedObject)
             {
                 return;
@@ -52,12 +61,7 @@ namespace Props.Scripts
             style.alignment = TextAnchor.MiddleCenter;
             style.wordWrap = false;
 
-            var objectsThisWaveLabel = "";
-            foreach (var spawnedObject in GetCurrentWave().spawnedObjectOptions)
-            {
-                objectsThisWaveLabel += spawnedObject.name;
-                objectsThisWaveLabel += ", ";
-            }
+            var waveLabel = GetCurrentWave().enemyOptions.Aggregate("", (current, enemySet) => current + $"{DebugHelpers.Names.GetNameSafe(enemySet.enemy)} : {enemySet.enemiesSpawned} / {enemySet.enemyCount}\n");
 
             var remainingTime = _interwaveRespawnTimer.GetRemainingTime();
             if (remainingTime < 0.0f)
@@ -69,9 +73,7 @@ namespace Props.Scripts
             
             Handles.Label(transform.position,
                 $"Wave: {_waveIndex + 1} / {waves.Count} {(waveRespawnTime < 0.0f ? "Active" : $"({waveRespawnTime:0.0} s)")}\n" +
-                $"Spawned: {_spawnedEntityCount} / {GetMaxThisWave()} ({remainingTime:0.0} s)\n" +
-                $"Defeated {_defeatedEntityCount}\n" +
-                $"{objectsThisWaveLabel}\n", style);
+                $"{waveLabel}\n", style);
             
             DebugHelpers.Drawing.DrawCircle(transform.position, respawnCircleRadius, new Color(0.2f, 0.5f, 1.0f, 0.1f));
         }
@@ -100,14 +102,9 @@ namespace Props.Scripts
             return waves[_waveIndex];
         }
 
-        private GameObject GetSpawnedObject()
-        {
-            return GetCurrentWave().GetRandomObject();
-        }
-
         private int GetMaxThisWave()
         {
-            return GetCurrentWave().enemiesThisWave;
+            return GetCurrentWave().GetTotalEnemyCount();
         }
     }
 }
