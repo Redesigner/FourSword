@@ -970,7 +970,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 579208233741465586, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: team
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 759127726534662320, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_Name
@@ -1128,12 +1128,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - spawnedObjectOptions:
-    - {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
+  - enemyOptions:
+    - enemy: {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
+      enemyCount: 2
+      enemiesSpawned: 0
+    - enemy: {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
+      enemyCount: 1
+      enemiesSpawned: 0
+    enemiesThisWave: 50
+  - enemyOptions:
+    - enemy: {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
+      enemyCount: 2
+      enemiesSpawned: 0
     enemiesThisWave: 50
   waveRespawnTime: 10
   interwaveRespawnTime: 0.5
-  respawnCircleRadius: 4
+  spawnAreaSize: {x: 5, y: 5}
+  checkIfInNav: 1
 --- !u!4 &2067365721
 Transform:
   m_ObjectHideFlags: 0
