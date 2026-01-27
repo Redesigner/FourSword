@@ -30,6 +30,8 @@ namespace Props.Rooms.Scripts
             
             foreach (var roomObject in roomObjects)
             {
+                if (!roomObject) { continue; }
+                
                 roomObject.RoomTransitionStarted();
             }
         }
@@ -39,6 +41,8 @@ namespace Props.Rooms.Scripts
             Debug.LogWarningFormat("Room '{0}' entered.", name);
             foreach (var roomObject in roomObjects)
             {
+                if (!roomObject) { continue; }
+
                 roomObject.RoomEntered();
             }
         }
@@ -47,6 +51,8 @@ namespace Props.Rooms.Scripts
         {
             foreach (var roomObject in roomObjects)
             {
+                if (!roomObject) { continue; }
+                
                 roomObject.RoomExited();
             }
 
@@ -57,8 +63,12 @@ namespace Props.Rooms.Scripts
         {
             foreach (var roomObject in GetComponentsInChildren<RoomObject>())
             {
+                if (!roomObject) { continue; }
+                
                 if (roomObjects.Contains(roomObject))
                 {
+                    if (!roomObject) { continue; }
+                    
                     continue;
                 }
                 
