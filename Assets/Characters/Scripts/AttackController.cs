@@ -2,6 +2,7 @@
 using System.Linq;
 using Shared;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Characters
 {
@@ -30,12 +31,22 @@ namespace Characters
 
             if (hitbox.gameObject.layer == 8)
             {
-                BlockedEnemyAttack(hitbox, otherHitbox);
+                var enemyAttackController = HitboxTrigger.GetOwningObject(hitbox).GetComponentInChildren<AttackController>();
+                if (enemyAttackController)
+                {
+                    BlockedEnemyAttack(enemyAttackController.currentDamageType, hitbox, otherHitbox);
+                }
                 return;
             }
 
             if (otherHitbox.gameObject.layer == 8)
             {
+                var enemyAttackController = HitboxTrigger.GetOwningObject(hitbox).GetComponentInChildren<AttackController>();
+                if (enemyAttackController)
+                {
+                    enemyAttackController.BlockedEnemyAttack(currentDamageType, hitbox, otherHitbox);
+                }
+                
                 AttackBlocked(hitbox, otherHitbox);
                 return;
             }
@@ -83,9 +94,8 @@ namespace Characters
             KnockbackPlayer(selfHitbox);
         }
 
-        public virtual void BlockedEnemyAttack(Collider2D selfArmorHitbox, Collider2D attackerHitbox)
+        public virtual void BlockedEnemyAttack(DamageType blockedDamageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
         {
-            
         }
 
         protected virtual void DealDamage(DamageListener enemy)

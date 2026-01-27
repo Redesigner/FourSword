@@ -249,7 +249,7 @@ namespace Characters.Player.Scripts
             return new Vector3(Mathf.Cos(rads) * _hitboxOffset, Mathf.Sin(rads) * _hitboxOffset, 0.0f);
         }
 
-        public override void BlockedEnemyAttack(Collider2D selfArmorHitbox, Collider2D attackerHitbox)
+        public override void BlockedEnemyAttack(DamageType damageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
         {
             if (attackerHitbox.gameObject.CompareTag("Projectile"))
             {
