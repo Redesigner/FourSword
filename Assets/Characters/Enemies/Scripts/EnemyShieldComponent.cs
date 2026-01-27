@@ -50,6 +50,8 @@ namespace Characters.Enemies.Scripts
         public void DisableShield(float time)
         {
             _shieldForcedDown = true;
+            armor.Disable();
+            
             TimerManager.instance.CreateTimer(this, time, () =>
             {
                 _shieldForcedDown = false;

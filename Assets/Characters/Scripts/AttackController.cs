@@ -41,12 +41,6 @@ namespace Characters
 
             if (otherHitbox.gameObject.layer == 8)
             {
-                var enemyAttackController = HitboxTrigger.GetOwningObject(hitbox).GetComponentInChildren<AttackController>();
-                if (enemyAttackController)
-                {
-                    enemyAttackController.BlockedEnemyAttack(currentDamageType, hitbox, otherHitbox);
-                }
-                
                 AttackBlocked(hitbox, otherHitbox);
                 return;
             }
@@ -91,16 +85,32 @@ namespace Characters
 
         public virtual void AttackBlocked(Collider2D selfHitbox, Collider2D otherHitbox)
         {
-            KnockbackPlayer(selfHitbox);
+            var enemyAttackController = HitboxTrigger.GetOwningObject(otherHitbox).GetComponentInChildren<AttackController>();
+            if (!enemyAttackController)
+            {
+                KnockbackPlayer(selfHitbox);
+                return;
+            }
+            
+            if (enemyAttackController.BlockedEnemyAttack(currentDamageType, otherHitbox, selfHitbox))
+            {
+                KnockbackPlayer(selfHitbox);
+            }
         }
 
-        public virtual void BlockedEnemyAttack(DamageType blockedDamageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
+        public virtual bool BlockedEnemyAttack(DamageType blockedDamageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
         {
+            return false;
         }
 
         protected virtual void DealDamage(DamageListener enemy)
         {
             enemy.TakeDamage(1.0f, gameObject, currentDamageType);
+        }
+
+        private void AttemptAttackThroughShield(Collider2D hitbox, Collider2D otherHitbox)
+        {
+
         }
     }
 }

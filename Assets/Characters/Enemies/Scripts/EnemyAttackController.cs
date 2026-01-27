@@ -63,15 +63,15 @@ public class EnemyAttackController : AttackController
         }
     }
 
-    public override void AttackBlocked(Collider2D selfHitbox, Collider2D otherHitbox)
+    public override bool BlockedEnemyAttack(DamageType blockedDamageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
     {
-    }
-
-    public override void BlockedEnemyAttack(DamageType blockedDamageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
-    {
-        if (blockedDamageType == DamageType.Smash)
+        if (blockedDamageType != DamageType.Smash)
         {
-            onShieldBroken.Invoke();
+            return true;
         }
+        
+        onShieldBroken.Invoke();
+        return false;
+
     }
 }

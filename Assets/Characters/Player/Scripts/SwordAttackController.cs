@@ -249,14 +249,14 @@ namespace Characters.Player.Scripts
             return new Vector3(Mathf.Cos(rads) * _hitboxOffset, Mathf.Sin(rads) * _hitboxOffset, 0.0f);
         }
 
-        public override void BlockedEnemyAttack(DamageType damageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
+        public override bool BlockedEnemyAttack(DamageType damageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
         {
             if (attackerHitbox.gameObject.CompareTag("Projectile"))
             {
                 var projectile = attackerHitbox.GetComponent<ProjectileComponent>();
                 if (projectile && projectile.CanBeBlocked())
                 {
-                    return;
+                    return true;
                 }
             }
             
@@ -264,16 +264,17 @@ namespace Characters.Player.Scripts
             var enemyHealth = attackerHitbox.transform.root.GetComponent<HealthComponent>();
             if (!enemyHealth)
             {
-                return;
+                return true;
             }
 
             if (blockedEnemies.Contains(enemyHealth))
             {
-                return;
+                return true;
             }
             
             blockedEnemies.Add(enemyHealth);
             // enemyHealth.Stun(1.0f, this);
+            return true;
         }
 
         protected override void DealDamage(DamageListener enemy)
