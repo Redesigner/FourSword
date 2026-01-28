@@ -9,5 +9,9 @@ namespace Props.Rooms.Scripts
         public virtual void RoomEntered() {}
 
         public virtual void RoomExited() {}
+        
+        public virtual void RoomLocked() {}
+
+        public virtual void RoomUnlocked() {}
     }
 }

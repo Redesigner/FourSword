@@ -152,6 +152,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1827507751}
   roomToActivate: {fileID: 298370936}
   doorTrigger: {fileID: 142722250}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &142722250
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -404,6 +406,7 @@ MonoBehaviour:
   - {fileID: 1851630513}
   roomCamera: {fileID: 495356669}
   isActive: 0
+  lockOnEnter: 1
 --- !u!4 &298370937
 Transform:
   m_ObjectHideFlags: 0
@@ -1995,6 +1998,7 @@ MonoBehaviour:
   - {fileID: 142722249}
   roomCamera: {fileID: 667000914}
   isActive: 1
+  lockOnEnter: 0
 --- !u!1 &667000913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,6 +2344,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1783332163}
   roomToActivate: {fileID: 1234344350}
   doorTrigger: {fileID: 1112372599}
+  lockable: 1
+  animator: {fileID: 0}
 --- !u!61 &1112372599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2497,6 +2503,7 @@ MonoBehaviour:
   - {fileID: 1783332163}
   roomCamera: {fileID: 1028504307}
   isActive: 0
+  lockOnEnter: 0
 --- !u!4 &1234344351
 Transform:
   m_ObjectHideFlags: 0
@@ -2516,6 +2523,63 @@ Transform:
   - {fileID: 1830241059}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1250738112
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 759127726534662320, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_Name
+      value: P_Dueler
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7697346016262362290, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5ef79775a975fb44da402e65161ce27b, type: 3}
 --- !u!1 &1764886377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 759127726534662320, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
@@ -2571,6 +2635,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1112372598}
   roomToActivate: {fileID: 298370936}
   doorTrigger: {fileID: 1783332164}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &1783332164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2680,6 +2746,8 @@ MonoBehaviour:
   doorDestination: {fileID: 142722249}
   roomToActivate: {fileID: 558187375}
   doorTrigger: {fileID: 1827507752}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &1827507752
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2831,11 +2899,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 759127726534662320, guid: 15f9293e3b7a185439443a5a01d2fbf1, type: 3}
-  numEnemies: 4
+  numEnemies: 2
   spawnAreaSize: {x: 10, y: 4}
   allEnemiesDefeated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 298370936}
+        m_TargetAssemblyTypeName: Props.Rooms.Scripts.RoomArea, Assembly-CSharp
+        m_MethodName: UnlockRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   checkIfInNav: 0
 --- !u!1 &2035106222
 GameObject:
@@ -5537,3 +5617,4 @@ SceneRoots:
   - {fileID: 298370937}
   - {fileID: 1234344351}
   - {fileID: 441634865}
+  - {fileID: 1250738112}

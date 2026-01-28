@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Characters;
 using Game.StatusEffects;
@@ -29,6 +30,10 @@ public class HealthComponent : DamageListener
     
     [SerializeField] public UnityEvent onStunned;
     [SerializeField] public UnityEvent onStunEnd;
+
+    [SerializeField] public UnityEvent onTakeSlashDamage;
+    [SerializeField] public UnityEvent onTakePierceDamage;
+    [SerializeField] public UnityEvent onTakeSmashDamage;
 
     [SerializeField] public Team team;
 
@@ -138,6 +143,25 @@ public class HealthComponent : DamageListener
             onTakeDamage.Invoke(source);
             // statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, this, 0.25f));
 
+            switch (damageType)
+            {
+                case DamageType.Slashing:
+                    onTakeSlashDamage.Invoke();
+                    break;
+                
+                case DamageType.Piercing:
+                    onTakePierceDamage.Invoke();
+                    break;
+                
+                case DamageType.Smash:
+                    onTakeSmashDamage.Invoke();
+                    break;
+                
+                case DamageType.Raw:
+                default:
+                    break;
+            }
+            
             if (invulnerabilityTime > 0.0f)
             {
                 statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(GameState.instance.effectList.invulnerabilityEffect, this, invulnerabilityTime));

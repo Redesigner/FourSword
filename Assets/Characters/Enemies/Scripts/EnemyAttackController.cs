@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Characters;
+using Shared;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -10,7 +11,8 @@ public class EnemyAttackController : AttackController
 {
     [SerializeField] private HitboxTrigger hitboxComponent;
     [SerializeField] private bool damageOnce = true;
-    
+    [SerializeField] public UnityEvent onShieldBroken;
+
     public UnityEvent attackCompleted;
     private Animator _animator;
     private readonly List<HitboxTrigger> _hitboxes = new();
@@ -61,7 +63,15 @@ public class EnemyAttackController : AttackController
         }
     }
 
-    public override void AttackBlocked(Collider2D selfHitbox, Collider2D otherHitbox)
+    public override bool BlockedEnemyAttack(DamageType blockedDamageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
     {
+        if (blockedDamageType != DamageType.Smash)
+        {
+            return true;
+        }
+        
+        onShieldBroken.Invoke();
+        return false;
+
     }
 }

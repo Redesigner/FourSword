@@ -13,6 +13,7 @@ namespace Props.Rooms.Scripts
         [SerializeField] private CinemachineCamera roomCamera;
 
         [SerializeField] private bool isActive;
+        [SerializeField] private bool lockOnEnter = false;
 
         public void Start()
         {
@@ -45,6 +46,11 @@ namespace Props.Rooms.Scripts
 
                 roomObject.RoomEntered();
             }
+
+            if (lockOnEnter)
+            {
+                LockRoom();
+            }
         }
 
         public void DeactivateRoom()
@@ -57,6 +63,23 @@ namespace Props.Rooms.Scripts
             }
 
             roomCamera.enabled = false;
+        }
+
+        public void LockRoom()
+        {
+            lockOnEnter = false;
+            foreach (var roomObject in roomObjects)
+            {
+                roomObject.RoomLocked();
+            }
+        }
+
+        public void UnlockRoom()
+        {
+            foreach (var roomObject in roomObjects)
+            {
+                roomObject.RoomUnlocked();
+            }
         }
 
         private void LoadRoomObjects()

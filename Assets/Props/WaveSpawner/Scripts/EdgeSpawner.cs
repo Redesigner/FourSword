@@ -1,92 +1,82 @@
+using System;
 using System.Collections.Generic;
+using Characters.Enemies.Scripts;
+using Characters.Player.Scripts;
 using UnityEngine;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 public class EdgeSpawner : MonoBehaviour
 {
-    [SerializeField] Vector2 spawnArea; 
-    [Range(1, 50)]
-    public int waveDifficulty = 1;
-    [Range(1, 50)]
-    public int waveDuration;
-    private int waveValue;
-    public int spawnIndex;
-
+    [SerializeField] private Vector2 spawnAreaSizeInner; 
+    [SerializeField] private Vector2 spawnAreaSizeOuter; 
     
-    private float waveTimer;
-    private float spawnInterval;
-    private float spawnTimer;
+    [SerializeField] [Range(1, 50)]
+    public int waveDifficulty = 1;
+    
+    [SerializeField] [Range(1, 50)]
+    public int waveDuration;
+
+    private PlayerController _playerCenter;
+    
+    private int _waveValue;
+    
+    private float _waveTimer;
+    private float _spawnInterval;
+    private float _spawnTimer;
  
-    public Transform[] spawnLocation;
-    public List<Enemy> enemies = new List<Enemy>();
-    public List<GameObject> enemiesToSpawn = new List<GameObject>();
-    public List<GameObject> spawnedEnemies = new List<GameObject>();
+    public List<Enemy> enemies = new();
+    public List<GameObject> enemiesToSpawn = new();
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        GenerateWave();
+        _playerCenter = GameState.instance.activePlayer;
+        GenerateNewWave();
     }
  
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if(spawnTimer <=0)
+        if (_spawnTimer <= 0)
         {
             //spawn an enemy
-            if(enemiesToSpawn.Count >0)
+            if(enemiesToSpawn.Count > 0)
             {
-                Vector3 position = GenerateRandomPosition();
-                GameObject enemy = (GameObject)Instantiate(enemiesToSpawn[0], position,Quaternion.identity); // spawn first enemy in our list
-
-                /*
-                Vector3 position = GenerateRandomPosition();
-                position += player.transform.position;
-                enemy.transform.position = position;
-                enemy.transform.parent = transform;
-                */
+                var position = GetSpawnLocationInNav();
+                var enemy = Instantiate(enemiesToSpawn[0], position,Quaternion.identity); // spawn first enemy in our list
                 
                 enemiesToSpawn.RemoveAt(0); // and remove it
-                spawnedEnemies.Add(enemy);
-                spawnTimer = spawnInterval;
- 
-                if(spawnIndex + 1 <= spawnLocation.Length-1)
-                {
-                    spawnIndex++;
-                }
-                else
-                {
-                    spawnIndex = 0;
-                }
+                _spawnTimer = _spawnInterval;
             }
             else
             {
-                waveTimer = 0; // if no enemies remain, end wave
+                _waveTimer = 0; // if no enemies remain, end wave
             }
         }
         else
         {
-            spawnTimer -= Time.fixedDeltaTime;
-            waveTimer -= Time.fixedDeltaTime;
+            _spawnTimer -= Time.fixedDeltaTime;
+            _waveTimer -= Time.fixedDeltaTime;
         }
- 
-        if(waveTimer<=0 && spawnedEnemies.Count <=0)
+
+        if (!(_waveTimer <= 0))
         {
-            waveDifficulty++;
-            GenerateWave();
+            return;
         }
+        waveDifficulty++;
+        GenerateNewWave();
     }
- 
-    public void GenerateWave()
+
+    private void GenerateNewWave()
     {
-        waveValue = waveDifficulty * 10;
+        _waveValue = waveDifficulty * 10;
         GenerateEnemies();
  
-        spawnInterval = waveDuration / enemiesToSpawn.Count; // gives a fixed time between each enemies
-        waveTimer = waveDuration; // wave duration is read only
+        _spawnInterval = waveDuration / (float)enemiesToSpawn.Count; // gives a fixed time between each enemy
+        _waveTimer = waveDuration;
     }
- 
-    public void GenerateEnemies()
+
+    private void GenerateEnemies()
     {
         // Create a temporary list of enemies to generate
         // 
@@ -98,20 +88,16 @@ public class EdgeSpawner : MonoBehaviour
  
         //  -> if we have no points left, leave the loop
  
-        List<GameObject> generatedEnemies = new List<GameObject>();
-        while(waveValue>0 || generatedEnemies.Count <50)
+        var generatedEnemies = new List<GameObject>();
+        while(_waveValue > 0 || generatedEnemies.Count < 50)
         {
+            var randEnemyId = UnityEngine.Random.Range(0, enemies.Count);
+            var randEnemyCost = enemies[randEnemyId].cost;
             
-            int randEnemyId = UnityEngine.Random.Range(0, enemies.Count);
-            int randEnemyCost = enemies[randEnemyId].cost;
-            if (randEnemyId != null) { continue; }
- 
-            if(waveValue-randEnemyCost>=0)
-            {
-                generatedEnemies.Add(enemies[randEnemyId].enemyPrefab);
-                waveValue -= randEnemyCost;
-            }
-            else if(waveValue<=0)
+            generatedEnemies.Add(enemies[randEnemyId].enemyPrefab);
+            _waveValue -= randEnemyCost;
+                
+            if(_waveValue <= 0)
             {
                 break;
             }
@@ -120,27 +106,75 @@ public class EdgeSpawner : MonoBehaviour
         enemiesToSpawn = generatedEnemies;
     }
 
-    private Vector3 GenerateRandomPosition()
+    private Vector3 GetSpawnLocation()
     {
-        Vector3 position = new Vector3();
+        var regionSize = spawnAreaSizeOuter - spawnAreaSizeInner;
+        var areaTopBottom = spawnAreaSizeOuter.x * regionSize.y / 2.0f;
+        var areaLeftRight = regionSize.x / 2.0f * spawnAreaSizeInner.y;
 
-        float f = UnityEngine.Random.value > 0.5f ? -1f : 1f;
-        if (UnityEngine.Random.value > 0.5f)
-        {
-            position.x = UnityEngine.Random.Range(-spawnArea.x, spawnArea.x);
-            position.y = spawnArea.x * f;
-        }
-        else
-        {
-            position.y = UnityEngine.Random.Range(-spawnArea.y, spawnArea.y);
-            position.x = spawnArea.y * f;
-        }
+        var totalArea = areaTopBottom + areaLeftRight;
+        var chooseRegion = Random.value * totalArea;
 
-        position.z = 0;
+        var randomOffset = new Vector2();
         
-        return position;
+        if (chooseRegion <= areaTopBottom) // use the top or bottom region
+        {
+            var sign = Random.Range(0, 2) * 2 - 1;
+            randomOffset.y = Random.Range(spawnAreaSizeInner.y, spawnAreaSizeOuter.y) / 2.0f * sign;
+            randomOffset.x = Random.Range(0.0f, spawnAreaSizeOuter.x) - spawnAreaSizeOuter.x / 2.0f;
+        }
+        else // use left or right
+        {
+            var sign = Random.Range(0, 2) * 2 - 1;
+            randomOffset.y = Random.Range(0.0f, spawnAreaSizeInner.y) - spawnAreaSizeInner.y / 2.0f;
+            randomOffset.x = Random.Range(spawnAreaSizeInner.x, spawnAreaSizeInner.x) / 2.0f * sign;
+        }
+        
+        return GetPlayerCenter() + (Vector3)randomOffset;
     }
-  
+
+    private Vector3 GetPlayerCenter()
+    {
+        return _playerCenter ? _playerCenter.transform.position : transform.position;
+    }
+    
+    private Vector3 GetSpawnLocationInNav(int maxIterations = 20)
+    {
+        for (var i = 0; i < maxIterations; ++i)
+        {
+            var spawnLocation = GetSpawnLocation();
+            if (NavigationHelpers.IsLocationInNavMesh(spawnLocation))
+            {
+                return spawnLocation;
+            }
+        }
+
+        return transform.position;
+    }
+
+    private void OnDrawGizmos()
+    {
+        var regionSize = spawnAreaSizeOuter - spawnAreaSizeInner;
+        var origin = _playerCenter ? _playerCenter.transform.position : transform.position;
+        var color = new Color(0.2f, 0.5f, 1.0f, 0.4f);
+        
+        // Draw top rect
+        DebugHelpers.Drawing.DrawBox(
+            new Vector3(origin.x, origin.y + (spawnAreaSizeOuter.y / 2.0f) - (regionSize.y / 4.0f), transform.position.z),
+            new Vector2(spawnAreaSizeOuter.x, regionSize.y / 2.0f), color);
+        // Bottom
+        DebugHelpers.Drawing.DrawBox(
+            new Vector3(origin.x, origin.y - (spawnAreaSizeOuter.y / 2.0f) + (regionSize.y / 4.0f), transform.position.z), 
+            new Vector2(spawnAreaSizeOuter.x, regionSize.y / 2.0f), color);
+        // Left
+        DebugHelpers.Drawing.DrawBox(
+            new Vector3(origin.x + (spawnAreaSizeOuter.x / 2.0f) - (regionSize.x / 4.0f), origin.y, transform.position.z),
+            new Vector2(regionSize.x / 2.0f, spawnAreaSizeInner.y), color);
+        // Right
+        DebugHelpers.Drawing.DrawBox(
+            new Vector3(origin.x - (spawnAreaSizeOuter.x / 2.0f) + (regionSize.x / 4.0f), origin.y, transform.position.z), 
+            new Vector2(regionSize.x / 2.0f, spawnAreaSizeInner.y), color);
+    }
 }
  
 [System.Serializable]

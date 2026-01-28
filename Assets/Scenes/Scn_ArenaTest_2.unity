@@ -1542,6 +1542,7 @@ MonoBehaviour:
   allEnemiesDefeated:
     m_PersistentCalls:
       m_Calls: []
+  checkIfInNav: 1
 --- !u!1001 &1169558173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2442,6 +2443,7 @@ MonoBehaviour:
   allEnemiesDefeated:
     m_PersistentCalls:
       m_Calls: []
+  checkIfInNav: 1
 --- !u!4 &1921402522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4509543842951459071, guid: c12e0443e3491e347ba112d2569c45e6, type: 3}

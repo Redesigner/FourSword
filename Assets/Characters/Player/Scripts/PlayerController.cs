@@ -21,10 +21,6 @@ namespace Characters.Player.Scripts
         private void Awake()
         {
             _characterController = GetComponent<KinematicCharacterController>();
-        }
-
-        private void Start()
-        {
             GameState.instance.RegisterPlayer(this);
         }
 
