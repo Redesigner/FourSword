@@ -101,8 +101,10 @@ public class EdgeSpawner : MonoBehaviour
         List<GameObject> generatedEnemies = new List<GameObject>();
         while(waveValue>0 || generatedEnemies.Count <50)
         {
+            
             int randEnemyId = UnityEngine.Random.Range(0, enemies.Count);
             int randEnemyCost = enemies[randEnemyId].cost;
+            if (randEnemyId != null) { continue; }
  
             if(waveValue-randEnemyCost>=0)
             {

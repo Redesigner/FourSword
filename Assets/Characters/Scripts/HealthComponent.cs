@@ -19,7 +19,7 @@ public enum Team
 public class HealthComponent : DamageListener
 {
     [SerializeField] public float maxHealth;
-    [SerializeField] private float health;
+    [field: SerializeField] public float health { get; private set; }
 
     [SerializeField] [Min(0.0f)] private float slashResistance = 1.0f;
     [SerializeField] [Min(0.0f)] private float pierceResistance = 1.0f;
