@@ -1,0 +1,149 @@
+using System.Collections.Generic;
+using UnityEngine;
+using Random = System.Random;
+
+public class EdgeSpawner : MonoBehaviour
+{
+    [SerializeField] Vector2 spawnArea; 
+    [Range(1, 50)]
+    public int waveDifficulty = 1;
+    [Range(1, 50)]
+    public int waveDuration;
+    private int waveValue;
+    public int spawnIndex;
+
+    
+    private float waveTimer;
+    private float spawnInterval;
+    private float spawnTimer;
+ 
+    public Transform[] spawnLocation;
+    public List<Enemy> enemies = new List<Enemy>();
+    public List<GameObject> enemiesToSpawn = new List<GameObject>();
+    public List<GameObject> spawnedEnemies = new List<GameObject>();
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        GenerateWave();
+    }
+ 
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if(spawnTimer <=0)
+        {
+            //spawn an enemy
+            if(enemiesToSpawn.Count >0)
+            {
+                Vector3 position = GenerateRandomPosition();
+                GameObject enemy = (GameObject)Instantiate(enemiesToSpawn[0], position,Quaternion.identity); // spawn first enemy in our list
+
+                /*
+                Vector3 position = GenerateRandomPosition();
+                position += player.transform.position;
+                enemy.transform.position = position;
+                enemy.transform.parent = transform;
+                */
+                
+                enemiesToSpawn.RemoveAt(0); // and remove it
+                spawnedEnemies.Add(enemy);
+                spawnTimer = spawnInterval;
+ 
+                if(spawnIndex + 1 <= spawnLocation.Length-1)
+                {
+                    spawnIndex++;
+                }
+                else
+                {
+                    spawnIndex = 0;
+                }
+            }
+            else
+            {
+                waveTimer = 0; // if no enemies remain, end wave
+            }
+        }
+        else
+        {
+            spawnTimer -= Time.fixedDeltaTime;
+            waveTimer -= Time.fixedDeltaTime;
+        }
+ 
+        if(waveTimer<=0 && spawnedEnemies.Count <=0)
+        {
+            waveDifficulty++;
+            GenerateWave();
+        }
+    }
+ 
+    public void GenerateWave()
+    {
+        waveValue = waveDifficulty * 10;
+        GenerateEnemies();
+ 
+        spawnInterval = waveDuration / enemiesToSpawn.Count; // gives a fixed time between each enemies
+        waveTimer = waveDuration; // wave duration is read only
+    }
+ 
+    public void GenerateEnemies()
+    {
+        // Create a temporary list of enemies to generate
+        // 
+        // in a loop grab a random enemy 
+        // see if we can afford it
+        // if we can, add it to our list, and deduct the cost.
+ 
+        // repeat... 
+ 
+        //  -> if we have no points left, leave the loop
+ 
+        List<GameObject> generatedEnemies = new List<GameObject>();
+        while(waveValue>0 || generatedEnemies.Count <50)
+        {
+            int randEnemyId = UnityEngine.Random.Range(0, enemies.Count);
+            int randEnemyCost = enemies[randEnemyId].cost;
+ 
+            if(waveValue-randEnemyCost>=0)
+            {
+                generatedEnemies.Add(enemies[randEnemyId].enemyPrefab);
+                waveValue -= randEnemyCost;
+            }
+            else if(waveValue<=0)
+            {
+                break;
+            }
+        }
+        enemiesToSpawn.Clear();
+        enemiesToSpawn = generatedEnemies;
+    }
+
+    private Vector3 GenerateRandomPosition()
+    {
+        Vector3 position = new Vector3();
+
+        float f = UnityEngine.Random.value > 0.5f ? -1f : 1f;
+        if (UnityEngine.Random.value > 0.5f)
+        {
+            position.x = UnityEngine.Random.Range(-spawnArea.x, spawnArea.x);
+            position.y = spawnArea.x * f;
+        }
+        else
+        {
+            position.y = UnityEngine.Random.Range(-spawnArea.y, spawnArea.y);
+            position.x = spawnArea.y * f;
+        }
+
+        position.z = 0;
+        
+        return position;
+    }
+  
+}
+ 
+[System.Serializable]
+public class Enemy
+{
+    public GameObject enemyPrefab;
+    public int cost;
+}
