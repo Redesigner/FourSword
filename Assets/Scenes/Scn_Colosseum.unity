@@ -14252,6 +14252,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 579208233741465586, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: maxHealth
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 579208233741465586, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: <health>k__BackingField
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 759127726534662320, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_Name
       value: P_Player

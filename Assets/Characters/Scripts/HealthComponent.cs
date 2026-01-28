@@ -168,8 +168,8 @@ public class HealthComponent : DamageListener
             }
             return;
         }
-        
-        Death();
+
+        Death(source);
     }
 
     public void Update()
@@ -196,9 +196,10 @@ public class HealthComponent : DamageListener
         }
     }
 
-    private void Death()
+    private void Death(GameObject source)
     {
-        // onTakeDamage.Invoke(source);
+        var attackerHealthComponent = source.transform.root.GetComponent<HealthComponent>();
+        onTakeDamage.Invoke(source);
         health = 0.0f;
         alive = false;
         onDeath.Invoke();
@@ -209,7 +210,10 @@ public class HealthComponent : DamageListener
             Destroy(gameObject);
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.GameOver();
+                if (team == Team.Dogs)
+                {
+                    GameManager.Instance.GameOver();
+                }
             }
         });
     }
