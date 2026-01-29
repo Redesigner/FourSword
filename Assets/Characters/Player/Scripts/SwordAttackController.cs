@@ -4,6 +4,7 @@ using Shared;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Math = Shared.Math;
 
 namespace Characters.Player.Scripts
 {
@@ -25,6 +26,14 @@ namespace Characters.Player.Scripts
         [field: SerializeField] public HitboxTrigger secondaryHitbox { private set; get; }
         [field: SerializeField] public HitboxTrigger diagonalHitbox { private set; get; }
 
+        [Header("Stamina")]
+        [SerializeField] private float staminaRegenRate = 1.0f;
+        [field: SerializeField] [Min(0.0f)] public float stamina { private set; get; }
+        [field: SerializeField] [Min(0.0f)] public float maxStamina { private set; get; }
+        
+        [SerializeField] [Min(0.0f)] private float attackCost = 1.0f;
+        [SerializeField] [Min(0.0f)] private float blockCost = 1.0f;
+        
         // Map transitions where a tuple containing our current stance, and the command received
         // is the Key, and the new stance is the Value
         private Dictionary<Tuple<SwordStance, SwordCommand>, SwordStance> _transitions;
@@ -65,12 +74,14 @@ namespace Characters.Player.Scripts
                 name = "Attacking",
                 hitboxType = HitboxType.Hitbox,
                 canChangeDirection = true,
-                transitionTime = 0.25f
+                transitionTime = 0.25f,
+                costFunction = () => attackCost
             };
             _blocking = new BlockStance()
             {
                 name = "Blocking",
-                hitboxType = HitboxType.Armor
+                hitboxType = HitboxType.Armor,
+                costFunction = () => blockCost
             };
             _countering = new CounterStance
             {
@@ -87,6 +98,7 @@ namespace Characters.Player.Scripts
             {
                 { new Tuple<SwordStance, SwordCommand>(_idle, SwordCommand.Press), _attacking },        // Idle -> attacking
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Release), _idle },      // Attacking -> Idle
+                { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.CostFailed), _idle },   // Attacking -> Idle (When stamina cost is too high)
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Expire), _blocking },   // Attacking -> Block
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Press), _attacking },   // Self transition
                 { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Release), _idle },       // Blocking -> Idle
@@ -106,13 +118,23 @@ namespace Characters.Player.Scripts
             diagonalHitbox.Disable();
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void Command(SwordCommand command)
         {
             if (!_transitions.TryGetValue(new Tuple<SwordStance, SwordCommand>(_currentStance, command), out var newStance))
             {
                 return;
             }
-            
+
+            var staminaCost = newStance.costFunction.Invoke();
+            if (staminaCost > stamina)
+            {
+                // ReSharper disable once TailRecursiveCall
+                Command(SwordCommand.CostFailed);
+                return;
+            }
+
+            stamina -= staminaCost;
             // Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
             _currentStance.Exit(this);
             _currentStance = newStance;
@@ -127,6 +149,11 @@ namespace Characters.Player.Scripts
             {
                 _transitionTimer.Pause();
             }
+        }
+
+        private void Update()
+        {
+            stamina = System.Math.Clamp(stamina + staminaRegenRate * Time.deltaTime, 0.0f, maxStamina);
         }
 
         static SwordDirection GetSwordDirectionFromVector(Vector2 input)
@@ -299,7 +326,8 @@ namespace Characters.Player.Scripts
             var style = GUI.skin.label;
             style.alignment = TextAnchor.MiddleCenter;
             style.wordWrap = false;
-            Handles.Label(transform.position + new Vector3(0.0f, -0.5f, 0.0f), _currentStance.name, style);
+            Handles.Label(transform.position + new Vector3(0.0f, -0.5f, 0.0f),
+                $"{_currentStance.name}\nStamina: {stamina:0.0}/{maxStamina}", style);
         }
 
         public void SetBlockingAnimator(bool isBlocking)
