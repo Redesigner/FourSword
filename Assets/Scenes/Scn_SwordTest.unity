@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 320667412}
   - component: {fileID: 320667414}
   - component: {fileID: 320667413}
+  - component: {fileID: 320667415}
   m_Layer: 0
   m_Name: NavmeshRegion
   m_TagString: Untagged
@@ -272,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 320667411}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.009, y: -0, z: 0.028}
   m_LocalScale: {x: 18, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -349,6 +350,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &320667415
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320667411}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 090b8659a48fdce48a0e1adb38dfe28f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +993,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 579208233741465586, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: team
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 759127726534662320, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_Name
@@ -983,7 +1006,23 @@ PrefabInstance:
     - target: {fileID: 2092760291319801334, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7329625106831737396, guid: 45b9f5f8a170d704ea6814c7853264d3, type: 3}
+      objectReference: {fileID: -1091515549688514815, guid: f09a6071bd6a43a488069127e14a0a17, type: 3}
+    - target: {fileID: 5051295295291630966, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051295295291630966, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051295295291630966, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5051295295291630966, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.241
+      objectReference: {fileID: 0}
     - target: {fileID: 7040366294031428231, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1128,23 +1167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyOptions:
-    - enemy: {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
-      enemyCount: 2
-      enemiesSpawned: 0
-    - enemy: {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
-      enemyCount: 1
-      enemiesSpawned: 0
-    enemiesThisWave: 50
-  - enemyOptions:
-    - enemy: {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
-      enemyCount: 2
-      enemiesSpawned: 0
-    enemiesThisWave: 50
+  - spawnedObjectOptions:
+    - {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
+    enemiesThisWave: 0
   waveRespawnTime: 10
   interwaveRespawnTime: 0.5
-  spawnAreaSize: {x: 5, y: 5}
-  checkIfInNav: 1
+  respawnCircleRadius: 4
 --- !u!4 &2067365721
 Transform:
   m_ObjectHideFlags: 0
@@ -1154,7 +1182,7 @@ Transform:
   m_GameObject: {fileID: 2067365719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -5.64, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1189,7 +1217,7 @@ Transform:
   m_GameObject: {fileID: 2101845329}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.88, y: 0.03319006, z: 0}
+  m_LocalPosition: {x: 0.88, y: 0.03, z: -3.98}
   m_LocalScale: {x: 4, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -20,7 +20,7 @@ public enum Team
 public class HealthComponent : DamageListener
 {
     [SerializeField] public float maxHealth;
-    [SerializeField] private float health;
+    [field: SerializeField] public float health { get; private set; }
 
     [SerializeField] [Min(0.0f)] private float slashResistance = 1.0f;
     [SerializeField] [Min(0.0f)] private float pierceResistance = 1.0f;
@@ -168,8 +168,8 @@ public class HealthComponent : DamageListener
             }
             return;
         }
-        
-        Death();
+
+        Death(source);
     }
 
     public void Update()
@@ -196,9 +196,10 @@ public class HealthComponent : DamageListener
         }
     }
 
-    private void Death()
+    private void Death(GameObject source)
     {
-        // onTakeDamage.Invoke(source);
+        var attackerHealthComponent = source.transform.root.GetComponent<HealthComponent>();
+        onTakeDamage.Invoke(source);
         health = 0.0f;
         alive = false;
         onDeath.Invoke();
@@ -209,7 +210,10 @@ public class HealthComponent : DamageListener
             Destroy(gameObject);
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.GameOver();
+                if (team == Team.Dogs)
+                {
+                    GameManager.Instance.GameOver();
+                }
             }
         });
     }
