@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Shared;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Characters.Player.Scripts
         Press, // Button pressed
         Release, // Button released
         Expire, // Timer expired
+        CostFailed, // Stamina cost was too high
         Hit // Hit something
     }
     
@@ -18,6 +20,7 @@ namespace Characters.Player.Scripts
         public string name;
         public bool canChangeDirection = false;
         public float transitionTime;
+        public Func<float> costFunction = () => 0.0f;
 
         public virtual void Stab(SwordAttackController controller, SwordDirection direction)
         {

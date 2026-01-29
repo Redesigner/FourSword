@@ -1025,6 +1025,10 @@ MonoBehaviour:
   <primaryHitbox>k__BackingField: {fileID: 8956573327763723209}
   <secondaryHitbox>k__BackingField: {fileID: 8323662443749784846}
   <diagonalHitbox>k__BackingField: {fileID: 127983207036111103}
+  <stamina>k__BackingField: 20
+  <maxStamina>k__BackingField: 20
+  attackCost: 1
+  blockCost: 1
   animator: {fileID: 3008976252106022695}
 --- !u!1 &7417367690823269343
 GameObject:
