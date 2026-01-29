@@ -4,42 +4,48 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour
 {
     public HealthComponent playerHealth;
-    public Sprite hearts;
-    public Sprite[] heartContainers;
     
-    private Sprite newSprite;
+    [SerializeField] public Sprite hearts;
+    [SerializeField] public Sprite[] heartContainers;
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = hearts;
+    }
 
     void Update()
     {
         switch (playerHealth.health)
         {
             case >= 6.0f:
-                hearts = heartContainers[6];
-                break;
+                spriteRenderer.sprite = heartContainers[6];
+                return;
             
-            case <= 6.0f and >= 5.0f:
-                hearts = heartContainers[5];
-                break;
+            case <= 6.0f and > 5.0f:
+                spriteRenderer.sprite = heartContainers[5];
+                return;
             
-            case <= 5.0f and >= 4.0f:
-                hearts = heartContainers[4];
-                break;
+            case <= 5.0f and > 4.0f:
+                spriteRenderer.sprite = heartContainers[4];
+                return;
             
-            case <= 4.0f and >= 3.0f:
-                hearts = heartContainers[3];
-                break;
+            case <= 4.0f and > 3.0f:
+                spriteRenderer.sprite = heartContainers[3];
+                return;
             
-            case <= 2.0f and >= 1.0f:
-                hearts = heartContainers[2];
-                break;
+            case <= 2.0f and > 1.0f:
+                spriteRenderer.sprite = heartContainers[2];
+                return;
             
-            case <= 1.0f and >= 0.0f:
-                hearts = heartContainers[1];
-                break;
+            case <= 1.0f and > 0.0f:
+                spriteRenderer.sprite = heartContainers[1];
+                return;
             
             case <= 0.0f:
-                hearts = heartContainers[0];
-                break;
+                spriteRenderer.sprite = heartContainers[0];
+                return;
         }
     }
 }
