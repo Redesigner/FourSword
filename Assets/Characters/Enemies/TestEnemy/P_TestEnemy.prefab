@@ -277,6 +277,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  team: 0
   <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:
@@ -318,6 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e55a1ef0843649e94cf0fed5d42bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetSpline: {fileID: 0}
+  pathFollowingMode: 0
   splineFollowingPrecision: 0.1
   pathfindOnSpline: 0
 --- !u!114 &416039407138187703
@@ -387,8 +390,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b3dd23b538493592b7fbacc6831135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitTargetsOnce: 1
   currentDamageType: 0
   hitboxComponent: {fileID: 0}
+  damageOnce: 1
   attackCompleted:
     m_PersistentCalls:
       m_Calls: []
@@ -453,6 +458,7 @@ MonoBehaviour:
   coneRadius: 8
   coneHalfAngle: 45
   currentAngle: 0
+  minimumVisibilityRadius: 0.5
   visibilityContactFilter:
     useTriggers: 0
     useLayerMask: 0

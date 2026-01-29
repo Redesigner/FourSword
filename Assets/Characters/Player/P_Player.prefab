@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 579208233741465586}
   - component: {fileID: 7341607925323208449}
   - component: {fileID: 7007944317837286859}
+  - component: {fileID: 8703992042600610955}
   m_Layer: 3
   m_Name: P_Player
   m_TagString: Player
@@ -498,6 +499,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onTakeSlashDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakePierceDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeSmashDamage:
+    m_PersistentCalls:
+      m_Calls: []
   team: 0
   <alive>k__BackingField: 1
   onTakeDamage:
@@ -505,7 +515,19 @@ MonoBehaviour:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3008976252106022695}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Death
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7341607925323208449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +552,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b78fed4c3e4ffa8cb17771488ca9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8703992042600610955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7931621c4950450786d07b0f369291a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endTransitionThreshold: 0.2
+  forcedMoveSpeed: 0.7
+  forcedDestinationReached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4065429842734643883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,7 +1141,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: -2}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7697346016262362290}

@@ -13,9 +13,12 @@ namespace Props.Rooms.Scripts
         [SerializeField] private CinemachineCamera roomCamera;
 
         [SerializeField] private bool isActive;
+        [SerializeField] private bool lockOnEnter = false;
 
         public void Start()
         {
+            LoadRoomObjects();
+            
             if (isActive)
             {
                 GameState.instance.SetActiveRoom(this);
@@ -28,16 +31,25 @@ namespace Props.Rooms.Scripts
             
             foreach (var roomObject in roomObjects)
             {
+                if (!roomObject) { continue; }
+                
                 roomObject.RoomTransitionStarted();
             }
         }
         
         public void EnterRoom()
         {
-            Debug.LogFormat("Room '{0}' entered.", name);
+            Debug.LogWarningFormat("Room '{0}' entered.", name);
             foreach (var roomObject in roomObjects)
             {
+                if (!roomObject) { continue; }
+
                 roomObject.RoomEntered();
+            }
+
+            if (lockOnEnter)
+            {
+                LockRoom();
             }
         }
 
@@ -45,10 +57,47 @@ namespace Props.Rooms.Scripts
         {
             foreach (var roomObject in roomObjects)
             {
+                if (!roomObject) { continue; }
+                
                 roomObject.RoomExited();
             }
 
             roomCamera.enabled = false;
+        }
+
+        public void LockRoom()
+        {
+            lockOnEnter = false;
+            foreach (var roomObject in roomObjects)
+            {
+                roomObject.RoomLocked();
+            }
+        }
+
+        public void UnlockRoom()
+        {
+            foreach (var roomObject in roomObjects)
+            {
+                roomObject.RoomUnlocked();
+            }
+        }
+
+        private void LoadRoomObjects()
+        {
+            foreach (var roomObject in GetComponentsInChildren<RoomObject>())
+            {
+                if (!roomObject) { continue; }
+                
+                if (roomObjects.Contains(roomObject))
+                {
+                    if (!roomObject) { continue; }
+                    
+                    continue;
+                }
+                
+                Debug.LogFormat("Room '{0}' had child '{1}', but it was not in the list of room triggered objects. Automatically registering...", name, roomObject.name);
+                roomObjects.Add(roomObject);
+            }
         }
 
         private void OnDrawGizmos()
