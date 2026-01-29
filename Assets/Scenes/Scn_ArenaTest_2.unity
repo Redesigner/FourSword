@@ -158,6 +158,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1827507751}
   roomToActivate: {fileID: 298370936}
   doorTrigger: {fileID: 142722250}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &142722250
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -362,6 +364,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1418664898}
   roomToActivate: {fileID: 1234344350}
   doorTrigger: {fileID: 230551964}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &230551964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -543,6 +547,7 @@ MonoBehaviour:
   - {fileID: 1851630513}
   roomCamera: {fileID: 495356669}
   isActive: 0
+  lockOnEnter: 0
 --- !u!4 &298370937
 Transform:
   m_ObjectHideFlags: 0
@@ -791,6 +796,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1702059713}
   roomToActivate: {fileID: 1978489496}
   doorTrigger: {fileID: 535931059}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &535931059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -909,6 +916,7 @@ MonoBehaviour:
   - {fileID: 142722249}
   roomCamera: {fileID: 667000914}
   isActive: 1
+  lockOnEnter: 0
 --- !u!1 &570990717
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +967,7 @@ MonoBehaviour:
   allEnemiesDefeated:
     m_PersistentCalls:
       m_Calls: []
+  checkIfInNav: 1
 --- !u!1 &667000913
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1439,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1783332163}
   roomToActivate: {fileID: 1234344350}
   doorTrigger: {fileID: 1112372599}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &1112372599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1714,6 +1725,7 @@ MonoBehaviour:
   - {fileID: 1129500460}
   roomCamera: {fileID: 1028504307}
   isActive: 0
+  lockOnEnter: 0
 --- !u!4 &1234344351
 Transform:
   m_ObjectHideFlags: 0
@@ -1826,6 +1838,8 @@ MonoBehaviour:
   doorDestination: {fileID: 230551963}
   roomToActivate: {fileID: 298370936}
   doorTrigger: {fileID: 1418664899}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &1418664899
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2015,6 +2029,8 @@ MonoBehaviour:
   doorDestination: {fileID: 535931058}
   roomToActivate: {fileID: 1234344350}
   doorTrigger: {fileID: 1702059714}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &1702059714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2148,6 +2164,8 @@ MonoBehaviour:
   doorDestination: {fileID: 1112372598}
   roomToActivate: {fileID: 298370936}
   doorTrigger: {fileID: 1783332164}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &1783332164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2331,6 +2349,8 @@ MonoBehaviour:
   doorDestination: {fileID: 142722249}
   roomToActivate: {fileID: 558187375}
   doorTrigger: {fileID: 1827507752}
+  lockable: 0
+  animator: {fileID: 0}
 --- !u!61 &1827507752
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2483,6 +2503,7 @@ MonoBehaviour:
   - {fileID: 570990719}
   roomCamera: {fileID: 848209502}
   isActive: 0
+  lockOnEnter: 0
 --- !u!4 &1978489497
 Transform:
   m_ObjectHideFlags: 0
@@ -2647,7 +2668,7 @@ Transform:
   m_GameObject: {fileID: 2139652640}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3867254, y: 0.75, z: -10}
+  m_LocalPosition: {x: -1.3834763, y: 0.75, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
