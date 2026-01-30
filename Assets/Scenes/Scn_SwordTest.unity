@@ -1167,12 +1167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - spawnedObjectOptions:
-    - {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
-    enemiesThisWave: 0
+  - enemyOptions: []
   waveRespawnTime: 10
   interwaveRespawnTime: 0.5
-  respawnCircleRadius: 4
+  spawnAreaSize: {x: 0, y: 0}
+  checkIfInNav: 1
 --- !u!4 &2067365721
 Transform:
   m_ObjectHideFlags: 0

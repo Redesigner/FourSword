@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 45b9f5f8a170d704ea6814c7853264d3
+guid: 389a05ca9801608419f6a7891675730e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5077847928810475295
-    second: db_walking_0
+      213: -5322897348136296986
+    second: e_firestraight_0
   - first:
-      213: 2302250241719603842
-    second: db_walking_1
+      213: 8612000348988512127
+    second: e_firestraight_1
   - first:
-      213: -2664897984139456070
-    second: db_walking_2
+      213: 3841675019362595909
+    second: e_firestraight_2
   - first:
-      213: -6370442302581931834
-    second: db_walking_3
-  - first:
-      213: 7329625106831737396
-    second: db_walking_4
-  - first:
-      213: 5527333585213049462
-    second: db_walking_5
+      213: -2854637580923674503
+    second: e_firestraight_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -90,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,133 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: db_walking_0
+      name: e_firestraight_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 35
-        height: 27
+        width: 113
+        height: 113
       alignment: 9
-      pivot: {x: 0.8857143, y: 0}
+      pivot: {x: 0.48672566, y: 0.46902654}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e07ccb563cd789b0800000000000000
-      internalID: -5077847928810475295
+      spriteID: 6ed977450154126b0800000000000000
+      internalID: -5322897348136296986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: db_walking_1
+      name: e_firestraight_1
       rect:
         serializedVersion: 2
-        x: 67
+        x: 113
         y: 0
-        width: 36
-        height: 26
+        width: 113
+        height: 113
       alignment: 9
-      pivot: {x: 0.8888889, y: 0}
+      pivot: {x: 0.48672566, y: 0.46902654}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28211c1a56c33ff10800000000000000
-      internalID: 2302250241719603842
+      spriteID: f77100760b8f38770800000000000000
+      internalID: 8612000348988512127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: db_walking_2
+      name: e_firestraight_2
       rect:
         serializedVersion: 2
-        x: 154
-        y: 1
-        width: 17
-        height: 40
-      alignment: 9
-      pivot: {x: 0.23529412, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab196b41761640bd0800000000000000
-      internalID: -2664897984139456070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: db_walking_3
-      rect:
-        serializedVersion: 2
-        x: 218
+        x: 226
         y: 0
-        width: 17
-        height: 39
+        width: 113
+        height: 113
       alignment: 9
-      pivot: {x: 0.29411766, y: 0.35897437}
+      pivot: {x: 0.48672566, y: 0.46902654}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c08b745a74a797a0800000000000000
-      internalID: -6370442302581931834
+      spriteID: 5447997731f505530800000000000000
+      internalID: 3841675019362595909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: db_walking_4
+      name: e_firestraight_3
       rect:
         serializedVersion: 2
-        x: 278
-        y: 19
-        width: 17
-        height: 39
+        x: 339
+        y: 0
+        width: 113
+        height: 113
       alignment: 9
-      pivot: {x: 0.47058824, y: 0.025641026}
+      pivot: {x: 0.48672566, y: 0.46902654}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4328d7d533f08b560800000000000000
-      internalID: 7329625106831737396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: db_walking_5
-      rect:
-        serializedVersion: 2
-        x: 342
-        y: 18
-        width: 17
-        height: 39
-      alignment: 9
-      pivot: {x: 0.3529412, y: 0.051282052}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 67ac5b55c9805bc40800000000000000
-      internalID: 5527333585213049462
+      spriteID: 9706092ae3a4268d0800000000000000
+      internalID: -2854637580923674503
       vertices: []
       indices: 
       edges: []
@@ -250,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c6c28975a949e3a4190f64074865d766
+    spriteID: d4ff880ad8d065a45823799dc4142301
     internalID: 0
     vertices: []
     indices: 
@@ -260,12 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      db_walking_0: -5077847928810475295
-      db_walking_1: 2302250241719603842
-      db_walking_2: -2664897984139456070
-      db_walking_3: -6370442302581931834
-      db_walking_4: 7329625106831737396
-      db_walking_5: 5527333585213049462
+      e_firestraight_0: -5322897348136296986
+      e_firestraight_1: 8612000348988512127
+      e_firestraight_2: 3841675019362595909
+      e_firestraight_3: -2854637580923674503
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

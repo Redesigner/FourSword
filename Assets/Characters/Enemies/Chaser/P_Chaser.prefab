@@ -163,7 +163,7 @@ Animator:
   m_GameObject: {fileID: 3222924608183184359}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 29f25e42c8f04c64cbb51b2a5116630e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -387,15 +387,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
-  health: 2
+  <health>k__BackingField: 0
   slashResistance: 1
   pierceResistance: 1
   smashResistance: 1
   invulnerabilityTime: 0.5
+  deathFadeOutTime: 0.5
   onStunned:
     m_PersistentCalls:
       m_Calls: []
   onStunEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeSlashDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakePierceDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeSmashDamage:
     m_PersistentCalls:
       m_Calls: []
   team: 1
@@ -422,6 +432,9 @@ MonoBehaviour:
   currentDamageType: 0
   hitboxComponent: {fileID: 0}
   damageOnce: 0
+  onShieldBroken:
+    m_PersistentCalls:
+      m_Calls: []
   attackCompleted:
     m_PersistentCalls:
       m_Calls: []

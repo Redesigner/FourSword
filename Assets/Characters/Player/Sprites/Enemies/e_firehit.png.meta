@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 45b9f5f8a170d704ea6814c7853264d3
+guid: 3d3f9903c86950147be32c844d57bffa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5077847928810475295
-    second: db_walking_0
+      213: 6426866802039446544
+    second: e_firehit_0
   - first:
-      213: 2302250241719603842
-    second: db_walking_1
+      213: -8821059327548489057
+    second: e_firehit_1
   - first:
-      213: -2664897984139456070
-    second: db_walking_2
+      213: -7246001948650761452
+    second: e_firehit_2
   - first:
-      213: -6370442302581931834
-    second: db_walking_3
+      213: 6925638203869366045
+    second: e_firehit_3
   - first:
-      213: 7329625106831737396
-    second: db_walking_4
+      213: -5873990822312504065
+    second: e_firehit_4
   - first:
-      213: 5527333585213049462
-    second: db_walking_5
+      213: -2388551744316405403
+    second: e_firehit_5
+  - first:
+      213: 1381708513689920933
+    second: e_firehit_6
+  - first:
+      213: 6158829589046724812
+    second: e_firehit_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -90,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,133 +121,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: db_walking_0
+      name: e_firehit_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 35
-        height: 27
+        width: 113
+        height: 113
       alignment: 9
-      pivot: {x: 0.8857143, y: 0}
+      pivot: {x: 0.48672566, y: 0.48672566}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e07ccb563cd789b0800000000000000
-      internalID: -5077847928810475295
+      spriteID: 01cdf423e41d03950800000000000000
+      internalID: 6426866802039446544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: db_walking_1
+      name: e_firehit_1
       rect:
         serializedVersion: 2
-        x: 67
+        x: 113
         y: 0
-        width: 36
-        height: 26
+        width: 113
+        height: 113
       alignment: 9
-      pivot: {x: 0.8888889, y: 0}
+      pivot: {x: 0.48672566, y: 0.48672566}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28211c1a56c33ff10800000000000000
-      internalID: 2302250241719603842
+      spriteID: f9283de074d459580800000000000000
+      internalID: -8821059327548489057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: db_walking_2
+      name: e_firehit_2
       rect:
         serializedVersion: 2
-        x: 154
-        y: 1
-        width: 17
-        height: 40
-      alignment: 9
-      pivot: {x: 0.23529412, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab196b41761640bd0800000000000000
-      internalID: -2664897984139456070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: db_walking_3
-      rect:
-        serializedVersion: 2
-        x: 218
+        x: 226
         y: 0
-        width: 17
-        height: 39
+        width: 113
+        height: 113
       alignment: 9
-      pivot: {x: 0.29411766, y: 0.35897437}
+      pivot: {x: 0.48672566, y: 0.48672566}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c08b745a74a797a0800000000000000
-      internalID: -6370442302581931834
+      spriteID: 41312e06e97017b90800000000000000
+      internalID: -7246001948650761452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: db_walking_4
+      name: e_firehit_3
       rect:
         serializedVersion: 2
-        x: 278
-        y: 19
-        width: 17
-        height: 39
+        x: 339
+        y: 0
+        width: 113
+        height: 113
       alignment: 9
-      pivot: {x: 0.47058824, y: 0.025641026}
+      pivot: {x: 0.48672566, y: 0.48672566}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4328d7d533f08b560800000000000000
-      internalID: 7329625106831737396
+      spriteID: d170288b04fcc1060800000000000000
+      internalID: 6925638203869366045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: db_walking_5
+      name: e_firehit_4
       rect:
         serializedVersion: 2
-        x: 342
-        y: 18
-        width: 17
-        height: 39
+        x: 452
+        y: 0
+        width: 113
+        height: 113
       alignment: 9
-      pivot: {x: 0.3529412, y: 0.051282052}
+      pivot: {x: 0.48672566, y: 0.48672566}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67ac5b55c9805bc40800000000000000
-      internalID: 5527333585213049462
+      spriteID: ff4982608746b7ea0800000000000000
+      internalID: -5873990822312504065
       vertices: []
       indices: 
       edges: []
@@ -250,7 +234,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c6c28975a949e3a4190f64074865d766
+    spriteID: 5feaf6607f667c346b4ba7b627799119
     internalID: 0
     vertices: []
     indices: 
@@ -260,12 +244,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      db_walking_0: -5077847928810475295
-      db_walking_1: 2302250241719603842
-      db_walking_2: -2664897984139456070
-      db_walking_3: -6370442302581931834
-      db_walking_4: 7329625106831737396
-      db_walking_5: 5527333585213049462
+      e_firehit_0: 6426866802039446544
+      e_firehit_1: -8821059327548489057
+      e_firehit_2: -7246001948650761452
+      e_firehit_3: 6925638203869366045
+      e_firehit_4: -5873990822312504065
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
