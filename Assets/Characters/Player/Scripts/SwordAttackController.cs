@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game.StatusEffects;
 using Shared;
 using UnityEditor;
 using UnityEngine;
@@ -35,6 +36,9 @@ namespace Characters.Player.Scripts
         [SerializeField] [Min(0.0f)] private float stabCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float slashCost = 2.0f;
         [SerializeField] [Min(0.0f)] private float slamCost = 3.0f;
+        
+        // Effect definitions
+        [SerializeField] private HealthComponent healthComponent;
         
         // Map transitions where a tuple containing our current stance, and the command received
         // is the Key, and the new stance is the Value
@@ -132,6 +136,8 @@ namespace Characters.Player.Scripts
             swordDirection = Scripts.SwordDirection.Up;
             secondaryHitbox.Disable();
             diagonalHitbox.Disable();
+
+            RegisterEffectCallbacks();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -364,6 +370,22 @@ namespace Characters.Player.Scripts
                 2 => slamCost,
                 _ => 0.0f
             };
+        }
+
+        private void RegisterEffectCallbacks()
+        {
+            if (!healthComponent)
+            {
+                return;
+            }
+
+            var staminaRegenEffect = GameState.instance.effectList.staminaRegenRateEffect;
+            var staminaRegenEffectInstance = new StatusEffectInstance(staminaRegenEffect, this, 0.0f, 1.0f);
+            healthComponent.statusEffects.ApplyStatusEffectInstance(staminaRegenEffectInstance);
+            healthComponent.statusEffects.GetEffectStacksChangedEvent(GameState.instance.effectList.staminaRegenRateEffect).AddListener((_, newValue) =>
+            {
+                staminaRegenRate = newValue;
+            });
         }
     }
 }

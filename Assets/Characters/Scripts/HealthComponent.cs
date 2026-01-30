@@ -254,8 +254,8 @@ public class HealthComponent : DamageListener
             foreach (var item in statusEffects)
             {
                 var title = item.Key.accumulator == EffectAccumulator.None
-                    ? $"{item.Key.effectName}: {item.Value.Count} stacks"
-                    : $"{item.Key.effectName}: {item.Value.Count} stacks {statusEffects.Accumulate(item.Key, item.Value)}";
+                    ? $"{item.Key.effectName}: {item.Value.Count} stacks###HealthComponent{item.Key.effectName}"
+                    : $"{item.Key.effectName}: {item.Value.Count} stack(s) - {statusEffects.Accumulate(item.Key, item.Value)}###HealthComponent{item.Key.effectName}";
                 if (!ImGui.TreeNode(title))
                 {
                     continue;
