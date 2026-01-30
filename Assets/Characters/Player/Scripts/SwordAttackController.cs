@@ -32,13 +32,16 @@ namespace Characters.Player.Scripts
         [field: SerializeField] [Min(0.0f)] public float stamina { private set; get; }
         [field: SerializeField] [Min(0.0f)] public float maxStamina { private set; get; }
         
+        [Header("Costs")]
         [SerializeField] [Min(0.0f)] private float blockCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float stabCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float slashCost = 2.0f;
         [SerializeField] [Min(0.0f)] private float slamCost = 3.0f;
         
         // Effect definitions
+        [Header("Effects")]
         [SerializeField] private HealthComponent healthComponent;
+        public float stabReachMultiplier { private set; get; } = 1.0f;
         
         // Map transitions where a tuple containing our current stance, and the command received
         // is the Key, and the new stance is the Value
@@ -380,11 +383,20 @@ namespace Characters.Player.Scripts
             }
 
             var staminaRegenEffect = GameState.instance.effectList.staminaRegenRateEffect;
+            // Apply a base value of 1, otherwise having 0 stacks will cause the value to be 0
             var staminaRegenEffectInstance = new StatusEffectInstance(staminaRegenEffect, this, 0.0f, 1.0f);
             healthComponent.statusEffects.ApplyStatusEffectInstance(staminaRegenEffectInstance);
-            healthComponent.statusEffects.GetEffectStacksChangedEvent(GameState.instance.effectList.staminaRegenRateEffect).AddListener((_, newValue) =>
+            healthComponent.statusEffects.GetEffectStacksChangedEvent(staminaRegenEffect).AddListener((_, newValue) =>
             {
                 staminaRegenRate = newValue;
+            });
+
+            var stabReachEffect = GameState.instance.effectList.stabReachEffect;
+            var stabReachEffectInstance = new StatusEffectInstance(stabReachEffect, this, 0.0f, 1.0f);
+            healthComponent.statusEffects.ApplyStatusEffectInstance(stabReachEffectInstance);
+            healthComponent.statusEffects.GetEffectStacksChangedEvent(stabReachEffect).AddListener((_, newValue) =>
+            {
+                stabReachMultiplier = newValue;
             });
         }
     }
