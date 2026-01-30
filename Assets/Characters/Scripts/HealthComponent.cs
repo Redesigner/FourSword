@@ -27,6 +27,7 @@ public class HealthComponent : DamageListener
     [SerializeField] [Min(0.0f)] private float smashResistance = 1.0f;
 
     [SerializeField] [Min(0.0f)] private float invulnerabilityTime = 0.5f;
+    [SerializeField] [Min(0.0f)] private float deathFadeOutTime = 0.5f;
     
     [SerializeField] public UnityEvent onStunned;
     [SerializeField] public UnityEvent onStunEnd;
@@ -205,17 +206,28 @@ public class HealthComponent : DamageListener
         onDeath.Invoke();
         
         GetComponent<KinematicCharacterController>().enabled = false;
-        TimerManager.instance.CreateTimer(this, 0.5f, () =>
+        var attackController = GetComponentInChildren<AttackController>();
+        if (attackController)
         {
-            Destroy(gameObject);
-            if (GameManager.Instance != null)
+            attackController.enabled = false;
+        }
+
+        if (deathFadeOutTime > 0.0f)
+        {
+            TimerManager.instance.CreateTimer(this, deathFadeOutTime, () =>
             {
-                if (team == Team.Dogs)
+                if (CompareTag("Player") && GameManager.Instance)
                 {
                     GameManager.Instance.GameOver();
                 }
-            }
-        });
+
+                Destroy(gameObject);
+            });
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public override void Stun(float duration, MonoBehaviour source)

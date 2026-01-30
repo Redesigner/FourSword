@@ -302,6 +302,9 @@ MonoBehaviour:
   currentDamageType: 0
   hitboxComponent: {fileID: 0}
   damageOnce: 1
+  onShieldBroken:
+    m_PersistentCalls:
+      m_Calls: []
   attackCompleted:
     m_PersistentCalls:
       m_Calls: []
@@ -318,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
-  health: 2
+  <health>k__BackingField: 2
   slashResistance: 1
   pierceResistance: 1
   smashResistance: 1
@@ -353,6 +356,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onTakeSlashDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakePierceDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeSmashDamage:
+    m_PersistentCalls:
+      m_Calls: []
   team: 1
   <alive>k__BackingField: 1
   onTakeDamage:

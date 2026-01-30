@@ -143,6 +143,14 @@ namespace Characters.Player.Scripts
             RegisterEffectCallbacks();
         }
 
+        private void OnDisable()
+        {
+            primaryHitbox.Disable();
+            secondaryHitbox.Disable();
+            diagonalHitbox.Disable();
+        }
+
+        // Rider hits a potential loop here, because some commands can recurse
         // ReSharper disable Unity.PerformanceAnalysis
         private void Command(SwordCommand command)
         {
@@ -236,6 +244,11 @@ namespace Characters.Player.Scripts
         private void SwordDirectInput(InputAction.CallbackContext context, SwordDirection direction)
         {
             if (GameState.instance.paused)
+            {
+                return;
+            }
+
+            if (!isActiveAndEnabled)
             {
                 return;
             }
