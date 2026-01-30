@@ -37,6 +37,8 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     /// Should the character automatically face (set lookDirection) to be the same as movement?
     /// </summary>
     [SerializeField] private bool faceMovement = true;
+
+    [SerializeField] private SpriteRenderer sprite;
     
     private bool _movementEnabled = true;
     private Animator _animator;
@@ -77,6 +79,13 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     {
         _objectsHitThisFrame.Clear();
         velocity = ComputeVelocity();
+
+        if (sprite)
+        {
+            var currentSpritePosition = sprite.transform.localPosition;
+            currentSpritePosition.z = -5.0f + transform.position.y * 0.01f;
+            sprite.transform.localPosition = currentSpritePosition;
+        }
 
         foreach (var objectHit in _objectsHitThisFrame)
         {
