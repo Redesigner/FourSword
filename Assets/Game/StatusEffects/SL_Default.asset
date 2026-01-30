@@ -15,3 +15,5 @@ MonoBehaviour:
   <stunEffect>k__BackingField: {fileID: 11400000, guid: 3ac1ce3a84ff3a244a6dde3ec5114b3c, type: 2}
   <speedEffect>k__BackingField: {fileID: 11400000, guid: a36ca536a18cfd749b71ad1c08ac875c, type: 2}
   <invulnerabilityEffect>k__BackingField: {fileID: 11400000, guid: 0b6763f065b56b24d9bcc10306838971, type: 2}
+  <stabReachEffect>k__BackingField: {fileID: 11400000, guid: fbf9d8812b7f836408e05028be84920e, type: 2}
+  <staminaRegenRateEffect>k__BackingField: {fileID: 11400000, guid: 25f4fdf6eed889d418527e049e16bdeb, type: 2}
