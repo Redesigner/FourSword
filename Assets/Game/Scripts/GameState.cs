@@ -7,6 +7,8 @@ using Props.Rooms.Scripts;
 using Settings;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+
 
 public class GameState : MonoBehaviour
 {

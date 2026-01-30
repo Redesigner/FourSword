@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Characters;
 using Game.StatusEffects;
@@ -6,6 +7,7 @@ using ImGuiNET;
 using Shared;
 using UImGui;
 using UnityEditor;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,16 +20,21 @@ public enum Team
 public class HealthComponent : DamageListener
 {
     [SerializeField] public float maxHealth;
-    [SerializeField] private float health;
+    [field: SerializeField] public float health { get; private set; }
 
     [SerializeField] [Min(0.0f)] private float slashResistance = 1.0f;
     [SerializeField] [Min(0.0f)] private float pierceResistance = 1.0f;
     [SerializeField] [Min(0.0f)] private float smashResistance = 1.0f;
 
     [SerializeField] [Min(0.0f)] private float invulnerabilityTime = 0.5f;
+    [SerializeField] [Min(0.0f)] private float deathFadeOutTime = 0.5f;
     
     [SerializeField] public UnityEvent onStunned;
     [SerializeField] public UnityEvent onStunEnd;
+
+    [SerializeField] public UnityEvent onTakeSlashDamage;
+    [SerializeField] public UnityEvent onTakePierceDamage;
+    [SerializeField] public UnityEvent onTakeSmashDamage;
 
     [SerializeField] public Team team;
 
@@ -137,23 +144,33 @@ public class HealthComponent : DamageListener
             onTakeDamage.Invoke(source);
             // statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(_stun, this, 0.25f));
 
+            switch (damageType)
+            {
+                case DamageType.Slashing:
+                    onTakeSlashDamage.Invoke();
+                    break;
+                
+                case DamageType.Piercing:
+                    onTakePierceDamage.Invoke();
+                    break;
+                
+                case DamageType.Smash:
+                    onTakeSmashDamage.Invoke();
+                    break;
+                
+                case DamageType.Raw:
+                default:
+                    break;
+            }
+            
             if (invulnerabilityTime > 0.0f)
             {
                 statusEffects.ApplyStatusEffectInstance(new StatusEffectInstance(GameState.instance.effectList.invulnerabilityEffect, this, invulnerabilityTime));
             }
             return;
         }
-        
-        // onTakeDamage.Invoke(source);
-        health = 0.0f;
-        alive = false;
-        onDeath.Invoke();
 
-        GetComponent<KinematicCharacterController>().enabled = false;
-        TimerManager.instance.CreateTimer(this, 0.5f, () =>
-        {
-            Destroy(gameObject);
-        });
+        Death(source);
     }
 
     public void Update()
@@ -177,6 +194,39 @@ public class HealthComponent : DamageListener
         if (health > maxHealth)
         {
             health = maxHealth;
+        }
+    }
+
+    private void Death(GameObject source)
+    {
+        var attackerHealthComponent = source.transform.root.GetComponent<HealthComponent>();
+        onTakeDamage.Invoke(source);
+        health = 0.0f;
+        alive = false;
+        onDeath.Invoke();
+        
+        GetComponent<KinematicCharacterController>().enabled = false;
+        var attackController = GetComponentInChildren<AttackController>();
+        if (attackController)
+        {
+            attackController.enabled = false;
+        }
+
+        if (deathFadeOutTime > 0.0f)
+        {
+            TimerManager.instance.CreateTimer(this, deathFadeOutTime, () =>
+            {
+                if (CompareTag("Player") && GameManager.Instance)
+                {
+                    GameManager.Instance.GameOver();
+                }
+
+                Destroy(gameObject);
+            });
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -216,8 +266,8 @@ public class HealthComponent : DamageListener
             foreach (var item in statusEffects)
             {
                 var title = item.Key.accumulator == EffectAccumulator.None
-                    ? $"{item.Key.effectName}: {item.Value.Count} stacks"
-                    : $"{item.Key.effectName}: {item.Value.Count} stacks {statusEffects.Accumulate(item.Key, item.Value)}";
+                    ? $"{item.Key.effectName}: {item.Value.Count} stacks###HealthComponent{item.Key.effectName}"
+                    : $"{item.Key.effectName}: {item.Value.Count} stack(s) - {statusEffects.Accumulate(item.Key, item.Value)}###HealthComponent{item.Key.effectName}";
                 if (!ImGui.TreeNode(title))
                 {
                     continue;

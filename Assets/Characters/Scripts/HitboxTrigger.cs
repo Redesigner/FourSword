@@ -70,6 +70,16 @@ namespace Characters
             };
         }
 
+        public Vector2 GetHitboxSize()
+        {
+            return hitboxCollider.size;
+        }
+
+        public static GameObject GetOwningObject(Collider2D collider)
+        {
+            return collider.transform.root.gameObject;
+        }
+
         public static int GetLayer(HitboxType type)
         {
             return type switch

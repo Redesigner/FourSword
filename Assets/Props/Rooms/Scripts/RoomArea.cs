@@ -13,6 +13,7 @@ namespace Props.Rooms.Scripts
         [SerializeField] private CinemachineCamera roomCamera;
 
         [SerializeField] private bool isActive;
+        [SerializeField] private bool lockOnEnter = false;
 
         public void Start()
         {
@@ -30,6 +31,8 @@ namespace Props.Rooms.Scripts
             
             foreach (var roomObject in roomObjects)
             {
+                if (!roomObject) { continue; }
+                
                 roomObject.RoomTransitionStarted();
             }
         }
@@ -39,7 +42,14 @@ namespace Props.Rooms.Scripts
             Debug.LogWarningFormat("Room '{0}' entered.", name);
             foreach (var roomObject in roomObjects)
             {
+                if (!roomObject) { continue; }
+
                 roomObject.RoomEntered();
+            }
+
+            if (lockOnEnter)
+            {
+                LockRoom();
             }
         }
 
@@ -47,18 +57,41 @@ namespace Props.Rooms.Scripts
         {
             foreach (var roomObject in roomObjects)
             {
+                if (!roomObject) { continue; }
+                
                 roomObject.RoomExited();
             }
 
             roomCamera.enabled = false;
         }
 
+        public void LockRoom()
+        {
+            lockOnEnter = false;
+            foreach (var roomObject in roomObjects)
+            {
+                roomObject.RoomLocked();
+            }
+        }
+
+        public void UnlockRoom()
+        {
+            foreach (var roomObject in roomObjects)
+            {
+                roomObject.RoomUnlocked();
+            }
+        }
+
         private void LoadRoomObjects()
         {
             foreach (var roomObject in GetComponentsInChildren<RoomObject>())
             {
+                if (!roomObject) { continue; }
+                
                 if (roomObjects.Contains(roomObject))
                 {
+                    if (!roomObject) { continue; }
+                    
                     continue;
                 }
                 

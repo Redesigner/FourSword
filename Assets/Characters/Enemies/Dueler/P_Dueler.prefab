@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4381609272211239196}
   - component: {fileID: 5195365265740986587}
   - component: {fileID: 416039407138187703}
+  - component: {fileID: 3153962881493121918}
   m_Layer: 3
   m_Name: P_Dueler
   m_TagString: Health
@@ -303,6 +304,9 @@ MonoBehaviour:
   currentDamageType: 0
   hitboxComponent: {fileID: 0}
   damageOnce: 1
+  onShieldBroken:
+    m_PersistentCalls:
+      m_Calls: []
   attackCompleted:
     m_PersistentCalls:
       m_Calls: []
@@ -319,11 +323,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  health: 1
+  <health>k__BackingField: 1
   slashResistance: 1
   pierceResistance: 1
   smashResistance: 1
   invulnerabilityTime: 0.5
+  deathFadeOutTime: 0.5
   onStunned:
     m_PersistentCalls:
       m_Calls:
@@ -354,7 +359,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  team: 0
+  onTakeSlashDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakePierceDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeSmashDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  team: 1
   <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:
@@ -366,6 +380,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Death
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3153962881493121918}
+        m_TargetAssemblyTypeName: Props.Scripts.ParticleSpawner, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -508,6 +534,20 @@ MonoBehaviour:
           m_Value1: 13113050561758072009
         Name: Agent
         m_Value: {fileID: 4381609272211239196}
+--- !u!114 &3153962881493121918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bedd722eec6492dbc037dec4bf4cb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 3530588619849257922, guid: 8c703d172c32927418a1d38f3f436090, type: 3}
+  particleLifetime: 1
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0

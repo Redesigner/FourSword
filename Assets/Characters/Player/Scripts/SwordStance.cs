@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Shared;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Characters.Player.Scripts
         Press, // Button pressed
         Release, // Button released
         Expire, // Timer expired
+        CostFailed, // Stamina cost was too high
         Hit // Hit something
     }
     
@@ -18,6 +20,8 @@ namespace Characters.Player.Scripts
         public string name;
         public bool canChangeDirection = false;
         public float transitionTime;
+        public Func<SwordDirection, float> costFunction = (SwordDirection _) => 0.0f;
+        public float attackAnimationSpeed = 1.0f;
 
         public virtual void Stab(SwordAttackController controller, SwordDirection direction)
         {
@@ -56,8 +60,9 @@ namespace Characters.Player.Scripts
         public override void Stab(SwordAttackController controller, SwordDirection direction)
         {
             controller.currentDamageType = DamageType.Piercing;
+            var initialHitboxLength = controller.primaryHitbox.GetHitboxSize().x;
             controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction)) * 1.5f;
-            controller.primaryHitbox.transform.localScale = new Vector3(1.0f, 2.0f, 1.0f);
+            controller.primaryHitbox.transform.localScale = new Vector3(1.0f, 2.0f * controller.stabReachMultiplier, 1.0f);
             controller.primaryHitbox.Disable();
             controller.primaryHitbox.Enable();
             controller.secondaryHitbox.Disable();
@@ -77,8 +82,8 @@ namespace Characters.Player.Scripts
             controller.secondaryHitbox.Enable();
             controller.diagonalHitbox.Enable();
             
-            TimerManager.instance.CreateOrResetTimer(ref controller.diagonalHitboxTimer, controller, 0.12f, () => { controller.diagonalHitbox.Disable(); });
-            TimerManager.instance.CreateOrResetTimer(ref controller.secondaryHitboxTimer, controller, 0.06f, () => { controller.secondaryHitbox.Disable(); });
+            TimerManager.instance.CreateOrResetTimer(ref controller.diagonalHitboxTimer, controller, 0.2f / attackAnimationSpeed, () => { controller.diagonalHitbox.Disable(); });
+            TimerManager.instance.CreateOrResetTimer(ref controller.secondaryHitboxTimer, controller, 0.1f / attackAnimationSpeed, () => { controller.secondaryHitbox.Disable(); });
         }
 
         public override void Slam(SwordAttackController controller, SwordDirection direction)
