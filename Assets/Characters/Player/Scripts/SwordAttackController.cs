@@ -31,8 +31,10 @@ namespace Characters.Player.Scripts
         [field: SerializeField] [Min(0.0f)] public float stamina { private set; get; }
         [field: SerializeField] [Min(0.0f)] public float maxStamina { private set; get; }
         
-        [SerializeField] [Min(0.0f)] private float attackCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float blockCost = 1.0f;
+        [SerializeField] [Min(0.0f)] private float stabCost = 1.0f;
+        [SerializeField] [Min(0.0f)] private float slashCost = 2.0f;
+        [SerializeField] [Min(0.0f)] private float slamCost = 3.0f;
         
         // Map transitions where a tuple containing our current stance, and the command received
         // is the Key, and the new stance is the Value
@@ -43,8 +45,11 @@ namespace Characters.Player.Scripts
         public TimerHandle secondaryHitboxTimer;
         private TimerHandle _transitionTimer;
 
+        private SwordDirection _pendingDirection;
+
         private SwordStance _idle;
         private SwordStance _attacking;
+        private SwordStance _weakAttack;
         private SwordStance _blocking;
         private SwordStance _countering;
 
@@ -60,6 +65,7 @@ namespace Characters.Player.Scripts
         private static readonly int AttackTriggerHash = Animator.StringToHash("Attack");
         private static readonly int CancelTriggerHash = Animator.StringToHash("Cancel");
         private static readonly int Blocking = Animator.StringToHash("Blocking");
+        private static readonly int AttackSpeed = Animator.StringToHash("AttackSpeed");
         
 
         private void Start()
@@ -75,13 +81,21 @@ namespace Characters.Player.Scripts
                 hitboxType = HitboxType.Hitbox,
                 canChangeDirection = true,
                 transitionTime = 0.25f,
-                costFunction = () => attackCost
+                costFunction = GetAttackCost
+            };
+            _weakAttack = new AttackStance
+            {
+                name = "WeakAttack",
+                hitboxType = HitboxType.Hitbox,
+                canChangeDirection = true,
+                transitionTime = 0.5f,
+                attackAnimationSpeed = 0.5f,
             };
             _blocking = new BlockStance()
             {
                 name = "Blocking",
                 hitboxType = HitboxType.Armor,
-                costFunction = () => blockCost
+                costFunction = _ => blockCost
             };
             _countering = new CounterStance
             {
@@ -97,13 +111,15 @@ namespace Characters.Player.Scripts
             _transitions = new Dictionary<Tuple<SwordStance, SwordCommand>, SwordStance>
             {
                 { new Tuple<SwordStance, SwordCommand>(_idle, SwordCommand.Press), _attacking },        // Idle -> attacking
+                { new Tuple<SwordStance, SwordCommand>(_idle, SwordCommand.CostFailed), _weakAttack },  // Idle -> weak attack
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Release), _idle },      // Attacking -> Idle
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.CostFailed), _idle },   // Attacking -> Idle (When stamina cost is too high)
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Expire), _blocking },   // Attacking -> Block
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Press), _attacking },   // Self transition
                 { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Release), _idle },       // Blocking -> Idle
                 { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Hit), _countering },     // Blocking -> Countering
-                { new Tuple<SwordStance, SwordCommand>(_countering, SwordCommand.Expire), _idle }       // Countering -> Idle
+                { new Tuple<SwordStance, SwordCommand>(_countering, SwordCommand.Expire), _idle },      // Countering -> Idle
+                { new Tuple<SwordStance, SwordCommand>(_weakAttack, SwordCommand.Expire), _idle }       // Weak Attack -> Idle
             };
 
             _hitboxOffset = primaryHitbox.transform.localPosition.y;
@@ -126,7 +142,7 @@ namespace Characters.Player.Scripts
                 return;
             }
 
-            var staminaCost = newStance.costFunction.Invoke();
+            var staminaCost = newStance.costFunction.Invoke(_pendingDirection);
             if (staminaCost > stamina)
             {
                 // ReSharper disable once TailRecursiveCall
@@ -139,6 +155,7 @@ namespace Characters.Player.Scripts
             _currentStance.Exit(this);
             _currentStance = newStance;
             _currentStance.Enter(this);
+            animator.SetFloat(AttackSpeed, _currentStance.attackAnimationSpeed);
             primaryHitbox.gameObject.layer = HitboxTrigger.GetLayer(_currentStance.hitboxType);
             if (_currentStance.transitionTime > 0.0f)
             {
@@ -216,6 +233,7 @@ namespace Characters.Player.Scripts
             
             if (context.performed)
             {
+                _pendingDirection = direction;
                 Command(SwordCommand.Press);
                 SetSwordDirection(direction);
                 return;
@@ -238,6 +256,7 @@ namespace Characters.Player.Scripts
             var oldDirection = swordDirection;
             swordDirection = direction;
             swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(direction));
+            
             OnSwordDirectionChanged(oldDirection, swordDirection);
 
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Transition"))
@@ -333,6 +352,18 @@ namespace Characters.Player.Scripts
         public void SetBlockingAnimator(bool isBlocking)
         {
             animator.SetBool(Blocking, isBlocking);
+        }
+
+        private float GetAttackCost(SwordDirection newDirection)
+        {
+            var directionalChange = Mathf.Abs(GetSwordDirectionDelta(swordDirection, newDirection));
+            return directionalChange switch
+            {
+                0 => stabCost,
+                1 => slashCost,
+                2 => slamCost,
+                _ => 0.0f
+            };
         }
     }
 }
