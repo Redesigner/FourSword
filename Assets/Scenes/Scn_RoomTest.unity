@@ -2125,11 +2125,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 579208233741465586, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: <health>k__BackingField
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 759127726534662320, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_Name
       value: P_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092760291319801334, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092760291319801334, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092760291319801334, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7697346016262362290, guid: f29caab1e5f12184f848120e133ab5c5, type: 3}
       propertyPath: m_LocalPosition.x
