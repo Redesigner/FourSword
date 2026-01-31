@@ -32,6 +32,7 @@ namespace Characters.Player.Scripts
         [SerializeField] private float staminaRegenRate = 1.0f;
         [field: SerializeField] [Min(0.0f)] public float stamina { private set; get; }
         [field: SerializeField] [Min(0.0f)] public float maxStamina { private set; get; }
+        [SerializeField] [Min(0.0f)] private float defaultStaminaRegenRate = 2.0f;
         [SerializeField] public UnityEvent<float, float> onStaminaChanged;
         
         [Header("Costs")]
@@ -197,6 +198,12 @@ namespace Characters.Player.Scripts
                 return;
             }
             stamina = System.Math.Clamp(stamina + staminaRegenRate * Time.deltaTime, 0.0f, maxStamina);
+            onStaminaChanged.Invoke(stamina, maxStamina);
+        }
+
+        public void AddStamina(float value)
+        {
+            stamina = Mathf.Clamp(stamina + value, 0.0f, maxStamina);
             onStaminaChanged.Invoke(stamina, maxStamina);
         }
 
