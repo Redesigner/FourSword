@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Characters;
 using Game.StatusEffects;
-using Shared;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Math = Shared.Math;
 
 [RequireComponent(typeof(Animator))]
 [Icon("Assets/Editor/Icons/KinematicCharacterController.png")]
@@ -37,6 +39,8 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     /// Should the character automatically face (set lookDirection) to be the same as movement?
     /// </summary>
     [SerializeField] private bool faceMovement = true;
+
+    [SerializeField] private SpriteRenderer sprite;
     
     private bool _movementEnabled = true;
     private Animator _animator;
@@ -46,6 +50,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     private HealthComponent _healthComponent;
     private float _speedModifier = 1.0f;
     private Vector2 _knockbackVelocity;
+    private Vector2 _pendingImpulses;
     private bool _isKnockedBack = false;
 
     private StatusEffect _speedEffect;
@@ -63,6 +68,27 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         _animator = GetComponent<Animator>();
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer != HitboxTrigger.GetLayer(HitboxType.Hurtbox))
+        {
+            return;
+        }
+
+        // Check if root component is on the character layer (3)
+        // This will break if layer numbers are changed!!!
+        if (other.transform.root.gameObject.layer != 3)
+        {
+            return;
+        }
+
+        var delta = (Vector2)(transform.position - other.transform.position);
+        var magnitude = delta.magnitude;
+        var impulseStrength = Mathf.Clamp(1.0f / magnitude, 0.0f, 7.0f);
+        var direction = delta / magnitude;
+        AddImpulse(direction * impulseStrength * 0.3f);
+    }
+
     protected override Vector2 ComputeVelocity()
     {
         var newVelocity = _movementEnabled ? _moveInput * GetWalkSpeed() : Vector2.zero;
@@ -70,13 +96,20 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         {
             newVelocity += _knockbackVelocity;
         }
-        return newVelocity;
+        return newVelocity + ConsumePendingImpulse();
     }
 
     protected override void FixedUpdate()
     {
         _objectsHitThisFrame.Clear();
         velocity = ComputeVelocity();
+
+        if (sprite)
+        {
+            var currentSpritePosition = sprite.transform.localPosition;
+            currentSpritePosition.z = -5.0f + transform.position.y * 0.01f;
+            sprite.transform.localPosition = currentSpritePosition;
+        }
 
         foreach (var objectHit in _objectsHitThisFrame)
         {
@@ -235,5 +268,17 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     private float GetWalkSpeed()
     {
         return walkSpeed * _speedModifier;
+    }
+
+    public void AddImpulse(Vector2 impulse)
+    {
+        _pendingImpulses += impulse;
+    }
+
+    private Vector2 ConsumePendingImpulse()
+    {
+        var result = _pendingImpulses;
+        _pendingImpulses = Vector2.zero;
+        return result;
     }
 }
