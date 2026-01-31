@@ -4,6 +4,7 @@ using Game.StatusEffects;
 using Shared;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Math = Shared.Math;
 
@@ -31,12 +32,14 @@ namespace Characters.Player.Scripts
         [SerializeField] private float staminaRegenRate = 1.0f;
         [field: SerializeField] [Min(0.0f)] public float stamina { private set; get; }
         [field: SerializeField] [Min(0.0f)] public float maxStamina { private set; get; }
+        [SerializeField] public UnityEvent<float, float> onStaminaChanged;
         
         [Header("Costs")]
         [SerializeField] [Min(0.0f)] private float blockCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float stabCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float slashCost = 2.0f;
         [SerializeField] [Min(0.0f)] private float slamCost = 3.0f;
+
         
         // Effect definitions
         [Header("Effects")]
@@ -168,6 +171,8 @@ namespace Characters.Player.Scripts
             }
 
             stamina -= staminaCost;
+            onStaminaChanged.Invoke(stamina, maxStamina);
+            
             // Debug.LogFormat("Transitioning '{0}' => '{1}' Command '{2}'", _currentStance.name, newStance.name, command.ToString());
             _currentStance.Exit(this);
             _currentStance = newStance;
@@ -187,7 +192,12 @@ namespace Characters.Player.Scripts
 
         private void Update()
         {
+            if (stamina >= maxStamina)
+            {
+                return;
+            }
             stamina = System.Math.Clamp(stamina + staminaRegenRate * Time.deltaTime, 0.0f, maxStamina);
+            onStaminaChanged.Invoke(stamina, maxStamina);
         }
 
         static SwordDirection GetSwordDirectionFromVector(Vector2 input)
