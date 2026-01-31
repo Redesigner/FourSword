@@ -453,7 +453,19 @@ MonoBehaviour:
         m_CallState: 2
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Props.Scripts.ParticleSpawner, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6836764109453847594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,8 +514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bedd722eec6492dbc037dec4bf4cb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 8975464230960728445, guid: b26ac5053aefa564a8093c18e08f1074, type: 3}
-  particleLifetime: 1
+  particlePrefab: {fileID: 8975464230960728445, guid: c6ef9726f01d1264a9098e0e8011f8ad, type: 3}
+  particleLifetime: 0.25
 --- !u!1 &5185995178598272059
 GameObject:
   m_ObjectHideFlags: 0

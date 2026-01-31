@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 5195365265740986587}
   - component: {fileID: 416039407138187703}
   - component: {fileID: 7311510101351647593}
+  - component: {fileID: 1230961122187258539}
   m_Layer: 3
   m_Name: P_Shooter
   m_TagString: Health
@@ -383,7 +384,19 @@ MonoBehaviour:
   <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1230961122187258539}
+        m_TargetAssemblyTypeName: Props.Scripts.ParticleSpawner, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -555,6 +568,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropTable: {fileID: 11400000, guid: fe321cb1fc7b3b04aac308523a250e7e, type: 2}
+--- !u!114 &1230961122187258539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bedd722eec6492dbc037dec4bf4cb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 3530588619849257922, guid: 8c703d172c32927418a1d38f3f436090, type: 3}
+  particleLifetime: 0.5
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0
