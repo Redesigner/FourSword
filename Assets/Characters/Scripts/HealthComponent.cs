@@ -275,7 +275,7 @@ public class HealthComponent : DamageListener
 
                 foreach (var instance in item.Value)
                 {
-                    var content = $"Source: {instance.applier.name}";
+                    var content = $"Source: {DebugHelpers.Names.GetNameSafe(instance.applier)}";
                     if (instance.duration != 0.0f)
                     {
                         content += $"\tTime: {instance.currentTime}/{instance.duration}s";

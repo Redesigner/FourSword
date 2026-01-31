@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemFlagName:
-    name: 
+    name: TestLevel.HeartPickedUp
 --- !u!61 &4116596208972211120
 BoxCollider2D:
   m_ObjectHideFlags: 0
