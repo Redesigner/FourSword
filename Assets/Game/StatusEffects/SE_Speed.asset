@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SE_Speed
   m_EditorClassIdentifier: 
   effectName: Speed Change
-  accumulator: 4
+  accumulator: 2
