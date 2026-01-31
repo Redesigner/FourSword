@@ -25,10 +25,10 @@ public class StaminaComponent : MonoBehaviour
 
     public void staminaUse(SwordStance _currentStance)
     {
-        if (_currentStance == _currentStance.Stab(this, ))
-        {
-            Stamina -= StabCost;
-        }
+        //if (_currentStance == _currentStance.Stab(this, ))
+        //{
+        //    Stamina -= StabCost;
+        //}
     }
     
     
