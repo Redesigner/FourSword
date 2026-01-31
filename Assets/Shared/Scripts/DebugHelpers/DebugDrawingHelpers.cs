@@ -204,5 +204,10 @@ namespace DebugHelpers
         {
             return obj ? obj.name : "None";
         }
+
+        public static string GetNameSafe(MonoBehaviour obj)
+        {
+            return obj ? obj.name : "None";
+        }
     }
 }
