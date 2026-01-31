@@ -192,7 +192,7 @@ namespace Game.StatusEffects
                 return _statusEffects.ContainsKey(effect);
             }
             
-            Debug.LogError("Has effect check failed. Effect was null.");
+            // Debug.LogError("Has effect check failed. Effect was null.");
             return false;
         }
     }
