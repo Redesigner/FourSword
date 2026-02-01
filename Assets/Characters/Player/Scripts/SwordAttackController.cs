@@ -41,6 +41,7 @@ namespace Characters.Player.Scripts
         
         [Header("Costs")]
         [SerializeField] [Min(0.0f)] private float blockCost = 1.0f;
+        [SerializeField] [Min(0.0f)] private float blockedEnemyAttackCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float stabCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float slashCost = 2.0f;
         [SerializeField] [Min(0.0f)] private float slamCost = 3.0f;
@@ -138,7 +139,7 @@ namespace Characters.Player.Scripts
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Press), _attacking },   // Self transition
                 { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Release), _idle },       // Blocking -> Idle
                 { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Hit), _countering },     // Blocking -> Countering
-                { new Tuple<SwordStance, SwordCommand>(_countering, SwordCommand.Expire), _idle },      // Countering -> Idle
+                // { new Tuple<SwordStance, SwordCommand>(_countering, SwordCommand.Expire), _idle },      // Countering -> Idle
                 { new Tuple<SwordStance, SwordCommand>(_weakAttack, SwordCommand.Expire), _idle }       // Weak Attack -> Idle
             };
 
@@ -348,6 +349,8 @@ namespace Characters.Player.Scripts
                 var projectile = attackerHitbox.GetComponent<ProjectileComponent>();
                 if (projectile && projectile.CanBeBlocked())
                 {
+                    stamina = System.Math.Clamp(stamina - blockedEnemyAttackCost, 0.0f, maxStamina);
+                    onStaminaChanged.Invoke(stamina, maxStamina);
                     return true;
                 }
             }
@@ -367,6 +370,13 @@ namespace Characters.Player.Scripts
             blockedEnemies.Add(enemyHealth);
             // enemyHealth.Stun(1.0f, this);
             return true;
+        }
+
+        public override void AttackBlocked(Collider2D selfHitbox, Collider2D otherHitbox)
+        {
+            base.AttackBlocked(selfHitbox, otherHitbox);
+            
+            
         }
 
         protected override void DealDamage(DamageListener enemy)

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 namespace Characters.Enemies.Scripts
 {
@@ -24,6 +26,11 @@ namespace Characters.Enemies.Scripts
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            var healthComponent = GetComponent<HealthComponent>();
+            if (healthComponent)
+            {
+                healthComponent.onTakeDamage.AddListener(TakeDamage);
+            }
         }
 
         public void StartCountDown()
@@ -42,6 +49,19 @@ namespace Characters.Enemies.Scripts
             
         }
 
+        public void TakeDamage(GameObject source)
+        {
+            if (!source)
+            {
+                return;
+            }
+            
+            if (source.transform.root.CompareTag("Player"))
+            {
+                Explode();
+            }
+        }
+
         private void Explode()
         {
             onExplode.Invoke();
@@ -56,8 +76,13 @@ namespace Characters.Enemies.Scripts
                 {
                     continue;
                 }
+
+                if (!CanSeeObject(hitCollider.gameObject))
+                {
+                    continue;
+                }
                 
-                hitTarget.TakeDamage(explosionDamage, gameObject);
+                hitTarget.TakeDamage(explosionDamage, null);
             }
 
             _isCountingDown = false;
@@ -65,10 +90,27 @@ namespace Characters.Enemies.Scripts
             {
                 _animator.SetTrigger(ExplodeHash);
             }
+            _countdownTimer.Reset();
+        }
+        
+        private bool CanSeeObject(GameObject obj)
+        {
+            var point = (Vector2)obj.transform.position;
+            var previousQueryHitTriggerValue = Physics2D.queriesHitTriggers;
+            Physics2D.queriesHitTriggers = false;
+            var result = Physics2D.Linecast(transform.position, point, LayerMask.GetMask("Default"));
+            Physics2D.queriesHitTriggers = previousQueryHitTriggerValue;
+            
+            Debug.DrawLine(transform.position, result ? result.centroid : point, Color.red, Time.fixedDeltaTime);
+            
+            return !result;
         }
 
         private void OnDrawGizmos()
         {
+            var timeRemaining = _countdownTimer.GetRemainingTime();
+            Handles.Label(transform.position - new Vector3(0.0f, 0.5f, 0.0f),
+                timeRemaining > 0.0f ? $"Timer: {_countdownTimer.GetRemainingTime():0.0}" : "Bomb inactive");
             DebugHelpers.Drawing.DrawCircle(transform.position, explosionRadius,
                 _isCountingDown ? new Color(1.0f, 0.1f, 0.5f, 0.4f) : new Color(0.2f, 0.1f, 0.8f, 0.4f));
         }

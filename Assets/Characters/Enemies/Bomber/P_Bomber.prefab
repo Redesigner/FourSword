@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 416039407138187703}
   - component: {fileID: 3153962881493121918}
   - component: {fileID: 1557805964901853838}
+  - component: {fileID: 2441900246175817835}
   m_Layer: 3
   m_Name: P_Bomber
   m_TagString: Health
@@ -371,9 +372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coneRadius: 8
-  coneHalfAngle: 45
+  coneHalfAngle: 180
   currentAngle: 0
-  minimumVisibilityRadius: 0.5
+  minimumVisibilityRadius: 2
   visibilityContactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -440,18 +441,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Graph: {fileID: -1773855383104786605, guid: f49aad9e12cbd3849bedbbc0939e54e3, type: 2}
+  m_Graph: {fileID: -1773855383104786605, guid: d3debc3b25d7bfa43929da5a28f9bd52, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5728091114660692360
   - rid: 6056381722570260886
   - rid: 6056381722570260887
   - rid: 896754459736277301
-  - rid: 896754573887930457
+  - rid: 349157655546167990
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 349157655546167990
+      type: {class: 'BlackboardVariable`1[[Characters.Enemies.Scripts.ExplosionComponent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12456531552387505040
+          m_Value1: 3838656611574703710
+        Name: Bomb
+        m_Value: {fileID: 2441900246175817835}
     - rid: 896754459736277301
       type: {class: 'BlackboardVariable`1[[EnemyPathfindingComponent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -460,14 +469,6 @@ MonoBehaviour:
           m_Value1: 13005702933728991089
         Name: PathfindingComponent
         m_Value: {fileID: 5195365265740986587}
-    - rid: 896754573887930457
-      type: {class: 'BlackboardVariable`1[[Characters.Enemies.Scripts.EnemyShieldComponent, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 5013902957964416562
-          m_Value1: 14846836174495068087
-        Name: Shield
-        m_Value: {fileID: 0}
     - rid: 5728091114660692360
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -519,6 +520,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropTable: {fileID: 11400000, guid: 23581ae47033cb145863cd85f548f839, type: 2}
+--- !u!114 &2441900246175817835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd2c0213c4b41d1908ce39c662935cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionRadius: 5
+  explosionDamage: 2
+  fuseTime: 1
+  explosionContactFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  onExplode:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,7 +846,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2729853989378734247, guid: 65b3a64040e125d4b935119ed8015459, type: 3}
+  m_Sprite: {fileID: -1055867046695368813, guid: af9c7e817321cee4484d5c2bc6bbbfaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
