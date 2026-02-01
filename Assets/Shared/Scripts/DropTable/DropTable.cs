@@ -45,7 +45,7 @@ namespace Shared.DropTable
         {
             if (drops.Sum(entry => entry.dropWeight) > 1.0f)
             {
-                Debug.LogWarningFormat("[DropTable] The total drop rate in '{0}' is more than 1! Some items might not be dropped.", name);
+                Debug.LogWarningFormat("[DropTable] The total drop rate in '{0}' is more than 1! Some items might not be dropped.", DebugHelpers.Names.GetNameSafe(this));
             }
         }
     }

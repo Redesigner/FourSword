@@ -210,5 +210,10 @@ namespace DebugHelpers
         {
             return obj ? obj.name : "None";
         }
+        
+        public static string GetNameSafe(ScriptableObject obj)
+        {
+            return obj ? obj.name : "None";
+        }
     }
 }

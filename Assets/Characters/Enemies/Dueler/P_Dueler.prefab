@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 5195365265740986587}
   - component: {fileID: 416039407138187703}
   - component: {fileID: 3153962881493121918}
+  - component: {fileID: 1557805964901853838}
   m_Layer: 3
   m_Name: P_Dueler
   m_TagString: Health
@@ -562,6 +563,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 3530588619849257922, guid: 8c703d172c32927418a1d38f3f436090, type: 3}
   particleLifetime: 1
+--- !u!114 &1557805964901853838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759127726534662320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804c86eb3e0f459793f7e4948ac2050b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable: {fileID: 11400000, guid: 23581ae47033cb145863cd85f548f839, type: 2}
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0

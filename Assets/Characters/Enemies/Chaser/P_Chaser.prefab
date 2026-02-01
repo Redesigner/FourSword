@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 7080483247857450549}
   - component: {fileID: 7229867353558414166}
   - component: {fileID: 6836764109453847594}
+  - component: {fileID: 636120859945731422}
   m_Layer: 3
   m_Name: P_Chaser
   m_TagString: Untagged
@@ -234,6 +235,7 @@ MonoBehaviour:
         m_CallState: 2
   walkSpeed: 2
   faceMovement: 1
+  sprite: {fileID: 0}
 --- !u!114 &7120867257024862281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,15 +389,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 2
-  health: 2
+  <health>k__BackingField: 0
   slashResistance: 1
   pierceResistance: 1
   smashResistance: 1
   invulnerabilityTime: 0.5
+  deathFadeOutTime: 0.5
   onStunned:
     m_PersistentCalls:
       m_Calls: []
   onStunEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeSlashDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakePierceDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeSmashDamage:
     m_PersistentCalls:
       m_Calls: []
   team: 1
@@ -422,9 +434,25 @@ MonoBehaviour:
   currentDamageType: 0
   hitboxComponent: {fileID: 0}
   damageOnce: 0
+  onShieldBroken:
+    m_PersistentCalls:
+      m_Calls: []
   attackCompleted:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &636120859945731422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222924608183184359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804c86eb3e0f459793f7e4948ac2050b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable: {fileID: 11400000, guid: 240c998b2067fe84cb464d2e750aed10, type: 2}
 --- !u!1 &5185995178598272059
 GameObject:
   m_ObjectHideFlags: 0
