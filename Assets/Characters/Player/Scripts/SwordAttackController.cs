@@ -22,7 +22,6 @@ namespace Characters.Player.Scripts
     public class SwordAttackController : AttackController
     {
         [field: SerializeField] public SwordDirection swordDirection { private set; get; }
-        [SerializeField] private SpriteRenderer swordSprite;
 
         [Header("Hitboxes")]
         [field: SerializeField] public HitboxTrigger primaryHitbox { private set; get; }
@@ -45,8 +44,10 @@ namespace Characters.Player.Scripts
         [SerializeField] [Min(0.0f)] private float stabCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float slashCost = 2.0f;
         [SerializeField] [Min(0.0f)] private float slamCost = 3.0f;
-        
 
+        [Header("Slam")]
+        [SerializeField] public GameObject swordSlamProjectile;
+        [SerializeField] public bool slamLaunchesProjectile = false;
         
         // Effect definitions
         [Header("Effects")]
@@ -145,7 +146,6 @@ namespace Characters.Player.Scripts
             secondaryHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             diagonalHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             
-            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(Scripts.SwordDirection.Up));
             swordDirection = Scripts.SwordDirection.Up;
             secondaryHitbox.Disable();
             diagonalHitbox.Disable();
@@ -300,7 +300,6 @@ namespace Characters.Player.Scripts
             
             var oldDirection = swordDirection;
             swordDirection = direction;
-            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(direction));
             
             OnSwordDirectionChanged(oldDirection, swordDirection);
 
@@ -337,7 +336,7 @@ namespace Characters.Player.Scripts
         public Vector3 GetLocalPositionFromRotation(float rotationDegrees)
         {
             var rads = Mathf.Deg2Rad * rotationDegrees;
-            return new Vector3(Mathf.Cos(rads) * _hitboxOffset, Mathf.Sin(rads) * _hitboxOffset, 0.0f);
+            return new Vector3(Mathf.Cos(rads), Mathf.Sin(rads), 0.0f);
         }
 
         public override bool BlockedEnemyAttack(DamageType damageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
@@ -397,6 +396,28 @@ namespace Characters.Player.Scripts
         public void SetBlockingAnimator(bool isBlocking)
         {
             animator.SetBool(Blocking, isBlocking);
+        }
+
+        public void LaunchProjectile()
+        {
+            if (!slamLaunchesProjectile)
+            {
+                return;
+            }
+
+            if (!swordSlamProjectile)
+            {
+                return;
+            }
+
+            var directionVector = GetLocalPositionFromRotation(GetRotation(swordDirection));
+            var position = transform.position + directionVector * 0.7f;
+            var projectileInstance = Instantiate(swordSlamProjectile, position, Quaternion.identity);
+            var projectileComponent = projectileInstance.GetComponent<ProjectileComponent>();
+            if (projectileComponent)
+            {
+                projectileComponent.Setup(transform.position + directionVector * 4.0f, healthComponent.gameObject, 2.0f, 0.5f, Team.Dogs);
+            }
         }
 
         private float GetAttackCost(SwordDirection newDirection)
