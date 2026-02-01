@@ -62,7 +62,8 @@ namespace Characters.Player.Scripts
             controller.currentDamageType = DamageType.Piercing;
             var initialHitboxLength = controller.primaryHitbox.GetHitboxSize().x;
             controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction)) * 1.5f;
-            controller.primaryHitbox.transform.localScale = new Vector3(1.0f, 2.0f * controller.stabReachMultiplier, 1.0f);
+            //bungus
+            controller.primaryHitbox.transform.localScale = new Vector3(controller.stabWidth, controller.stabReach * controller.stabReachMultiplier, 1.0f);
             controller.primaryHitbox.Disable();
             controller.primaryHitbox.Enable();
             controller.secondaryHitbox.Disable();

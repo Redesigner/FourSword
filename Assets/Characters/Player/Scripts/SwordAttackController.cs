@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Math = Shared.Math;
 
 namespace Characters.Player.Scripts
@@ -33,6 +34,11 @@ namespace Characters.Player.Scripts
         [field: SerializeField] [Min(0.0f)] public float stamina { private set; get; }
         [field: SerializeField] [Min(0.0f)] public float maxStamina { private set; get; }
         [SerializeField] public UnityEvent<float, float> onStaminaChanged;
+        
+        [FormerlySerializedAs("stabBox")]
+        [Header("Hitboxes")]
+        [SerializeField] public float stabWidth = 1.0f;
+        [SerializeField] public float stabReach = 1.5f;
         
         [Header("Costs")]
         [SerializeField] [Min(0.0f)] private float blockCost = 1.0f;
