@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4bc53612794cd1acd933ee66350119, type: 3}
-  m_Name: Dt_Bush
+  m_Name: Dt_Shooter
   m_EditorClassIdentifier: 
   drops:
   - drop: {fileID: 1950181772384393320, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
     dropWeight: 0.5
+  - drop: {fileID: 6838097233418766893, guid: f2c2ee86d7818ff4caabf0960dab1c19, type: 3}
+    dropWeight: 0.1
+  - drop: {fileID: 1296354908195801453, guid: 8451de95c2ebdba4bb71c2964a8086ec, type: 3}
+    dropWeight: 0.2

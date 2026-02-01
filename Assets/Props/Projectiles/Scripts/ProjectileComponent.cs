@@ -10,6 +10,7 @@ public class ProjectileComponent : MonoBehaviour
     [SerializeField] private GameObject destructionParticlePrefab;
     [SerializeField] private float particleLifetime = 1.0f;
     [SerializeField] private bool canBeBlocked = true;
+    [SerializeField] public Team ownerTeam;
 
     public Vector2 velocity;
     
@@ -23,8 +24,9 @@ public class ProjectileComponent : MonoBehaviour
         return canBeBlocked;
     }
     
-    public void Setup(Vector3 targetPosition, GameObject parent, float speed, float projectileLifetime = 4.0f)
+    public void Setup(Vector3 targetPosition, GameObject parent, float speed, float projectileLifetime = 4.0f, Team team = Team.Robots)
     {
+        ownerTeam = team;
         _owner = parent;
         velocity = (targetPosition - transform.position).normalized * speed;
         TimerManager.instance.CreateOrResetTimer(ref _lifetimeTimer, this, projectileLifetime, DestroyProjectile);
@@ -54,7 +56,17 @@ public class ProjectileComponent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         var root = other.transform.root.gameObject;
-        if (!root.CompareTag("Player"))
+        /*if (!root.CompareTag("Player"))
+        {
+            return;
+        }*/
+        var healthComponent = root.GetComponent<HealthComponent>();
+        if (!healthComponent)
+        {
+            return;
+        }
+
+        if (healthComponent.team == ownerTeam)
         {
             return;
         }
@@ -62,12 +74,6 @@ public class ProjectileComponent : MonoBehaviour
         if (other.gameObject.layer == HitboxTrigger.GetLayer(HitboxType.Armor))
         {
             DestroyProjectile();
-            return;
-        }
-
-        var healthComponent = root.GetComponent<HealthComponent>();
-        if (!healthComponent)
-        {
             return;
         }
         

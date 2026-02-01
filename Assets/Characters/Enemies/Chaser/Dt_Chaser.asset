@@ -10,8 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4bc53612794cd1acd933ee66350119, type: 3}
-  m_Name: Dt_Bush
+  m_Name: Dt_Chaser
   m_EditorClassIdentifier: 
-  drops:
-  - drop: {fileID: 1950181772384393320, guid: 54201ee8e6b247e42a1d8e262dd81593, type: 3}
-    dropWeight: 0.5
+  drops: []

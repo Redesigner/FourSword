@@ -95,6 +95,8 @@ namespace Characters.Player.Scripts
             controller.primaryHitbox.Enable();
             controller.secondaryHitbox.Disable();
             controller.diagonalHitbox.Disable();
+
+            controller.LaunchProjectile();
         }
     }
 

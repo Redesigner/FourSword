@@ -102,17 +102,15 @@ public class HealthComponent : DamageListener
     public override void TakeDamage(float damage, GameObject source, DamageType damageType = DamageType.Raw)
     {
         // In some rare cases, projectiles can live after their owners, so make sure the owner isn't null
-        if (!source)
+        if (source)
         {
-            return;
+            var attackerHealthComponent = source.transform.root.GetComponent<HealthComponent>();
+            if (attackerHealthComponent && attackerHealthComponent.team == team)
+            {
+                return;
+            }
         }
-        
-        var attackerHealthComponent = source.transform.root.GetComponent<HealthComponent>();
-        if (attackerHealthComponent && attackerHealthComponent.team == team)
-        {
-            return;
-        }
-        
+
         if (damage < 0.0f)
         {
             return;
@@ -199,7 +197,7 @@ public class HealthComponent : DamageListener
 
     private void Death(GameObject source)
     {
-        var attackerHealthComponent = source.transform.root.GetComponent<HealthComponent>();
+        // var attackerHealthComponent = source.transform.root.GetComponent<HealthComponent>();
         onTakeDamage.Invoke(source);
         health = 0.0f;
         alive = false;
