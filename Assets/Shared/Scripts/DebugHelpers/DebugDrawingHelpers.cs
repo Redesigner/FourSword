@@ -114,12 +114,13 @@ namespace DebugHelpers
         public static void DrawBoxCollider2D(BoxCollider2D collider, Color color)
         {
             Gizmos.color = color;
-            Gizmos.DrawMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+            var position = collider.transform.position + collider.transform.rotation * collider.offset;
+            Gizmos.DrawMesh(quadMesh, position, collider.transform.rotation, collider.size * collider.transform.lossyScale);
             var outlineColor = color;
             outlineColor.a += 0.5f;
             
             //Gizmos.DrawWireMesh(quadMesh, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
-            DrawLineStrip(quadMesh.vertices, collider.transform.position + (Vector3)collider.offset, collider.transform.rotation, collider.size * collider.transform.lossyScale);
+            DrawLineStrip(quadMesh.vertices, position, collider.transform.rotation, collider.size * collider.transform.lossyScale);
         }
 
         public static void DrawBox(Vector3 position, Vector2 extents, Color color)

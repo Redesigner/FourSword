@@ -24,9 +24,14 @@ namespace Characters.Player.Scripts
         [field: SerializeField] public SwordDirection swordDirection { private set; get; }
         [SerializeField] private SpriteRenderer swordSprite;
 
+        [Header("Hitboxes")]
         [field: SerializeField] public HitboxTrigger primaryHitbox { private set; get; }
         [field: SerializeField] public HitboxTrigger secondaryHitbox { private set; get; }
         [field: SerializeField] public HitboxTrigger diagonalHitbox { private set; get; }
+        [field: SerializeField] public float defaultHitboxStart { private set; get;} = 2.0f;
+        [field: SerializeField] public float defaultHitboxEnd { private set; get;} = 2.0f;
+        [field: SerializeField] public float stabHitboxStart { private set; get;} = 2.0f;
+        [field: SerializeField] public float stabHitboxEnd { private set; get;} = 2.0f;
 
         [Header("Stamina")]
         [SerializeField] private float staminaRegenRate = 1.0f;
@@ -40,6 +45,7 @@ namespace Characters.Player.Scripts
         [SerializeField] [Min(0.0f)] private float stabCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float slashCost = 2.0f;
         [SerializeField] [Min(0.0f)] private float slamCost = 3.0f;
+        
 
         
         // Effect definitions
@@ -428,6 +434,21 @@ namespace Characters.Player.Scripts
             {
                 stabReachMultiplier = newValue;
             });
+        }
+
+        public void SetPrimaryHitboxLength(float start, float end)
+        {
+            var length = end - start;
+            primaryHitbox.SetHitboxHeight(length);
+            var currentHitboxOffset = primaryHitbox.GetHitboxOffset();
+            currentHitboxOffset.y = start + length / 2.0f;
+            primaryHitbox.SetHitboxOffset(currentHitboxOffset);
+        }
+
+        private void OnValidate()
+        {
+            defaultHitboxEnd = MathF.Max(defaultHitboxEnd, defaultHitboxStart);
+            SetPrimaryHitboxLength(defaultHitboxStart, defaultHitboxEnd);
         }
     }
 }

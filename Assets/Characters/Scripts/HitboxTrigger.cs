@@ -75,6 +75,33 @@ namespace Characters
             return hitboxCollider.size;
         }
 
+        public void SetHitboxSize(float w, float h)
+        {
+            SetHitboxSize(new Vector2(w, h));
+        }
+
+        public void SetHitboxSize(Vector2 size)
+        {
+            hitboxCollider.size = size;
+        }
+
+        public void SetHitboxHeight(float height)
+        {
+            var currentSize = GetHitboxSize();
+            currentSize.y = height;
+            SetHitboxSize(currentSize);
+        }
+
+        public Vector2 GetHitboxOffset()
+        {
+            return hitboxCollider.offset;
+        }
+
+        public void SetHitboxOffset(Vector2 offset)
+        {
+            hitboxCollider.offset = offset;
+        }
+
         public static GameObject GetOwningObject(Collider2D collider)
         {
             return collider.transform.root.gameObject;
