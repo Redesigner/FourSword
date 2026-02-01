@@ -10,7 +10,7 @@ namespace Shared.DropTable
     public struct DropTableEntry
     {
         [SerializeField] public GameObject drop;
-        [SerializeField] [Min(0.0f)] public float dropWeight;
+        [SerializeField] [Range(0.0f, 1.0f)] public float dropWeight;
 
         public DropTableEntry(GameObject drop, float dropWeight)
         {
@@ -23,11 +23,10 @@ namespace Shared.DropTable
     public class DropTable : ScriptableObject
     {
         [SerializeField] private List<DropTableEntry> drops;
-        private float _totalWeight;
 
         public GameObject GetDrop()
         {
-            var randomWeight = _totalWeight * Random.value;
+            var randomWeight = Random.value;
             var currentWeight = randomWeight;
             foreach (var entry in drops)
             {
@@ -42,14 +41,12 @@ namespace Shared.DropTable
             return null;
         }
         
-        private void OnValidate()
-        {
-            _totalWeight = drops.Sum(entry => entry.dropWeight);
-        }
-
         private void OnEnable()
         {
-            _totalWeight = drops.Sum(entry => entry.dropWeight);
+            if (drops.Sum(entry => entry.dropWeight) > 1.0f)
+            {
+                Debug.LogWarningFormat("[DropTable] The total drop rate in '{0}' is more than 1! Some items might not be dropped.", name);
+            }
         }
     }
 }
