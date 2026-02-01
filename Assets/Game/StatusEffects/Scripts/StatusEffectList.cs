@@ -10,5 +10,6 @@ namespace Game.StatusEffects
         [field: SerializeField] public StatusEffect invulnerabilityEffect { private set; get; }
         [field: SerializeField] public StatusEffect stabReachEffect { private set; get; }
         [field: SerializeField] public StatusEffect staminaRegenRateEffect { private set; get; }
+        [field: SerializeField] public StatusEffect slamProjectileStrengthEffect { private set; get; }
     }
 }

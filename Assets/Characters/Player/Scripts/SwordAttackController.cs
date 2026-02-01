@@ -47,7 +47,9 @@ namespace Characters.Player.Scripts
 
         [Header("Slam")]
         [SerializeField] public GameObject swordSlamProjectile;
-        [SerializeField] public bool slamLaunchesProjectile = false;
+        [SerializeField] private float swordSlamBaseSpeed = 2.0f;
+        [SerializeField] private float swordSlamBaseLifetime = 0.5f;
+        private float _swordSlamStrength = 0.0f;
         
         // Effect definitions
         [Header("Effects")]
@@ -400,7 +402,7 @@ namespace Characters.Player.Scripts
 
         public void LaunchProjectile()
         {
-            if (!slamLaunchesProjectile)
+            if (_swordSlamStrength <= 0.0f)
             {
                 return;
             }
@@ -416,7 +418,9 @@ namespace Characters.Player.Scripts
             var projectileComponent = projectileInstance.GetComponent<ProjectileComponent>();
             if (projectileComponent)
             {
-                projectileComponent.Setup(transform.position + directionVector * 4.0f, healthComponent.gameObject, 2.0f, 0.5f, Team.Dogs);
+                projectileComponent.Setup(transform.position + directionVector * 4.0f, healthComponent.gameObject,
+                    swordSlamBaseSpeed * _swordSlamStrength,
+                    swordSlamBaseLifetime * _swordSlamStrength, Team.Dogs);
             }
         }
 
@@ -454,6 +458,11 @@ namespace Characters.Player.Scripts
             healthComponent.statusEffects.GetEffectStacksChangedEvent(stabReachEffect).AddListener((_, newValue) =>
             {
                 stabReachMultiplier = newValue;
+            });
+            
+            healthComponent.statusEffects.GetEffectStacksChangedEvent(GameState.instance.effectList.slamProjectileStrengthEffect).AddListener((_, newValue) =>
+            {
+                _swordSlamStrength = newValue;
             });
         }
 
