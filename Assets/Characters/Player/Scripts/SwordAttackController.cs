@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Math = Shared.Math;
 
 namespace Characters.Player.Scripts
@@ -24,21 +25,33 @@ namespace Characters.Player.Scripts
         [field: SerializeField] public SwordDirection swordDirection { private set; get; }
         [SerializeField] private SpriteRenderer swordSprite;
 
+        [Header("Hitboxes")]
         [field: SerializeField] public HitboxTrigger primaryHitbox { private set; get; }
         [field: SerializeField] public HitboxTrigger secondaryHitbox { private set; get; }
         [field: SerializeField] public HitboxTrigger diagonalHitbox { private set; get; }
+        [field: SerializeField] public float defaultHitboxStart { private set; get;} = 2.0f;
+        [field: SerializeField] public float defaultHitboxEnd { private set; get;} = 2.0f;
+        [field: SerializeField] public float stabHitboxStart { private set; get;} = 2.0f;
+        [field: SerializeField] public float stabHitboxEnd { private set; get;} = 2.0f;
 
         [Header("Stamina")]
         [SerializeField] private float staminaRegenRate = 1.0f;
         [field: SerializeField] [Min(0.0f)] public float stamina { private set; get; }
         [field: SerializeField] [Min(0.0f)] public float maxStamina { private set; get; }
+        [SerializeField] [Min(0.0f)] private float defaultStaminaRegenRate = 2.0f;
         [SerializeField] public UnityEvent<float, float> onStaminaChanged;
+        
+        [FormerlySerializedAs("stabBox")]
+        [Header("Hitboxes")]
+        [SerializeField] public float stabWidth = 1.0f;
+        [SerializeField] public float stabReach = 1.5f;
         
         [Header("Costs")]
         [SerializeField] [Min(0.0f)] private float blockCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float stabCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float slashCost = 2.0f;
         [SerializeField] [Min(0.0f)] private float slamCost = 3.0f;
+        
 
         
         // Effect definitions
@@ -197,6 +210,12 @@ namespace Characters.Player.Scripts
                 return;
             }
             stamina = System.Math.Clamp(stamina + staminaRegenRate * Time.deltaTime, 0.0f, maxStamina);
+            onStaminaChanged.Invoke(stamina, maxStamina);
+        }
+
+        public void AddStamina(float value)
+        {
+            stamina = Mathf.Clamp(stamina + value, 0.0f, maxStamina);
             onStaminaChanged.Invoke(stamina, maxStamina);
         }
 
@@ -421,6 +440,21 @@ namespace Characters.Player.Scripts
             {
                 stabReachMultiplier = newValue;
             });
+        }
+
+        public void SetPrimaryHitboxLength(float start, float end)
+        {
+            var length = end - start;
+            primaryHitbox.SetHitboxHeight(length);
+            var currentHitboxOffset = primaryHitbox.GetHitboxOffset();
+            currentHitboxOffset.y = start + length / 2.0f;
+            primaryHitbox.SetHitboxOffset(currentHitboxOffset);
+        }
+
+        private void OnValidate()
+        {
+            defaultHitboxEnd = MathF.Max(defaultHitboxEnd, defaultHitboxStart);
+            SetPrimaryHitboxLength(defaultHitboxStart, defaultHitboxEnd);
         }
     }
 }
