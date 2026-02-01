@@ -37,7 +37,7 @@ namespace Characters.Player.Scripts
         public virtual void Enter(SwordAttackController controller)
         {
             controller.primaryHitbox.transform.localScale = Vector3.one;
-            controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(controller.swordDirection));
+            // controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(controller.swordDirection));
         }
 
         public virtual void Exit(SwordAttackController controller)
@@ -50,8 +50,8 @@ namespace Characters.Player.Scripts
     {
         public override void Enter(SwordAttackController controller)
         {
-            controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(controller.swordDirection)) * 0.5f;
-            controller.primaryHitbox.transform.localScale = new Vector3(1.0f, 0.5f, 1.0f);
+            // controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(controller.swordDirection)) * 0.5f;
+            controller.SetPrimaryHitboxLength(controller.defaultHitboxStart, controller.defaultHitboxEnd);
         }
     }
 
@@ -60,10 +60,10 @@ namespace Characters.Player.Scripts
         public override void Stab(SwordAttackController controller, SwordDirection direction)
         {
             controller.currentDamageType = DamageType.Piercing;
-            var initialHitboxLength = controller.primaryHitbox.GetHitboxSize().x;
-            controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction)) * 1.5f;
-            //bungus
-            controller.primaryHitbox.transform.localScale = new Vector3(controller.stabWidth, controller.stabReach * controller.stabReachMultiplier, 1.0f);
+            // controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction)) * 1.5f;
+            controller.primaryHitbox.transform.rotation = Quaternion.Euler(0.0f, 0.0f, SwordAttackController.GetRotation(direction) - 90.0f);
+            var stabLength = controller.stabHitboxEnd - controller.stabHitboxStart;
+            controller.SetPrimaryHitboxLength(controller.stabHitboxStart, controller.stabHitboxStart + stabLength * controller.stabReachMultiplier);
             controller.primaryHitbox.Disable();
             controller.primaryHitbox.Enable();
             controller.secondaryHitbox.Disable();
@@ -73,12 +73,11 @@ namespace Characters.Player.Scripts
         public override void Slash(SwordAttackController controller, SwordDirection start, SwordDirection end)
         {
             controller.currentDamageType = DamageType.Slashing;
-            controller.primaryHitbox.transform.localScale = Vector3.one;
-            controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(end));
+            controller.SetPrimaryHitboxLength(controller.defaultHitboxStart, controller.defaultHitboxEnd);
+            // controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(end));
             controller.primaryHitbox.transform.rotation = Quaternion.Euler(0.0f, 0.0f, SwordAttackController.GetRotation(end) - 90.0f);
-            controller.secondaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(start));
-            controller.diagonalHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(start, end));
             controller.diagonalHitbox.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, SwordAttackController.GetRotation(start, end) - 90.0f);
+            controller.secondaryHitbox.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, SwordAttackController.GetRotation(start) + 90.0f);
             controller.primaryHitbox.Enable();
             controller.secondaryHitbox.Enable();
             controller.diagonalHitbox.Enable();
@@ -90,8 +89,9 @@ namespace Characters.Player.Scripts
         public override void Slam(SwordAttackController controller, SwordDirection direction)
         {
             controller.currentDamageType = DamageType.Smash;
-            controller.primaryHitbox.transform.localScale = Vector3.one;
-            controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction));
+            controller.SetPrimaryHitboxLength(controller.defaultHitboxStart, controller.defaultHitboxEnd);
+            controller.primaryHitbox.transform.rotation = Quaternion.Euler(0.0f, 0.0f, SwordAttackController.GetRotation(direction) - 90.0f);
+            // controller.primaryHitbox.transform.localPosition = controller.GetLocalPositionFromRotation(SwordAttackController.GetRotation(direction));
             controller.primaryHitbox.Enable();
             controller.secondaryHitbox.Disable();
             controller.diagonalHitbox.Disable();
