@@ -15,17 +15,13 @@ namespace Characters.Enemies.Scripts
         [SerializeField] private ContactFilter2D explosionContactFilter;
 
         public UnityEvent onExplode;
+        public UnityEvent onCountdownStart;
 
         private bool _isCountingDown = false;
-        private Animator _animator;
         private TimerHandle _countdownTimer;
-        
-        private static readonly int CountdownHash = Animator.StringToHash("Countdown");
-        private static readonly int ExplodeHash = Animator.StringToHash("Explode");
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
             var healthComponent = GetComponent<HealthComponent>();
             if (healthComponent)
             {
@@ -40,11 +36,8 @@ namespace Characters.Enemies.Scripts
                 return;
             }
 
+            onCountdownStart.Invoke();
             _isCountingDown = true;
-            if (_animator)
-            {
-                _animator.SetTrigger(CountdownHash);
-            }
             TimerManager.instance.CreateOrResetTimer(ref _countdownTimer, this, fuseTime, Explode);
             
         }
@@ -85,11 +78,8 @@ namespace Characters.Enemies.Scripts
                 hitTarget.TakeDamage(explosionDamage, null);
             }
 
+            Destroy(gameObject);
             _isCountingDown = false;
-            if (_animator)
-            {
-                _animator.SetTrigger(ExplodeHash);
-            }
             _countdownTimer.Reset();
         }
         

@@ -223,7 +223,7 @@ Animator:
   m_GameObject: {fileID: 759127726534662320}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2a3b00ef7037bc74899a028109f65ce1, type: 2}
+  m_Controller: {fileID: 9100000, guid: dea38f991bd3ff94da89a17806a4674d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -552,6 +552,21 @@ MonoBehaviour:
   onExplode:
     m_PersistentCalls:
       m_Calls: []
+  onCountdownStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3008976252106022695}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Countdown
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &971757563472551825
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,7 +840,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: c5c094a69e700384885ff9122f081292, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -847,8 +862,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1055867046695368813, guid: af9c7e817321cee4484d5c2bc6bbbfaf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3.53125, y: 3.53125}
