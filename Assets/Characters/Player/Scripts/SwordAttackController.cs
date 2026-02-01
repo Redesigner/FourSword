@@ -23,7 +23,6 @@ namespace Characters.Player.Scripts
     public class SwordAttackController : AttackController
     {
         [field: SerializeField] public SwordDirection swordDirection { private set; get; }
-        [SerializeField] private SpriteRenderer swordSprite;
 
         [Header("Hitboxes")]
         [field: SerializeField] public HitboxTrigger primaryHitbox { private set; get; }
@@ -48,11 +47,16 @@ namespace Characters.Player.Scripts
         
         [Header("Costs")]
         [SerializeField] [Min(0.0f)] private float blockCost = 1.0f;
+        [SerializeField] [Min(0.0f)] private float blockedEnemyAttackCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float stabCost = 1.0f;
         [SerializeField] [Min(0.0f)] private float slashCost = 2.0f;
         [SerializeField] [Min(0.0f)] private float slamCost = 3.0f;
-        
 
+        [Header("Slam")]
+        [SerializeField] public GameObject swordSlamProjectile;
+        [SerializeField] private float swordSlamBaseSpeed = 2.0f;
+        [SerializeField] private float swordSlamBaseLifetime = 0.5f;
+        private float _swordSlamStrength = 0.0f;
         
         // Effect definitions
         [Header("Effects")]
@@ -141,7 +145,7 @@ namespace Characters.Player.Scripts
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Press), _attacking },   // Self transition
                 { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Release), _idle },       // Blocking -> Idle
                 { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Hit), _countering },     // Blocking -> Countering
-                { new Tuple<SwordStance, SwordCommand>(_countering, SwordCommand.Expire), _idle },      // Countering -> Idle
+                // { new Tuple<SwordStance, SwordCommand>(_countering, SwordCommand.Expire), _idle },      // Countering -> Idle
                 { new Tuple<SwordStance, SwordCommand>(_weakAttack, SwordCommand.Expire), _idle }       // Weak Attack -> Idle
             };
 
@@ -151,7 +155,6 @@ namespace Characters.Player.Scripts
             secondaryHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             diagonalHitbox.hitboxOverlapped.AddListener(OnHitboxOverlapped);
             
-            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(Scripts.SwordDirection.Up));
             swordDirection = Scripts.SwordDirection.Up;
             secondaryHitbox.Disable();
             diagonalHitbox.Disable();
@@ -306,7 +309,6 @@ namespace Characters.Player.Scripts
             
             var oldDirection = swordDirection;
             swordDirection = direction;
-            swordSprite.transform.parent.rotation = Quaternion.Euler(0.0f, 0.0f, GetRotation(direction));
             
             OnSwordDirectionChanged(oldDirection, swordDirection);
 
@@ -343,7 +345,7 @@ namespace Characters.Player.Scripts
         public Vector3 GetLocalPositionFromRotation(float rotationDegrees)
         {
             var rads = Mathf.Deg2Rad * rotationDegrees;
-            return new Vector3(Mathf.Cos(rads) * _hitboxOffset, Mathf.Sin(rads) * _hitboxOffset, 0.0f);
+            return new Vector3(Mathf.Cos(rads), Mathf.Sin(rads), 0.0f);
         }
 
         public override bool BlockedEnemyAttack(DamageType damageType, Collider2D selfArmorHitbox, Collider2D attackerHitbox)
@@ -353,6 +355,8 @@ namespace Characters.Player.Scripts
                 var projectile = attackerHitbox.GetComponent<ProjectileComponent>();
                 if (projectile && projectile.CanBeBlocked())
                 {
+                    stamina = System.Math.Clamp(stamina - blockedEnemyAttackCost, 0.0f, maxStamina);
+                    onStaminaChanged.Invoke(stamina, maxStamina);
                     return true;
                 }
             }
@@ -372,6 +376,13 @@ namespace Characters.Player.Scripts
             blockedEnemies.Add(enemyHealth);
             // enemyHealth.Stun(1.0f, this);
             return true;
+        }
+
+        public override void AttackBlocked(Collider2D selfHitbox, Collider2D otherHitbox)
+        {
+            base.AttackBlocked(selfHitbox, otherHitbox);
+            
+            
         }
 
         protected override void DealDamage(DamageListener enemy)
@@ -403,6 +414,30 @@ namespace Characters.Player.Scripts
         public void SetBlockingAnimator(bool isBlocking)
         {
             animator.SetBool(Blocking, isBlocking);
+        }
+
+        public void LaunchProjectile()
+        {
+            if (_swordSlamStrength <= 0.0f)
+            {
+                return;
+            }
+
+            if (!swordSlamProjectile)
+            {
+                return;
+            }
+
+            var directionVector = GetLocalPositionFromRotation(GetRotation(swordDirection));
+            var position = transform.position + directionVector * 0.7f;
+            var projectileInstance = Instantiate(swordSlamProjectile, position, Quaternion.identity);
+            var projectileComponent = projectileInstance.GetComponent<ProjectileComponent>();
+            if (projectileComponent)
+            {
+                projectileComponent.Setup(transform.position + directionVector * 4.0f, healthComponent.gameObject,
+                    swordSlamBaseSpeed * _swordSlamStrength,
+                    swordSlamBaseLifetime * _swordSlamStrength, Team.Dogs);
+            }
         }
 
         private float GetAttackCost(SwordDirection newDirection)
@@ -439,6 +474,11 @@ namespace Characters.Player.Scripts
             healthComponent.statusEffects.GetEffectStacksChangedEvent(stabReachEffect).AddListener((_, newValue) =>
             {
                 stabReachMultiplier = newValue;
+            });
+            
+            healthComponent.statusEffects.GetEffectStacksChangedEvent(GameState.instance.effectList.slamProjectileStrengthEffect).AddListener((_, newValue) =>
+            {
+                _swordSlamStrength = newValue;
             });
         }
 

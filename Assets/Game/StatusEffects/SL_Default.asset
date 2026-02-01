@@ -17,3 +17,4 @@ MonoBehaviour:
   <invulnerabilityEffect>k__BackingField: {fileID: 11400000, guid: 0b6763f065b56b24d9bcc10306838971, type: 2}
   <stabReachEffect>k__BackingField: {fileID: 11400000, guid: fbf9d8812b7f836408e05028be84920e, type: 2}
   <staminaRegenRateEffect>k__BackingField: {fileID: 11400000, guid: 25f4fdf6eed889d418527e049e16bdeb, type: 2}
+  <slamProjectileStrengthEffect>k__BackingField: {fileID: 11400000, guid: 589bc191be84b2248a3ece0dc3e4f015, type: 2}

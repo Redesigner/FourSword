@@ -106,8 +106,7 @@ GameObject:
   - component: {fileID: 7080483247857450549}
   - component: {fileID: 7229867353558414166}
   - component: {fileID: 6836764109453847594}
-  - component: {fileID: 8537174920901087639}
-  - component: {fileID: 6766215798661647158}
+  - component: {fileID: 636120859945731422}
   m_Layer: 3
   m_Name: P_Chaser
   m_TagString: Untagged
@@ -165,7 +164,7 @@ Animator:
   m_GameObject: {fileID: 3222924608183184359}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 29f25e42c8f04c64cbb51b2a5116630e, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -236,6 +235,7 @@ MonoBehaviour:
         m_CallState: 2
   walkSpeed: 2
   faceMovement: 1
+  sprite: {fileID: 0}
 --- !u!114 &7120867257024862281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,34 +403,10 @@ MonoBehaviour:
       m_Calls: []
   onTakeSlashDamage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8537174920901087639}
-        m_TargetAssemblyTypeName: Props.Scripts.ParticleSpawner, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onTakePierceDamage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6766215798661647158}
-        m_TargetAssemblyTypeName: Props.Scripts.ParticleSpawner, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onTakeSmashDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -438,34 +414,10 @@ MonoBehaviour:
   <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8537174920901087639}
-        m_TargetAssemblyTypeName: Props.Scripts.ParticleSpawner, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Props.Scripts.ParticleSpawner, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &6836764109453847594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +440,7 @@ MonoBehaviour:
   attackCompleted:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8537174920901087639
+--- !u!114 &636120859945731422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -497,25 +449,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3222924608183184359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bedd722eec6492dbc037dec4bf4cb2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 804c86eb3e0f459793f7e4948ac2050b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 3530588619849257922, guid: 8c703d172c32927418a1d38f3f436090, type: 3}
-  particleLifetime: 1
---- !u!114 &6766215798661647158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3222924608183184359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bedd722eec6492dbc037dec4bf4cb2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 8975464230960728445, guid: c6ef9726f01d1264a9098e0e8011f8ad, type: 3}
-  particleLifetime: 0.25
+  dropTable: {fileID: 11400000, guid: 240c998b2067fe84cb464d2e750aed10, type: 2}
 --- !u!1 &5185995178598272059
 GameObject:
   m_ObjectHideFlags: 0

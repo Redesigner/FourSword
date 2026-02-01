@@ -49,6 +49,11 @@ public readonly struct TimerHandle
 
     public void Reset()
     {
+        if (_timer == null)
+        {
+            return;
+        }
+        
         if (_timer.TryGetTarget(out var timer))
         {
             timer.currentTime = 0.0f;
