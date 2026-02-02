@@ -1,0 +1,501 @@
+fileFormatVersion: 2
+guid: 0e576db2ca6e3f84ba7192842ddbc8a1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4975596497603646532
+    second: e_lightning_0
+  - first:
+      213: -6339572626670851868
+    second: e_lightning_1
+  - first:
+      213: -6976156446860134025
+    second: e_lightning_2
+  - first:
+      213: 9042001314494413921
+    second: e_lightning_3
+  - first:
+      213: 6899978940267207000
+    second: e_lightning_4
+  - first:
+      213: 3019138492046626200
+    second: e_lightning_5
+  - first:
+      213: -1550463405085587876
+    second: e_lightning_6
+  - first:
+      213: -7453312028614857681
+    second: e_lightning_7
+  - first:
+      213: 1476958244119327684
+    second: e_lightning_8
+  - first:
+      213: 2947822244243297853
+    second: e_lightning_9
+  - first:
+      213: -6015005425246605045
+    second: e_lightning_10
+  - first:
+      213: -6330261875653721378
+    second: e_lightning_11
+  - first:
+      213: -7860701084599886911
+    second: e_lightning_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: e_swordbeam_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 226
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.4159292, y: 0.03539823}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b775b0825ce14c40a86cda938c96896
+      internalID: 1477581125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_1
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 226
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.4159292, y: 0.03539823}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baaf1ecf8b56dae43b5b6b6b560da8e7
+      internalID: 91028701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_2
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 226
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.4159292, y: 0.03539823}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c9653a8142644d4aab4b80b2fb24ece
+      internalID: -642272086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_3
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 226
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.40707964, y: 0.03539823}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a0b9692237b6324cac9484bae7868f3
+      internalID: 2112813936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_4
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 226
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.40707964, y: 0.03539823}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b95768104ace354ead5757ac4fbe678
+      internalID: -920279033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 113
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.25663716, y: 0.13274336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c59eaec2b68b094a803d8d02ed04ac9
+      internalID: 1261856455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_6
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 113
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.25663716, y: 0.13274336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eacbfee80b1207348b9c8e361637373d
+      internalID: -1441666817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_7
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 113
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.25663716, y: 0.13274336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28cd49869169dfe4ab226a5ad9300fac
+      internalID: -2061066012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_8
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 113
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.25663716, y: 0.13274336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ed38401b6333d843b05e29895572b95
+      internalID: -335024195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_9
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 113
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.25663716, y: 0.13274336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c5c66104fb40c4ca94650095de117a
+      internalID: 1590514358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.27433628, y: 0.123893805}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b042e3189193723428a3cdbef5adfe29
+      internalID: -1841557581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_11
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 0
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.27433628, y: 0.123893805}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9e28cd2e0e08e943b05df4e576177b9
+      internalID: 570099686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_12
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 0
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.27433628, y: 0.13274336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bc9ea7583dbaf04aaa5f05cb1e41291
+      internalID: -1658862193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_13
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 0
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.26548672, y: 0.13274336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3790eabee505d743851befd0ccd1a0b
+      internalID: 518104838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e_swordbeam_14
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 0
+        width: 113
+        height: 113
+      alignment: 9
+      pivot: {x: 0.27433628, y: 0.13274336}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e8efdfc19d20b4cb26bddab07f4fce
+      internalID: -780319160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b4d517aff6f90af43b25fad7b311e41c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      e_swordbeam_0: 1477581125
+      e_swordbeam_1: 91028701
+      e_swordbeam_10: -1841557581
+      e_swordbeam_11: 570099686
+      e_swordbeam_12: -1658862193
+      e_swordbeam_13: 518104838
+      e_swordbeam_14: -780319160
+      e_swordbeam_2: -642272086
+      e_swordbeam_3: 2112813936
+      e_swordbeam_4: -920279033
+      e_swordbeam_5: 1261856455
+      e_swordbeam_6: -1441666817
+      e_swordbeam_7: -2061066012
+      e_swordbeam_8: -335024195
+      e_swordbeam_9: 1590514358
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
