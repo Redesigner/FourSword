@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Characters.Enemies.Scripts;
 using Characters.Player.Scripts;
 using UnityEngine;
@@ -87,13 +88,17 @@ public class EdgeSpawner : MonoBehaviour
         // repeat... 
  
         //  -> if we have no points left, leave the loop
- 
+        
+        
         var generatedEnemies = new List<GameObject>();
         while(_waveValue > 0 || generatedEnemies.Count < 50)
         {
-            var randEnemyId = UnityEngine.Random.Range(0, enemies.Count);
+            var randEnemyId = GetRandomAffordableEnemy();
+            if (randEnemyId == -1)
+            {
+                break;
+            }
             var randEnemyCost = enemies[randEnemyId].cost;
-            
             generatedEnemies.Add(enemies[randEnemyId].enemyPrefab);
             _waveValue -= randEnemyCost;
                 
@@ -104,6 +109,9 @@ public class EdgeSpawner : MonoBehaviour
         }
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
+        var waveString = enemies.Aggregate("", (current, enemy) => current + $"{generatedEnemies.Count(prefab => prefab == enemy.enemyPrefab)} {DebugHelpers.Names.GetNameSafe(enemy.enemyPrefab)}s, ");
+
+        Debug.LogFormat("Generated wave with {0}", waveString);
     }
 
     private Vector3 GetSpawnLocation()
@@ -152,6 +160,45 @@ public class EdgeSpawner : MonoBehaviour
         return transform.position;
     }
 
+    private int GetRandomEnemyIndexWeighted()
+    {
+        var enemyTotalCost = enemies.Aggregate(0.0f, (current, enemy) => current + enemy.GetRandomChance());
+        var randomValue = Random.value * enemyTotalCost;
+
+        for (var i = 0; i < enemies.Count; ++i)
+        {
+            var randomChance = enemies[i].GetRandomChance();
+            if (randomValue < randomChance)
+            {
+                return i;
+            }
+
+            randomValue -= randomChance;
+        }
+
+        return 0;
+    }
+
+    private int GetRandomAffordableEnemy()
+    {
+        var affordableEnemies = new List<int>();
+
+        for(var i = 0; i < enemies.Count; ++i)
+        {
+            if (enemies[i].cost < _waveValue)
+            {
+                affordableEnemies.Add(i);
+            }
+        }
+
+        if (affordableEnemies.Count == 0)
+        {
+            return -1;
+        }
+
+        return affordableEnemies[Random.Range(0, affordableEnemies.Count)];
+    }
+
     private void OnDrawGizmos()
     {
         var regionSize = spawnAreaSizeOuter - spawnAreaSizeInner;
@@ -182,4 +229,10 @@ public class Enemy
 {
     public GameObject enemyPrefab;
     public int cost;
+
+    public float GetRandomChance()
+    {
+        var result = cost > 0.0f ? 1.0f / cost : 0.0f;
+        return result;
+    }
 }
