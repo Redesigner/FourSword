@@ -68,6 +68,7 @@ namespace Characters.Player.Scripts
             controller.primaryHitbox.Enable();
             controller.secondaryHitbox.Disable();
             controller.diagonalHitbox.Disable();
+            controller.onStab.Invoke();
         }
         
         public override void Slash(SwordAttackController controller, SwordDirection start, SwordDirection end)
@@ -84,6 +85,7 @@ namespace Characters.Player.Scripts
             
             TimerManager.instance.CreateOrResetTimer(ref controller.diagonalHitboxTimer, controller, 0.2f / attackAnimationSpeed, () => { controller.diagonalHitbox.Disable(); });
             TimerManager.instance.CreateOrResetTimer(ref controller.secondaryHitboxTimer, controller, 0.1f / attackAnimationSpeed, () => { controller.secondaryHitbox.Disable(); });
+            controller.onSlash.Invoke();
         }
 
         public override void Slam(SwordAttackController controller, SwordDirection direction)
@@ -97,6 +99,7 @@ namespace Characters.Player.Scripts
             controller.diagonalHitbox.Disable();
 
             controller.LaunchProjectile();
+            controller.onSlam.Invoke();
         }
     }
 

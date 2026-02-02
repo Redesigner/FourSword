@@ -62,6 +62,11 @@ namespace Characters.Player.Scripts
         [Header("Effects")]
         [SerializeField] private HealthComponent healthComponent;
         public float stabReachMultiplier { private set; get; } = 1.0f;
+
+        [Header("Attack Events")]
+        [SerializeField] public UnityEvent onSlash;
+        [SerializeField] public UnityEvent onStab;
+        [SerializeField] public UnityEvent onSlam;
         
         // Map transitions where a tuple containing our current stance, and the command received
         // is the Key, and the new stance is the Value
