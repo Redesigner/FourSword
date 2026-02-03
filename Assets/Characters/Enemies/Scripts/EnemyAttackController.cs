@@ -12,6 +12,7 @@ public class EnemyAttackController : AttackController
     [SerializeField] private HitboxTrigger hitboxComponent;
     [SerializeField] private bool damageOnce = true;
     [SerializeField] public UnityEvent onShieldBroken;
+    [SerializeField] public UnityEvent onShieldHit;
 
     public UnityEvent attackCompleted;
     private Animator _animator;
@@ -67,6 +68,7 @@ public class EnemyAttackController : AttackController
     {
         if (blockedDamageType != DamageType.Smash)
         {
+            onShieldHit.Invoke();
             return true;
         }
         
