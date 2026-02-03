@@ -149,7 +149,7 @@ namespace Characters.Player.Scripts
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Expire), _blocking },   // Attacking -> Block
                 { new Tuple<SwordStance, SwordCommand>(_attacking, SwordCommand.Press), _attacking },   // Self transition
                 { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Release), _idle },       // Blocking -> Idle
-                { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Hit), _countering },     // Blocking -> Countering
+                // { new Tuple<SwordStance, SwordCommand>(_blocking, SwordCommand.Hit), _countering },     // Blocking -> Countering
                 // { new Tuple<SwordStance, SwordCommand>(_countering, SwordCommand.Expire), _idle },      // Countering -> Idle
                 { new Tuple<SwordStance, SwordCommand>(_weakAttack, SwordCommand.Expire), _idle }       // Weak Attack -> Idle
             };
