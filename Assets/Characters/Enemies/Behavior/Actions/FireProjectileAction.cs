@@ -28,11 +28,13 @@ public class FireProjectileAction : Action
             return Status.Failure;
         }
 
-        var projectileInstance = UnityEngine.Object.Instantiate(projectile.Value, self.Value.transform.position + (Vector3)offset.Value, Quaternion.identity);
-        var projectileComponent = projectileInstance.GetComponent<ProjectileComponent>();
-        projectileComponent.Setup(enemy.Value.transform.position + (Vector3)offset.Value, self.Value, 5.0f);
+        var offsetValue = offset?.Value ?? Vector2.zero;
 
-        if (animator.Value)
+        var projectileInstance = UnityEngine.Object.Instantiate(projectile.Value, self.Value.transform.position + (Vector3)offsetValue, Quaternion.identity);
+        var projectileComponent = projectileInstance.GetComponent<ProjectileComponent>();
+        projectileComponent.Setup(enemy.Value.transform.position + (Vector3)offsetValue, self.Value, 5.0f);
+
+        if (animator != null && trigger != null)
         {
             animator.Value.SetTrigger(trigger.Value);
         }

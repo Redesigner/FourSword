@@ -14221,6 +14221,7 @@ MonoBehaviour:
   spawnAreaSizeOuter: {x: 25, y: 17}
   waveDifficulty: 14
   waveDuration: 25
+  maxEnemyCount: 20
   enemies:
   - enemyPrefab: {fileID: 3222924608183184359, guid: 16041e329dffcb644b1c461781c20e1c, type: 3}
     cost: 1

@@ -8,17 +8,18 @@ using Random = UnityEngine.Random;
 
 public class EdgeSpawner : MonoBehaviour
 {
+    [Header("Spawn area")]
     [SerializeField] private Vector2 spawnAreaSizeInner; 
     [SerializeField] private Vector2 spawnAreaSizeOuter; 
     
-    [SerializeField] [Range(1, 50)]
-    public int waveDifficulty = 1;
-    
-    [SerializeField] [Range(1, 50)]
-    public int waveDuration;
+    [Header("Wave settings")]
+    [SerializeField] [Range(1, 50)] public int waveDifficulty = 1;
+    [SerializeField] [Range(1, 50)] public int waveDuration = 25;
+    [SerializeField] [Range(1, 100)] public int maxEnemyCount = 50;
 
     private PlayerController _playerCenter;
-    
+
+    private int _currentEnemyCount;
     private int _waveValue;
     
     private float _waveTimer;
@@ -44,7 +45,21 @@ public class EdgeSpawner : MonoBehaviour
             if(enemiesToSpawn.Count > 0)
             {
                 var position = GetSpawnLocationInNav();
-                var enemy = Instantiate(enemiesToSpawn[0], position,Quaternion.identity); // spawn first enemy in our list
+                var enemy = Instantiate(enemiesToSpawn[0], position, Quaternion.identity); // spawn first enemy in our list
+                ++_currentEnemyCount;
+
+                var healthComponent = enemy.GetComponent<HealthComponent>();
+                if (healthComponent)
+                {
+                    healthComponent.onDeath.AddListener(OnSpawnedEnemyDeath);
+                }
+                else
+                {
+                    --_currentEnemyCount;
+                    Destroy(enemy);
+                    Debug.LogWarningFormat("Enemy {0} does not have a health component. Despawning... Make sure that all spawned enemies have valid HealthComponents.",
+                        DebugHelpers.Names.GetNameSafe(enemiesToSpawn[0]));
+                }
                 
                 enemiesToSpawn.RemoveAt(0); // and remove it
                 _spawnTimer = _spawnInterval;
@@ -54,7 +69,7 @@ public class EdgeSpawner : MonoBehaviour
                 _waveTimer = 0; // if no enemies remain, end wave
             }
         }
-        else
+        else if (_currentEnemyCount < maxEnemyCount) // Only count down if we have some enemies left to spawn.
         {
             _spawnTimer -= Time.fixedDeltaTime;
             _waveTimer -= Time.fixedDeltaTime;
@@ -197,6 +212,11 @@ public class EdgeSpawner : MonoBehaviour
         }
 
         return affordableEnemies[Random.Range(0, affordableEnemies.Count)];
+    }
+
+    private void OnSpawnedEnemyDeath()
+    {
+        --_currentEnemyCount;
     }
 
     private void OnDrawGizmos()

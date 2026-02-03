@@ -78,6 +78,13 @@ namespace Characters.Enemies.Scripts
                 hitTarget.TakeDamage(explosionDamage, null);
             }
 
+            // force the enemy to emit a death event, in case anything is listening for it
+            var healthComponent = GetComponent<HealthComponent>();
+            if (healthComponent)
+            {
+                healthComponent.onDeath.Invoke();
+            }
+
             Destroy(gameObject);
             _isCountingDown = false;
             _countdownTimer.Reset();
