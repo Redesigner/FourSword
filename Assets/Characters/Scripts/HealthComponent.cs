@@ -37,6 +37,7 @@ public class HealthComponent : DamageListener
     [SerializeField] public UnityEvent onTakeSmashDamage;
 
     [SerializeField] public Team team;
+    [SerializeField] private float score;
 
     public readonly StatusEffectContainer statusEffects = new();
     [field: SerializeField] public bool alive { get; private set; } = true;
@@ -201,6 +202,7 @@ public class HealthComponent : DamageListener
         onTakeDamage.Invoke(source);
         health = 0.0f;
         alive = false;
+        GameState.instance.score += score;
         onDeath.Invoke();
         
         GetComponent<KinematicCharacterController>().enabled = false;

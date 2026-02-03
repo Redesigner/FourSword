@@ -234,6 +234,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   walkSpeed: 2
+  clampLookToFourDirections: 1
   faceMovement: 1
   sprite: {fileID: 0}
 --- !u!114 &7120867257024862281
@@ -411,6 +412,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   team: 1
+  score: 4
   <alive>k__BackingField: 1
   onTakeDamage:
     m_PersistentCalls:

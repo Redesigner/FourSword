@@ -21,6 +21,9 @@ public class GameState : MonoBehaviour
     public FourSwordSettings settings { get; private set; }
 
     public FactState factState { get; private set; }
+
+    [SerializeField]
+    public float score;
     
     private static GameState _instance;
     public static GameState instance
@@ -57,7 +60,7 @@ public class GameState : MonoBehaviour
         var factRegistry = Resources.Load<FactRegistry>(FactRegistry.DefaultFactRegistryPath);
         var saveFile = new FactGameSave();
         factState.Initialize(factRegistry, saveFile);
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
     }
 
     /**
