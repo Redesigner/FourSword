@@ -11,6 +11,9 @@ public class FireProjectileAction : Action
     [SerializeReference] public BlackboardVariable<GameObject> self;
     [SerializeReference] public BlackboardVariable<GameObject> projectile;
     [SerializeReference] public BlackboardVariable<GameObject> enemy;
+    [SerializeReference] public BlackboardVariable<Vector2> offset;
+    [SerializeReference] public BlackboardVariable<Animator> animator;
+    [SerializeReference] public BlackboardVariable<string> trigger;
 
     protected override Status OnStart()
     {
@@ -25,9 +28,14 @@ public class FireProjectileAction : Action
             return Status.Failure;
         }
 
-        var projectileInstance = UnityEngine.Object.Instantiate(projectile.Value, self.Value.transform.position, Quaternion.identity);
+        var projectileInstance = UnityEngine.Object.Instantiate(projectile.Value, self.Value.transform.position + (Vector3)offset.Value, Quaternion.identity);
         var projectileComponent = projectileInstance.GetComponent<ProjectileComponent>();
-        projectileComponent.Setup(enemy.Value.transform.position, self.Value, 5.0f);
+        projectileComponent.Setup(enemy.Value.transform.position + (Vector3)offset.Value, self.Value, 5.0f);
+
+        if (animator.Value)
+        {
+            animator.Value.SetTrigger(trigger.Value);
+        }
         
         return Status.Success;
     }

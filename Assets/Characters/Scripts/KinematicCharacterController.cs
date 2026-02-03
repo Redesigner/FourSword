@@ -16,7 +16,8 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     private static readonly int VerticalBlend = Animator.StringToHash("Vertical");
     private static readonly int SpeedBlend = Animator.StringToHash("Speed");
 
-    /** <summary>
+    /**
+     * <summary>
      *  Where the character is currently looking
      * </summary>
     **/ 
@@ -35,6 +36,11 @@ public class KinematicCharacterController : Kinematics.KinematicObject
     [SerializeField]
     private float walkSpeed = 4.0f;
 
+    /// <summary>
+    /// Should the look direction be clamped so that the character can only look in the cardinal directions?
+    /// </summary>
+    [SerializeField] private bool clampLookToFourDirections = true;
+    
     /// <summary>
     /// Should the character automatically face (set lookDirection) to be the same as movement?
     /// </summary>
@@ -175,7 +181,7 @@ public class KinematicCharacterController : Kinematics.KinematicObject
         _lookDirection = direction.normalized;
         lookDirectionChanged.Invoke(Mathf.Atan2(_lookDirection.y, _lookDirection.x));
 
-        var clampedDirection = Math.ClampDirectionVector(lookDirection);
+        var clampedDirection = clampLookToFourDirections ? Math.ClampDirectionVector(lookDirection) : _lookDirection;
         _animator.SetFloat(HorizontalBlend, clampedDirection.x);
         _animator.SetFloat(VerticalBlend, clampedDirection.y);
     }
